@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  <title>Home</title>
+{% endblock %}
+
+{% block body %}
+
+<div class="">
+
+    <h1>Auto-Assesment Application</h1>
+
+    <p>Database test :</p>
+    {%for item in test1%}
+
+    <p>{{item.id}} : {{item.name}}</p>
+
+
+    {%endfor%}
+
+
+</div>
+
+{% endblock %}
