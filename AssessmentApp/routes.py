@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 
-from AssesmentApp import app
-from AssesmentApp.models import *
+from AssessmentApp import app
+from AssessmentApp.models import *
 
 @app.route('/')
 def index():

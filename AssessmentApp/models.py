@@ -1,6 +1,6 @@
 # from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
-from AssesmentApp import db
+from AssessmentApp import db
 
 
 class test(db.Model):

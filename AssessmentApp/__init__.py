@@ -10,4 +10,4 @@ app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///primaryDatabase.db'
 # app.config["SECRET_KEY"] = 'dqOTxaMwwDDEzBSk1PE_5zeJ_ow'
 db = SQLAlchemy(app)
 
-from AssesmentApp import routes
+from AssessmentApp import routes
