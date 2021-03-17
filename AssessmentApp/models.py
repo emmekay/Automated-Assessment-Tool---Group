@@ -11,14 +11,14 @@ class test(db.Model):
 
 class AssessmentDetails(db.Model):
     id = db.Column(db.Integer , primary_key = True)
-    moduleId = db.Column(db.String(10), nullable=False) #WILL CHANGE TO FORIGNE KEY WHEN TABLE MADE
-    allowedAttemps = db.Column(db.Integer, default = 100)
+    module_Id = db.Column(db.String(10), nullable=False) #WILL CHANGE TO FORIGNE KEY WHEN TABLE MADE
+    allowed_Attemps = db.Column(db.Integer, default = 100)
     weighting = db.Column(db.Integer , nullable=False)
-    timeLimit =  db.Column(db.DateTime, nullable=False)
-    release =  db.Column(db.DateTime, nullable=False)
+    time_Limit =  db.Column(db.DateTime, nullable=False)
+    # release =  db.Column(db.DateTime, nullable=False)
     end =  db.Column(db.DateTime, nullable=False)
     start =  db.Column(db.DateTime, nullable=False)
-    studentInstructions = db.Column(db.Text())
+    student_Instructions = db.Column(db.Text())
 
 class QuestionTypeTwo(db.Model):
     id = db.Column(db.Integer, Primary_key=True)
@@ -71,11 +71,12 @@ class Staff(db.Model): # Staff Info
     staff_surname = db.Column(db.String(64), index=True, unique=False)
     modules = db.relationship('Modules', backref='instructor', lazy='dynamic')
 
-class Satisfaction(db.Model): #Satisfaction Survey - Completely confused on this one 
+
+class Satisfaction(db.Model): #Satisfaction Survey - Completely confused on this one
     id = db.Column(db.Integer, primary_key=True)
     assessment_id =  db.relationship('AssessmentDetails', backref=module, lazy='dynamic')
-    question_one = 
+    question_one =
     question_two =
     question_three =
     question_four =
-    question_five = 
+    question_five =
