@@ -78,4 +78,10 @@ class Satisfaction(db.Model): #Satisfaction Survey - Completely confused on this
     question_two =
     question_three =
     question_four =
-    question_five = 
+    question_five =
+
+class Modules(db.Model): #statistics
+    id = db.Column(db.Integer , primary_key = True) 
+    module_id = db.Column(db.String(10))
+    module_name = db.Column(db.String(40))
+    module_leader = db.Column(db.String(30))
