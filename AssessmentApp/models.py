@@ -44,7 +44,6 @@ class Tag(db.Model): #Question type two tags
     parent_id = db.Column(db.Interger, db.ForeignKey('Tag.id'), nullable=True)
     parent = db.relationship('Tag', backref='Tag_parent', remote_side=id, lazy='dynamic')
 
-
 class point(db.Model): #Question type two points
     id = db.Column(db.Interger, primary_key=True)
     point = db.Column(db.Integer, nullable=True)
