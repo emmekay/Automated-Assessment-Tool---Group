@@ -60,3 +60,22 @@ class Point(db.Model): #Question type two points
     question_id = db.Column(db.Integer, db.ForeignKey('QuestionTypeTwo.id'), nullable=False)
     parent_id = db.Column(db.Interger, db.ForeignKey('Point.id'), nullable=True)
     parent = db.relationship('Point', backref='point_parent', remote_side=id, lazy=True)
+
+#Emilia's Class
+class Student(db.Model): #Student Info
+    id = db.Column(db.Integer, primary_key=True)
+    modules = db.relationship('Modules', backref='module_parent', lazy='dynamic')
+
+class Staff(db.Model): # Staff Info
+    id = db.Column(db.Integer, primary_key=True)
+    staff_surname = db.Column(db.String(64), index=True, unique=False)
+    modules = db.relationship('Modules', backref='instructor', lazy='dynamic')
+
+class Satisfaction(db.Model): #Satisfaction Survey - Completely confused on this one 
+    id = db.Column(db.Integer, primary_key=True)
+    assessment_id =  db.relationship('AssessmentDetails', backref=module, lazy='dynamic')
+    question_one = 
+    question_two =
+    question_three =
+    question_four =
+    question_five = 
