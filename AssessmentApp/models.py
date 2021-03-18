@@ -86,4 +86,11 @@ class Satisfaction(db.Model): #Satisfaction Survey - Completely confused on this
     question_two =
     question_three =
     question_four =
-    question_five =
+    question_five = 
+
+
+class Assessment_Results(db.Model):
+    student_id = db.relationship('Student', backref=module, lazy='dynamic', primary_key=True)
+    assessment_id = db.relationship('AssessmentDetails', backref=module, lazy='dynamic', primary_key=True)
+    grade = db.Column(db.Integer)
+    no_of_attempts = db.Column(db.Integer)
