@@ -19,6 +19,36 @@ class AssessmentDetails(db.Model):
     start =  db.Column(db.DateTime, nullable=False)
     studentInstructions = db.Column(db.Text())
 
+class Modules(db.Model): #statistics
+    id = db.Column(db.Integer , primary_key = True) 
+    module_id = db.Column(db.String(10))
+    module_name = db.Column(db.String(40))
+    module_leader = db.Column(db.String(30))
+
+class Student(db.Model): #Student Info
+    id = db.Column(db.Integer, primary_key=True)
+    modules = db.relationship('Modules', backref='module_parent', lazy='dynamic')
+    # Student name
+    # Student email
+    # Passords
+    # Programme
+
+class Staff(db.Model): # Staff Info
+    id = db.Column(db.Integer, primary_key=True)
+    staff_surname = db.Column(db.String(64), index=True, unique=False)
+    modules = db.relationship('Modules', backref='instructor', lazy='dynamic')
+    # Same with staff
+
+class Assessment_Results(db.Model):
+    attempt_id = db.Column(db.Integer, primary_key=True, nullable=False)
+    student_id = db.relationship('Student', backref='Student', lazy='dynamic')
+    assessment_id = db.relationship('AssessmentDetails', backref='Modules', lazy='dynamic')
+    attempt_number = db.Column(db.Integer)
+    grade = db.Column(db.Integer)
+    date_completed = db.Column(db.DateTime, nullable=False)
+    no_of_attempts = db.Column(db.Integer)
+    no_of_attempts = db.Column(db.Integer)
+
 class QuestionTypeTwo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     question = db.Column(db.Text, nullable=False)
@@ -26,9 +56,11 @@ class QuestionTypeTwo(db.Model):
     level = db.Column(db.Integer, nullable=False) #Question defficulty levels
     # date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     weighting = db.Column(db.Integer, nullable=False)
-    assessment_id = db.Column(db.Integer, db.ForeignKey('AssessmentDetails.id'), nullable=False)
+    assessment_id = db.Column(db.Integer, db.ForeignKey('assessment_details.id'), nullable=False)
     author_id = db.Column(db.Integer, db.ForeignKey('staff.id'), nullable=False)
 
+
+"""
 class QuestionTwoAnswer(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     answer = db.Column(db.Text, nullable=False) #Student's answers
@@ -37,8 +69,9 @@ class QuestionTwoAnswer(db.Model):
     parent_id = db.Column(db.Integer, db.ForeignKey('QuestionTwoAnswer.id'), nullable=True)
     parent = db.relationship('QuestionTwoAnswer', backref='questiontwoanswer_parent', remote_side=id, lazy=True)
 
+
 class Feedback(db.Model):
-    id = db.Column(db.Integer, Primary_key = True)
+    id = db.Column(db.Integer, primary_key = True)
     concent = db.Column(db.Text, nullable=False)
     question_id = db.Column(db.Integer, db.ForeignKey('QuestionTypeTwo.id'), nullable=False)
     author_id = db.Column(db.Integer, db.ForeignKey('staff.id'), nullable=False)
@@ -63,34 +96,21 @@ class Point(db.Model): #Question type two points
     parent = db.relationship('Point', backref='point_parent', remote_side=id, lazy=True)
 
 #Emilia's Class
-class Student(db.Model): #Student Info
-    id = db.Column(db.Integer, primary_key=True)
-    modules = db.relationship('Modules', backref='module_parent', lazy='dynamic')
-    # Student name
-    # Student email
-    # Passords
-    # Programme
 
-class Staff(db.Model): # Staff Info
-    id = db.Column(db.Integer, primary_key=True)
-    staff_surname = db.Column(db.String(64), index=True, unique=False)
-    modules = db.relationship('Modules', backref='instructor', lazy='dynamic')
-    # Same with staff
+    
+
+
 
 class Satisfaction(db.Model): #Satisfaction Survey - Completely confused on this one 
     id = db.Column(db.Integer, primary_key=True)
-    assessment_id =  db.relationship('AssessmentDetails', backref=module, lazy='dynamic')
+    assessment_id =  db.relationship('AssessmentDetails', backref='Modules', lazy='dynamic')
     #question_one = 
     #question_two =
     #question_three =
     #question_four =
     #question_five =
 
-class Modules(db.Model): #statistics
-    id = db.Column(db.Integer , primary_key = True) 
-    module_id = db.Column(db.String(10))
-    module_name = db.Column(db.String(40))
-    module_leader = db.Column(db.String(30))
+
 
 #class Satisfaction(db.Model): #Satisfaction Survey - Completely confused on this one
 #    id = db.Column(db.Integer, primary_key=True)
@@ -101,13 +121,4 @@ class Modules(db.Model): #statistics
 #    question_four =
 #    question_five = 
 
-
-class Assessment_Results(db.Model):
-    attempt_id = db.Column(db.Integer, primary_key=True, nullable=False)
-    student_id = db.relationship('Student', backref=student, lazy='dynamic')
-    assessment_id = db.relationship('AssessmentDetails', backref=module, lazy='dynamic')
-    attempt_number = db.Column(db.Integer)
-    grade = db.Column(db.Integer)
-    date_completed = db.Column(db.DateTime, nullable=False)
-    no_of_attempts = db.Column(db.Integer)
-    no_of_attempts = db.Column(db.Integer)
+"""
