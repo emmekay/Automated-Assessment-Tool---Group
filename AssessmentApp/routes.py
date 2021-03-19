@@ -6,6 +6,6 @@ from AssessmentApp.models import *
 
 @app.route('/')
 def index():
-    testData = test.query.all()
+    # testData = test.query.all()
 
-    return render_template('index.html', test1 = testData)
+    return render_template('index.html')#, test1 = testData)
