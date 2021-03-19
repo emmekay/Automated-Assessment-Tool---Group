@@ -11,7 +11,7 @@ class test(db.Model):
 
 class AssessmentDetails(db.Model):
     id = db.Column(db.Integer , primary_key = True)
-<<<<<<< HEAD
+
     moduleId = db.Column(db.String(10), nullable=False) #WILL CHANGE TO FORIGNE KEY WHEN TABLE MADE
     allowedAttemps = db.Column(db.Integer, default = 100)
     weighting = db.Column(db.Integer , nullable=False)
@@ -20,16 +20,16 @@ class AssessmentDetails(db.Model):
     end =  db.Column(db.DateTime, nullable=False)
     start =  db.Column(db.DateTime, nullable=False)
     studentInstructions = db.Column(db.Text())
-=======
-    module_Id = db.Column(db.String(10), nullable=False) #WILL CHANGE TO FORIGNE KEY WHEN TABLE MADE
-    allowed_Attempts = db.Column(db.Integer, default = 100)
-    weighting = db.Column(db.Integer , nullable=False)
-    time_Limit =  db.Column(db.DateTime, nullable=False)
-    # release =  db.Column(db.DateTime, nullable=False)
-    end =  db.Column(db.DateTime, nullable=False)
-    start =  db.Column(db.DateTime, nullable=False)
-    student_Instructions = db.Column(db.Text())
->>>>>>> 04e4a839743f31f56690a8c45d599a8af359d831
+
+    # module_Id = db.Column(db.String(10), nullable=False) #WILL CHANGE TO FORIGNE KEY WHEN TABLE MADE
+    # allowed_Attempts = db.Column(db.Integer, default = 100)
+    # weighting = db.Column(db.Integer , nullable=False)
+    # time_Limit =  db.Column(db.DateTime, nullable=False)
+    # # release =  db.Column(db.DateTime, nullable=False)
+    # end =  db.Column(db.DateTime, nullable=False)
+    # start =  db.Column(db.DateTime, nullable=False)
+    # student_Instructions = db.Column(db.Text())
+
 
 class QuestionTypeTwo(db.Model):
     id = db.Column(db.Integer, Primary_key=True)
@@ -89,31 +89,22 @@ class Staff(db.Model): # Staff Info
     modules = db.relationship('Modules', backref='instructor', lazy='dynamic')
     # Same with staff
 
-<<<<<<< HEAD
-class Satisfaction(db.Model): #Satisfaction Survey - Completely confused on this one 
-    id = db.Column(db.Integer, primary_key=True)
-    assessment_id =  db.relationship('AssessmentDetails', backref=module, lazy='dynamic')
-    question_one = 
-    question_two =
-    question_three =
-    question_four =
-    question_five =
 
 class Modules(db.Model): #statistics
-    id = db.Column(db.Integer , primary_key = True) 
+    id = db.Column(db.Integer , primary_key = True)
     module_id = db.Column(db.String(10))
     module_name = db.Column(db.String(40))
     module_leader = db.Column(db.String(30))
-=======
+
 
 class Satisfaction(db.Model): #Satisfaction Survey - Completely confused on this one
     id = db.Column(db.Integer, primary_key=True)
     assessment_id =  db.relationship('AssessmentDetails', backref=module, lazy='dynamic')
-    question_one =
-    question_two =
-    question_three =
-    question_four =
-    question_five =
+    # question_one =
+    # question_two =
+    # question_three =
+    # question_four =
+    # question_five =
 
 
 class Assessment_Results(db.Model):
@@ -122,14 +113,5 @@ class Assessment_Results(db.Model):
     assessment_id = db.relationship('AssessmentDetails', backref=module, lazy='dynamic')
     attempt_number = db.Column(db.Integer)
     grade = db.Column(db.Integer)
-<<<<<<< HEAD
-    no_of_attempts = db.Column(db.Integer)
-=======
-<<<<<<< HEAD
     date_completed = db.Column(db.DateTime, nullable=False)
     no_of_attempts = db.Column(db.Integer)
-=======
-    no_of_attempts = db.Column(db.Integer)
->>>>>>> 04e4a839743f31f56690a8c45d599a8af359d831
->>>>>>> 8d86425677748bebe3425191f031a40405fed995
->>>>>>> 98c93728c3252ec7faf8e375b466dde6c1eba0dc
