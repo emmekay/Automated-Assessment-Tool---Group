@@ -86,7 +86,7 @@ class Satisfaction(db.Model): #Satisfaction Survey - Completely confused on this
     question_two =
     question_three =
     question_four =
-    question_five = 
+    question_five =
 
 
 class Assessment_Results(db.Model):
