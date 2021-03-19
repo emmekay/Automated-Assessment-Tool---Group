@@ -83,7 +83,10 @@ class Satisfaction(db.Model): #Satisfaction Survey - Completely confused on this
 
 
 class Assessment_Results(db.Model):
-    student_id = db.relationship('Student', backref=module, lazy='dynamic', primary_key=True)
-    assessment_id = db.relationship('AssessmentDetails', backref=module, lazy='dynamic', primary_key=True)
+    attempt_id = db.Column(db.Integer, primary_key=True, nullable=False)
+    student_id = db.relationship('Student', backref=student, lazy='dynamic')
+    assessment_id = db.relationship('AssessmentDetails', backref=module, lazy='dynamic')
+    attempt_number = db.Column(db.Integer)
     grade = db.Column(db.Integer)
+    date_completed = db.Column(db.DateTime, nullable=False)
     no_of_attempts = db.Column(db.Integer)
