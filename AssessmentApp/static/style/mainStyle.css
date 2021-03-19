@@ -1,12 +1,12 @@
 
+/* FONT and BOX SIZING  */
 * {
   box-sizing: border-box;
   font-family: 'Noto Sans KR', sans-serif;
 }
 
-
+/* HEADER STYLING */
 header{
-  /* background-color: red; */
   width: 100%;
   height: 10vh;
   display: flex;
@@ -15,98 +15,57 @@ header{
   color: white;
   padding-left: 2%;
   padding-right: 2%;
-
   background: linear-gradient(360deg,#030303 10%,#1f1f1f 360%)
 
 }
 
+/* MAIN TITLE / LOGO */
 .title h1 {
   font-size: 20px;
-
-  /* padding: 5%; */
-  /* padding-left: 1%;
-  padding-top: 1%; */
 }
 
-/*
-body{
-  height: 100%;
-} */
-
-
-/*
-footer{
-  text-align: right;
-  background-color: blue;
-  position: fixed;
-  width: 100%;
-  left: 0;
-  bottom: 0;
-} */
-
+/* OUTER CONTAINER HOLDS SIDEBAR AND MAIN */
 .outerContainer {
   display: flex;
   height: 90vh;
 }
 
+/* MAIN TO HOLD MAIN CONTENT OF PAGE  */
 .outerContainer main {
 
   flex: 1 0 auto;
   height: 100%;
-  /* flex-grow: 3; */
-  /* background-color: grey; */
+  padding: 0 2% 2% 2%;
+
   background-image: linear-gradient(to right, #ebe7e7, #e7e9eb);
   /* https://www.crispedge.com/gradient/gb-15198699   */
-  /* background: linear-gradient(360deg,#030303 10%,#1f1f1f 360%) */
 
 }
 
+/* SIDE BAR */
 .sideBar {
   width: 15%;
   border-right: 1px solid black;
-  /* height: 100%; */
-  /* background-color: green; */
-  /* background-image: linear-gradient(to right, #ebe7e7, #e7e9eb); */
-  /* https://www.crispedge.com/gradient/gb-15198699   */
-
-  background: linear-gradient(360deg, #1C1C1C 10%, #494949 360%);
+  /* background: linear-gradient(360deg, #1C1C1C 10%, #494949 360%); */
   background: linear-gradient(360deg,#030303 10%,#1f1f1f 360%)
-}
-
-
-main {
-  padding: 0 2% 2% 2%;
-}
-
-.sideBar {
   color: white;
 }
 
 .sideBar ul {
   list-style: none;
   padding: 0;
-  /* padding-top: 1%; */
 }
 .sideBar li {
-  /* margin-top: 5%;
-  margin-bottom: 5%; */
   padding-top: 5%;
   padding-bottom: 5%;
   margin-left: 10%;
   margin-right: 10%;
   text-align: center;
-  /* border-top: 1px solid #282828; */
   border-bottom: 1px solid white;
 }
 
 .sideBar li:hover {
-
-  /* margin-left: 0;
-  margin-right: 0;
-  border: none; */
-
   background-color: #485461;
   background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
   cursor: pointer;
-
 }
