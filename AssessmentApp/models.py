@@ -20,7 +20,7 @@ class AssessmentDetails(db.Model):
     studentInstructions = db.Column(db.Text())
 
 class Modules(db.Model): #statistics
-    id = db.Column(db.Integer , primary_key = True) 
+    id = db.Column(db.Integer , primary_key = True)
     module_id = db.Column(db.String(10))
     module_name = db.Column(db.String(40))
     module_leader = db.Column(db.String(30))
@@ -97,14 +97,14 @@ class Point(db.Model): #Question type two points
 
 #Emilia's Class
 
-    
 
 
 
-class Satisfaction(db.Model): #Satisfaction Survey - Completely confused on this one 
+
+class Satisfaction(db.Model): #Satisfaction Survey - Completely confused on this one
     id = db.Column(db.Integer, primary_key=True)
     assessment_id =  db.relationship('AssessmentDetails', backref='Modules', lazy='dynamic')
-    #question_one = 
+    #question_one =
     #question_two =
     #question_three =
     #question_four =
@@ -119,6 +119,6 @@ class Satisfaction(db.Model): #Satisfaction Survey - Completely confused on this
 #    question_two =
 #    question_three =#
 #    question_four =
-#    question_five = 
+#    question_five =
 
 """

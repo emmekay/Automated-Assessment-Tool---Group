@@ -27,7 +27,7 @@ header{
 /* OUTER CONTAINER HOLDS SIDEBAR AND MAIN */
 .outerContainer {
   display: flex;
-  height: 90vh;
+  /* height: 90vh; */
 }
 
 /* MAIN TO HOLD MAIN CONTENT OF PAGE  */
@@ -46,8 +46,10 @@ header{
 .sideBar {
   width: 15%;
   border-right: 1px solid black;
+  flex-shrink: 0;
+  background: linear-gradient(360deg,#030303 10%,#1f1f1f 360%);
   /* background: linear-gradient(360deg, #1C1C1C 10%, #494949 360%); */
-  background: linear-gradient(360deg,#030303 10%,#1f1f1f 360%)
+  /* background: linear-gradient(360deg,#030303 10%,#1f1f1f 360%) */
   color: white;
 }
 
