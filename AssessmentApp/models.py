@@ -50,7 +50,8 @@ class modules_enrolment(db.Model):
 
 class assessment_details(db.Model):
     id = db.Column(db.Integer , primary_key = True)
-    module_id = db.Column(db.Integer, db.ForeignKey('modules.id')) 
+    module_id = db.Column(db.Integer, db.ForeignKey('modules.id'))
+    assessment_type = db.Column(db.Boolean, nullable = False)
     allowed_attemps = db.Column(db.Integer, default = 100)
     weighting = db.Column(db.Integer , nullable=False)
     time_limit =  db.Column(db.DateTime, nullable=False)
