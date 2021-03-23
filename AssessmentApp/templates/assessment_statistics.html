@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  <title>Assessment Statistics</title>
+  <style>
+
+    table, th, td {
+      border: 1px solid black;
+    }
+
+    th, td {
+      padding: 10px;
+    }
+
+  </style>
+{% endblock %}
+
+{% block body %}
+
+<div class="assessment_statistics_table">
+
+  <table>
+
+    <thead>
+      <tr>
+        <th scope="col" colspan="2">Module Name:[module_name]</th>
+      </tr>
+      <tr>
+        <th scope="col" colspan="2">[assessment_name] Statistics</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>Possible Grade</td>
+        <td>80</td>
+      </tr>
+      <tr>
+        <td>Actual Grade</td>
+        <td>70</td>
+      </tr>
+      <tr>
+        <td>Class Average</td>
+        <td>60</td>
+      </tr>
+      <tr>
+        <td>Lowest Grade</td>
+        <td>40</td>
+      </tr>
+      <tr>
+        <td>Highest Grade</td>
+        <td>90</td>
+      </tr>
+    </tbody>
+
+    <tfoot>
+      <tr>
+        <td colspan="4">Have an issue with your marks? Report here</td>
+      </tr>
+    </tfoot>
+
+  </table>
+
+</div>
+
+{% endblock %}
