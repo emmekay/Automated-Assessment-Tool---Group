@@ -23,6 +23,7 @@ class modules(db.Model): #statistics
     module_leader = db.Column(db.String(30))
 
 class modules_enrolment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     module_id = db.Column(db.Integer, db.ForeignKey('modules.id'))
 
@@ -38,6 +39,7 @@ class assessment_details(db.Model):
     student_instructions = db.Column(db.Text())
 
 class assessment_results(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     assessment_id = db.Column(db.Integer, db.ForeignKey('assessment_details.id'))
     attempt_number = db.Column(db.Integer, nullable = False)
@@ -71,93 +73,3 @@ class survey(db.Model):
     question_2 = db.Column(db.Integer, nullable = False)
     question_3 = db.Column(db.Integer, nullable = False)
     question_4 = db.Column(db.Integer, nullable = False)
-
-"""class Student(db.Model): #Student Info
-    id = db.Column(db.Integer, primary_key=True)
-    modules = db.relationship('Modules', backref='module_parent', lazy='dynamic')
-    # Student name
-    # Student email
-    # Passords
-    # Programme
-
-class Staff(db.Model): # Staff Info
-    id = db.Column(db.Integer, primary_key=True)
-    staff_surname = db.Column(db.String(64), index=True, unique=False)
-    modules = db.relationship('Modules', backref='instructor', lazy='dynamic')
-    # Same with staff
-
-
-
-class QuestionTypeTwo(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    question = db.Column(db.Text, nullable=False)
-    answer = db.Column(db.Text, nullable=False) #Standard answers provided by teaching staff
-    level = db.Column(db.Integer, nullable=False) #Question defficulty levels
-    # date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    weighting = db.Column(db.Integer, nullable=False)
-    assessment_id = db.Column(db.Integer, db.ForeignKey('assessment_details.id'), nullable=False)
-    author_id = db.Column(db.Integer, db.ForeignKey('staff.id'), nullable=False)
-
-
-
-class QuestionTwoAnswer(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
-    answer = db.Column(db.Text, nullable=False) #Student's answers
-    question_id = db.Column(db.Integer, db.ForeignKey('QuestionTypeTwo.id'), nullable=False)
-    author_id = db.Column(db.Integer, db.ForeignKey('student.id'), nullable=False)
-    parent_id = db.Column(db.Integer, db.ForeignKey('QuestionTwoAnswer.id'), nullable=True)
-    parent = db.relationship('QuestionTwoAnswer', backref='questiontwoanswer_parent', remote_side=id, lazy=True)
-
-
-class Feedback(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
-    concent = db.Column(db.Text, nullable=False)
-    question_id = db.Column(db.Integer, db.ForeignKey('QuestionTypeTwo.id'), nullable=False)
-    author_id = db.Column(db.Integer, db.ForeignKey('staff.id'), nullable=False)
-    parent_id = db.Column(db.Integer, db.ForeignKey('Feedback.id'), nullable=True)
-    parent = db.relationship('QuestionTwoAnswer', backref='feedback_parent', remote_side=id, lazy=True)
-
-
-class Tag(db.Model): #Question type two tags
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Unicode(32), unique=True, index=True, nullable=False)
-    author_id = db.Column(db.Integer,db.ForeignKey('staff.id'),nullable=False)
-    question_id = db.Column(db.Integer, db.ForeignKey('QuestionTypeTwo.id'), nullable=False)
-    parent_id = db.Column(db.Integer, db.ForeignKey('Tag.id'), nullable=True)
-    parent = db.relationship('Tag', backref='tag_parent', remote_side=id, lazy='dynamic')
-
-class Point(db.Model): #Question type two points
-    id = db.Column(db.Integer, primary_key=True)
-    point = db.Column(db.Integer, nullable=True)
-    author_id = db.Column(db.Integer,db.ForeignKey('staff.id'), nullable=False)
-    question_id = db.Column(db.Integer, db.ForeignKey('QuestionTypeTwo.id'), nullable=False)
-    parent_id = db.Column(db.Integer, db.ForeignKey('Point.id'), nullable=True)
-    parent = db.relationship('Point', backref='point_parent', remote_side=id, lazy=True)
-
-#Emilia's Class
-
-    
-
-
-
-class Satisfaction(db.Model): #Satisfaction Survey - Completely confused on this one 
-    id = db.Column(db.Integer, primary_key=True)
-    assessment_id =  db.relationship('AssessmentDetails', backref='Modules', lazy='dynamic')
-    #question_one = 
-    #question_two =
-    #question_three =
-    #question_four =
-    #question_five =
-
-
-
-#class Satisfaction(db.Model): #Satisfaction Survey - Completely confused on this one
-#    id = db.Column(db.Integer, primary_key=True)
-#    assessment_id =  db.relationship('AssessmentDetails', backref=module, lazy='dynamic')
-#    question_one =
-#    question_two =
-#    question_three =#
-#    question_four =
-#    question_five = 
-
-"""
