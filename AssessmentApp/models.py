@@ -10,7 +10,7 @@ class test(db.Model):
 
 class AssessmentDetails(db.Model):
     id = db.Column(db.Integer , primary_key = True)
-    moduleId = db.Column(db.String(10), nullable=False) #WILL CHANGE TO FORIGNE KEY WHEN TABLE MADE
+    moduleId = db.Column(db.String(10), nullable=False) #WILL CHANGE TO FOREIGN KEY WHEN TABLE MADE
     allowedAttemps = db.Column(db.Integer, default = 100)
     weighting = db.Column(db.Integer , nullable=False)
     timeLimit =  db.Column(db.DateTime, nullable=False)
@@ -69,7 +69,6 @@ class QuestionTwoAnswer(db.Model):
     parent_id = db.Column(db.Integer, db.ForeignKey('QuestionTwoAnswer.id'), nullable=True)
     parent = db.relationship('QuestionTwoAnswer', backref='questiontwoanswer_parent', remote_side=id, lazy=True)
 
-
 class Feedback(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     concent = db.Column(db.Text, nullable=False)
@@ -77,7 +76,6 @@ class Feedback(db.Model):
     author_id = db.Column(db.Integer, db.ForeignKey('staff.id'), nullable=False)
     parent_id = db.Column(db.Integer, db.ForeignKey('Feedback.id'), nullable=True)
     parent = db.relationship('QuestionTwoAnswer', backref='feedback_parent', remote_side=id, lazy=True)
-
 
 class Tag(db.Model): #Question type two tags
     id = db.Column(db.Integer, primary_key=True)
@@ -97,10 +95,6 @@ class Point(db.Model): #Question type two points
 
 #Emilia's Class
 
-    
-
-
-
 class Satisfaction(db.Model): #Satisfaction Survey - Completely confused on this one 
     id = db.Column(db.Integer, primary_key=True)
     assessment_id =  db.relationship('AssessmentDetails', backref='Modules', lazy='dynamic')
@@ -109,7 +103,6 @@ class Satisfaction(db.Model): #Satisfaction Survey - Completely confused on this
     #question_three =
     #question_four =
     #question_five =
-
 
 
 #class Satisfaction(db.Model): #Satisfaction Survey - Completely confused on this one
