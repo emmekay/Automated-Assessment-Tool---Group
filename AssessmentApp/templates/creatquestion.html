@@ -1,24 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
 {% extends 'base.html' %}
-
-{% block head %}
-  <title>Creat Question</title>
-{% endblock %}
-
+<head>
+    {% block head %}
+    {% endblock %}
+    <meta charset="UTF-8">
+    <title>Question Type One</title>
+</head>
+<body>
 {% block body %}
-
-<div class="">
-
-    <h2>Creat New Question</h2>
-
-    <p>Database test :</p>
-    {%for item in test1%}
-
-    <p>{{item.id}} : {{item.name}}</p>
-
-
-    {%endfor%}
-
-
-</div>
-
 {% endblock %}
+<!--navigation bar-->
+<!--<ul>-->
+<!--    <li>HOME</li>-->
+<!--    <li>Account</li>-->
+<!--    <li>Logout</li>-->
+<!--</ul>-->
+
+<!--To ?-->
+<form method="post">
+    <input id="to?" name="to?" type="submit" value="<——">  <!--QUESTION: to where?-->
+    <span>Edit Assessment Details</span>
+</form>
+<!--Question information-->
+<table id="total_Info" name="total_Info" method="get">
+    <tr><td>Module Code</td><td></td></tr>
+    <tr><td>Assessment Title</td><td></td></tr>
+    <tr><td>Total Questions</td><td></td></tr>
+    <tr><td>Total Marks</td><td></td></tr>
+</table>
+
+<!--Creat Question-->
+<form>
+    <input id="creat_Q" name="creat_Q" type="button" value="+ Creat Question" onclick="creat_question()">
+    <script>
+        function creat_question(){
+            var table_Q = document.createElement("table_Q");
+            table_Q.border = "5";
+            table_Q.width = "40%";
+
+            var rows = table_Q.insertRow()
+            var cells = rows.insertCell(rows.cells.length);
+
+            document.querySelector("#tb").appendChild(table_Q);
+
+        }
+    </script>
+</form>
+
+
+</body>
+</html>
