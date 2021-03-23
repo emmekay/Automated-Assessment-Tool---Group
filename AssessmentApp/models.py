@@ -41,7 +41,7 @@ class modules(db.Model): #statistics
     id = db.Column(db.Integer , primary_key = True) 
     module_id = db.Column(db.String(10), unique = True, nullable = False)
     module_name = db.Column(db.String(40), nullable = False)
-    module_leader = db.Column(db.String(30))
+    module_leader = db.Column(db.String(30)) #MAKE FOREIGN KEY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 class modules_enrolment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -67,18 +67,30 @@ class assessment_results(db.Model):
     date_completed = db.Column(db.DateTime, nullable=False)
     student_instructions = db.Column(db.Text())
 
-class Modules(db.Model): #statistics
-    id = db.Column(db.Integer , primary_key = True)
-    module_id = db.Column(db.String(10))
-    module_name = db.Column(db.String(40))
-    module_leader = db.Column(db.String(30))
+class assessment_questions(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    assessment_id = db.Column(db.Integer, db.ForeignKey('assessment_details.id'))
+    question_type = db.Column(db.Boolean, nullable = False)
 
-class assessment_results(db.Model):
-    attempt_id = db.Column(db.Integer, primary_key=True, nullable=False)
-    student_id = db.relationship('Student', backref='Student', lazy='dynamic')
-    assessment_id = db.relationship('AssessmentDetails', backref='Modules', lazy='dynamic')
-    attempt_number = db.Column(db.Integer)
-    grade = db.Column(db.Integer)
-    date_completed = db.Column(db.DateTime, nullable=False)
-    no_of_attempts = db.Column(db.Integer)
-    no_of_attempts = db.Column(db.Integer)
+class question(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    value = db.Column(db.Integer, nullable = False)
+    difficulty = db.Column(db.Integer, nullable = False)
+    question = db.Column(db.Text(), nullable = False)
+    answer_1 = db.Column(db.Text(), nullable = True)
+    answer_2 = db.Column(db.Text(), nullable = True)
+    answer_3 = db.Column(db.Text(), nullable = True)
+    answer_4 = db.Column(db.Text(), nullable = True)
+    correct_answer = db.Column(db.Integer, nullable = True)
+    type_2_answer = db.Column(db.Boolean, nullable = True)
+    correct_feedback = db.Column(db.Text(), nullable = False)
+    incorrect_feedback = db.Column(db.Text(), nullable = False)
+
+class survey(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    assessment_id = db.Column(db.Integer, db.ForeignKey('assessment_details.id'))
+    question_1 = db.Column(db.Integer, nullable = False)
+    question_2 = db.Column(db.Integer, nullable = False)
+    question_3 = db.Column(db.Integer, nullable = False)
+    question_4 = db.Column(db.Integer, nullable = False)
