@@ -1,6 +1,6 @@
 # from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
-from AssessmentApp import db
+from AssessmentApp import db#, login_manager
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
@@ -33,9 +33,9 @@ class user(db.Model):
     def verify_password(self,password):
         return check_password_hash(self.password_hash,password)
 
-@login_manager.user_loader
-def load_user(user_id):
-  return User.query.get(int(user_id))
+#@login_manager.user_loader
+#def load_user(user_id):
+#  return user.query.get(int(user_id))
 
 class modules(db.Model): #statistics
     id = db.Column(db.Integer , primary_key = True) 
