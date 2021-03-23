@@ -1,0 +1,82 @@
+
+/* FONT and BOX SIZING  */
+* {
+  box-sizing: border-box;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* body {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+} */
+
+/* HEADER STYLING */
+header{
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding-left: 2%;
+  padding-right: 2%;
+  background: linear-gradient(360deg,#030303 10%,#1f1f1f 360%)
+
+}
+
+/* MAIN TITLE / LOGO */
+.title h1 {
+  font-size: 20px;
+}
+
+/* OUTER CONTAINER HOLDS SIDEBAR AND MAIN */
+.outerContainer {
+  /* flex-grow : 1; */
+  display: flex;
+  min-height: 90vh;
+  /* height: 90vh; */
+  height: 100%;
+}
+
+/* MAIN TO HOLD MAIN CONTENT OF PAGE  */
+.outerContainer main {
+
+  flex: 1 0 auto;
+  /* height: 100%; */
+  padding: 0 2% 2% 2%;
+
+  background-image: linear-gradient(to right, #ebe7e7, #e7e9eb);
+  /* https://www.crispedge.com/gradient/gb-15198699   */
+
+}
+
+/* SIDE BAR */
+.sideBar {
+  width: 15%;
+  border-right: 1px solid black;
+  flex-shrink: 0;
+  background: linear-gradient(360deg,#030303 10%,#1f1f1f 360%);
+  /* background: linear-gradient(360deg, #1C1C1C 10%, #494949 360%); */
+  /* background: linear-gradient(360deg,#030303 10%,#1f1f1f 360%) */
+  color: white;
+}
+
+.sideBar ul {
+  list-style: none;
+  padding: 0;
+}
+.sideBar li {
+  padding-top: 5%;
+  padding-bottom: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
+  text-align: center;
+  border-bottom: 1px solid white;
+}
+
+.sideBar li:hover {
+  background-color: #485461;
+  background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
+  cursor: pointer;
+}
