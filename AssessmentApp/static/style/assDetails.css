@@ -1,0 +1,27 @@
+
+
+.aDetails td{
+  padding-right:  2%;
+  padding-bottom: 1%;
+
+}
+
+
+.textInput {
+  width: 100%;
+}
+
+
+
+#saveButton {
+  float: right;
+  width: 30%;
+  background: none;
+  border: 1px solid black;
+}
+
+#saveButton:hover {
+  color: blue;
+  border: 1px solid blue;
+  cursor: pointer;
+}

@@ -9,3 +9,10 @@ def index():
     # testData = test.query.all()
 
     return render_template('index.html')#, test1 = testData)
+
+
+@app.route('/addAss')
+def addAss():
+    # testData = test.query.all()
+
+    return render_template('AssessmentDetails.html')#, test1 = testData)

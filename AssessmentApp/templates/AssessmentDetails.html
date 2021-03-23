@@ -2,69 +2,77 @@
 
 {% block head %}
   <title>Add Assessment</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style/assDetails.css') }}">
 {% endblock %}
 
 {% block body %}
 
 <div class="">
 
-    <h2>homepage</h2>
+    <h2>Create New Assessment</h2> <br>
 
     <form class="aDetails" action="index.html" method="post">
-      <input type="text" name="" value="">
-      <input type="text" name="" value="">
-      <input type="text" name="" value="">
-      <input type="text" name="" value="">
-      <input type="text" name="" value="">
-      <input type="text" name="" value="">
-      <input type="text" name="" value="">
-      <textarea name="name" rows="8" cols="80"></textarea>
 
-    </form>
-    <form class="aDetails" action="index.html" method="post">
-      <input type="text" name="" value="">
-      <input type="text" name="" value="">
-      <input type="text" name="" value="">
-      <input type="text" name="" value="">
-      <input type="text" name="" value="">
-      <input type="text" name="" value="">
-      <input type="text" name="" value="">
-      <textarea name="name" rows="8" cols="80"></textarea>
+      <table >
 
-    </form>
-    <form class="aDetails" action="index.html" method="post">
-      <input type="text" name="" value="">
-      <input type="text" name="" value="">
-      <input type="text" name="" value="">
-      <input type="text" name="" value="">
-      <input type="text" name="" value="">
-      <input type="text" name="" value="">
-      <input type="text" name="" value="">
-      <textarea name="name" rows="8" cols="80"></textarea>
+       <tr>
+         <td><label for="module">Module Code</label></td>
+         <td><input  class="textInput" type="text" name="module" value=""></td>
+       </tr>
+       <tr>
+         <td><label for="assType">Assessment Type</label></td>
+         <td><input class="textInput" type="text" name="assType" value=""></td>
+       </tr>
 
-    </form>
-    <form class="aDetails" action="index.html" method="post">
-      <input type="text" name="" value="">
-      <input type="text" name="" value="">
-      <input type="text" name="" value="">
-      <input type="text" name="" value="">
-      <input type="text" name="" value="">
-      <input type="text" name="" value="">
-      <input type="text" name="" value="">
-      <textarea name="name" rows="8" cols="80"></textarea>
+       <tr>
+         <td><label for="assTitle">Assessment Title</label></td>
+         <td><input  class="textInput" type="text" name="assTitle" value=""></td>
+       </tr>
 
-    </form>
-    <form class="aDetails" action="index.html" method="post">
-      <input type="text" name="" value="">
-      <input type="text" name="" value="">
-      <input type="text" name="" value="">
-      <input type="text" name="" value="">
-      <input type="text" name="" value="">
-      <input type="text" name="" value="">
-      <input type="text" name="" value="">
-      <textarea name="name" rows="8" cols="80"></textarea>
+       <tr>
+         <td> <label for="assTime">Assessment Time Avallable</label></td>
+         <td> <input class="textInput" type="text" name="assTime" value=""></td>
+       </tr>
 
-    </form>
+       <tr>
+         <td><label for="assStart">Assessment Start Date</label></td>
+         <td><input class="textInput" type="text" name="assStart" value=""></td>
+       </tr>
+
+       <tr>
+         <td><label for="assEnd">Assessment End Date</label></td>
+         <td><input class="textInput" type="text" name="assEnd" value=""></td>
+       </tr>
+
+       <tr>
+         <td><label for="assMarks">Assessment Marks Available</label></td>
+         <td><input class="textInput" type="text" name="assMarks" value=""></td>
+       </tr>
+
+
+       <tr>
+         <td><label for="assWeight">Assessment Weighting</label></td>
+         <td><input class="textInput" type="text" name="assWeight" value=""></td>
+       </tr>
+
+
+       <tr>
+         <td><label for="assInstruc">Assessment Description and Instructions</label></td>
+         <td><textarea class="textInput" name="assInstruc" rows="8" cols="40"></textarea></td>
+       </tr>
+
+       <tr>
+         <td></td>
+         <td >  <input id = "saveButton" type="submit" name="" value="Save"></td>
+       </tr>
+
+      </table>
+
+
+
+      </form>
+
+
 
 
 </div>
