@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  <title>Question List</title>
+{% endblock %}
+
+{% block body %}
+
+<div class="">
+
+    <h2>Question List</h2>
+
+    <p>{ % for row in Qustion%}</p>
+
+
+
+    {%for item in test1%}
+
+    <p>{{item.id}} : {{item.name}}</p>
+
+
+    {%endfor%}
+
+
+</div>
+
+{% endblock %}
