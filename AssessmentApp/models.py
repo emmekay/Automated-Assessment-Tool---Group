@@ -19,7 +19,7 @@ class user(db.Model):
     password = db.Column(db.String(60), nullable = False)
     is_staff = db.Column(db.Boolean, default = False, nullable = False)
 
-    def __repr__(self):
+    """def __repr__(self):
         return f"User('{self.username}','{self.email}')"
     
     @property
@@ -31,7 +31,7 @@ class user(db.Model):
         self.password_hash = generate_password_hash(password)
 
     def verify_password(self,password):
-        return check_password_hash(self.password_hash,password)
+        return check_password_hash(self.password_hash,password)"""
 
 #@login_manager.user_loader
 #def load_user(user_id):
@@ -66,10 +66,10 @@ class assessment_results(db.Model):
     attempt_number = db.Column(db.Integer, nullable = False)
     grade = db.Column(db.Integer, nullable = False)
     date_completed = db.Column(db.DateTime, nullable=False)
-    student_instructions = db.Column(db.Text())
 
 class assessment_questions(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    question_id = db.Column(db.Integer, db.ForeignKey('question.id'))
     assessment_id = db.Column(db.Integer, db.ForeignKey('assessment_details.id'))
     question_type = db.Column(db.Boolean, nullable = False)
 
