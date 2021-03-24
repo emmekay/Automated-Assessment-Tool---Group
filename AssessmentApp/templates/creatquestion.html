@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+<head>
+    {% block head %}
+    {% endblock %}
+    <meta charset="UTF-8">
+    <title>Creat Question</title>
+</head>
+<body>
+{% block body %}
+{% endblock %}
+<!--navigation bar-->
+<!--<ul>-->
+<!--    <li>HOME</li>-->
+<!--    <li>Account</li>-->
+<!--    <li>Logout</li>-->
+<!--</ul>-->
+
+<!--To ?-->
+<form method="post">
+    <input id="to?" name="to?" type="submit" value="<——">  <!--QUESTION: to where?-->
+    <span>Edit Assessment Details</span>
+</form>
+<!--Question information-->
+<table id="total_Info" name="total_Info" method="get">
+    <tr><td>Module Code</td><td></td></tr>
+    <tr><td>Assessment Title</td><td></td></tr>
+    <tr><td>Total Questions</td><td></td></tr>
+    <tr><td>Total Marks</td><td></td></tr>
+</table>
+
+<!--Creat Question-->
+<form>
+    <input id="creat_Q" name="creat_Q" type="button" value="+ Creat Question" onclick="creat_question()">
+    <script>
+        function creat_question(){
+            var table_Q = document.createElement("table_Q");
+            table_Q.border = "5";
+            table_Q.width = "40%";
+
+            var rows = table_Q.insertRow()
+            var cells = rows.insertCell(rows.cells.length);
+
+            document.querySelector("#tb").appendChild(table_Q);
+
+        }
+    </script>
+</form>
+
+
+{% block content %}
+<form>
+    <p>Question Type
+        <select name="questiontype">
+            <div class="type1">
+                <option value="Answer 1"></option>
+                <option value="Answer 2"></option>
+                <option value="Answer 3"></option>
+                <option value="Answer 4"></option> 
+            </div>
+            <div class="type2">
+                <option value="Type 1"></option>
+                <option value="Type 2"></option>
+            </div>
+            
+        </select>
+    </p>
+    <p>Question Content <input type="text" name="questioncontent" /></p>
+    <p>Point <input type="text" name="point" /></p>
+    <p>Difficult Level
+        <select name="difficultylevel">
+            <option value="Level 1"></option>
+            <option value="Level 2"></option>
+            <option value="Level 3"></option>
+            <option value="Level 4"></option> 
+        </select>
+    </p>
+    <div class="type1">
+        <p>Answer 1 <input type="text" name="answer1" /></p>
+        <p>Anawer 2 <input type="text" name="answer2" /></p>
+        <p>Anawer 3 <input type="text" name="answer3" /></p>
+        <p>Anawer 4 <input type="text" name="answer4" /></p>
+    </div>
+    <div class="type2">
+        <p>True <input type="text" name="true" /></p>
+        <p>False <input type="text" name="false" /></p>
+    </div>
+    <p>Correct Answer
+        <select name="correctanswer">
+            <div class="type1">
+                <option value="Answer 1"></option>
+                <option value="Answer 2"></option>
+                <option value="Answer 3"></option>
+                <option value="Answer 4"></option> 
+            </div>
+            <div class="type2">
+                <option value="True"></option>
+                <option value="False"></option>
+            </div>
+        </select>
+    </p>
+    <p>Correct Feedback <input type="text" name="corrcetfeedback" /></p>
+    <p>Incorrect Feedback <input type="text" name="incorrectfeedback" /></p>
+    <button type="submit">Submit</button>
+    <p></p>
+</form>
+if(form.selectedname.value() == type1){
+    ('.type1').show();
+    ('.type2').hide();
+}
+else{
+    ('.type1').hide();
+    ('.type2').show();
+}
+
+{% endblock content%}
+</body>
+</html>
+

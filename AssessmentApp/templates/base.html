@@ -16,8 +16,20 @@
       <h1>Auto-Assessment Portal</h1>
       </div>
 
-      <p>Login</p>
+      Hello, {{ current_user.username}}!
+      <a href="{{ url_for('logout') }}">Logout</a>
 
+      <div class="alert">
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+              <ul>
+                  {% for message in messages %}
+                    <li style="list-style-type: none;">{{ message }}</li>
+                  {% endfor %}
+              </ul>
+          {% endif %}
+        {% endwith %}
+        </div>
 
     </header>
 
