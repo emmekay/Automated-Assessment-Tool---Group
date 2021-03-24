@@ -1,0 +1,78 @@
+
+
+/* .singleQuestion p{
+  display: inline;
+} */
+
+#assTitle{
+  text-align: center;
+}
+
+.singleQuestion label{
+  display: inline-block;
+}
+.singleQuestion input{
+  /* margin-left: 5%; */
+  display: inline-block;
+
+}
+
+.singleQuestion {
+  border-bottom: 1px solid black;
+}
+
+#alMarks {
+  /* text-align: right; */
+  /* display: block; */
+  /* font-size: 30px; */
+  display: block;
+  text-align: right;
+
+}
+
+
+.assInfoTable table {
+  border-spacing: 2vw;
+
+  margin: auto;
+
+}
+
+.singleQuestion {
+  max-width: 75vw;
+}
+
+.singleQuestion label {
+  margin-bottom: 2%;
+}
+
+
+.questionBoxes{
+
+  margin-left: 5%;
+
+}
+
+#submitAss {
+  float: right;
+  margin-right: 5vh;
+  width: 20vh;
+}
+
+/* .assInfoTable td {
+  border-spacing: 2vw;;
+} */
+
+
+.assInstruction{
+  border: 1px solid black;
+  padding: 1%;
+}
+.assInstruction h3{
+  text-align: center;
+}
+
+.assInstruction {
+  margin: auto;
+  max-width: 75vw;
+}
