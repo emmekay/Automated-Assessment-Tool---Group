@@ -21,7 +21,7 @@ class user(db.Model):
 
     """def __repr__(self):
         return f"User('{self.username}','{self.email}')"
-    
+
     @property
     def password(self):
         raise AttributeError('password is not a readable attribute')
@@ -38,7 +38,7 @@ class user(db.Model):
 #  return user.query.get(int(user_id))
 
 class modules(db.Model): #statistics
-    id = db.Column(db.Integer , primary_key = True) 
+    id = db.Column(db.Integer , primary_key = True)
     module_id = db.Column(db.String(10), unique = True, nullable = False)
     module_name = db.Column(db.String(40), nullable = False)
     module_leader = db.Column(db.String(30)) #MAKE FOREIGN KEY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -51,13 +51,16 @@ class modules_enrolment(db.Model):
 class assessment_details(db.Model):
     id = db.Column(db.Integer , primary_key = True)
     module_id = db.Column(db.Integer, db.ForeignKey('modules.id'))
-    assessment_type = db.Column(db.Boolean, nullable = False)
+    assessment_type = db.Column(db.Boolean, nullable = False) #summative = 0, formative = 1
+    assessment_name = db.Column(db.Text, nullable = False)
+    assessment_instructions = db.Column(db.Text, nullable = False)
     allowed_attemps = db.Column(db.Integer, default = 100)
-    weighting = db.Column(db.Integer , nullable=False)
-    time_limit =  db.Column(db.DateTime, nullable=False)
-    release =  db.Column(db.DateTime, nullable=False)
-    end_date =  db.Column(db.DateTime, nullable=False)
-    start_date =  db.Column(db.DateTime, nullable=False)
+    weighting = db.Column(db.Integer , nullable = False)
+    time_limit =  db.Column(db.DateTime, nullable = False)
+    release =  db.Column(db.DateTime, nullable = False)
+    end_date =  db.Column(db.DateTime, nullable = False)
+    start_date =  db.Column(db.DateTime, nullable = False)
+
 
 class assessment_results(db.Model):
     id = db.Column(db.Integer, primary_key=True)
