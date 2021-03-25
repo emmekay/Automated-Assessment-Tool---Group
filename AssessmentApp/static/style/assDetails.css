@@ -25,3 +25,8 @@
   border: 1px solid blue;
   cursor: pointer;
 }
+
+
+#title {
+  text-align: center;
+}

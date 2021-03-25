@@ -8,14 +8,26 @@ from AssessmentApp.models import *
 def index():
     # testData = test.query.all()
 
+
     return render_template('index.html')#, test1 = testData)
 
 
 @app.route('/addAss')
 def addAss():
-    # testData = test.query.all()
+    return render_template('AssessmentDetails.html')
 
-    return render_template('AssessmentDetails.html')#, test1 = testData)
+@app.route('/assessment/<int:id>')
+def Ass(id):
+
+    ass = assessment_details.query.filter_by(id=id).first()
+
+
+    questionIds = assessment_questions.query.filter_by(assessment_id=id).all()
+
+    assQuestions = [ question.query.filter_by(id=q.question_id).first() for q in questionIds]
+
+    return render_template('UndertakeAss.html',  assQuestions =assQuestions, ass = ass)
+
 
 @app.route("/login",methods=['GET','POST'])
 def login():
@@ -27,7 +39,7 @@ def login():
       flash('Login successful!')
       return redirect(url_for('home'))
     flash('Invalid email address or password.')
-    
+
     return render_template('login.html',form=form)
 
   return render_template('login.html',title='Login',form=form)

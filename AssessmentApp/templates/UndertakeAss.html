@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  <title>Add Assessment</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style/undertakeAss.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<div class="">
+
+    <h2 id ="assTitle">CMT{{ass.id}} - Assessment 1</h2>
+    <div class="assInfoTable">
+    <table >
+      <tr>
+        <td>Start:  {{ass.start_date.strftime('%H:%M %b %d %Y')}}</td> <td>End:  {{ass.end_date.strftime('%H:%M %b %d %Y')}}</td> <td>Duration: {{ass.time_limit.strftime('%H:%M')}} </td>
+        </tr>
+    </table>
+      </div>
+
+    <div class="assInstruction">
+
+    <h3>Assessment Instructions</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi massa risus, rutrum ac justo non, blandit auctor ex. Quisque ante purus, pharetra at tincidunt ut, mattis eu lectus. Sed ac tortor libero. Nam fermentum vel est vel convallis. Fusce sagittis ornare maximus. Morbi vitae malesuada turpis, non mollis quam. Interdum et malesuada fames ac ante ipsum primis in faucibus.   </p>
+
+    </div>
+
+
+
+    <form class="QuestionForm" action="index.html" method="post">
+
+
+
+      {%for question in assQuestions%}
+
+
+
+            <div class="singleQuestion">
+
+            <h3>{{loop.index}}. {{question.question}}</h3>
+
+
+            <div class="questionBoxes">
+
+            {%if question.answer_1 %}
+              <input id ="{{question.id}}A" type="radio" name="Q{{question.id}}" value="1">
+              <label for="{{question.id}}A">{{question.answer_1}} </label>
+              <br>
+              <input id ="{{question.id}}B" type="radio" name="Q{{question.id}}" value="2">
+              <label for="{{question.id}}B">{{question.answer_2}} </label>
+              <br>
+              <input id ="{{question.id}}C" type="radio" name="Q{{question.id}}" value="3">
+              <label for="{{question.id}}C">{{question.answer_3}} </label>
+              <br>
+              <input id ="{{question.id}}D" type="radio" name="Q{{question.id}}" value="4">
+              <label for="{{question.id}}D">{{question.answer_4}} </label>
+              <br>
+            {%else%}
+
+            <input id ="{{question.id}}A" type="radio" name="Q{{question.id}}" value="True">
+            <label for="{{question.id}}A">True </label>
+            <br>
+            <input id ="{{question.id}}B" type="radio" name="Q{{question.id}}" value="False">
+            <label for="{{question.id}}B">False </label>
+
+              {%endif%}
+
+            </div>
+            <p id = "alMarks" >{{question.value}} marks</p>
+            </div>
+      {%endfor%}
+
+      <br><br>
+
+
+      <input id = "submitAss" type="submit" name="Submit" value="Submit">
+
+
+      </form>
+
+
+
+
+</div>
+
+{% endblock %}
+
+
+
+
+<!-- <div class="singleQuestion">
+
+<h3>1.     What Colour iss blue?</h3>
+
+
+<div class="questionBoxes">
+
+<input id ="Q1A" type="radio" name="Q1" value="A">
+<label for="Q1A">Blue </label>
+<br>
+<input id ="Q1B" type="radio" name="Q1" value="B">
+<label for="Q1B">Yellow </label>
+<br>
+<input id ="Q1C" type="radio" name="Q1" value="C">
+<label for="Q1C">Red </label>
+<br>
+<input id ="Q1D" type="radio" name="Q1" value="D">
+<label for="Q1D">Black </label>
+<br>
+
+</div>
+
+
+<p id = "alMarks" >10 Marks</p>
+</div>
+
+<div class="singleQuestion">
+<h3>2.     Is the sky blue?</h3>
+<div class="questionBoxes">
+
+<input id ="Q2A" type="radio" name="Q2" value="True">
+<label for="Q2A">True </label>
+<br>
+<input id ="Q2B" type="radio" name="Q2" value="False">
+<label for="Q2B">False </label>
+<br>
+
+</div>
+
+<p id = "alMarks" >5 Marks</p>
+</div> -->
