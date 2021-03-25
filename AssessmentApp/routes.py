@@ -16,8 +16,10 @@ def index():
 def addAss():
     return render_template('AssessmentDetails.html')
 
-@app.route('/assessment/<int:id>')
+@app.route('/assessment/<int:id>', methods = ["GET", "POST"])
 def Ass(id):
+
+
 
     ass = assessment_details.query.filter_by(id=id).first()
 
@@ -26,7 +28,20 @@ def Ass(id):
 
     assQuestions = [ question.query.filter_by(id=q.question_id).first() for q in questionIds]
 
-    return render_template('UndertakeAss.html',  assQuestions =assQuestions, ass = ass)
+    if request.method == "POST":
+        correct = 0
+        totalPossibleMarks = 0
+        for i, q in enumerate (assQuestions):#
+            totalPossibleMarks += q.value
+            if q.correct_answer and request.form['Q' +str(q.id)] == str(q.correct_answer):
+                correct += q.value
+            elif (not q.correct_answer) and request.form['Q' +str(q.id)] == str(q.type_2_answer):
+                correct += q.value
+        flash(str(correct) + "/" + str(totalPossibleMarks) + " Marks")
+
+
+
+    return render_template('UndertakeAss.html',  assQuestions =assQuestions, ass = ass, id = id)
 
 
 @app.route("/login",methods=['GET','POST'])
