@@ -1,61 +1,54 @@
 {% extends 'base.html' %}
 
 {% block head %}
+
   <title>Assessment Statistics</title>
-  <style>
+  <link rel="stylesheet" href="../static/style/assessmentStatsStyle.css">
 
-    table, th, td {
-      border: 1px solid black;
-    }
-
-    th, td {
-      padding: 10px;
-    }
-
-  </style>
 {% endblock %}
 
 {% block body %}
 
-<div class="assessment_statistics_table">
+<!--Section for the tables with assessment information-->
+<div class="content-tables">
 
-  <table>
+  <table class="assessment-statistics-table">
 
     <thead>
       <tr>
-        <th scope="col" colspan="2">Module Name:[module_name]</th>
+        <th scope="col" colspan="2">Module Name:[module_name]</th> <!--Fetched data comes here-->
       </tr>
       <tr>
-        <th scope="col" colspan="2">[assessment_name] Statistics</th>
+        <th scope="col" colspan="2">[assessment_name] Statistics</th> <!--Fetched data comes here-->
       </tr>
     </thead>
 
     <tbody>
       <tr>
-        <td>Possible Grade</td>
-        <td>80</td>
+        <th scope="row">Possible Grade</th>
+        <td>80</td> <!--Fetched data comes here-->
       </tr>
       <tr>
-        <td>Actual Grade</td>
-        <td>70</td>
+        <th scope="row">Actual Grade</th>
+        <td>70</td> <!--Fetched data comes here-->
       </tr>
       <tr>
-        <td>Class Average</td>
-        <td>60</td>
+        <th scope="row">Class Average</th>
+        <td>60</td> <!--Fetched data comes here-->
       </tr>
       <tr>
-        <td>Lowest Grade</td>
-        <td>40</td>
+        <th scope="row">Lowest Grade</th>
+        <td>40</td> <!--Fetched data comes here-->
       </tr>
       <tr>
-        <td>Highest Grade</td>
-        <td>90</td>
+        <th scope="row">Highest Grade</th>
+        <td>90</td> <!--Fetched data comes here-->
       </tr>
     </tbody>
 
     <tfoot>
       <tr>
-        <td colspan="4">Have an issue with your marks? Report here</td>
+        <td colspan="4">Have an issue with your marks? <a href="">Report here</a></td> <!--Add link to Report Issue page-->
       </tr>
     </tfoot>
 

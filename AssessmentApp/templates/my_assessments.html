@@ -1,128 +1,101 @@
 {% extends 'base.html' %}
 
 {% block head %}
+
   <title>My Assessments</title>
-
-  <style>
-
-    table, th, td {
-      border: 1px solid black;
-    }
-
-    th, td {
-      padding: 10px;
-    }
-
-  </style>
+  <link rel="stylesheet" href="../static/style/assessmentStatsStyle.css">
 
 {% endblock %}
 
 {% block body %}
 
-<div class="view_completed_assessments">
+<div class="content-tables">
 
-  <table>
+<!--Section for the tables with student information-->
+  <div>
+    <table class="my-completed-assessments-table">
 
-    <thead>
-      <tr>
-        <th scope="col">Student Number</th>
-        <th scope="col">Number of Completed Assessments</th>
-        <th scope="col">Action</th>
-      </tr>
-    </thead>
+      <thead>
+        <tr class="active-row">
+          <th scope="col">Student Number</th>
+          <th scope="col">Number of Completed Assessments</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
 
-    <tbody>
-      <tr>
-        <td>1234567</td>
-        <td>3</td>
-        <td><a href="./completed_assessments">View Completed Assessment Statistics</a></td>
-      </tr>
-    </tbody>
+      <tbody>
+        <tr>
+          <td>1234567</td> <!--Fetched data comes here-->
+          <td>3</td> <!--Fetched data comes here-->
+          <td><a href="./completed_assessments">View Completed Assessment Statistics</a></td> <!--Change link to correspond with fetched data-->
+        </tr>
+      </tbody>
 
-  </table>
+    </table>
+  </div>
 
-</div>
+<!--Section for the tables with assessment information -->
+  <div>
+    <table class="my-assessments-table">
 
-<div class="my_assessments_tables">
-  <table>
+      <thead>
+        <tr>
+          <th scope="col" colspan="5">[module_name]</th>
+        </tr>
+        <tr>
+          <th scope="col">Assessment(s)</th>
+          <th scope="col">Assessment Start Date</th>
+          <th scope="col">Assessment Due Date</th>
+          <th scope="col">Mark</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
 
-    <thead>
-      <tr>
-        <th scope="col" colspan="5">[module_name]</th>
-      </tr>
-      <tr>
-        <th scope="col">Assessment(s)</th>
-        <th scope="col">Assessment Start Date</th>
-        <th scope="col">Assessment Due Date</th>
-        <th scope="col">Mark</th>
-        <th scope="col">Action</th>
-      </tr>
-    </thead>
+      <tbody>
+        <tr>
+          <th scope="col" colspan="5">Completed</th>
+        </tr>
+        <tr>
+          <td>Assessment 1</td> <!--Fetched data comes here-->
+          <td>23/03/2021</td> <!--Fetched data comes here-->
+          <td>23/03/2021</td> <!--Fetched data comes here-->
+          <td>70</td> <!--Fetched data comes here-->
+          <td><a href="./assessment_statistics">View</a></td> <!--Change link to correspond with fetched data-->
+        </tr>
+        <tr>
+          <td>Assessment 2</td> <!--Fetched data comes here-->
+          <td>23/03/2021</td> <!--Fetched data comes here-->
+          <td>23/03/2021</td> <!--Fetched data comes here-->
+          <td>70</td> <!--Fetched data comes here-->
+          <td><a href="./assessment_statistics">View</a></td> <!--Change link to correspond with fetched data-->
+        </tr>
+        <tr>
+          <th scope="col" colspan="5">Upcoming</th>
+        </tr>
+        <tr>
+          <td>Assessment 3</td> <!--Fetched data comes here-->
+          <td>23/03/2022</td> <!--Fetched data comes here-->
+          <td>23/03/2022</td> <!--Fetched data comes here-->
+          <td></td> <!--Fetched data comes here-->
+          <td><a href="./assessment_statistics">View</a></td> <!--Change link to take assessment page-->
+        </tr>
+        <tr>
+          <td>Assessment 4</td> <!--Fetched data comes here-->
+          <td>23/03/2022</td> <!--Fetched data comes here-->
+          <td>23/03/2022</td> <!--Fetched data comes here-->
+          <td></td> <!--Fetched data comes here-->
+          <td><a href="./assessment_statistics">View</a></td> <!--Change link to take assessment page-->
+        </tr>
+      </tbody>
 
-    <tbody>
-      <tr>
-        <td>Assessment 1</td>
-        <td>23/03/2021</td>
-        <td>23/03/2021</td>
-        <td>70</td>
-        <td>View</td>
-      </tr>
-      <tr>
-        <td>Assessment 2</td>
-        <td>23/03/2021</td>
-        <td>23/03/2021</td>
-        <td>70</td>
-        <td>View</td>
-      </tr>
-    </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="5">Have an issue with your marks? <a href="">Report here</a></td> <!--Add link to Report Issue page-->
+        </tr>
+      </tfoot>
 
-    <tfoot>
-      <tr>
-        <td colspan="5">Have an issue with your marks? Report here</td>
-      </tr>
-    </tfoot>
-
-  </table>
-
-  <table>
-
-    <thead>
-      <tr>
-        <th scope="col" colspan="5">[module_name]</th>
-      </tr>
-      <tr>
-        <th scope="col">Assessment(s)</th>
-        <th scope="col">Assessment Start Date</th>
-        <th scope="col">Assessment Due Date</th>
-        <th scope="col">Mark</th>
-        <th scope="col">Action</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr>
-        <td>Assessment 1</td>
-        <td>23/03/2021</td>
-        <td>23/03/2021</td>
-        <td>70</td>
-        <td>View</td>
-      </tr>
-      <tr>
-        <td>Assessment 2</td>
-        <td>23/03/2021</td>
-        <td>23/03/2021</td>
-        <td>70</td>
-        <td>View</td>
-      </tr>
-    </tbody>
-
-    <tfoot>
-      <tr>
-        <td colspan="5">Have an issue with your marks? Report here</td>
-      </tr>
-    </tfoot>
-
-  </table>
+    </table>
+  </div>
 
 </div>
 
