@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+
+{% block  head %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Completion Successful</title>
+</head>
+<body>
+    
+
+</html>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style/mainStyle.css') }}">
+{% end block %}
+
+{% block body %}
+
+<div class="">
+
+    <h2>Submission Successful</h2> <br>
+    <p>Each time you submit an assessment you will receive a unique confirmation ID to verify completion. You can view your
+    submission receipts on your “My Account” <!-- Add link to "My Account" page here--> information page.</p>
+    <br><br><br>
+    
+    <h2>Assessment Details: </h2>
+    <h2>Title of Course: <!--Insert link for course title here -->Assessment 1</h2>
+    <h2>Course ID: <!-- Insert link for Course ID here -->CMT 330 Software Engineering </h2>
+    <h2>Title of Assessment: <!-- Insert link for Assessment title here -->Business Case</h2>
+    <h2>Date/Time of Submission: <!-- Insert date/time here --> December 1 12:30pm </h2>
+    <h2>Attempt: <!-- Insert link for attempt number here--> 2</h2>
+
+    <h4>Please complete this satisfaction survey to describe your experience completing this assessment</h4>
+
+    <!-- Insert button for SKIP SURVEY & Return to home -->
+    
+
+</div>
+
+<div class="">
+
+    <h2>Assessment Survey</h2>
+    
+
+    <form class="survey" action="index.html" method="post">
+
+        <table>
+
+            <tr>
+                <label for="question_1">On a scale of 1 - 5, with 1 being very easy and 5 being very difficult, how easy was it to complete this assessment through this portal?</label></td>
+                <br><select id="options" name="options">
+                    <option value="one">1 - Very Easy</option>
+                    <option value="two">2 - Moderately Easy</option>
+                    <option value="three">1 - Neither Easy Nor Difficult</option>
+                    <option value="four">1 - Moderately Difficult</option>
+                    <option value="five">1 - Very Difficult</option>
+                </select>
+            </tr><br>
+            <tr>
+                <label for="question_2">On a scale of 1 - 5, with 1 being not at all relevant and 5 being very relevant, how would you rate the relevancy of this assessment to the content you've been taught during this course?</label></td>
+                <br><select id="options" name="options">
+                    <option value="one">1 - Not at all Relevant</option>
+                    <option value="two">2 - Moderately Irrelevant</option>
+                    <option value="three">1 - Neither Relevant Nor Irrelevant</option>
+                    <option value="four">1 - Moderately Relevant</option>
+                    <option value="five">1 - Very Relevant</option>
+                </select>
+            </tr><br>
+            <tr>
+                <label for="question_3">On a scale of 1 - 5, with 1 being very easy and 5 being very difficult, how difficult was the content of this exam?</label></td>
+                <br><select id="options" name="options">
+                    <option value="one">1 - Very Easy</option>
+                    <option value="two">2 - Moderately Easy</option>
+                    <option value="three">1 - Neither Easy Nor Difficult</option>
+                    <option value="four">1 - Moderately Difficult</option>
+                    <option value="five">1 - Very Difficult</option>
+                </select>
+            </tr><br>
+            <tr>
+                <label for="question_4">On a scale of 1 - 5, with 1 being not all accessible and 5 being very accessible, how would
+                    you rate the accessibility
+                    of this assessment?</label></td>
+                <br><select id="options" name="options">
+                    <option value="one">1 - Very Easy</option>
+                    <option value="two">2 - Moderately Easy</option>
+                    <option value="three">1 - Neither Easy Nor Difficult</option>
+                    <option value="four">1 - Moderately Difficult</option>
+                    <option value="five">1 - Very Difficult</option>
+                </select>
+            </tr><br>
+            <tr>
+                <label for="question_5">How would you rate your overall experience using this site?</label></td>
+                <br><select id="options" name="options">
+                    <option value="one">Not Pleasant</option>
+                    <option value="two">Neither Pleasant or Not Pleasant</option>
+                    <option value="three">Moderately Pleasant</option>
+                    <option value="four">Very Pleasant</option>
+                    <option value="five">Other - If Other please leave comments detailing your experience in the next question.</option>
+                </select>
+            </tr><br>
+            <tr>
+                <label for="question_6">If you have any comments you would like to leave the teaching staff about this particular assessment please write them in this comment box: </label>
+                    <br><textarea class="textInput" name="assInstruc" rows="8" cols="40"></textarea>
+                </tr>
+            </tr><br>
+
+
+            <tr>
+                <td></td>
+                <td> <input id="saveButton" type="submit" name="" value="Save"></td>
+            </tr>
+
+        </table>
+
+
+
+    </form>
+
+</body>
+{% endblock %}
