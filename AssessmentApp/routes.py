@@ -3,6 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 
 from AssessmentApp import app
 from AssessmentApp.models import *
+from AssessmentApp.forms import LoginForm
+from flask_login import login_user, logout_user, login_required, current_user
 
 @app.route('/')
 def index():
