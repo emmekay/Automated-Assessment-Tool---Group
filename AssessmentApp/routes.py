@@ -68,6 +68,29 @@ def edit_assessment(assess_id):
   assess = assessment_details.query.filter(assessment_details.id==assess_id)
   return render_template('edit_assessment.html', assess=assess)
 
+@app.route("/survey")
+def survey():
+    return render_template('survey.html', title='Assessment Completed')
+
+
+@app.route("/staffaccount") # EK
+def staffaccount():
+    return render_template('staffaccount.html', title='My Account')
+
+@app.route("/studentaccount") # EK
+def studentaccount():
+    return render_template('studentaccount.html', title='My Account')
+
+@app.route("/surveyresults") # EK 
+def surveyresults():
+    return render_template('surveyresults.html', title='Feedback Summary')
+
+
+
+
+
+
+
 """@app.route("/delete-assessments/<int:assess_id>")
 def delete_assessment(assess_id,module_id):
   assess = assessment_details.query.filter(assessment_details.id==assess_id)
