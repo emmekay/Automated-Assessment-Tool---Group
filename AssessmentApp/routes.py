@@ -77,11 +77,11 @@ def delete_assessment(assess_id,module_id):
   return render_template('view_assessments_staff.html',assess=assess)"""
 
 
-    return render_template('login.html',form=form)
+ # return render_template('login.html',form=form)
 
-  return render_template('login.html',title='Login',form=form)
+  #return render_template('login.html',title='Login',form=form)
 
-@app.route("/logout")
+"""@app.route("/logout")
 def logout():
   logout_user()
-  return redirect(url_for('login'))
+  return redirect(url_for('login'))"""
