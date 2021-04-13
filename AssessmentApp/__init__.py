@@ -2,7 +2,7 @@ from AssessmentApp import routes
 from flask import Flask
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager 
+from flask_login import LoginManager # EK Added 
 
 
 app = Flask(__name__)
@@ -12,6 +12,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///primaryDatabase.db'
 # app.config["SECRET_KEY"] = 'dqOTxaMwwDDEzBSk1PE_5zeJ_ow'
 # db = SQLAlchemy(app) # EK commeted out - was listed twice 
 
+from AssessmentApp import routes # EK edited route input 
 
 db = SQLAlchemy(app)
 login_manager = LoginManager()
