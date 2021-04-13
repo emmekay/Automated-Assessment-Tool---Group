@@ -12,6 +12,7 @@ db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
+from AssessmentApp import routes
 
 # EK commented out below as "blog" shouldn't be used in our code
 #from blog import routes
