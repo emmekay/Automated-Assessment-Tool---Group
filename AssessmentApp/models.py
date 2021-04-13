@@ -1,9 +1,10 @@
 # from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
-from AssessmentApp import db, login_manager
+from AssessmentApp import db#, login_manager
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+
 
 class test(db.Model):
     id = db.Column(db.Integer , primary_key = True)
@@ -36,9 +37,9 @@ class user(db.Model,UserMixin):
     def has_enrolled(self, module):
         return modules_enrolment.query.filter(modules_enrolment.user_id == self.id,modules_enrolment.module_id == module.id).count() > 0
 
-@login_manager.user_loader
+"""@login_manager.user_loader
 def load_user(user_id):
-  return user.query.get(int(user_id))
+  return user.query.get(int(user_id))"""
 
 class modules(db.Model): #statistics
     id = db.Column(db.Integer , primary_key = True) 

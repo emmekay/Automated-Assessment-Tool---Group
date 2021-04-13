@@ -2,17 +2,17 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
+
 from flask_login import login_user, logout_user, login_required, current_user
-from AssessmentApp import app, login_manager
+from AssessmentApp import app, db#, login_manager
 from AssessmentApp.forms import LoginForm
 from AssessmentApp.models import *
 
 
 @app.route('/')
 def index():
-    # testData = test.query.all()
-
-    return render_template('index.html')  # , test1 = testData)
+    #testData = test.query.all()
+    return render_template('index.html')#, test1 = testData)
 
 
 @app.route('/addAss', methods=["GET", "POST"])
@@ -135,6 +135,7 @@ def edit_assessment(assess_id):
 
 @app.route("/survey")
 def survey():
+    print("Total number of surveys is", survey.query.count())
     return render_template('survey.html', title='Assessment Completed')
 
 
@@ -150,6 +151,20 @@ def studentaccount():
 def surveyresults():
     return render_template('surveyresults.html', title='Feedback Summary')
 
+
+@app.route('/my_assessments')
+def my_assessments():
+    return render_template('my_assessments.html')
+
+
+@app.route('/completed_assessments')
+def completed_assessments():
+    return render_template('completed_assessments.html')
+
+
+@app.route('/assessment_statistics')
+def assessment_statistics():
+    return render_template('assessment_statistics.html')
 
 
 
