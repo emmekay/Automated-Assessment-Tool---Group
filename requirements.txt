@@ -1,4 +1,7 @@
+<<<<<<< HEAD
  
+=======
+>>>>>>> EmBranch
 beautifulsoup4==4.9.3
 blog==1.0.1
 certifi==2020.12.5
@@ -25,4 +28,8 @@ soupsieve==2.2.1
 SQLAlchemy==1.4.7
 urllib3==1.26.4
 Werkzeug==1.0.1
+<<<<<<< HEAD
 WTForms==2.3.3
+=======
+WTForms==2.3.3
+>>>>>>> EmBranch
