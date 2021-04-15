@@ -11,16 +11,24 @@
 
   <body>
     <header class = "mainHeader">
+
       <!-- <img id="cardiffLogo" src="{{ url_for('static', filename='img\Cardiff_University.png') }}"/> -->
+      <!-- <div class="logoTitle"> -->
+
+
+
       <div class="title">
-      <h1>Auto-Assessment Portal</h1>
+        <img id = "cLogo" src="{{ url_for('static', filename='img/Cardiff_University.svg') }}" >
+        <!-- <p>     </p> -->
+        <h1>&nbsp &nbsp Auto-Assessment Portal</h1>
       </div>
+      <!-- </div> -->
 
       <!-- Hello, current_user.username  COMMENTED OUT TO STOP ERROR -->
       <!--  url_for('logout')  -->
-      <a href="">Logout</a>
+      <a id = "logOutLogIn" href="">Logout</a>
 
-      <div class="alert">
+      <!-- <div class="alert">
         {% with messages = get_flashed_messages() %}
           {% if messages %}
               <ul>
@@ -30,7 +38,7 @@
               </ul>
           {% endif %}
         {% endwith %}
-        </div>
+        </div> -->
 
     </header>
 

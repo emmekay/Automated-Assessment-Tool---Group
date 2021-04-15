@@ -1,7 +1,7 @@
 from flask import Flask
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
-#from flask_login import LoginManager
+from flask_login import LoginManager
 
 
 app = Flask(__name__)
@@ -12,7 +12,19 @@ db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
+login_manager.login_view = 'login'
+@login_manager.user_loader
+def load_user(user_id):
+    return users.query.get(int(user_id))
+
 from AssessmentApp import routes
+
+
+
+
+
+
+
 
 # EK commented out below as "blog" shouldn't be used in our code
 #from blog import routes

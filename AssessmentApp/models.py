@@ -4,6 +4,7 @@ from AssessmentApp import db#, login_manager
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from flask_login import LoginManager
 
 
 class test(db.Model):
@@ -22,7 +23,7 @@ class user(db.Model,UserMixin):
 
     def __repr__(self):
         return f"User('{self.username}','{self.email}')"
-    
+
     @property
     def password(self):
         raise AttributeError('password is not a readable attribute')
@@ -33,7 +34,7 @@ class user(db.Model,UserMixin):
 
     def verify_password(self,password):
         return check_password_hash(self.password_hash,password)
-    
+
     def has_enrolled(self, module):
         return modules_enrolment.query.filter(modules_enrolment.user_id == self.id,modules_enrolment.module_id == module.id).count() > 0
 
@@ -42,7 +43,7 @@ def load_user(user_id):
   return user.query.get(int(user_id))"""
 
 class modules(db.Model): #statistics
-    id = db.Column(db.Integer , primary_key = True) 
+    id = db.Column(db.Integer , primary_key = True)
     module_id = db.Column(db.String(10), unique = True, nullable = False)
     module_name = db.Column(db.String(40), nullable = False)
     module_leader = db.Column(db.String(30)) #MAKE FOREIGN KEY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -101,7 +102,5 @@ class survey(db.Model):
     question_2 = db.Column(db.Integer, nullable = False)
     question_3 = db.Column(db.Integer, nullable = False)
     question_4 = db.Column(db.Integer, nullable = False)
-    #question_5 = db.Column(db.Integer, nullable = False) # EK Database is not updated yet to add these fields 
+    #question_5 = db.Column(db.Integer, nullable = False) # EK Database is not updated yet to add these fields
     #question_6 = db.Column(db.Text, nullable = True)
-
-
