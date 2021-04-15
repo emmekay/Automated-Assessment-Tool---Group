@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  <title>Result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style/undertakeAss.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<div class="">
+
+    <h2 id ="assTitle">CMT{{ass.id}} - {{ass.assessment_name}}</h2>
+    <div class="assInfoTable">
+    <table >
+      <tr>
+        <td>Start:  {{ass.start_date.strftime('%H:%M %b %d %Y')}}</td> <td>End:  {{ass.end_date.strftime('%H:%M %b %d %Y')}}</td> <td>Duration: {{ass.time_limit.strftime('%H:%M')}} </td>
+        </tr>
+    </table>
+      </div>
+
+    <div class="assInstruction">
+
+    {% if get_flashed_messages() %}
+    <p>RESULT = {{get_flashed_messages()[0]}}</p>
+    {%else%}
+    <p>ERROR - Assessment Attempt Not Found </p>
+    {% endif %}
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+{% endblock %}
