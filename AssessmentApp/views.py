@@ -8,3 +8,8 @@ class AdminView(ModelView):
             user =User.query.get(login.current_user.get_id())
             return user.is_admin
     return False
+
+
+
+
+

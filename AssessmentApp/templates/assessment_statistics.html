@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+  <title>Assessment Statistics</title>
+  <link rel="stylesheet" href="../static/style/assessmentStatsStyle.css">
+
+{% endblock %}
+
+{% block body %}
+
+<!--Section for the tables with assessment information-->
+<div class="content-tables">
+
+  <table class="assessment-statistics-table">
+
+    <thead>
+      <tr>
+        <th scope="col" colspan="2">Module Name:[module_name]</th> <!--Fetched data comes here-->
+      </tr>
+      <tr>
+        <th scope="col" colspan="2">[assessment_name] Statistics</th> <!--Fetched data comes here-->
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <th scope="row">Possible Grade</th>
+        <td>80</td> <!--Fetched data comes here-->
+      </tr>
+      <tr>
+        <th scope="row">Actual Grade</th>
+        <td>70</td> <!--Fetched data comes here-->
+      </tr>
+      <tr>
+        <th scope="row">Class Average</th>
+        <td>60</td> <!--Fetched data comes here-->
+      </tr>
+      <tr>
+        <th scope="row">Lowest Grade</th>
+        <td>40</td> <!--Fetched data comes here-->
+      </tr>
+      <tr>
+        <th scope="row">Highest Grade</th>
+        <td>90</td> <!--Fetched data comes here-->
+      </tr>
+    </tbody>
+
+    <tfoot>
+      <tr>
+        <td colspan="4">Have an issue with your marks? <a href="">Report here</a></td> <!--Add link to Report Issue page-->
+      </tr>
+    </tfoot>
+
+  </table>
+
+</div>
+
+{% endblock %}

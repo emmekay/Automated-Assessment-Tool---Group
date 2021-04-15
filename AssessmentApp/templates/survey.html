@@ -1,32 +1,24 @@
-{% extends 'base.html' %}
+
+{% extends 'base.html' %} <!-- EK Page -->
 
 {% block  head %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Completion Successful</title>
-</head>
-<body>
-    
 
-</html>
+    <title>Completion Successful</title>
 
 <link rel="stylesheet" href="{{ url_for('static', filename='style/mainStyle.css') }}">
-{% end block %}
+{% endblock %}
 
 {% block body %}
 
 <div class="">
+
 
     <h2>Submission Successful</h2> <br>
     <p>Each time you submit an assessment you will receive a unique confirmation ID to verify completion. You can view your
     submission receipts on your “My Account” <!-- Add link to "My Account" page here--> information page.</p>
     <br><br><br>
     
-    <h2>Assessment Details: </h2>
+    <h2>Assessment Details:  </h2>
     <h2>Title of Course: <!--Insert link for course title here -->Assessment 1</h2>
     <h2>Course ID: <!-- Insert link for Course ID here -->CMT 330 Software Engineering </h2>
     <h2>Title of Assessment: <!-- Insert link for Assessment title here -->Business Case</h2>
@@ -92,7 +84,7 @@
                 </select>
             </tr><br>
             <tr>
-                <label for="question_5">How would you rate your overall experience using this site?</label></td>
+                <!--<label for="question_5">How would you rate your overall experience using this site?</label></td>
                 <br><select id="options" name="options">
                     <option value="one">Not Pleasant</option>
                     <option value="two">Neither Pleasant or Not Pleasant</option>
@@ -104,7 +96,7 @@
             <tr>
                 <label for="question_6">If you have any comments you would like to leave the teaching staff about this particular assessment please write them in this comment box: </label>
                     <br><textarea class="textInput" name="assInstruc" rows="8" cols="40"></textarea>
-                </tr>
+                </tr>-->
             </tr><br>
 
 
