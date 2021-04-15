@@ -1,10 +1,11 @@
 # from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
-from AssessmentApp import db#, login_manager
+from AssessmentApp import db #, login_manager
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from flask_login import LoginManager
+from AssessmentApp import login_manager
 
 
 class test(db.Model):
@@ -104,3 +105,7 @@ class survey(db.Model):
     question_4 = db.Column(db.Integer, nullable = False)
     #question_5 = db.Column(db.Integer, nullable = False) # EK Database is not updated yet to add these fields
     #question_6 = db.Column(db.Text, nullable = True)
+
+@login_manager.user_loader
+def load_user(user_id):
+    return user.query.get(int(user_id))

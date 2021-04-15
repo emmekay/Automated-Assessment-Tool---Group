@@ -1,20 +1,13 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/mainStyle.css') }}">
-    <!--{% block head %}{% endblock %}  Commented out as this is here twice-->
-  </head>
+{% extends 'base.html' %}
 
-  <body>
-    {% block head %}
-        <title>Login</title>
-    {% endblock %}
+{% block head %}
+  <title>Login</title>
+{% endblock %}
 
-    {% block content %}
+{% block body %}
+
+  <div class="">
+
     <img src="{{ url_for('static', filename='img/CardiffUniversitylogo.jpeg') }}">
     <div class="login">
     <h1>Log In</h1>
@@ -25,6 +18,7 @@
       <br/><input type="submit" value="Login">
     </form>
     </div>
-    {% endblock content %}
-  </body>
-</html>
+
+  </div>
+
+{% endblock %}

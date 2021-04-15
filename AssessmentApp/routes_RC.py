@@ -50,12 +50,22 @@ def Ass(id):
                 correct += q.value
             elif (not q.correct_answer) and request.form['Q' +str(q.id)] == str(q.type_2_answer):
                 correct += q.value
-        flash(str(correct) + "/" + str(totalPossibleMarks) + " Marks")
+
+        #IF FORMATIVE
+        if not ass.assessment_type:
+            flash(str(correct) + "/" + str(totalPossibleMarks) + " Marks")
+        else:
+            #NEED LOGIN SYSTEM TO APPEND RESULTS
+            # res1 = assessment_results()
+            flash("This Assessment is formative, no instant results avialible. ")
+
         return redirect(url_for('confirmation', id = id))
 
 
 
     return render_template('UndertakeAss.html',  assQuestions =assQuestions, ass = ass, id = id)
+
+
 
 @app.route('/confirmation/<int:id>', methods = ["GET", "POST"])
 def confirmation(id):
