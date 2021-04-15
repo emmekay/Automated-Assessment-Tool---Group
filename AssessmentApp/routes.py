@@ -28,7 +28,8 @@ def login():
     #if User is not None and User.verify_password(form.password.data):
     login_user(User)
     flash('Login successful!')
-    return redirect(url_for('home'))
+    # return 
+    return redirect("/")
     #flash('Invalid email address or password.')
 
     #return render_template('login.html',form=form)

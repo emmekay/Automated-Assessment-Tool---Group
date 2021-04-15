@@ -22,6 +22,14 @@
         <!-- <p>     </p> -->
         <h1>&nbsp &nbsp Auto-Assessment Portal</h1>
       </div>
+
+      <div class="">
+        {%if current_user.id%}
+          <p>Hi {{current_user.username}} </p>
+
+        {%endif%}
+
+      </div>
       <!-- </div> -->
 
       <!-- Hello, current_user.username  COMMENTED OUT TO STOP ERROR -->
