@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
 {% extends 'base.html' %}
-<head>
-    {% block head %}
-    {% endblock %}
-    <meta charset="UTF-8">
+
+{% block head %}
     <title>Creat Question</title>
-</head>
-<body>
-{% block body %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/assDetails.css') }}">
 {% endblock %}
+
+
+{% block body %}
+
 <!--navigation bar-->
 <!--<ul>-->
 <!--    <li>HOME</li>-->
@@ -49,62 +47,101 @@
 </form>
 
 
-{% block content %}
-<form>
-    <p>Question Type
-        <select name="questiontype">
-            <div class="type1">
-                <option value="Answer 1"></option>
-                <option value="Answer 2"></option>
-                <option value="Answer 3"></option>
-                <option value="Answer 4"></option> 
-            </div>
-            <div class="type2">
-                <option value="Type 1"></option>
-                <option value="Type 2"></option>
-            </div>
+<h2>Create New Question</h2>
+
+<form class="qDetails" action="index.html" method="post">
+    <table>
+        <tr>
+            <td><label for="questiontype">Question Type</label></td>
+            <td>
+                <select name="questiontype">
+                    <option value="type1">Type 1</option>
+                    <option value="type2">Type 2</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="content">Content</label></td>
+            <td><textarea name="QContent" class="" cols="40" rows="8"></textarea></td>
+        </tr>
+        <tr>
+            <td><label for="point">Point</label></td>
+            <td><input type="text" name="point"></td>
+        </tr>
+        <tr>
+            <td><label for="dlevel">Difficulty Level</label></td>
+            <td>
+                <select name="difficultylevel">
+                    <option value="level1">Level 1</option>
+                    <option value="level2">Level 2</option>
+                    <option value="level3">Level 3</option>
+                    <option value="level4">Level 4</option> 
+                </select>
+            </td>
+        </tr>
+        <div class="type1">
+            <tr>
+                <td><label for="answer1">Answer 1</label></td>
+                <td><input type="text" name="answer1"></td>
+            </tr>
+            <tr>
+                <td><label for="answer2">Answer 2</label></td>
+                <td><input type="text" name="answer1"></td>
+            </tr>
+            <tr>
+                <td><label for="answer3">Answer 3</label></td>
+                <td><input type="text" name="answer1"></td>
+            </tr>
+            <tr>
+                <td><label for="answer4">Answer 4</label></td>
+                <td><input type="text" name="answer1"></td>
+            </tr>
+        </div>
             
-        </select>
-    </p>
-    <p>Question Content <input type="text" name="questioncontent" /></p>
-    <p>Point <input type="text" name="point" /></p>
-    <p>Difficult Level
-        <select name="difficultylevel">
-            <option value="Level 1"></option>
-            <option value="Level 2"></option>
-            <option value="Level 3"></option>
-            <option value="Level 4"></option> 
-        </select>
-    </p>
-    <div class="type1">
-        <p>Answer 1 <input type="text" name="answer1" /></p>
-        <p>Anawer 2 <input type="text" name="answer2" /></p>
-        <p>Anawer 3 <input type="text" name="answer3" /></p>
-        <p>Anawer 4 <input type="text" name="answer4" /></p>
-    </div>
-    <div class="type2">
-        <p>True <input type="text" name="true" /></p>
-        <p>False <input type="text" name="false" /></p>
-    </div>
-    <p>Correct Answer
-        <select name="correctanswer">
-            <div class="type1">
-                <option value="Answer 1"></option>
-                <option value="Answer 2"></option>
-                <option value="Answer 3"></option>
-                <option value="Answer 4"></option> 
-            </div>
-            <div class="type2">
-                <option value="True"></option>
-                <option value="False"></option>
-            </div>
-        </select>
-    </p>
-    <p>Correct Feedback <input type="text" name="corrcetfeedback" /></p>
-    <p>Incorrect Feedback <input type="text" name="incorrectfeedback" /></p>
-    <button type="submit">Submit</button>
-    <p></p>
+        <div class="type2">
+            <tr>
+                <td><label for="true">True</label></td>
+                <td><input type="text" name="answer1"></td>
+            </tr>
+            <tr>
+                <td><label for="false">False</label></td>
+                <td><input type="text" name="answer1"></td>
+            </tr>
+        </div>
+    
+        <tr>
+            <td><label for="canswer">Correct Answer</label></td>
+            <td>
+                <select name="correctanswer">
+                    <div class="type1">
+                        <option value="Answer 1">Answer 1</option>
+                        <option value="Answer 2">Answer 2</option>
+                        <option value="Answer 3">Answer 3</option>
+                        <option value="Answer 4">Answer 4</option> 
+                    </div>
+                    <div class="type2">
+                        <option value="True">True</option>
+                        <option value="False">False</option>
+                    </div>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="cfeedback">Correct Feedback</label></td>
+            <td><input type="text" name="correctfeedback"></td>
+        </tr>
+        <tr>
+            <td><label for="ifeedback">Incorrect Feedback</label></td>
+            <td><input type="text" name="incorrectfeedback"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Submit"></td>
+        </tr>
+    </table>
+
 </form>
+
 if(form.selectedname.value() == type1){
     ('.type1').show();
     ('.type2').hide();
@@ -114,7 +151,4 @@ else{
     ('.type2').show();
 }
 
-{% endblock content%}
-</body>
-</html>
-
+{% endblock %}

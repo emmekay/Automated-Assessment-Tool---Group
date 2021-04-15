@@ -6,7 +6,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style/mainStyle.css') }}">
-    {% block head %}{% endblock %}
+    <!--{% block head %}{% endblock %}  Commented out as this is here twice-->
   </head>
 
   <body>
@@ -15,7 +15,7 @@
     {% endblock %}
 
     {% block content %}
-    <img src="{{ url_for('static', filenam='img/CardiffUniversitylogo.jpeg') }}">
+    <img src="{{ url_for('static', filename='img/CardiffUniversitylogo.jpeg') }}">
     <div class="login">
     <h1>Log In</h1>
     <form method="POST" action="">
