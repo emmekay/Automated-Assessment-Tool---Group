@@ -133,11 +133,26 @@ def edit_assessment(assess_id):
   assess = assessment_details.query.filter(assessment_details.id==assess_id)
   return render_template('edit_assessment.html', assess=assess)
 
-@app.route("/survey")
-def survey():
-    print("Total number of surveys is", survey.query.count())
-    return render_template('survey.html', title='Assessment Completed')
 
+@app.route("/survey", methods=['GET', 'POST'])
+def survey():
+    form = Survey()
+    if form.validate_on_submit():
+        user = Survey(user_id=current_user.id, assessment_id=form.assessment_id.data,
+                      question_1=form.question_1.data, question_2=form.question_1.data, question_3=form.question_1.data, question_4=form.question_1.data)
+        db.session.add(user)
+        db.session.commit()
+        flash('Survey Submitted')
+        return redirect(url_for('index.html'))
+    return render_template('survey.html', title='Survey', form=form)
+
+
+"""@app.route("/survey", methods=["GET"])
+def survey():
+  if request.method == 'GET':
+    question_1 = request.args.get('question_1')
+    query_string="?question_1={0}".format(question_1)
+    return render_template('survey.html', query_string=query_string, title='Assessment Completed')"""
 
 @app.route("/staffaccount") # EK
 def staffaccount():
