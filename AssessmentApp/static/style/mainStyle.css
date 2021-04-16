@@ -124,4 +124,13 @@ header{
   /* background-color: #d00000; */
 }
 
-/* footer {} */
+footer {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 2%;
+  padding-right: 2%;
+  /* background-color: white; */
+
+}
