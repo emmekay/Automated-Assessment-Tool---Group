@@ -103,8 +103,9 @@ class survey(db.Model):
     question_2 = db.Column(db.Integer, nullable = False)
     question_3 = db.Column(db.Integer, nullable = False)
     question_4 = db.Column(db.Integer, nullable = False)
-    #question_5 = db.Column(db.Integer, nullable = False) # EK Database is not updated yet to add these fields
-    #question_6 = db.Column(db.Text, nullable = True)
+
+    question_5 = db.Column(db.Integer, nullable = False)
+    question_6 = db.Column(db.Text, nullable = True)
 
 @login_manager.user_loader
 def load_user(user_id):
