@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  <title>Edit Assessment</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style/edit_assessment.css') }}">
+{% endblock %}
+
+{% block body %}
+    <h1>This is the edit assessment page</h1>
+    {% for ass in assess %}
+        <p>{{ ass.assessment_name }}</p>
+    {% endfor %}
+{% endblock %}
