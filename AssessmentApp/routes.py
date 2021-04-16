@@ -20,6 +20,7 @@ def index():
 
 
 #@app.route('/', methods=['GET', 'POST'])
+@login_required
 @app.route('/login', methods=['GET', 'POST'])
 def login():
   form = LoginForm()
@@ -28,8 +29,8 @@ def login():
     #if User is not None and User.verify_password(form.password.data):
     login_user(User)
     flash('Login successful!')
-    # return 
-    return redirect("/")
+    # return
+    return redirect("/staffaccount")
     #flash('Invalid email address or password.')
 
     #return render_template('login.html',form=form)
