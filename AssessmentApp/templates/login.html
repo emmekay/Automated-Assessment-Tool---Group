@@ -1,14 +1,20 @@
-{% extends 'base.html' %}
-
 {% block head %}
   <title>Login</title>
 {% endblock %}
 
-{% block body %}
-
-  <div class="">
-
+{% block content %}
     <img src="{{ url_for('static', filename='img/CardiffUniversitylogo.jpeg') }}">
+    <div class="alert">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                  <li style="list-style-type: none;">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+      {% endwith %}
+      </div>
     <div class="login">
     <h1>Log In</h1>
     <form method="POST" action="">
@@ -20,5 +26,5 @@
     </div>
 
   </div>
-
+  <a href="{{ url_for('register') }}">Register</a>
 {% endblock %}
