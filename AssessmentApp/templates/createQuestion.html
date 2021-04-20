@@ -64,7 +64,35 @@
     <div id="cQ_QuestionType_Two">
     <form>
     <table>
-        <tr></tr>
+        <tr>
+            <td><label for="true">True</label></td>
+            <td><input type="text" name="answer1"></td>
+        </tr>
+        <tr>
+            <td><label for="false">False</label></td>
+            <td><input type="text" name="answer1"></td>
+        </tr>
+        <tr>
+            <td><label for="canswer">Correct Answer</label></td>
+            <td>
+                <select name="correctanswer">
+                    <option value="True">True</option>
+                    <option value="False">False</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="cfeedback">Correct Feedback</label></td>
+            <td><input type="text" name="correctfeedback"></td>
+        </tr>
+        <tr>
+            <td><label for="ifeedback">Incorrect Feedback</label></td>
+            <td><input type="text" name="incorrectfeedback"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Submit"></td>
+        </tr>
     </table>
         <input id="cQ_Add_Question" name="cQ_Add_Question" type="submit" value="Add Question">
     </form>
