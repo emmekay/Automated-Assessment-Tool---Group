@@ -108,17 +108,46 @@ def surveyresults():
     return render_template('surveyresults.html', title='Feedback Summary')
 
 
-@app.route('/my_assessments')
+@app.route('/my_assessments') #NK
 def my_assessments():
     return render_template('my_assessments.html')
 
-@app.route('/completed_assessments')
+@app.route('/completed_assessments') #NK
 def completed_assessments():
     return render_template('completed_assessments.html')
 
-@app.route('/assessment_statistics')
+@app.route('/assessment_statistics') #NK
 def assessment_statistics():
     return render_template('assessment_statistics.html')
+
+'''
+@app.route("/assessment_statistics")
+def assessment_stats():
+  #enrolled = modules_enrolment.query.all()
+  Results = assessment_results.query.all()
+  return render_template('assessment_statistics.html', Results=Results)
+
+@app.route("/assessment_statistics/<int:grade>")
+def assessment_statistics(grade):
+  results = assessment_results.query.filter(assessment_results.grade==grade)
+  return render_template('assessment_statistics.html', results=results)
+
+ def Average(grades):
+     average=sum(grades)/len(grades)
+     return average
+
+ def Lowest(grades):
+     grade_list=[]
+     grade_list.append(grades)
+     low=min(grade_list)
+     return low
+
+def Highest(grades):
+    grade_list=[]
+    grade_list.append(grades)
+    high=max(grade_list)
+    return high
+  '''
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
