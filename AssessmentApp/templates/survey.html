@@ -36,8 +36,21 @@
 
     <h2>Assessment Survey</h2>
     
+<!--{% block content %}-->
+<form method="POST" action="">
+    {{ form.csrf_token }}
+    {{ form.question_1.label }} {{ form.question_1 }} <br>
+    {{ form.question_2.label }} {{ form.question_2 }} <br>
+    {{ form.question_3.label }} {{ form.question_3 }} <br>
+    {{ form.question_4.label }} {{ form.question_4 }} <br>
+    {{ form.question_5.label }} {{ form.question_5 }} <br>
+    {{ form.question_6.label }} {{ form.question_6 }} <br>
 
-    <form class="survey" action="index.html" method="post">
+    <input type="submit" value="Submit">
+</form>
+<!--{% endblock content %}-->
+
+    <!--<form class="survey" action="index.html" method="post">
 
         <table>
 
@@ -96,7 +109,7 @@
             <tr>
                 <label for="question_6">If you have any comments you would like to leave the teaching staff about this particular assessment please write them in this comment box: </label>
                     <br><textarea class="textInput" name="assInstruc" rows="8" cols="40"></textarea>
-                </tr>-->
+                </tr>
             </tr><br>
 
 
@@ -109,7 +122,7 @@
 
 
 
-    </form>
+    </form>-->
 
 </body>
 {% endblock %}
