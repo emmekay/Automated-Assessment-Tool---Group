@@ -6,6 +6,8 @@ from AssessmentApp import app, login_manager
 from AssessmentApp.forms import LoginForm, RegistrationForm
 from AssessmentApp.models import *
 from AssessmentApp.routes_RC import *
+from AssessmentApp.routes_EK import *
+
 
 @app.route('/',methods=['GET','POST'])
 @app.route('/login',methods=['GET','POST'])
@@ -89,23 +91,6 @@ def edit_assessment(assess_id):
   assess = assessment_details.query.filter(assessment_details.id==assess_id)
   return render_template('edit_assessment.html', assess=assess)
 
-@app.route("/survey")
-def survey():
-    print("Total number of surveys is", survey.query.count())
-    return render_template('survey.html', title='Assessment Completed')
-
-
-@app.route("/staffaccount") # EK
-def staffaccount():
-    return render_template('staffaccount.html', title='My Account')
-
-@app.route("/studentaccount") # EK
-def studentaccount():
-    return render_template('studentaccount.html', title='My Account')
-
-@app.route("/surveyresults") # EK
-def surveyresults():
-    return render_template('surveyresults.html', title='Feedback Summary')
 
 
 @app.route('/my_assessments') #NK
