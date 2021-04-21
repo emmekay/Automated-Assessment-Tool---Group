@@ -91,8 +91,6 @@ def edit_assessment(assess_id):
   assess = assessment_details.query.filter(assessment_details.id==assess_id)
   return render_template('edit_assessment.html', assess=assess)
 
-
-
 @app.route('/my_assessments') #NK
 def my_assessments():
     return render_template('my_assessments.html')
@@ -101,9 +99,30 @@ def my_assessments():
 def completed_assessments():
     return render_template('completed_assessments.html')
 
-@app.route('/assessment_statistics') #NK
-def assessment_statistics():
-    return render_template('assessment_statistics.html')
+@app.route('/assessment_statistics/<int:assess_id>') #NK
+
+def assessment_statistics(assess_id):
+    results = assessment_results.query.filter(assessment_results.assessment_id==assess_id)
+    return render_template('assessment_statistics.html', Results=results)
+
+def Average(results):
+    all_grades = []
+    for ass in results:
+        all_grades.appened(ass.grade)
+    average=sum(all_grades)/len(all_grades)
+    return average
+
+def Lowest(grades):
+    grade_list=[]
+    grade_list.append(grades)
+    low=min(grade_list)
+    return low
+
+def Highest(grades):
+    grade_list=[]
+    grade_list.append(grades)
+    high=max(grade_list)
+    return high
 
 '''
 @app.route("/assessment_statistics")
@@ -111,28 +130,7 @@ def assessment_stats():
   #enrolled = modules_enrolment.query.all()
   Results = assessment_results.query.all()
   return render_template('assessment_statistics.html', Results=Results)
-
-@app.route("/assessment_statistics/<int:grade>")
-def assessment_statistics(grade):
-  results = assessment_results.query.filter(assessment_results.grade==grade)
-  return render_template('assessment_statistics.html', results=results)
-
- def Average(grades):
-     average=sum(grades)/len(grades)
-     return average
-
- def Lowest(grades):
-     grade_list=[]
-     grade_list.append(grades)
-     low=min(grade_list)
-     return low
-
-def Highest(grades):
-    grade_list=[]
-    grade_list.append(grades)
-    high=max(grade_list)
-    return high
-  '''
+'''
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():

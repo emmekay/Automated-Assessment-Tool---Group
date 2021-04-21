@@ -12,60 +12,60 @@
 <!--Section for the tables with assessment information-->
 <div class="content-tables">
 
+
+
   <table class="assessment-statistics-table">
 
     <thead>
-      {%for ass in Results%}
       <tr>
-        <th scope="col" colspan="2">Module Name:{ass.}</th> <!--Remember to Link assessment_details table to assessment_results for module info-->
+        <th scope="col" colspan="2">Module Name:</th> <!--Remember to Link assessment_details table to assessment_results for module info-->
       </tr>
-      {%endfor%}
-      {%for ass in Results%}
       <tr>
-        <th scope="col" colspan="2">{ass.} Statistics</th> <!--Remember to Link assessment_details table to assessment_results for module info-->
+        <th scope="col" colspan="2">Statistics</th> <!--Remember to Link assessment_details table to assessment_results for module info-->
       </tr>
-      {%endfor%}
     </thead>
+
+
+
 
     <tbody>
 
-      {%for ass in Results%}
         <tr>
+          <!-- highest possible grade you can get in this assessment(100%) -->
           <th scope="row">Possible Grade</th>
-          <td>{{ass.grade}}</td> <!--Fetched data comes here-->
+          <td>{{Results[0].grade}}</td> <!--Fetched data comes here-->
         </tr>
-      {%endfor%}
 
-      {%for ass in Results%}
         <tr>
+          <!-- the grade the student/user got -->
           <th scope="row">Actual Grade</th>
-          <td>{{ass.grade}}</td> <!--Fetched data comes here-->
-        </tr>
-      {%endfor%}
 
-      {%for ass in Results%}
+          <td>{{Results[0].grade}}</td> <!--Fetched data comes here-->
+        </tr>
+
         <tr>
+          <!-- the average grade across all of the students results -->
           <th scope="row">Class Average</th>
-          {%ave=average(ass.grade)%}
-          <td>{{ave}}</td> <!--Calculate your average in the Python code and pass that value into your template.-->
+          <!-- //pass "Results" to "Average", and set the return of average to "ave"
+          Results = 1,2,4,5,6,7
+          display ave -->
+          <!-- ave = Average(Results) -->
+          <td>ave</td> <!--Calculate your average in the Python code and pass that value into your template.-->
         </tr>
-      {%endfor%}
 
-      {%for ass in Results%}
         <tr>
+          <!-- the lowest grade across all of the students results -->
           <th scope="row">Lowest Grade</th>
-          {%low=lowest(ass.grade)%}
-          <td>{{low}}</td> <!--Calculate lowest in the Python code-->
+          <!-- Passing Variable resuls to Lowest & setting the return value to the variable low -->
+          <td>lowest grade</td> <!--Calculate lowest in the Python code-->
         </tr>
-      {%endfor%}
 
-      {%for ass in Results%}
         <tr>
+          <!-- the highest grade across all of the students results -->
           <th scope="row">Highest Grade</th>
-          {%high=highest(ass.grade)%}
-          <td>{{high}}</td> <!--Calculate Highest in the Python code-->
+          <!-- Passing Variable resuls to highest & setting the return value to the variable high -->
+          <td>highest grade</td> <!--Calculate Highest in the Python code-->
         </tr>
-      {%endfor%}
 
     </tbody>
 
