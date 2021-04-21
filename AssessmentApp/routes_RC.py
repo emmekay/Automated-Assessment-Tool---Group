@@ -56,7 +56,8 @@ def Ass(id):
         if not ass.assessment_type:
             flash(str(correct) + "/" + str(totalPossibleMarks) + " Marks")
         else:
-            res = assessment_results(user_id = current_user.id, assessment_id = id, attempt_number = 1, grade = correct/totalPossibleMarks, date_completed = datetime.now())
+            att = assessment_results.query.filter_by(user_id = current_user.id, assessment_id = id).all()
+            res = assessment_results(user_id = current_user.id, assessment_id = id, attempt_number = len(att)+1, grade = round((correct/totalPossibleMarks)*100), date_completed = datetime.now())
             db.session.add(res)
             db.session.commit()
             flash("This Assessment is formative, no instant results avialible. ")
