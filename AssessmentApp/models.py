@@ -51,12 +51,12 @@ class modules(db.Model): #statistics
 
 class modules_enrolment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    module_id = db.Column(db.Integer, db.ForeignKey('modules.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))#, db.ForeignKey('user.id'))
+    module_id = db.Column(db.Integer, db.ForeignKey('modules.id'))#, db.ForeignKey('modules.module_id'))
 
 class assessment_details(db.Model):
     id = db.Column(db.Integer , primary_key = True)
-    module_id = db.Column(db.Integer, db.ForeignKey('modules.id'))
+    module_id = db.Column(db.Integer, db.ForeignKey('modules.id')) #, db.ForeignKey('modules.module_id'))
     assessment_type = db.Column(db.Boolean, nullable = False) #summative = 0, formative = 1
     assessment_name = db.Column(db.Text, nullable = False)
     assessment_instructions = db.Column(db.Text, nullable = False)

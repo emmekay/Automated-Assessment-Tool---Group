@@ -10,10 +10,11 @@
     {% for ass in assess %}
         <h1>{{ ass.assessment_name }}</h1>
         {% if current_user.is_staff == 1 %}
-            <a href="{{ url_for('edit_assessment', assess_id = ass.id) }}">Edit</a>      
+            <a href="{{ url_for('edit_assessment', assess_id = ass.id) }}">Edit</a>
             <a href="">Delete</a>
+            
         {% else %}
-            <a href="">Take</a>  
+            <a href="{{ url_for('Ass', id = ass.id) }}">Take</a>
         {% endif %}
     {% endfor %}
 {% endblock %}

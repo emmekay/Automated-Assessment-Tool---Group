@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
+from flask_login import login_user, logout_user, login_required, current_user
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -55,8 +56,10 @@ def Ass(id):
         if not ass.assessment_type:
             flash(str(correct) + "/" + str(totalPossibleMarks) + " Marks")
         else:
-            #NEED LOGIN SYSTEM TO APPEND RESULTS
-            # res1 = assessment_results()
+            att = assessment_results.query.filter_by(user_id = current_user.id, assessment_id = id).all()
+            res = assessment_results(user_id = current_user.id, assessment_id = id, attempt_number = len(att)+1, grade = round((correct/totalPossibleMarks)*100), date_completed = datetime.now())
+            db.session.add(res)
+            db.session.commit()
             flash("This Assessment is formative, no instant results avialible. ")
 
         return redirect(url_for('confirmation', id = id))
@@ -70,4 +73,5 @@ def Ass(id):
 @app.route('/confirmation/<int:id>', methods = ["GET", "POST"])
 def confirmation(id):
     ass = assessment_details.query.filter_by(id=id).first()
+
     return render_template('Confi.html', ass = ass)
