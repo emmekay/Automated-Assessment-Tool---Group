@@ -28,37 +28,45 @@
     </thead>
 
     <tbody>
+
       {%for ass in Results%}
         <tr>
           <th scope="row">Possible Grade</th>
           <td>{{ass.grade}}</td> <!--Fetched data comes here-->
         </tr>
       {%endfor%}
-      <tr>
-        <th scope="row">Actual Grade</th>
-        <td>70</td> <!--Fetched data comes here-->
-      </tr>
+
       {%for ass in Results%}
-      <tr>
-        <th scope="row">Class Average</th>
-        {%ave=average(ass.grade)%}
-        <td>{{ave}}</td> <!--Calculate your average in the Python code and pass that value into your template.-->
-      </tr>
+        <tr>
+          <th scope="row">Actual Grade</th>
+          <td>{{ass.grade}}</td> <!--Fetched data comes here-->
+        </tr>
       {%endfor%}
+
       {%for ass in Results%}
-      <tr>
-        <th scope="row">Lowest Grade</th>
-        {%low=lowest(ass.grade)%}
-        <td>{{low}}</td> <!--Calculate lowest in the Python code-->
-      </tr>
+        <tr>
+          <th scope="row">Class Average</th>
+          {%ave=average(ass.grade)%}
+          <td>{{ave}}</td> <!--Calculate your average in the Python code and pass that value into your template.-->
+        </tr>
       {%endfor%}
+
       {%for ass in Results%}
-      <tr>
-        <th scope="row">Highest Grade</th>
-        {%high=highest(ass.grade)%}
-        <td>{{high}}</td> <!--Calculate Highest in the Python code-->
-      </tr>
+        <tr>
+          <th scope="row">Lowest Grade</th>
+          {%low=lowest(ass.grade)%}
+          <td>{{low}}</td> <!--Calculate lowest in the Python code-->
+        </tr>
       {%endfor%}
+
+      {%for ass in Results%}
+        <tr>
+          <th scope="row">Highest Grade</th>
+          {%high=highest(ass.grade)%}
+          <td>{{high}}</td> <!--Calculate Highest in the Python code-->
+        </tr>
+      {%endfor%}
+
     </tbody>
 
     <tfoot>
