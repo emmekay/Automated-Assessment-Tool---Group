@@ -7,13 +7,13 @@ from AssessmentApp.models import *
 from AssessmentApp.forms import *
 
 
-@app.route("/survey")
-def survey():
+#@app.route("/survey")
+#def survey():
     #print("Total number of surveys is", survey.query.count())
-    return render_template('survey.html', title='Assessment Completed')
+ #   return render_template('survey.html', title='Assessment Completed')
 
 
-@app.route("/surveyresults", methods=['GET', 'POST'])
+@app.route("/survey", methods=['GET', 'POST'])
 def survey():
     form = Survey()
     if form.validate_on_submit():
