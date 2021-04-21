@@ -29,7 +29,9 @@ def login():
 def home():
   return render_template('index.html')
 
-
+# @app.route('/addQ/<int:id>', methods = ["GET", "POST"])
+# def addQ(id):
+#     return "Thee Assessment id is " + str(id)
 
 """#@app.route('/', methods=['GET', 'POST'])
 @app.route('/login', methods=['GET', 'POST'])
