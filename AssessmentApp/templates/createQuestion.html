@@ -7,19 +7,41 @@
 
 {% block body %}
 {#    back button#}
-    <input id="cQ_Back_Button" name="cQ_Back_Button" type="button" value="Edit Assessment Details">
+    <input id="cQ_Back_Button" name="cQ_Back_Button" type="button" value="Edit Assessment Details" onclick="{{ url_for('edit_assessment') }}">
 
-    <table id="cQ_info">
-        <tr><td>Module Code</td><td></td></tr>
-        <tr><td>Assessment Title</td><td></td></tr>
-        <tr><td>Total Questions</td><td></td></tr>
-        <tr><td>Total Marks</td><td></td></tr>
-    </table>
+    <form id="cQ_info_Form" name="cQ_info_Form" method="get" action="{{ url_for('createQuestion') }}">
+        <table id="cQ_info">
+            <tr><td>Module Code</td><td></td></tr>
+            <tr><td>Assessment Title</td><td></td></tr>
+            <tr><td>Total Questions</td><td></td></tr>
+            <tr><td>Total Marks</td><td></td></tr>
+        </table>
+    </form>
 
 {#    Question table#}
-    <table>
-        <tr><td>Question Number</td><td>Question Title</td><td>Points</td><td>EDIT/DELETE</td></tr>
-    </table>
+    <form id="cQ_QuesTable_Form" name="cQ_QuesTable_Form" method="get" action="{{ url_for('createQuestion') }}">
+        <table>
+            <tr><td>Question Number</td><td>Question Title</td><td>Points</td><td>EDIT/DELETE</td></tr>
+            <tr>
+                {% for count_Q in question_Number %}
+                    <td>{{ count_Q }}</td>
+                {% endfor %}
+                {% for ques_T in quesTable_Title %}
+                    <td>{{ ques_T }}</td>
+                {% endfor %}
+                {% for ques_P in quesTable_Points %}
+                    <td>{{ ques_P }}</td>
+                {% endfor %}
+                {% for count_Q in question_Number %}
+                    <td>
+                        <form id="cQ_EDITorDELETE" name="cQ_EDITorDELETE" method="POST">
+                            <input type="button" value="EDIT"><span>/</span><input type="button" value="DELETE">
+                        </form>
+                    </td>
+                {% endfor %}
+            </tr>
+        </table>
+    </form>
 
 {#    Create questions#}
 {#    Choose question type#}
@@ -35,7 +57,7 @@
     </table>
 {#    If choose type one#}
     <div id="cQ_QuestionType_One">
-    <form>
+    <form id="cQ_QuestionType_One_Form" name="cQ_QuestionType_One_Form" method="post" action="{{ url_for('createQuestion') }}">
     <table>
         <tr><td>Question Content</td><td><input id="cQ_T1_Question_Content" name="cQ_Question_Content" type="text"></td></tr>
         <tr><td>Difficulty Level</td><td><select id="cQ_T1_Difficulty_Level" name="cQ_Difficulty_Level">
@@ -64,7 +86,55 @@
     <div id="cQ_QuestionType_Two">
     <form>
     <table>
-        <tr></tr>
+        <tr>
+            <td><label for="content">Question Content</label></td>
+            <td><textarea name="QContent" class="" cols="40" rows="8"></textarea></td>
+        </tr>
+        <tr>
+            <td>Difficulty Level</td>
+            <td>
+                <select id="cQ_T1_Difficulty_Level" name="cQ_Difficulty_Level">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="points">Points</label></td>
+            <td><input type="text" name="point"></td>
+        </tr>
+        <tr>
+            <td><label for="Option 1">Option 1</label></td>
+            <td><label for="true">True</label></td>
+        </tr>
+        <tr>
+            <td><label for="Option 2">Option 2</label></td>
+            <td><label for="false">False</label></td>
+        </tr>
+        <tr>
+            <td><label for="canswer">Correct Answer</label></td>
+            <td>
+                <select name="correctanswer">
+                    <option value="True">True</option>
+                    <option value="False">False</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="cfeedback">Correct Feedback</label></td>
+            <td><input type="text" name="correctfeedback"></td>
+        </tr>
+        <tr>
+            <td><label for="ifeedback">Incorrect Feedback</label></td>
+            <td><input type="text" name="incorrectfeedback"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Submit"></td>
+        </tr>
     </table>
         <input id="cQ_Add_Question" name="cQ_Add_Question" type="submit" value="Add Question">
     </form>
