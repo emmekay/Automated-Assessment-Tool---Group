@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 from AssessmentApp import app
 from AssessmentApp.models import *
+from AssessmentApp.forms import *
 
 
 @app.route("/survey")
@@ -16,7 +17,7 @@ def survey():
 def survey():
     form = Survey()
     if form.validate_on_submit():
-        user = Survey(user_id=current_user.id, assessment_id=form.assessment_id.data,
+        user = Survey(user_id=user.id, assessment_id=form.assessment_id.data,
                       question_1=form.question_1.data, question_2=form.question_1.data, question_3=form.question_1.data, question_4=form.question_1.data)
         db.session.add(user)
         db.session.commit()

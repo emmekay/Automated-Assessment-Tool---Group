@@ -9,7 +9,7 @@
 
 <div class="">
 
-    <h2 id ="assTitle">CMT{{ass.id}} - Assessment 1</h2>
+    <h2 id ="assTitle">CMT{{ass.id}} - {{ass.assessment_name}}</h2>
     <div class="assInfoTable">
     <table >
       <tr>
@@ -21,13 +21,17 @@
     <div class="assInstruction">
 
     <h3>Assessment Instructions</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi massa risus, rutrum ac justo non, blandit auctor ex. Quisque ante purus, pharetra at tincidunt ut, mattis eu lectus. Sed ac tortor libero. Nam fermentum vel est vel convallis. Fusce sagittis ornare maximus. Morbi vitae malesuada turpis, non mollis quam. Interdum et malesuada fames ac ante ipsum primis in faucibus.   </p>
-
+    <p>{{ass.assessment_instructions}}</p>
     </div>
 
 
+    {% if get_flashed_messages() %}
+        <p>RESULT = {{get_flashed_messages()[0]}}</p>
+    {% endif %}
 
-    <form class="QuestionForm" action="index.html" method="post">
+
+
+    <form class="QuestionForm" action="/assessment/{{id}}" method="post">
 
 
 

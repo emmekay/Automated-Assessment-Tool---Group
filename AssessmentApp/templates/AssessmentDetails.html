@@ -11,7 +11,7 @@
 
     <h2 id = "title">Create New Assessment</h2> <br>
 
-    <form class="aDetails" action="index.html" method="post">
+    <form class="aDetails" action="{{url_for('addAss')}}" method="post">
 
       <table >
 
@@ -21,7 +21,14 @@
        </tr>
        <tr>
          <td><label for="assType">Assessment Type</label></td>
-         <td><input class="textInput" type="text" name="assType" value=""></td>
+         <td>
+
+            <select class="textInput" name="assType" id="">
+              <option value="0">Sumative</option>
+              <option value="1">Formative</option>
+            </select>
+
+         </td>
        </tr>
 
        <tr>
@@ -31,29 +38,40 @@
 
        <tr>
          <td> <label for="assTime">Assessment Time Avallable</label></td>
-         <td> <input class="textInput" type="text" name="assTime" value=""></td>
+         <td> <input class="" type="time" name="assTime" value=""></td>
+       </tr>
+
+       <tr>
+         <td><label for="assStart">Assessment Release Date</label></td>
+         <td><input class="" type="date" name="assRel" value=""><input class="" type="time" name="assRelTime" value=""></td>
        </tr>
 
        <tr>
          <td><label for="assStart">Assessment Start Date</label></td>
-         <td><input class="textInput" type="text" name="assStart" value=""></td>
+         <td><input class="" type="date" name="assStart" value=""><input class="" type="time" name="assStartTime" value=""></td>
        </tr>
 
        <tr>
          <td><label for="assEnd">Assessment End Date</label></td>
-         <td><input class="textInput" type="text" name="assEnd" value=""></td>
+         <td><input class="" type="date" name="assEnd" value=""><input class="" type="time" name="assEndTime" value=""></td>
        </tr>
 
-       <tr>
+       <!-- <tr>
          <td><label for="assMarks">Assessment Marks Available</label></td>
          <td><input class="textInput" type="text" name="assMarks" value=""></td>
-       </tr>
+       </tr> -->
 
 
        <tr>
          <td><label for="assWeight">Assessment Weighting</label></td>
-         <td><input class="textInput" type="text" name="assWeight" value=""></td>
+         <td><input type="number" class="textInput" name="assWeight" min="0" max="100"></td>
        </tr>
+
+
+        <tr>
+          <td><label for="assAttemps">Allowed Attempts</label></td>
+          <td><input type="number" class="textInput" name="assAttemps" min="1" max="100"></td>
+        </tr>
 
 
        <tr>

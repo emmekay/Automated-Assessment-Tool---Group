@@ -10,7 +10,13 @@
   flex-flow: column;
   height: 100%;
 } */
+html {
+  background-color: #990000;
+  /* background-image: linear-gradient(-180deg, #990000 0%, #ff0000 74%); */
+  background-image: linear-gradient(-180deg, #990000 0%, #d00000 74%);
 
+
+}
 /* HEADER STYLING */
 header{
   width: 100%;
@@ -20,14 +26,28 @@ header{
   align-items: center;
   color: white;
   padding-left: 2%;
-  padding-right: 2%;
-  background: linear-gradient(360deg,#030303 10%,#1f1f1f 360%)
+  /* padding-right: 2%; */
+  /* background: linear-gradient(360deg,#030303 10%,#1f1f1f 360%); */
+  /* background-color: #990000; */
+  /* background-image: linear-gradient(147deg, #990000 0%, #ff0000 74%); */
 
 }
 
+#cLogo {
+  width: 50px;
+  height: 50px;
+}
+
 /* MAIN TITLE / LOGO */
+.title {
+  display: flex;
+  align-items: center;
+  /* margin: 1% */
+}
 .title h1 {
   font-size: 20px;
+  /* padding-left: 1%; */
+  /* margin-left: 2%; */
 }
 
 /* OUTER CONTAINER HOLDS SIDEBAR AND MAIN */
@@ -45,6 +65,9 @@ header{
   flex: 1 0 auto;
   /* height: 100%; */
   padding: 0 2% 2% 2%;
+  /* padding-right: 0; */
+
+  /* padding-right: 0; */
 
   background-image: linear-gradient(to right, #ebe7e7, #e7e9eb);
   /* https://www.crispedge.com/gradient/gb-15198699   */
@@ -56,7 +79,10 @@ header{
   width: 15%;
   border-right: 1px solid black;
   flex-shrink: 0;
-  background: linear-gradient(360deg,#030303 10%,#1f1f1f 360%);
+  /* background-color: #990000;
+  background-image: linear-gradient(147deg, #990000 0%, #ff0000 74%); */
+  /* background: linear-gradient(360deg,#030303 10%,#1f1f1f 360%); */
+  /* S: https://www.eggradients.com/category/black-and-red-gradient */
   /* background: linear-gradient(360deg, #1C1C1C 10%, #494949 360%); */
   /* background: linear-gradient(360deg,#030303 10%,#1f1f1f 360%) */
   color: white;
@@ -76,7 +102,35 @@ header{
 }
 
 .sideBar li:hover {
-  background-color: #485461;
-  background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
+  /* background-color: #485461; */
+  background-color: #990000;
+  /* background-image: linear-gradient(315deg, #485461 0%, #28313b 74%); */
   cursor: pointer;
+}
+
+
+#logOutLogIn {
+  text-decoration: none;
+  color: white;
+  /* border: 1px solid white; */
+  padding: 0.25%;
+}
+
+#logOutLogIn:hover {
+  text-decoration: none;
+  color: white;
+  border: 1px solid white;
+  padding: 0.25%;
+  /* background-color: #d00000; */
+}
+
+footer {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 2%;
+  padding-right: 2%;
+  /* background-color: white; */
+
 }

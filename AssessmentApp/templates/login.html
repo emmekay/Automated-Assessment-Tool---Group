@@ -1,20 +1,20 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/mainStyle.css') }}">
-  </head>
+{% block head %}
+  <title>Login</title>
+{% endblock %}
 
-  <body>
-    {% block head %}
-        <title>Login</title>
-    {% endblock %}
+{% block content %}
 
-    {% block content %}
-    <img src="{{ url_for('static', filename='img/CardiffUniversitylogo.jpeg') }}">
+    <div class="alert">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                  <li style="list-style-type: none;">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+      {% endwith %}
+      </div>
     <div class="login">
     <h1>Log In</h1>
     <form method="POST" action="">
@@ -24,6 +24,7 @@
       <br/><input type="submit" value="Login">
     </form>
     </div>
-    {% endblock content %}
-  </body>
-</html>
+
+  </div>
+  <a href="{{ url_for('register') }}">Register</a>
+{% endblock %}

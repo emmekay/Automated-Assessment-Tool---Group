@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  <title>createQuestion</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style/undertakeAss.css') }}">
+{% endblock %}
+
+{% block body %}
+{#    back button#}
+    <input id="cQ_Back_Button" name="cQ_Back_Button" type="button" value="Edit Assessment Details">
+
+    <table id="cQ_info">
+        <tr><td>Module Code</td><td></td></tr>
+        <tr><td>Assessment Title</td><td></td></tr>
+        <tr><td>Total Questions</td><td></td></tr>
+        <tr><td>Total Marks</td><td></td></tr>
+    </table>
+
+{#    Question table#}
+    <table>
+        <tr><td>Question Number</td><td>Question Title</td><td>Points</td><td>EDIT/DELETE</td></tr>
+    </table>
+
+{#    Create questions#}
+{#    Choose question type#}
+    <table>
+        <tr><td>Create New Questions</td></tr>
+        <tr>
+            <td>Question Type</td>
+            <td><select id="cQ_Question_Type" name="cQ_Question_Type">
+                <option value="1">Type One</option>
+                <option value="2">Type Two</option>
+            </select></td>
+        </tr>
+    </table>
+{#    If choose type one#}
+    <div id="cQ_QuestionType_One">
+    <form>
+    <table>
+        <tr><td>Question Content</td><td><input id="cQ_T1_Question_Content" name="cQ_Question_Content" type="text"></td></tr>
+        <tr><td>Difficulty Level</td><td><select id="cQ_T1_Difficulty_Level" name="cQ_Difficulty_Level">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select></td></tr>
+        <tr><td>Points</td><td><input id="cQ_T1_Point" name="cQ_T1_Point" type="text"></td></tr>
+        <tr><td>Option 1</td><td><input id="cQ_T1_Option1" name="cQ_T1_Option1" type="text"></td></tr>
+        <tr><td>Option 2</td><td><input id="cQ_T1_Option2" name="cQ_T1_Option2" type="text"></td></tr>
+        <tr><td>Option 3</td><td><input id="cQ_T1_Option3" name="cQ_T1_Option3" type="text"></td></tr>
+        <tr><td>Option 4</td><td><input id="cQ_T1_Option4" name="cQ_T1_Option4" type="text"></td></tr>
+        <tr><td>Correct Answer</td><td><select id="cQ_T1_Correct_Answer" name="cQ_T1_Correct_Answer">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select></td></tr>
+    </table>
+        <input id="cQ_Add_Question" name="cQ_Add_Question" type="submit" value="Add Question">
+    </form>
+    </div>
+{#    If choose type two#}
+    <div id="cQ_QuestionType_Two">
+    <form>
+    <table>
+        <tr>
+            <td><label for="content">Question Content</label></td>
+            <td><textarea name="QContent" class="" cols="40" rows="8"></textarea></td>
+        </tr>
+        <tr>
+            <td>Difficulty Level</td>
+            <td>
+                <select id="cQ_T1_Difficulty_Level" name="cQ_Difficulty_Level">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="points">Points</label></td>
+            <td><input type="text" name="point"></td>
+        </tr>
+        <tr>
+            <td><label for="Option 1">Option 1</label></td>
+            <td><label for="true">True</label></td>
+        </tr>
+        <tr>
+            <td><label for="Option 2">Option 2</label></td>
+            <td><label for="false">False</label></td>
+        </tr>
+        <tr>
+            <td><label for="canswer">Correct Answer</label></td>
+            <td>
+                <select name="correctanswer">
+                    <option value="True">True</option>
+                    <option value="False">False</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="cfeedback">Correct Feedback</label></td>
+            <td><input type="text" name="correctfeedback"></td>
+        </tr>
+        <tr>
+            <td><label for="ifeedback">Incorrect Feedback</label></td>
+            <td><input type="text" name="incorrectfeedback"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Submit"></td>
+        </tr>
+    </table>
+        <input id="cQ_Add_Question" name="cQ_Add_Question" type="submit" value="Add Question">
+    </form>
+    </div>
+
+    {#    Show question type#}
+        <script>
+            let select = document.getElementById('cQ_Question_Type');
+            let quesType_One = document.getElementById('cQ_QuestionType_One');
+            let quesType_Two = document.getElementById('cQ_QuestionType_Two');
+            function question_Type(){
+                {# Type one #}
+                if(select.value === 1){
+                    quesType_One.style.display = 'block';
+                    quesType_Two.style.display = 'none';
+                }
+                {# Type two #}
+                if(select.value === 2){
+                    quesType_One.style.display = 'none';
+                    quesType_Two.style.display = 'block';
+                }
+            }
+            window.onload = question_Type();
+        </script>
+
+{% endblock %}
