@@ -86,7 +86,8 @@ def view_modules():
 @app.route("/view-assessments/<int:module_id>")
 def view_assessments(module_id):
   assess = assessment_details.query.filter(assessment_details.module_id==module_id)
-  return render_template('view_assessments.html', assess=assess)
+
+  return render_template('view_assessments.html', assess=assess, id = module_id )
 
 @app.route("/edit-assessments/<int:assess_id>")
 def edit_assessment(assess_id):

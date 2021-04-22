@@ -6,10 +6,10 @@ from datetime import datetime
 from AssessmentApp import app
 from AssessmentApp.models import *
 
-@app.route('/addAss' , methods = ["GET", "POST"])
+@app.route('/addAss/' , methods = ["GET", "POST"])
 def addAss():
     if request.method == "POST":
-        module_id = request.form['module']
+        # module_id = id # request.form['module']
         assessment_type = bool(request.form['assType'])
         assessment_name = request.form['assTitle']
         time_limit = datetime.strptime(request.form['assTime'], '%H:%M')

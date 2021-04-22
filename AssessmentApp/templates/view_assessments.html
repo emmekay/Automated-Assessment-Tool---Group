@@ -8,7 +8,7 @@
 {% block body %}
 
     {% if current_user.is_staff == 1 %}
-    <p><a href="{{url_for('addAss')}}">Add Assessment</a></p>
+    <p><a href="{{url_for('addAss', id = id)}}">Add Assessment</a></p>
     {%endif%}
 
     <h1>View Assesments</h1>
