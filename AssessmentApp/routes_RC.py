@@ -6,10 +6,10 @@ from datetime import datetime
 from AssessmentApp import app
 from AssessmentApp.models import *
 
-@app.route('/addAss/' , methods = ["GET", "POST"])
-def addAss():
+@app.route('/addAss/<int:id>' , methods = ["GET", "POST"])
+def addAss(id):
     if request.method == "POST":
-        # module_id = id # request.form['module']
+        module_id = id # request.form['module']
         assessment_type = bool(request.form['assType'])
         assessment_name = request.form['assTitle']
         time_limit = datetime.strptime(request.form['assTime'], '%H:%M')
@@ -29,8 +29,10 @@ def addAss():
         db.session.add(ass)
         db.session.commit()
 
+        redirect(url_for('view_assessments', module_id = id))
 
-    return render_template('AssessmentDetails.html')
+
+    return render_template('AssessmentDetails.html', id = id)
 
 @app.route('/assessment/<int:id>', methods = ["GET", "POST"])
 def Ass(id):
