@@ -4,7 +4,7 @@ from flask_wtf import FlaskForm
 #from datetime import datetime 
 
 from AssessmentApp import app, db
-from AssessmentApp.models import survey
+from AssessmentApp.models import surveyinput
 from AssessmentApp.forms import *
 
 
@@ -26,7 +26,7 @@ def survey():
         question_5 = request.form['question_5']
         question_6 = request.form['question_6']
         
-        survey1 = survey(question_1=question_1, question_2=question_2, question_3=question_3,
+        survey1 = surveyinput(question_1=question_1, question_2=question_2, question_3=question_3,
                          question_4=question_4, question_5=question_5, question_6=question_6)
 
         """survey1 = survey(question_1=form.question_1.data, question_2=form.question_2.data, question_3=form.question_3.data, question_4=form.question_4.data, question_5=form.question_5.data, question_6=form.question_6.data)"""
@@ -34,7 +34,7 @@ def survey():
         db.session.add(survey1)
         db.session.commit()
         #flash('Survey Submitted')
-        return redirect(url_for('/'))
+        return redirect(url_for('survey'))
     #surveys = Survey.query.filter(Survey)
     return render_template('survey.html', title='Survey')#, form=form)
 #user_id=form.user_id.data, assessment_id=form.assessment_id.data,
