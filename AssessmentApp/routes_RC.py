@@ -1,17 +1,18 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
+from flask_login import login_user, logout_user, login_required, current_user
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
 from AssessmentApp import app
 from AssessmentApp.models import *
 
-@app.route('/addAss' , methods = ["GET", "POST"])
-def addAss():
+@app.route('/addAss/<int:id>' , methods = ["GET", "POST"])
+def addAss(id):
     if request.method == "POST":
-        module_id = request.form['module']
+        module_id = id # request.form['module']
         assessment_type = bool(request.form['assType'])
         assessment_name = request.form['assTitle']
-        time_limit = datetime.strptime(request.form['assTime'], '%H:%M')
+        time_limit = datetime.strptime(request.form['assTime'], '%Y-%m-%d %H:%M')
         start_date = datetime.strptime(request.form['assStart'] +" "+ request.form['assStartTime'], '%Y-%m-%d %H:%M')
         end_date = datetime.strptime(request.form['assEnd'] +" "+ request.form['assEndTime'], '%Y-%m-%d %H:%M')
         release = datetime.strptime(request.form['assRel'] +" "+ request.form['assRelTime'], '%Y-%m-%d %H:%M')
@@ -28,8 +29,10 @@ def addAss():
         db.session.add(ass)
         db.session.commit()
 
+        redirect(url_for('view_assessments', module_id = id))
 
-    return render_template('AssessmentDetails.html')
+
+    return render_template('AssessmentDetails.html', id = id)
 
 @app.route('/assessment/<int:id>', methods = ["GET", "POST"])
 def Ass(id):
@@ -55,8 +58,10 @@ def Ass(id):
         if not ass.assessment_type:
             flash(str(correct) + "/" + str(totalPossibleMarks) + " Marks")
         else:
-            #NEED LOGIN SYSTEM TO APPEND RESULTS
-            # res1 = assessment_results()
+            att = assessment_results.query.filter_by(user_id = current_user.id, assessment_id = id).all()
+            res = assessment_results(user_id = current_user.id, assessment_id = id, attempt_number = len(att)+1, grade = round((correct/totalPossibleMarks)*100), date_completed = datetime.now())
+            db.session.add(res)
+            db.session.commit()
             flash("This Assessment is formative, no instant results avialible. ")
 
         return redirect(url_for('confirmation', id = id))
@@ -70,4 +75,5 @@ def Ass(id):
 @app.route('/confirmation/<int:id>', methods = ["GET", "POST"])
 def confirmation(id):
     ass = assessment_details.query.filter_by(id=id).first()
+
     return render_template('Confi.html', ass = ass)

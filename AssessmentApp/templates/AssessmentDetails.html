@@ -11,14 +11,14 @@
 
     <h2 id = "title">Create New Assessment</h2> <br>
 
-    <form class="aDetails" action="{{url_for('addAss')}}" method="post">
+    <form class="aDetails" action="{{url_for('addAss', id = id)}}" method="post">
 
       <table >
 
-       <tr>
+       <!-- <tr>
          <td><label for="module">Module Code</label></td>
          <td><input  class="textInput" type="text" name="module" value=""></td>
-       </tr>
+       </tr> -->
        <tr>
          <td><label for="assType">Assessment Type</label></td>
          <td>
@@ -96,8 +96,3 @@
 </div>
 
 {% endblock %}
-
-
-
-
-  
