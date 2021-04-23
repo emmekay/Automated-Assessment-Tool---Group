@@ -7,6 +7,7 @@ from AssessmentApp.forms import LoginForm, RegistrationForm
 from AssessmentApp.models import *
 from AssessmentApp.routes_RC import *
 from AssessmentApp.routes_EK import *
+from AssessmentApp.routes_QL import *
 
 
 @app.route('/',methods=['GET','POST'])
