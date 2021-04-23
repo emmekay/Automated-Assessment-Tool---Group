@@ -21,7 +21,7 @@ login_manager.login_view = 'login'
 #     return user.query.get(int(user_id))
 
 
-class Choice(db.Model):
+"""class Choice(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     assessment_id = db.Column(db.Integer, db.ForeignKey('assessment_details.id'))
@@ -33,7 +33,7 @@ class Choice(db.Model):
     #question_6 = db.Column(db.Text, nullable=False)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True)"""
 
 
 from AssessmentApp import routes

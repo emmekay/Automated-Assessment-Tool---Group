@@ -3,34 +3,40 @@
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='style/mainStyle.css') }}">
 <title>My Account</title>
+<style type="text/css">
+table {
+    border: 2px solid yellow;
+    background-color: #fff;
+}
+
+th {
+    border-bottom: 5px solid #000;
+}
+
+td { 
+    border-bottom: 2px solid #667;
+}
+</style>
 {% endblock %}
 
 {% block body %}
-    <!--Pull all staff Modules & Assessments-->
-    <div class="">
+<h1>Display Survey Results from DB</h1>
 
-        <h2>Your Modules</h2> <!-- Add link to Module details page with each module title page here-->
-        <p>CMT 330 Software Engineering</p>
-        <p>CMT 331 Software Development</p>
-        <p>CMT 119 Computing</p>
-        <p>SPN 121 Spanish </p>
+<?php 
 
-        <h2>Your Current Marks</h2> <!-- Add link to Module details page with each module title page here-->
-        <p>CMT 330 Software Engineering</p>
-        <p>CMT 331 Software Development</p>
-        <p>CMT 119 Computing</p>
-        <p>SPN 121 Spanish </p>
+include('connect-myql.php');
+$sqlget = "SELECT * FROM survey";
+$sqldata = mysqli_query($dbcon, $sqlget) or die('error')
 
-        <h2>Upcoming Assessments</h2> <!-- Add link to Module details page with each module title page here-->
-        <p>CMT 330 Software Engineering</p>
-        <p>CMT 331 Software Development</p>
-        <p>CMT 119 Computing</p>
-        <p>SPN 121 Spanish </p>
+echo 
 
-        <h2>Assessment Feedback</h2> <!-- Add link to Module details page with each module title page here-->
-        <p>Press Here to Access Survey results</p>
+?>
 
 
 
-        <br><br>
-        {% endblock %}
+
+
+
+
+
+{% end block %}

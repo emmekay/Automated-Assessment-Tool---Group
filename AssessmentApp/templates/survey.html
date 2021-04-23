@@ -34,21 +34,125 @@
 
 <div class="">
 
-    <h2>Assessment Survey</h2>
+    <div class="">
+    
+        <h2 id="title">Assessment Feedback</h2> <br>
+    
+        <form class="surveyform" action="{{url_for('survey')}}" method="post">
+    
+            <table>
+    
+                <tr>
+                    <td><label for="question_1">On a scale of 1-5, how did you like the assessment?</label></td>
+                    <td>
+    
+                        <select class="textInput" name="question_1" id="">
+                            <option value="1">1- Strongly Disliked</option>
+                            <option value="2">2- Disliked</option>
+                            <option value="3">3- Neutral</option>
+                            <option value="4">4- Liked</option>
+                            <option value="5">5- Strongly Liked</option>
+                        </select>
+    
+                    </td>
+                </tr>
 
-    <form method="POST" action="">
+                <tr>
+                    <td><label for="question_2">On a scale of 1-5, how did you like the assessment?</label></td>
+                    <td>
+                
+                        <select class="textInput" name="question_2" id="">
+                            <option value="1">Strongly Disliked</option>
+                            <option value="2">Disliked</option>
+                            <option value="3">Neutral</option>
+                            <option value="4">Liked</option>
+                            <option value="5">Strongly Liked</option>
+                        </select>
+                
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><label for="question_3">On a scale of 1-5, how did you like the assessment?</label></td>
+                    <td>
+                
+                        <select class="textInput" name="question_3" id="">
+                            <option value="1">Strongly Disliked</option>
+                            <option value="2">Disliked</option>
+                            <option value="3">Neutral</option>
+                            <option value="4">Liked</option>
+                            <option value="5">Strongly Liked</option>
+                        </select>
+                
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><label for="question_4">On a scale of 1-5, how did you like the assessment?</label></td>
+                    <td>
+                
+                        <select class="textInput" name="question_4" id="">
+                            <option value="1">Strongly Disliked</option>
+                            <option value="2">Disliked</option>
+                            <option value="3">Neutral</option>
+                            <option value="4">Liked</option>
+                            <option value="5">Strongly Liked</option>
+                        </select>
+                
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><label for="question_5">On a scale of 1-5, how did you like the assessment?</label></td>
+                    <td>
+                
+                        <select class="textInput" name="question_5" id="">
+                            <option value="1">Strongly Disliked</option>
+                            <option value="2">Disliked</option>
+                            <option value="3">Neutral</option>
+                            <option value="4">Liked</option>
+                            <option value="5">Strongly Liked</option>
+                        </select>
+                
+                    </td>
+                </tr>
+
+    
+                <tr>
+                    <td><label for="question_6">Anything else write here...</label></td>
+                    <td><input class="textInput" type="text" name="question_6" value=""></td>
+                </tr>
+    
+                <tr>
+                    <td></td>
+                    <td> <input id="saveButton" type="submit" name="" value="Submit Survey"></td>
+                </tr>
+    
+            </table>
+    
+    
+    
+        </form>
+    
+    
+    
+    
+    </div>
+
+</body>
+{% endblock %}
+
+   <!-- <h2>Assessment Survey</h2>-->
+
+   <!-- <form method="POST" action="">
         {{ form.csrf_token }} <br>
-        <img src="{{ url_for('static', filename='img/members.jpg') }}">
-        <h1>Sign up below to access member's privileges!</h1>
-        {{ form.username.label }} {{ form.username(placeholder="Choose a Username") }}
-        <!-- Ref # 4 - Placeholder info for all placeholder links in this section --> <br> <br>
         {{ form.question_1.label }} {{ form.question_1 }} <br> <br>
         {{ form.question_2.label }} {{ form.question_2 }} <br> <br>
         {{ form.question_3.label }} {{ form.question_3 }} <br> <br>
         {{ form.question_4.label }} {{ form.question_4 }} <br> <br>
         {{ form.question_5.label }} {{ form.question_5 }} <br> <br>
         {{ form.question_6.label }} {{ form.question_6 }} <br> <br>
-        <input type="submit" value="Register">
+        <input type="submit" value="Submit">-->
     
 
     <!--<form class="survey" action="index.html" method="post">
@@ -122,8 +226,3 @@
         </table>-->
 
 
-
-    </form>
-
-</body>
-{% endblock %}
