@@ -7,6 +7,7 @@ from AssessmentApp.forms import LoginForm, RegistrationForm
 from AssessmentApp.models import *
 from AssessmentApp.routes_RC import *
 from AssessmentApp.routes_EK import *
+from AssessmentApp.routes_NK import *
 
 
 @app.route('/',methods=['GET','POST'])
@@ -29,9 +30,8 @@ def login():
 def home():
   return render_template('index.html')
 
-
-
-"""#@app.route('/', methods=['GET', 'POST'])
+"""
+#@app.route('/', methods=['GET', 'POST'])
 @app.route('/login', methods=['GET', 'POST'])
 def login():
   form = LoginForm()
@@ -69,7 +69,6 @@ def login():
   return render_template('login.html',title='Login',form=form)
 """
 
-
 @app.route("/logout")
 def logout():
   logout_user()
@@ -90,47 +89,6 @@ def view_assessments(module_id):
 def edit_assessment(assess_id):
   assess = assessment_details.query.filter(assessment_details.id==assess_id)
   return render_template('edit_assessment.html', assess=assess)
-
-@app.route('/my_assessments') #NK
-def my_assessments():
-    return render_template('my_assessments.html')
-
-@app.route('/completed_assessments') #NK
-def completed_assessments():
-    return render_template('completed_assessments.html')
-
-@app.route('/assessment_statistics/<int:assess_id>') #NK
-
-def assessment_statistics(assess_id):
-    results = assessment_results.query.filter(assessment_results.assessment_id==assess_id)
-    return render_template('assessment_statistics.html', Results=results)
-
-def Average(results):
-    all_grades = []
-    for ass in results:
-        all_grades.appened(ass.grade)
-    average=sum(all_grades)/len(all_grades)
-    return average
-
-def Lowest(grades):
-    grade_list=[]
-    grade_list.append(grades)
-    low=min(grade_list)
-    return low
-
-def Highest(grades):
-    grade_list=[]
-    grade_list.append(grades)
-    high=max(grade_list)
-    return high
-
-'''
-@app.route("/assessment_statistics")
-def assessment_stats():
-  #enrolled = modules_enrolment.query.all()
-  Results = assessment_results.query.all()
-  return render_template('assessment_statistics.html', Results=Results)
-'''
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
