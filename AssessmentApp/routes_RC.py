@@ -62,7 +62,7 @@ def Ass(id):
             res = assessment_results(user_id = current_user.id, assessment_id = id, attempt_number = len(att)+1, grade = round((correct/totalPossibleMarks)*100), date_completed = datetime.now())
             db.session.add(res)
             db.session.commit()
-            flash("This Assessment is formative, no instant results avialible. ")
+            flash("This Assessment is Sumative, no instant results avialible. ")
 
         return redirect(url_for('confirmation', id = id))
 
@@ -76,4 +76,9 @@ def Ass(id):
 def confirmation(id):
     ass = assessment_details.query.filter_by(id=id).first()
 
-    return render_template('Confi.html', ass = ass)
+    questionIds = assessment_questions.query.filter_by(assessment_id=id).all()
+
+    assQuestions = [ question.query.filter_by(id=q.question_id).first() for q in questionIds]
+
+
+    return render_template('Confi.html', ass = ass, assQuestions =assQuestions)

@@ -29,6 +29,19 @@
 
     </div>
 
+    <h2>Feedback</h2>
+    <div class="feedbackStyle">
+
+      {%for question in assQuestions%}
+      <div class="singleQuestion">
+          <p>Q {{question.id}} : {{question.correct_feedback}}</p>
+      </div>
+
+
+      {%endfor%}
+
+    </div>
+
 
 
 
