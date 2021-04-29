@@ -21,24 +21,20 @@
         <th scope="col" colspan="2">Module Name:</th> <!--Remember to Link assessment_details table to assessment_results for module info-->
       </tr>
       <tr>
-        <th scope="col" colspan="2">Statistics</th> <!--Remember to Link assessment_details table to assessment_results for module info-->
+        <th scope="col" colspan="2">Statistics (Attempt Number())</th> <!--Remember to Link assessment_details table to assessment_results for module info-->
       </tr>
     </thead>
-
-
 
     <tbody>
 
         <tr>
-          <!-- highest possible grade you can get in this assessment(100%) -->
           <th scope="row">Possible Grade</th>
-          <td>{{Results[0].grade}}</td> <!--Fetched data comes here-->
+          <td>100</td> <!--Assuming max mark for all assessments is 100%-->
         </tr>
 
         <tr>
           <!-- the grade the student/user got -->
           <th scope="row">Actual Grade</th>
-
           <td>{{Results[0].grade}}</td> <!--Fetched data comes here-->
         </tr>
 
