@@ -13,8 +13,7 @@
 
 
     <h2>Submission Successful</h2> <br>
-    <p>Each time you submit an assessment you will receive a unique confirmation ID to verify completion. You can view your
-    submission receipts on your “My Account” <!-- Add link to "My Account" page here--> information page.</p>
+    <p>You have successfully completed your  “My Account” <!-- Add link to "My Account" page here--> information page.</p>
     <br><br><br>
     
     <h2>Assessment Details:  </h2>
@@ -31,20 +30,21 @@
 
 </div>
 
+
 <div class="">
 
     <div class="">
-    
+
         <h2 id="title">Assessment Feedback</h2> <br>
-    
+
         <form class="surveyform" action="{{url_for('survey')}}" method="post">
-    
+
             <table>
-    
+
                 <tr>
-                    <td><label for="question_1">On a scale of 1-5,how did you like the assessment?</label></td>
+                    <td><label for="question_1">On a scale of 1-5, how did you like the assessment?</label></td>
                     <td>
-    
+
                         <select class="textInput" name="question_1" id="">
                             <option value="1">1- Strongly Disliked</option>
                             <option value="2">2- Disliked</option>
@@ -52,14 +52,14 @@
                             <option value="4">4- Liked</option>
                             <option value="5">5- Strongly Liked</option>
                         </select>
-    
+
                     </td>
                 </tr>
 
                 <tr>
                     <td><label for="question_2">On a scale of 1-5, how did you like the assessment?</label></td>
                     <td>
-                
+
                         <select class="textInput" name="question_2" id="">
                             <option value="1">Strongly Disliked</option>
                             <option value="2">Disliked</option>
@@ -67,14 +67,14 @@
                             <option value="4">Liked</option>
                             <option value="5">Strongly Liked</option>
                         </select>
-                
+
                     </td>
                 </tr>
 
                 <tr>
                     <td><label for="question_3">On a scale of 1-5, how did you like the assessment?</label></td>
                     <td>
-                
+
                         <select class="textInput" name="question_3" id="">
                             <option value="1">Strongly Disliked</option>
                             <option value="2">Disliked</option>
@@ -82,14 +82,14 @@
                             <option value="4">Liked</option>
                             <option value="5">Strongly Liked</option>
                         </select>
-                
+
                     </td>
                 </tr>
 
                 <tr>
                     <td><label for="question_4">On a scale of 1-5, how did you like the assessment?</label></td>
                     <td>
-                
+
                         <select class="textInput" name="question_4" id="">
                             <option value="1">Strongly Disliked</option>
                             <option value="2">Disliked</option>
@@ -97,14 +97,14 @@
                             <option value="4">Liked</option>
                             <option value="5">Strongly Liked</option>
                         </select>
-                
+
                     </td>
                 </tr>
 
                 <tr>
                     <td><label for="question_5">On a scale of 1-5, how did you like the assessment?</label></td>
                     <td>
-                
+
                         <select class="textInput" name="question_5" id="">
                             <option value="1">Strongly Disliked</option>
                             <option value="2">Disliked</option>
@@ -112,110 +112,31 @@
                             <option value="4">Liked</option>
                             <option value="5">Strongly Liked</option>
                         </select>
-                
+
                     </td>
                 </tr>
 
-    
+
                 <tr>
                     <td><label for="question_6">Anything else write here...</label></td>
                     <td><input class="textInput" type="text" name="question_6" value=""></td>
                 </tr>
-    
+
                 <tr>
                     <td></td>
                     <td> <input id="saveButton" type="submit" name="" value="Submit Survey"></td>
                 </tr>
-    
+
             </table>
-    
-    
-    
+
+
+
         </form>
-    
-    
-    
-    
+
+
+
+
     </div>
 
-</body>
-{% endblock %}
-
-<!--{% endblock content %}-->
-
-    <!--<form class="survey" action="index.html" method="post">
-
-        <table>
-
-            <tr>
-                <label for="question_1">On a scale of 1 - 5, with 1 being very easy and 5 being very difficult, how easy was it to complete this assessment through this portal?</label></td>
-                <br><select id="options" name="options">
-                    <option value="one">1 - Very Easy</option>
-                    <option value="two">2 - Moderately Easy</option>
-                    <option value="three">1 - Neither Easy Nor Difficult</option>
-                    <option value="four">1 - Moderately Difficult</option>
-                    <option value="five">1 - Very Difficult</option>
-                </select>
-            </tr><br>
-            <tr>
-                <label for="question_2">On a scale of 1 - 5, with 1 being not at all relevant and 5 being very relevant, how would you rate the relevancy of this assessment to the content you've been taught during this course?</label></td>
-                <br><select id="options" name="options">
-                    <option value="one">1 - Not at all Relevant</option>
-                    <option value="two">2 - Moderately Irrelevant</option>
-                    <option value="three">1 - Neither Relevant Nor Irrelevant</option>
-                    <option value="four">1 - Moderately Relevant</option>
-                    <option value="five">1 - Very Relevant</option>
-                </select>
-            </tr><br>
-            <tr>
-                <label for="question_3">On a scale of 1 - 5, with 1 being very easy and 5 being very difficult, how difficult was the content of this exam?</label></td>
-                <br><select id="options" name="options">
-                    <option value="one">1 - Very Easy</option>
-                    <option value="two">2 - Moderately Easy</option>
-                    <option value="three">1 - Neither Easy Nor Difficult</option>
-                    <option value="four">1 - Moderately Difficult</option>
-                    <option value="five">1 - Very Difficult</option>
-                </select>
-            </tr><br>
-            <tr>
-                <label for="question_4">On a scale of 1 - 5, with 1 being not all accessible and 5 being very accessible, how would
-                    you rate the accessibility
-                    of this assessment?</label></td>
-                <br><select id="options" name="options">
-                    <option value="one">1 - Very Easy</option>
-                    <option value="two">2 - Moderately Easy</option>
-                    <option value="three">1 - Neither Easy Nor Difficult</option>
-                    <option value="four">1 - Moderately Difficult</option>
-                    <option value="five">1 - Very Difficult</option>
-                </select>
-            </tr><br>
-            <tr>
-                <!--<label for="question_5">How would you rate your overall experience using this site?</label></td>
-                <br><select id="options" name="options">
-                    <option value="one">Not Pleasant</option>
-                    <option value="two">Neither Pleasant or Not Pleasant</option>
-                    <option value="three">Moderately Pleasant</option>
-                    <option value="four">Very Pleasant</option>
-                    <option value="five">Other - If Other please leave comments detailing your experience in the next question.</option>
-                </select>
-            </tr><br>
-            <tr>
-                <label for="question_6">If you have any comments you would like to leave the teaching staff about this particular assessment please write them in this comment box: </label>
-                    <br><textarea class="textInput" name="assInstruc" rows="8" cols="40"></textarea>
-                </tr>
-            </tr><br>
-
-
-            <tr>
-                <td></td>
-                <td> <input id="saveButton" type="submit" name="" value="Save"></td>
-            </tr>
-
-        </table>
-
-
-
-    </form>-->
-
-</body>
-{% endblock %}
+    </body>
+    {% endblock %}
