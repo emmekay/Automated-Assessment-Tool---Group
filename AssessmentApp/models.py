@@ -99,11 +99,11 @@ class surveyinput(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     #user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     #assessment_id = db.Column(db.Integer, db.ForeignKey('assessment_details.id'))
-    question_1 = db.Column(db.Text, nullable = False)
-    question_2 = db.Column(db.Text, nullable = False)
-    question_3 = db.Column(db.Text, nullable = False)
-    question_4 = db.Column(db.Text, nullable = False)
-    question_5 = db.Column(db.Text, nullable = False)
+    question_1 = db.Column(db.Integer, nullable = False)
+    question_2 = db.Column(db.Integer, nullable = False)
+    question_3 = db.Column(db.Integer, nullable = False)
+    question_4 = db.Column(db.Integer, nullable = False)
+    question_5 = db.Column(db.Integer, nullable = False)
     question_6 = db.Column(db.Text, nullable = True)
 
 @login_manager.user_loader
