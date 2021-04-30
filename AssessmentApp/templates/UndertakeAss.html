@@ -3,6 +3,8 @@
 {% block head %}
   <title>Add Assessment</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style/undertakeAss.css') }}">
+
+  <script src="{{url_for('static', filename='Script_RC\AssesmentTime.js')}}"></script>
 {% endblock %}
 
 {% block body %}
@@ -23,6 +25,7 @@
     <h3>Assessment Instructions</h3>
     <p>{{ass.assessment_instructions}}</p>
     <!-- <br> -->
+
     {%if outDateRange[0]%}
       <p>Warning: Start date + time  Condition not met. </p>
     {%endif%}
