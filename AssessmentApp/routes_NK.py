@@ -16,14 +16,17 @@ def completed_assessments():
 @app.route('/assessment_statistics/<int:assess_id>') #NK
 
 def assessment_statistics(assess_id):
+    module = modules.query.filter(modules.module_id==assess_id).first()
+    assname = assessment_details.query.filter(assessment_details.module_id==assess_id).first()
+    attempt = assessment_results.query.filter(assessment_results.assessment_id== assess_id).first()
     results = assessment_results.query.filter(assessment_results.assessment_id==assess_id)
-    return render_template('assessment_statistics.html', Results=results)
-
+    return render_template('assessment_statistics.html', Results=results, Module=module, Assname=assname, Attempt=attempt)
+'''
 def Average(results):
     all_grades = []
     for ass in results:
         all_grades.appened(ass.grade)
-    average=sum(all_grades)/len(all_grades)
+    average = sum(all_grades)/len(all_grades)
     return average
 
 def Lowest(grades):
@@ -38,7 +41,6 @@ def Highest(grades):
     high=max(grade_list)
     return high
 
-'''
 @app.route("/assessment_statistics")
 def assessment_stats():
   #enrolled = modules_enrolment.query.all()
