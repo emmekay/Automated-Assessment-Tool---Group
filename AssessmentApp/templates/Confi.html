@@ -36,10 +36,12 @@
       {%for question in assQuestions%}
 
       <div class="singleQuestion">
-          {%if res1[question.id] == 1%}
-          <p>{{i}} Q {{question.id}}: Correct, Feedback: {{question.correct_feedback}}</p>
+          {%if res1[question.id]%}
+          <p>{{i}} Q {{question.id}}: Correct</p>
+          <p>Feedback: {{question.correct_feedback}}</p>
           {%else%}
-          <p>{{i}} Q {{question.id}}: Incorrect, Feedback: {{question.incorrect_feedback}}</p>
+          <p>{{i}} Q {{question.id}}: Incorrect</p>
+          <p>Feedback: {{question.incorrect_feedback}}</p>
           {%endif%}
 
 

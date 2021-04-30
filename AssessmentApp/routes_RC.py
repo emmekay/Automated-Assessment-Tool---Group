@@ -43,7 +43,15 @@ def Ass(id):
     questionIds = assessment_questions.query.filter_by(assessment_id=id).all()
 
     assQuestions = [ question.query.filter_by(id=q.question_id).first() for q in questionIds]
+    # TEMP
+    outDateRange = [0,0]
+    if ass.start_date < datetime.utcnow():
+        outDateRange[0] = 1
+    if ass.end_date > datetime.utcnow():
+        outDateRange[1] = 1
 
+
+    # Temp END
     if request.method == "POST":
         correct = 0
         totalPossibleMarks = 0
@@ -52,10 +60,14 @@ def Ass(id):
             totalPossibleMarks += q.value
             if q.correct_answer and request.form['Q' +str(q.id)] == str(q.correct_answer):
                 correct += q.value
-                res1[q.id] = 1
+                res1[q.id] = True
             elif (not q.correct_answer) and request.form['Q' +str(q.id)] == str(q.type_2_answer):
                 correct += q.value
-                res1[q.id] = 0
+                res1[q.id] = True
+            else:
+                res1[q.id] = False
+
+
 
         #IF FORMATIVE
         if not ass.assessment_type:
@@ -72,7 +84,7 @@ def Ass(id):
 
 
 
-    return render_template('UndertakeAss.html',  assQuestions =assQuestions, ass = ass, id = id)
+    return render_template('UndertakeAss.html',  assQuestions =assQuestions, ass = ass, id = id, outDateRange = outDateRange)
 
 
 
