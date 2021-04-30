@@ -34,7 +34,7 @@ def survey():
         db.session.add(survey1)
         db.session.commit()
         #flash('Survey Submitted')
-        return redirect(url_for('survey'))
+        return redirect(url_for('surveysubmit'))
     #surveys = Survey.query.filter(Survey)
     return render_template('survey.html', title='Survey')#, form=form)
 #user_id=form.user_id.data, assessment_id=form.assessment_id.data,
@@ -52,4 +52,9 @@ def studentaccount():
 @app.route("/surveyresults")  # EK
 def surveyresults():
     return render_template('surveyresults.html', title='Feedback Summary')
+
+
+@app.route("/surveysubmit")  # EK
+def surveysubmit():
+    return render_template('surveysubmit.html', title='Submission Successful')
 
