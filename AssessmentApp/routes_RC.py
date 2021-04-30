@@ -47,12 +47,15 @@ def Ass(id):
     if request.method == "POST":
         correct = 0
         totalPossibleMarks = 0
+        res1 = {}
         for i, q in enumerate (assQuestions):#
             totalPossibleMarks += q.value
             if q.correct_answer and request.form['Q' +str(q.id)] == str(q.correct_answer):
                 correct += q.value
+                res1[q.id] = 1
             elif (not q.correct_answer) and request.form['Q' +str(q.id)] == str(q.type_2_answer):
                 correct += q.value
+                res1[q.id] = 0
 
         #IF FORMATIVE
         if not ass.assessment_type:
@@ -64,7 +67,8 @@ def Ass(id):
             db.session.commit()
             flash("This Assessment is Sumative, no instant results avialible. ")
 
-        return redirect(url_for('confirmation', id = id))
+        return render_template('Confi.html', ass = ass, assQuestions =assQuestions, res1 =res1)
+        # return redirect(url_for('confirmation', id = id))
 
 
 

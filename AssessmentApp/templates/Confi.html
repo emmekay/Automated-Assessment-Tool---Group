@@ -32,9 +32,18 @@
     <h2>Feedback</h2>
     <div class="feedbackStyle">
 
+
       {%for question in assQuestions%}
+
       <div class="singleQuestion">
-          <p>Q {{question.id}} : {{question.correct_feedback}}</p>
+          {%if res1[question.id] == 1%}
+          <p>{{i}} Q {{question.id}}: Correct, Feedback: {{question.correct_feedback}}</p>
+          {%else%}
+          <p>{{i}} Q {{question.id}}: Incorrect, Feedback: {{question.incorrect_feedback}}</p>
+          {%endif%}
+
+
+
       </div>
 
 
