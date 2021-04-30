@@ -7,7 +7,7 @@ from AssessmentApp.forms import LoginForm, RegistrationForm
 from AssessmentApp.models import *
 from AssessmentApp.routes_RC import *
 from AssessmentApp.routes_EK import *
-from AssessmentApp.routes_QL import *
+#from AssessmentApp.routes_QL import *
 
 
 @app.route('/',methods=['GET','POST'])
@@ -144,6 +144,10 @@ def register():
     flash('Registration Succesful, Please login now.')
     return redirect(url_for('login'))
   return render_template('register.html', title='Register', form=form)
+
+@app.route('/createQuestion')
+def createQuestion():
+  return render_template('createQuestion.html')
 
 
  # return render_template('login.html',form=form)
