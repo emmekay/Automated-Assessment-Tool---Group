@@ -7,6 +7,8 @@ from AssessmentApp.forms import LoginForm, RegistrationForm
 from AssessmentApp.models import *
 from AssessmentApp.routes_RC import *
 from AssessmentApp.routes_EK import *
+from AssessmentApp.routes_NK import *
+#from AssessmentApp.routes_QL import *
 
 
 @app.route('/',methods=['GET','POST'])
@@ -86,26 +88,40 @@ def view_modules():
 @app.route("/view-assessments/<int:module_id>")
 def view_assessments(module_id):
   assess = assessment_details.query.filter(assessment_details.module_id==module_id)
-  return render_template('view_assessments.html', assess=assess)
 
-@app.route("/edit-assessments/<int:assess_id>")
+  return render_template('view_assessments.html', assess=assess, id = module_id )
+
+@app.route("/edit-assessments/<int:assess_id>", methods = ["GET", "POST"])
 def edit_assessment(assess_id):
   assess = assessment_details.query.filter(assessment_details.id==assess_id)
-  return render_template('edit_assessment.html', assess=assess)
+  ass = assessment_details.query.filter(assessment_details.id==assess_id).first()
+  module = modules.query.filter(modules.id==assessment_details.module_id)
+  mod = modules.query.filter(modules.id==assessment_details.module_id).first()
+  if request.method == "POST":
+      #assess.module_id = module.id
+      ass.assessment_type = bool(request.form['assType'])
+      ass.assessment_name = request.form['assTitle']
+      ass.time_limit = datetime.strptime(request.form['assTime'], '%Y-%m-%d %H:%M:%S')
+      ass.start_date = datetime.strptime(request.form['assStart'], '%Y-%m-%d %H:%M:%S')
+      ass.end_date = datetime.strptime(request.form['assEnd'], '%Y-%m-%d %H:%M:%S')
+      ass.release = datetime.strptime(request.form['assRel'], '%Y-%m-%d %H:%M:%S')
+      ass.weighting = int(request.form['assWeight'])
+      ass.allowed_attemps = int(request.form['assAttemps'])
+      ass.assessment_instructions = request.form['assInstruc']
 
+      db.session.commit()
+      return redirect(url_for('view_assessments', module_id = mod.id))
+    
+  return render_template('edit_assessment.html', assess=assess, module=module)
 
+@app.route("/delete-assessments/<int:assess_id>")
+def delete_assessment(assess_id):
+  assess = assessment_details.query.filter(assessment_details.id==assess_id).first()
+  mod = modules.query.filter(modules.id==assessment_details.module_id).first()
+  db.session.delete(assess)
+  db.session.commit()
+  return redirect(url_for('view_assessments', module_id = mod.id))
 
-@app.route('/my_assessments')
-def my_assessments():
-    return render_template('my_assessments.html')
-
-@app.route('/completed_assessments')
-def completed_assessments():
-    return render_template('completed_assessments.html')
-
-@app.route('/assessment_statistics')
-def assessment_statistics():
-    return render_template('assessment_statistics.html')
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
@@ -118,13 +134,9 @@ def register():
     return redirect(url_for('login'))
   return render_template('register.html', title='Register', form=form)
 
-"""@app.route("/delete-assessments/<int:assess_id>")
-def delete_assessment(assess_id,module_id):
-  assess = assessment_details.query.filter(assessment_details.id==assess_id)
-  db.session.delete(assess)
-  db.session.commit()
-  assess = assessment_details.query.filter(assessment_details.module_id==module_id)
-  return render_template('view_assessments_staff.html',assess=assess)"""
+@app.route('/createQuestion')
+def createQuestion():
+  return render_template('createQuestion.html')
 
 
  # return render_template('login.html',form=form)

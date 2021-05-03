@@ -28,7 +28,6 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Login')
 
-"""
 class Survey(FlaskForm):
     question_1 = StringField('On a scale of 1-5, with 1 being very easy and 5 being very difficult, how easy would you rate this assessment?', validators=[
         DataRequired(), Length(min=1, max=1)])
@@ -40,9 +39,9 @@ class Survey(FlaskForm):
         DataRequired(), Length(min=1, max=1)])
     question_5 = StringField('On a scale of 1-5, with 1 being very easy and 5 being very difficult, how easy would you rate this assessment?', validators=[
         DataRequired(), Length(min=1, max=1)])
-    question_6 = StringField('On a scale of 1-5, with 1 being very easy and 5 being very difficult, how easy would you rate this assessment?', validators=[
-        DataRequired(), Length(min=0, max=2000)])
-    submit = SubmitField('Submit')"""
+    question_6 = StringField('Any Additional Comments ', validators=[Length(min=0, max=2000)])
+    submit = SubmitField('Submit')
+
 
 """class CommentForm(FlaskForm):
     comment = StringField('Comment', validators=[InputRequired()])
