@@ -2,7 +2,7 @@
 
 {% block  head %}
 
-<title>Completion Successful</title>
+<title>Satisfaction Feedback Request</title>
 
 <link rel="stylesheet" href="{{ url_for('static', filename='style/mainStyle.css') }}">
 {% endblock %}
@@ -10,22 +10,16 @@
 {% block body %}
 
 <div class="">
+    <div style="border:1px dotted red;padding:2%;">
+        <h2>Please complete this satisfaction survey to describe your experience completing this assessment.</h2><br>
+        <h3>Name : {{current_user.first_name}} {{current_user.last_name}}</h3>
+        <h3>Email : {{current_user.email}}</h3>
+        <h3>Module : {{mod_id}}</h3>
+        <h3>Assessment : {{asse_id}}</h3>
+    </div>
 
 
-    <h2>Submission Successful</h2> <br>
-    <p>You have successfully completed your  “My Account” <!-- Add link to "My Account" page here--> information page.</p>
-    <br><br><br>
-
-    <h2>Assessment Details:  </h2>
-    <h2>Title of Course: <!--Insert link for course title here -->Assessment 1</h2>
-    <h2>Course ID: <!-- Insert link for Course ID here -->CMT 330 Software Engineering </h2>
-    <h2>Title of Assessment: <!-- Insert link for Assessment title here -->Business Case</h2>
-    <h2>Date/Time of Submission: <!-- Insert date/time here --> December 1 12:30pm </h2>
-    <h2>Attempt: <!-- Insert link for attempt number here--> 2</h2>
-
-    <h4>Please complete this satisfaction survey to describe your experience completing this assessment</h4>
-
-    <!-- Insert button for SKIP SURVEY & Return to home -->
+    <button><a href='/staffaccount'>Opt out of survey and return to My Account</a></button>
 
 
 </div>

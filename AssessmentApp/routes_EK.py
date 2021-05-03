@@ -39,8 +39,6 @@ def survey(mod_id, asse_id):
         survey1 = surveyinput(user_id = current_user.id, module_id = mod_id, assessment_id = asse_id, question_1=question_1, question_2=question_2, question_3=question_3,
                          question_4=question_4, question_5=question_5, question_6=question_6)
 
-        """survey1 = survey(question_1=form.question_1.data, question_2=form.question_2.data, question_3=form.question_3.data, question_4=form.question_4.data, question_5=form.question_5.data, question_6=form.question_6.data)"""
-        #db.session.add(survey1)
         db.session.add(survey1)
         db.session.commit()
         #flash('Survey Submitted')
