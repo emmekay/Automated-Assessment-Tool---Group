@@ -20,7 +20,7 @@ def login():
     if User is not None and User.verify_password(form.password.data):
       login_user(User)
       flash('Login successful!')
-      return redirect(url_for('home'))
+      return redirect(url_for('staffaccount'))
     flash('Invalid email address or password.')
     return render_template('login.html',form=form)
 
@@ -29,7 +29,7 @@ def login():
 
 @app.route('/home',methods=['GET','POST'])
 def home():
-  return render_template('index.html')
+  return render_template('staffaccount.html')
 
 # @app.route('/addQ/<int:id>', methods = ["GET", "POST"])
 # def addQ(id):
