@@ -11,9 +11,8 @@ def my_assessments():
     return render_template('my_assessments.html')
 
 
-@app.route('/completed_assessments/') #NK
+@app.route('/completed_assessments') #NK
 def completed_assessments():
-    print(current_user.id)
     return render_template('completed_assessments.html')
 
 @app.route('/assessment_statistics/<int:assess_id>') #NK
