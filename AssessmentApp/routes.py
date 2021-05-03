@@ -7,6 +7,7 @@ from AssessmentApp.forms import LoginForm, RegistrationForm
 from AssessmentApp.models import *
 from AssessmentApp.routes_RC import *
 from AssessmentApp.routes_EK import *
+from AssessmentApp.routes_NK import *
 #from AssessmentApp.routes_QL import *
 
 
@@ -121,18 +122,6 @@ def delete_assessment(assess_id):
   db.session.commit()
   return redirect(url_for('view_assessments', module_id = mod.id))
 
-
-@app.route('/my_assessments')
-def my_assessments():
-    return render_template('my_assessments.html')
-
-@app.route('/completed_assessments')
-def completed_assessments():
-    return render_template('completed_assessments.html')
-
-@app.route('/assessment_statistics')
-def assessment_statistics():
-    return render_template('assessment_statistics.html')
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
