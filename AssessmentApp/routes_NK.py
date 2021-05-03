@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from flask_login import login_user, logout_user, login_required, current_user
 
 from AssessmentApp import app
 from AssessmentApp.models import *
@@ -9,8 +10,9 @@ from AssessmentApp.models import *
 def my_assessments():
     return render_template('my_assessments.html')
 
-@app.route('/completed_assessments') #NK
-def completed_assessments():
+@app.route('/completed_assessments/<int:user_id>') #NK
+def completed_assessments(user_id):
+    print(user_id)
     return render_template('completed_assessments.html')
 
 @app.route('/assessment_statistics/<int:assess_id>') #NK
@@ -26,13 +28,15 @@ def Average(results):
     all_grades = []
     for ass in results:
         all_grades.appened(ass.grade)
-    average = sum(all_grades)/len(all_grades)
-    return average
+    avg = sum(all_grades) / len(all_grades)
+    return avg
+
+
 
 def Lowest(grades):
     grade_list=[]
     grade_list.append(grades)
-    low=min(grade_list)
+    low = min(grade_list)
     return low
 
 def Highest(grades):

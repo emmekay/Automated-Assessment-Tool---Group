@@ -30,7 +30,8 @@
         <td>21/04/2021</td> <!--Fetched data comes here-->
         <td>67</td> <!--Fetched data comes here-->
         <td>1</td> <!--Fetched data comes here-->
-        <td><a href="./assessment_statistics/1">View</a></td> <!--Change link to correspond with fetched data-->
+        <!--<td><a href="./assessment_statistics/1">View</a></td>Change link to correspond with fetched data-->
+        <td><a href="{{ url_for('assessment_statistics', user_id=user.id, ) }}"><span>View</span></a></td>
         <!-- the 1 is the assessment id you want to look at. -->
       </tr>
       <tr>
