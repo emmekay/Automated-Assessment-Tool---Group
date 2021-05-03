@@ -95,10 +95,10 @@ class question(db.Model):
     correct_feedback = db.Column(db.Text(), nullable = False)
     incorrect_feedback = db.Column(db.Text(), nullable = False)
 
-class survey(db.Model):
+class surveyinput(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    assessment_id = db.Column(db.Integer, db.ForeignKey('assessment_details.id'))
+    #user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    #assessment_id = db.Column(db.Integer, db.ForeignKey('assessment_details.id'))
     question_1 = db.Column(db.Integer, nullable = False)
     question_2 = db.Column(db.Integer, nullable = False)
     question_3 = db.Column(db.Integer, nullable = False)
