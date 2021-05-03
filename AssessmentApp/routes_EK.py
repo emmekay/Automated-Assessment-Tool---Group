@@ -53,7 +53,8 @@ def survey(mod_id, asse_id):
 
 @app.route("/staffaccount")  # EK
 def staffaccount():
-    return render_template('staffaccount.html', title='My Account')
+    Modules = modules.query.all()
+    return render_template('staffaccount.html', title='My Account', Modules = Modules )
 
 
 @app.route("/studentaccount")  # EK

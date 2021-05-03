@@ -11,10 +11,20 @@
     <div class="">
 
         <h2>Your Teaching Modules</h2> <!-- Add link to Module details page with each module title page here-->
-        <p>CMT 330 Software Engineering</p>
+        {% for module in Modules %}
+            {% if current_user.has_enrolled(module) %}
+            <div class="module-title">
+                <h1>{{ module.module_name }}</h1>
+        </div>
+        <div class="view-assess">
+            <a href="{{ url_for('view_assessments', module_id=module.id) }}"><span>View Assessments</span></a>
+        </div>
+        {% endif %}
+        {% endfor %}
+        <!--<p>CMT 330 Software Engineering</p>
         <p>CMT 331 Software Development</p>
         <p>CMT 119 Computing</p>
-        <p>SPN 121 Spanish </p>
+        <p>SPN 121 Spanish </p>-->
 
         <h2>Current Class Marks</h2> <!-- Add link to Module details page with each module title page here-->
         <p>CMT 330 Software Engineering</p>
