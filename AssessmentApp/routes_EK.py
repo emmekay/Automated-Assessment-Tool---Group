@@ -1,10 +1,16 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import login_user, logout_user, login_required, current_user
+from datetime import datetime
 from flask_wtf import FlaskForm
-#from datetime import datetime 
+#from datetime import datetime
+
+
+
+
 
 from AssessmentApp import app, db
-from AssessmentApp.models import surveyinput
+from AssessmentApp.models import *
 from AssessmentApp.forms import *
 
 
@@ -14,10 +20,15 @@ from AssessmentApp.forms import *
  #   return render_template('survey.html', title='Assessment Completed')
 
 
-@app.route("/survey", methods=['GET', 'POST'])
-def survey():
+@app.route("/survey/<int:mod_id>/<int:asse_id>", methods=['GET', 'POST'])
+def survey(mod_id, asse_id):
     #form = Survey()
     #if form.validate_on_submit():
+    print(mod_id)
+    print(asse_id)
+    print(current_user.id)
+    
+
     if request.method == "POST":
         question_1 = request.form['question_1']
         question_2 = request.form['question_2']
@@ -25,7 +36,7 @@ def survey():
         question_4 = request.form['question_4']
         question_5 = request.form['question_5']
         question_6 = request.form['question_6']
-        
+
         survey1 = surveyinput(question_1=question_1, question_2=question_2, question_3=question_3,
                          question_4=question_4, question_5=question_5, question_6=question_6)
 
@@ -36,7 +47,8 @@ def survey():
         #flash('Survey Submitted')
         return redirect(url_for('surveysubmit'))
     #surveys = Survey.query.filter(Survey)
-    return render_template('survey.html', title='Survey')#, form=form)
+    # return str(mod_id) + str(asse_id)
+    return render_template('survey.html', title='Survey', mod_id = mod_id, asse_id = asse_id)#, form=form)
 #user_id=form.user_id.data, assessment_id=form.assessment_id.data,
 
 @app.route("/staffaccount")  # EK

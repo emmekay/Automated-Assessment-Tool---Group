@@ -15,7 +15,7 @@
     <h2>Submission Successful</h2> <br>
     <p>You have successfully completed your  “My Account” <!-- Add link to "My Account" page here--> information page.</p>
     <br><br><br>
-    
+
     <h2>Assessment Details:  </h2>
     <h2>Title of Course: <!--Insert link for course title here -->Assessment 1</h2>
     <h2>Course ID: <!-- Insert link for Course ID here -->CMT 330 Software Engineering </h2>
@@ -26,7 +26,7 @@
     <h4>Please complete this satisfaction survey to describe your experience completing this assessment</h4>
 
     <!-- Insert button for SKIP SURVEY & Return to home -->
-    
+
 
 </div>
 
@@ -34,10 +34,10 @@
 <div class="">
 
     <div class="">
-
+        
         <h2 id="title">Assessment Feedback</h2> <br>
 
-        <form class="surveyform" action="{{url_for('survey')}}" method="post">
+        <form class="surveyform" action="{{url_for('survey',  mod_id=mod_id, asse_id = asse_id)}}" method="post">
 
             <table>
 
