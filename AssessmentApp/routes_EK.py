@@ -63,7 +63,8 @@ def studentaccount():
 
 @app.route("/surveyresults")  # EK
 def surveyresults():
-    return render_template('surveyresults.html', title='Feedback Summary')
+    Q1Results = surveyinput.query.all()
+    return render_template('surveyresults.html', Q1Results = Q1Results, title='Feedback Summary')
 
 
 @app.route("/surveysubmit")  # EK
