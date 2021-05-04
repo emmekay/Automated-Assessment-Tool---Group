@@ -48,6 +48,11 @@ header{
   /* padding-left: 1%; */
   /* margin-left: 2%; */
 }
+.title h3 {
+  font-size: 14px;
+  /* padding-left: 1%; */
+  /* margin-left: 2%; */
+}
 
 /* OUTER CONTAINER HOLDS SIDEBAR AND MAIN */
 .outerContainer {

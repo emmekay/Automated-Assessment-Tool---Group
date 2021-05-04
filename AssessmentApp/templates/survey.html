@@ -2,7 +2,7 @@
 
 {% block  head %}
 
-<title>Completion Successful</title>
+<title>Satisfaction Feedback Request</title>
 
 <link rel="stylesheet" href="{{ url_for('static', filename='style/mainStyle.css') }}">
 {% endblock %}
@@ -10,22 +10,16 @@
 {% block body %}
 
 <div class="">
+    <div style="border:1px dotted red;padding:2%;">
+        <h2>Please complete this satisfaction survey to describe your experience completing this assessment.</h2><br>
+        <h3>Name : {{current_user.first_name}} {{current_user.last_name}}</h3>
+        <h3>Email : {{current_user.email}}</h3>
+        <h3>Module : {{mod_id}}</h3>
+        <h3>Assessment : {{asse_id}}</h3>
+    </div>
 
 
-    <h2>Submission Successful</h2> <br>
-    <p>You have successfully completed your  “My Account” <!-- Add link to "My Account" page here--> information page.</p>
-    <br><br><br>
-
-    <h2>Assessment Details:  </h2>
-    <h2>Title of Course: <!--Insert link for course title here -->Assessment 1</h2>
-    <h2>Course ID: <!-- Insert link for Course ID here -->CMT 330 Software Engineering </h2>
-    <h2>Title of Assessment: <!-- Insert link for Assessment title here -->Business Case</h2>
-    <h2>Date/Time of Submission: <!-- Insert date/time here --> December 1 12:30pm </h2>
-    <h2>Attempt: <!-- Insert link for attempt number here--> 2</h2>
-
-    <h4>Please complete this satisfaction survey to describe your experience completing this assessment</h4>
-
-    <!-- Insert button for SKIP SURVEY & Return to home -->
+    <button><a href='/staffaccount'>Opt out of survey and return to My Account</a></button>
 
 
 </div>
@@ -35,108 +29,93 @@
 
     <div class="">
         
-        <h2 id="title">Assessment Feedback</h2> <br>
+        <h2 id="title">Assessment Feedback</h2> 
 
         <form class="surveyform" action="{{url_for('survey',  mod_id=mod_id, asse_id = asse_id)}}" method="post">
 
             <table>
-
+                <td><strong>Questions about using this Automated Assessment Tool</strong></td>
                 <tr>
-                    <td><label for="question_1">On a scale of 1-5, how did you like the assessment?</label></td>
+                    <td><label for="question_1">Rate the ease of using this automated
+                    assessment tool to complete your assessment.</label></td>
                     <td>
 
                         <select class="textInput" name="question_1" id="">
-                            <option value="1">1- Strongly Disliked</option>
-                            <option value="2">2- Disliked</option>
-                            <option value="3">3- Neutral</option>
-                            <option value="4">4- Liked</option>
-                            <option value="5">5- Strongly Liked</option>
+                            <option value="0"> </option>
+                            <option value="1">Extremely Difficult</option>
+                            <option value="2">Moderately Difficult</option>
+                            <option value="3">Neither Easy Nor Difficult</option>
+                            <option value="4">Moderately Easy</option>
+                            <option value="5">Extremely Easy</option>
                         </select>
 
                     </td>
                 </tr>
 
                 <tr>
-                    <td><label for="question_2">On a scale of 1-5, how did you like the assessment?</label></td>
+                    <td><label for="question_2">Did you experience any technical issues during this assessment related to the assessment itself?</label></td>
                     <td>
-
                         <select class="textInput" name="question_2" id="">
-                            <option value="1">Strongly Disliked</option>
-                            <option value="2">Disliked</option>
-                            <option value="3">Neutral</option>
-                            <option value="4">Liked</option>
-                            <option value="5">Strongly Liked</option>
+                            <option value="0"> </option>
+                            <option value="1">Several Issues</option>
+                            <option value="2">One Technical Issue</option>
+                            <option value="3">N/A</option>
+                            <option value="4">N/A</option>
+                            <option value="5">No Issues</option>
                         </select>
-
                     </td>
                 </tr>
-
+                <td><strong>Questions About Assessment Content</strong></td>
                 <tr>
-                    <td><label for="question_3">On a scale of 1-5, how did you like the assessment?</label></td>
+                    <td><label for="question_3">How relevant was the assessment to the coursework you have completed within your course?</label></td>
                     <td>
-
                         <select class="textInput" name="question_3" id="">
-                            <option value="1">Strongly Disliked</option>
-                            <option value="2">Disliked</option>
-                            <option value="3">Neutral</option>
-                            <option value="4">Liked</option>
-                            <option value="5">Strongly Liked</option>
+                            <option value="0"> </option>
+                            <option value="1">Extremely Irrelevant</option>
+                            <option value="2">Moderately Irrelevant</option>
+                            <option value="3">Neither Relevant nor Irrelevant</option>
+                            <option value="4">Moderately Relevant</option>
+                            <option value="5">Extremely Relevant</option>
                         </select>
-
                     </td>
                 </tr>
-
                 <tr>
-                    <td><label for="question_4">On a scale of 1-5, how did you like the assessment?</label></td>
+                    <td><label for="question_4">The assessment questions worded so they were easy to understand what the question was asking.</label></td>
                     <td>
-
                         <select class="textInput" name="question_4" id="">
-                            <option value="1">Strongly Disliked</option>
-                            <option value="2">Disliked</option>
-                            <option value="3">Neutral</option>
-                            <option value="4">Liked</option>
-                            <option value="5">Strongly Liked</option>
+                            <option value="0">   </option>
+                            <option value="1">Strongly Disagree</option>
+                            <option value="2">Slightly Disagree</option>
+                            <option value="3">Neither Agree nor Disagree</option>
+                            <option value="4">Slightly Agree</option>
+                            <option value="5">Strongly Agree</option>
                         </select>
-
                     </td>
                 </tr>
-
+                <td><strong>Questions about Module</strong></td>
                 <tr>
-                    <td><label for="question_5">On a scale of 1-5, how did you like the assessment?</label></td>
+                    <td><label for="question_5">How relevant is this particular module in reaching the learning outcomes set by your degree program?</label></td>
                     <td>
-
                         <select class="textInput" name="question_5" id="">
-                            <option value="1">Strongly Disliked</option>
-                            <option value="2">Disliked</option>
-                            <option value="3">Neutral</option>
-                            <option value="4">Liked</option>
-                            <option value="5">Strongly Liked</option>
+                            <option value="0">      </option>
+                            <option value="1">Extremely Irrelevant</option>
+                            <option value="2">Slightly Irrelevant</option>
+                            <option value="3">Neither Relevant nor Irrelevant</option>
+                            <option value="4">Slightly Relevant</option>
+                            <option value="5">Extremely Relevant</option>
                         </select>
-
                     </td>
                 </tr>
-
-
                 <tr>
-                    <td><label for="question_6">Anything else write here...</label></td>
+                    <td><label for="question_6">I have felt supported by the teaching staff while completing this module.</label></td>
                     <td><input class="textInput" type="text" name="question_6" value=""></td>
                 </tr>
-
                 <tr>
                     <td></td>
                     <td> <input id="saveButton" type="submit" name="" value="Submit Survey"></td>
                 </tr>
-
             </table>
-
-
-
         </form>
-
-
-
-
     </div>
-
     </body>
     {% endblock %}
