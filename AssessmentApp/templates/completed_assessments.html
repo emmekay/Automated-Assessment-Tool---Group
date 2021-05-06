@@ -2,20 +2,21 @@
 
 {% block head %}
 
-  <title>Completed Assessments</title>
-  <link rel="stylesheet" href="../static/style/assessmentStatsStyle.css">
+<title>Completed Assessments</title>
+<link rel="stylesheet" href="../static/style/assessmentStatsStyle.css">
 
 {% endblock %}
 
 {% block body %}
 
+<p>Current User ID: {{current_user.id}}</p>
+
 <!--Section for the tables with assessment information-->
 <div class="content-tables">
-
   <table class="completed-assessments-table">
-
     <thead>
       <tr>
+        <th scope="col">Student Number</th>
         <th scope="col">Completed Assessment(s)</th>
         <th scope="col">Date Completed</th>
         <th scope="col">Mark</th>
@@ -25,20 +26,23 @@
     </thead>
 
     <tbody>
-      <p>{{current_user.id}}</p>
+      {% for a in Assessments %}
       <tr>
-        <td></td> <!--Fetched module name comes here-->
-        <td></td> <!--Fetched data comes here-->
-        <td></td> <!--Fetched data comes here-->
-        <td></td> <!--Fetched data comes here-->
+        <td>{{a.assessment_results.user_id}}</td>
+        <td>{{a.assessment_details.assessment_name}}</td>
+        <td>{{a.assessment_results.date_completed}}</td>
+        <td>{{a.assessment_results.grade}}</td>
+        <td>{{a.assessment_results.attempt_number}}</td>
         <td><a href="">View</a></td>
         <!-- the 1 is the assessment id you want to look at. -->
       </tr>
+      {% endfor %}
     </tbody>
 
     <tfoot>
       <tr>
-        <td colspan="4">Have an issue with your marks? <a href="">Report here</a></td> <!--Add link to Report Issue page-->
+        <td colspan="4">Have an issue with your marks? <a href="">Report here</a></td>
+        <!--Add link to Report Issue page-->
       </tr>
     </tfoot>
 
