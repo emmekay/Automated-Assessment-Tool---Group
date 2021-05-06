@@ -71,11 +71,11 @@ def Ass(id):
 
 
         #IF FORMATIVE
-        if not ass.assessment_type:
+        if ass.assessment_type == 0:
             flash(str(correct) + "/" + str(totalPossibleMarks) + " Marks")
         else:
             flash("This Assessment is Sumative, no instant results avialible. ")
-            
+
         att = assessment_results.query.filter_by(user_id = current_user.id, assessment_id = id).all()
         res = assessment_results(user_id = current_user.id, assessment_id = id, attempt_number = len(att)+1, grade = round((correct/totalPossibleMarks)*100), date_completed = datetime.now())
         db.session.add(res)
