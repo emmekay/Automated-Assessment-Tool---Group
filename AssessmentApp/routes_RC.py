@@ -42,8 +42,13 @@ def Ass(id):
     assQuestions = [ question.query.filter_by(id=q.question_id).first() for q in questionIds]
     # current_user.id
     prev = assessment_results.query.filter_by(assessment_id=id, user_id = current_user.id).all()
-    if (len(prev) >= ass.allowed_attemps):
-        flash("You have exceeded the toal numebr of attempts" )
+
+    inAttemptRange = ass.allowed_attemps <= len(prev)
+    # inAttemptRange = False
+
+    # print(inAttemptRange)
+    # if (len(prev) >= ass.allowed_attemps):
+    #     flash("You have exceeded the toal numebr of attempts" )
     # TEMP
     outDateRange = [0,0]
     if ass.start_date < datetime.utcnow():
@@ -85,7 +90,7 @@ def Ass(id):
 
 
 
-    return render_template('UndertakeAss.html',  assQuestions =assQuestions, ass = ass, id = id, outDateRange = outDateRange)
+    return render_template('UndertakeAss.html',  assQuestions =assQuestions, ass = ass, id = id, outDateRange = outDateRange, inAttemptRange = inAttemptRange)
 
 
 
