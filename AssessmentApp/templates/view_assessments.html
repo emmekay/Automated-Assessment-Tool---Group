@@ -18,9 +18,20 @@
             <a href="{{ url_for('edit_assessment', assess_id = ass.id) }}">Edit</a>
             <a href="{{ url_for('delete_assessment', assess_id = ass.id) }}">Delete</a>
             <a href="{{ url_for('createQuestion', assess_id = ass.id) }}">Create New Question</a>
-
         {% else %}
-            <a href="{{ url_for('Ass', id = ass.id) }}">Take</a>
+            {% set attempts = [0] %}
+            {% for res in results %}
+                {% if res.assessment_id == ass.id %}
+                    {% set attempts = attempts.append(res.attempt_number) %}
+                {% endif %}
+            {% endfor %}
+            {% if ass.allowed_attemps > (attempts|max) and (attempts|max) == 0 %}
+                <a href="{{ url_for('Ass', id = ass.id) }}">Take</a>
+            {% elif ass.allowed_attemps > (attempts|max) and (attempts|max) >= 1 %}
+                <a href="{{ url_for('Ass', id = ass.id) }}">Retake</a>
+            {% else %}
+                <p>Sorry, you have run out of attempts.</p>
+            {% endif %}
         {% endif %}
     {% endfor %}
 {% endblock %}
