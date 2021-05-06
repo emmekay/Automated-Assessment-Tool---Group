@@ -3,13 +3,11 @@
 {% block head %}
 
 <title>Completed Assessments</title>
-<link rel="stylesheet" href="../static/style/assessmentStatsStyle.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='style/assessmentStatsStyle.css') }}">
 
 {% endblock %}
 
 {% block body %}
-
-<p>Current User ID: {{current_user.id}}</p>
 
 <!--Section for the tables with assessment information-->
 <div class="content-tables">
@@ -26,19 +24,18 @@
     </thead>
 
     <tbody>
-      <!-- for -->
-      {%for r in res%}
+
+      {% for r in result_ids %}
       <tr>
-        <td>{{current_user.id}}</td>
-        <td>{{asse_details[r.assessment_id].assessment_name}}</td>
-        <td>a.assessment_results.date_completed</td>
-        <td>{{r.gade}}</td>
-        <td>{{r.attempt_number}}</td>
-        <td><a href="">View</a></td>
-        <!-- the 1 is the assessment id you want to look at. -->
+        <td>{{ current_user.id }}</td> <!-- Student Number -->
+        <td>{{ assess_details[r.assessment_id].assessment_name }}</td> <!-- Completed Assessment(s) -->
+        <td>{{ r.date_completed }}</td> <!-- Date Completed -->
+        <td>{{ r.grade }}</td> <!-- Mark -->
+        <td>{{ r.attempt_number }}</td> <!-- Attempt Number -->
+        <td><a href="">View</a></td> <!-- Action -->
       </tr>
-      {%endfor%}
-      <!-- end for -->
+      {% endfor %}
+
     </tbody>
 
     <tfoot>

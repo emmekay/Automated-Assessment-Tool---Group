@@ -3,7 +3,7 @@
 {% block head %}
 
 <title>Assessment Statistics</title>
-<link rel="stylesheet" href="../static/style/assessmentStatsStyle.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='style/assessmentStatsStyle.css') }}">
 
 {% endblock %}
 
@@ -18,57 +18,49 @@
 
     <thead>
       <tr>
-        <th scope="col" colspan="2">Module Name:</th>
+        <!-- Module name of the current assessment -->
+        <th scope="col" colspan="2">Module Name: {{ assess_details.module_name }}</th>
       </tr>
       <tr>
-        <th scope="col" colspan="2">{{asse.assessment_name}} Statistics</th>
+        <!-- Assessment name of the current assessment -->
+        <th scope="col" colspan="2">{{assess.assessment_name}} Statistics</th>
       </tr>
       <tr>
-        <th scope="col" colspan="2">Attempt Number: </th>
+        <!-- Attempt number of the current assessment -->
+        <th scope="col" colspan="2">Attempt Number: {{ user_results.attempt_number }}</th>
       </tr>
     </thead>
 
     <tbody>
 
       <tr>
+        <!--Assuming max mark for all assessments is 100%-->
         <th scope="row">Possible Grade</th>
         <td>100</td>
-        <!--Assuming max mark for all assessments is 100%-->
       </tr>
 
       <tr>
-        <!-- the grade the student/user got -->
+        <!-- the grade the student got -->
         <th scope="row">Actual Grade</th>
-        <td>{{res[0].grade}}</td>
-        <!--Fetched data comes here-->
+        <td>{{ user_results.grade }}</td>
       </tr>
 
       <tr>
         <!-- the average grade across all of the students results -->
         <th scope="row">Class Average</th>
-        <!--
-          pass "Results" to "Average", and set the return of average to "ave"
-          Results = 1,2,4,5,6,7
-          display ave
-          -->
-        <td>{{ avg1 }}</td>
-        <!--Calculate your average in the Python code and pass that value into your template.-->
+        <td>{{ class_average }}</td>
       </tr>
 
       <tr>
         <!-- the lowest grade across all of the students results -->
         <th scope="row">Lowest Grade</th>
-        <!-- Passing Variable resuls to Lowest & setting the return value to the variable low -->
-        <td></td>
-        <!--Calculate lowest in the Python code-->
+        <td>{{ lowest_grade }}</td>
       </tr>
 
       <tr>
         <!-- the highest grade across all of the students results -->
         <th scope="row">Highest Grade</th>
-        <!-- Passing Variable resuls to highest & setting the return value to the variable high -->
-        <td></td>
-        <!--Calculate Highest in the Python code-->
+        <td>{{ highest_grade }}</td>
       </tr>
 
     </tbody>

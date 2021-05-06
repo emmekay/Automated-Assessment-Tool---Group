@@ -8,35 +8,108 @@ from AssessmentApp import app, db
 from AssessmentApp.models import *
 
 
-@app.route("/my_assessments")  # NK
-def my_assessments():
-    return render_template("my_assessments.html")
+@app.route("/my_assessments/<int:user_id>")  # NK
+def my_assessments(user_id):
+
+    # Pulling all assessment results for the current user, notice we use filter_by() instead of .filter()
+    result_ids = assessment_results.query.filter_by(user_id=current_user.id).all()
+    num_of_assessments = len(result_ids)
+
+    return render_template(
+        "my_assessments.html",
+        result_ids=result_ids,
+        num_of_assessments=num_of_assessments,
+    )
 
 
-@app.route("/completed_assessments/<int:module_id>")  # NK
-def completed_assessments(module_id):
-    # print(current_user.id)
-    res = assessment_results.query.filter_by(user_id=current_user.id).all()
-    # print(res[0].grade)
+@app.route("/completed_assessments/<int:user_id>")  # NK
+def completed_assessments(user_id):
 
-    asse_id = []
-    asse_details = {}
+    # Pulling all assessment results for the current user, notice we use filter_by() instead of .filter()
+    result_ids = assessment_results.query.filter_by(user_id=current_user.id).all()
 
-    for r in res:
-        if r.assessment_id not in asse_id:
-            asse_id.append(r.assessment_id)
+    # Declaring list containing assessment IDs
+    assess_id = []
+    # Declaring dictionary containing assessment details for assessment details & assessment results link
+    assess_details = {}
 
-    for a_id in asse_id:
+    # Adding all assessment ids to list
+    for r in result_ids:
+        if r.assessment_id not in assess_id:
+            assess_id.append(r.assessment_id)
+
+    # Linking assessment details to assessment results using assess_id
+    for a_id in assess_id:
+        #
         temp = assessment_details.query.filter_by(id=a_id).first()
-        asse_details[a_id] = temp
+        assess_details[a_id] = temp
 
-    # print(asse_details[res[0].assessment_id].assessment_name)
+    return render_template(
+        "completed_assessments.html",
+        result_ids=result_ids,
+        assess_details=assess_details,
+    )
 
 
+@app.route("/assessment_statistics/<int:assess_id>/<int:id_assessment>")  # NK
+def assessment_statistics(assess_id, id_assessment):
 
+    # Pulling individual student's results for this assessment based off user ID & assessment result ID
+    user_results = assessment_results.query.filter_by(
+        user_id=current_user.id, assessment_id=assess_id, id=id_assessment
+    ).first()
+
+    # Pulling all of class results for this assessment from db
+    class_results = assessment_results.query.filter_by(assessment_id=assess_id).all()
+
+    #
+    module_details = modules.query.filter_by(id=assessment_details.module_id).all()
+
+    #
+    ass_id = []
+    #
+    assess_details = {}
+
+    #
+    for m in module_details:
+        if m.module_id not in ass_id:
+            ass_id.append(m.module_id)
+
+    # Linking assessment details to assessment results using assess_id
+    for m_id in ass_id:
+        #
+        temp = assessment_details.query.filter_by(id=m_id).first()
+        assess_details[m_id] = temp
+
+    # Calculating class average using all grades from the assessment limited to 1 decimal place
+    all_grades = []
+    for result in class_results:
+        all_grades.append(result.grade)
+    class_average = round((sum(all_grades) / len(all_grades)), 1)
+
+    # Getting lowest grade
+    lowest_grade = min(all_grades)
+
+    # Getting highest grade
+    highest_grade = max(all_grades)
+
+    # Assesment details based on assessment id
+    assess = assessment_details.query.filter_by(id=assess_id).first()
+    print(assess_details)
+    return render_template(
+        "assessment_statistics.html",
+        assess=assess,
+        module_details=module_details,
+        assess_details=assess_details,
+        class_average=class_average,
+        user_results=user_results,
+        lowest_grade=lowest_grade,
+        highest_grade=highest_grade,
+    )
+
+    # ----- OLD COMPLETED ASSESSMENT CODE -----
     # for(r in res):
     #     print(r.grade)
-
 
     # print(res[0].grade)
     # assessments = (
@@ -48,30 +121,8 @@ def completed_assessments(module_id):
     #         and modules_enrolment.module_id == assessment_details.module_id
     #     )
     # ).all()
-    return render_template("completed_assessments.html", res = res, asse_details = asse_details)
 
-
-@app.route("/assessment_statistics/<int:assess_id>")  # NK
-def assessment_statistics(assess_id):
-
-    # All of students results for this assesment
-    res = assessment_results.query.filter_by(user_id=current_user.id, assessment_id =assess_id).all()
-
-    # All of class results for this assesmnt
-    res_all = assessment_results.query.filter_by(assessment_id =assess_id).all()
-
-    # calc avg
-    temp = []
-    for r in res_all:
-        temp.append(r.grade)
-
-
-    avg1 = sum(temp) / len(temp)
-
-    # Assesment details
-    asse = assessment_details.query.filter_by(id=assess_id).first()
-
-
+    # ------OLD CODE FOR ASSESSMENT STATISTICS ------
     # module = modules.query.filter(
     #     modules.module_id == assess_id
     # ).first()  # Need to link tables here
@@ -91,46 +142,3 @@ def assessment_statistics(assess_id):
     #     Assname=assname,
     #     Attempt=attempt,
     # )
-    return render_template(
-        "assessment_statistics.html",
-        asse= asse,
-        avg1 = avg1,
-        res = res
-    )
-    # return str(avg)
-
-
-def Average(results):
-    all_grades = assessment_results.query.filter(
-        assessment_results.assessment_id == assess_id
-    ).all()
-    average = statistics.mean(all_grades)
-    return render_template(average=average)
-
-
-"""
-def Average(results):
-    all_grades = []
-    for ass in results:
-        all_grades.appened(ass.grade)
-    avg = sum(all_grades) / len(all_grades)
-    return avg
-
-def Lowest(grades):
-    grade_list=[]
-    grade_list.append(grades)
-    low = min(grade_list)
-    return low
-
-def Highest(grades):
-    grade_list=[]
-    grade_list.append(grades)
-    high=max(grade_list)
-    return high
-
-@app.route("/assessment_statistics")
-def assessment_stats():
-  #enrolled = modules_enrolment.query.all()
-  Results = assessment_results.query.all()
-  return render_template('assessment_statistics.html', Results=Results)
-"""

@@ -3,7 +3,7 @@
 {% block head %}
 
 <title>My Assessments</title>
-<link rel="stylesheet" href="../static/style/assessmentStatsStyle.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='style/assessmentStatsStyle.css') }}">
 
 {% endblock %}
 
@@ -17,21 +17,23 @@
 
       <thead>
         <tr class="active-row">
-          <th scope="col">Student Number</th>
+          <th scope="col">User ID</th>
           <th scope="col">Number of Completed Assessments</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
 
       <tbody>
+
         <tr>
-          <td>1234567</td>
-          <!--Fetched data comes here-->
-          <td>3</td>
-          <!--Fetched data comes here-->
-          <td><a href="./completed_assessments/1/1">View Completed Assessment Statistics</a></td>
+          <!--User ID-->
+          <td>{{ current_user.id }}</td>
+          <!-- Number of completed assessments -->
+          <td>{{ num_of_assessments }}</td>
+          <td><a href="">View All Completed Assessments</a></td>
           <!--Change link to correspond with fetched data-->
         </tr>
+
       </tbody>
 
     </table>
@@ -67,19 +69,7 @@
           <!--Fetched data comes here-->
           <td>70</td>
           <!--Fetched data comes here-->
-          <td><a href="./assessment_statistics">View</a></td>
-          <!--Change link to correspond with fetched data-->
-        </tr>
-        <tr>
-          <td>Assessment 2</td>
-          <!--Fetched data comes here-->
-          <td>23/03/2021</td>
-          <!--Fetched data comes here-->
-          <td>23/03/2021</td>
-          <!--Fetched data comes here-->
-          <td>70</td>
-          <!--Fetched data comes here-->
-          <td><a href="./assessment_statistics">View</a></td>
+          <td><a href="">View</a></td>
           <!--Change link to correspond with fetched data-->
         </tr>
         <tr>
@@ -94,19 +84,7 @@
           <!--Fetched data comes here-->
           <td></td>
           <!--Fetched data comes here-->
-          <td><a href="./assessment_statistics">View</a></td>
-          <!--Change link to take assessment page-->
-        </tr>
-        <tr>
-          <td>Assessment 4</td>
-          <!--Fetched data comes here-->
-          <td>23/03/2022</td>
-          <!--Fetched data comes here-->
-          <td>23/03/2022</td>
-          <!--Fetched data comes here-->
-          <td></td>
-          <!--Fetched data comes here-->
-          <td><a href="./assessment_statistics">View</a></td>
+          <td><a href="">View</a></td>
           <!--Change link to take assessment page-->
         </tr>
       </tbody>
