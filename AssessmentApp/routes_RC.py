@@ -81,10 +81,11 @@ def Ass(id):
         else:
             flash("This Assessment is Sumative, no instant results avialible. ")
 
-        att = assessment_results.query.filter_by(user_id = current_user.id, assessment_id = id).all()
-        res = assessment_results(user_id = current_user.id, assessment_id = id, attempt_number = len(att)+1, grade = round((correct/totalPossibleMarks)*100), date_completed = datetime.now())
-        db.session.add(res)
-        db.session.commit()
+        if (len(assQuestions) > 0 and not current_user.is_staff):
+            att = assessment_results.query.filter_by(user_id = current_user.id, assessment_id = id).all()
+            res = assessment_results(user_id = current_user.id, assessment_id = id, attempt_number = len(att)+1, grade = round((correct/totalPossibleMarks)*100), date_completed = datetime.now())
+            db.session.add(res)
+            db.session.commit()
 
 
         return render_template('Confi.html', ass = ass, assQuestions =assQuestions, res1 =res1)
@@ -92,7 +93,7 @@ def Ass(id):
 
 
 
-    return render_template('UndertakeAss.html',  assQuestions =assQuestions, ass = ass, id = id, outDateRange = outDateRange, inAttemptRange = inAttemptRange)
+    return render_template('UndertakeAss.html',  assQuestions =assQuestions, ass = ass, id = id, outDateRange = outDateRange, inAttemptRange = inAttemptRange, totalQ = len(assQuestions))
 
 
 
