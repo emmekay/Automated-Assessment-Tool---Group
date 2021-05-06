@@ -50,11 +50,11 @@ def Ass(id):
     # if (len(prev) >= ass.allowed_attemps):
     #     flash("You have exceeded the toal numebr of attempts" )
     # TEMP
-    outDateRange = [0,0]
-    if ass.start_date < datetime.utcnow():
-        outDateRange[0] = 1
-    if ass.end_date > datetime.utcnow():
-        outDateRange[1] = 1
+    outDateRange = [False,False]
+    if ass.start_date <= datetime.utcnow():
+        outDateRange[0] = True
+    if ass.end_date >= datetime.utcnow():
+        outDateRange[1] = True
 
 
     # Temp END

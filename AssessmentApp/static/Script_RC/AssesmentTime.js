@@ -1,4 +1,4 @@
-function countdown(H, M){
+function countdown(H, M, Staff){
 
 
   var dateObject = new Date();
@@ -10,7 +10,7 @@ function countdown(H, M){
   // dateObject.setHours(0);
   // dateObject.setMinutes(1);
   // dateObject.setSeconds(30);
-
+  // console.log();
 
 
 
@@ -25,41 +25,11 @@ function countdown(H, M){
     }
 
     // else {
-    //   // mainForm
+    //   if (!Staff){
     //   document.getElementById("mainForm").submit();
+  //      }
     // }
 
 
   }, 1000)
 }
-
-
-function test4(x, y){
-
-  var dateObject = new Date();
-  dateObject.setHours(x);
-  dateObject.setMinutes(y);
-  dateObject.setSeconds(0);
-
-
-
-
-
-  console.log(x);
-  console.log(y);
-  dateObject.setSeconds(dateObject.getSeconds() - 1);
-  console.log(dateObject.getHours() + ":" + dateObject.getMinutes() + ":" + dateObject.getSeconds()  );
-
-
-  // var dateObject = new Date(x);
-  // console.log(dateObject);
-
-}
-// var d = new Date()
-
-// countdown()
-// console.log("Hello World")
-
-// document.getElementById("testTimer").textContent = 100;
-
-// countdown()

@@ -37,7 +37,7 @@
     {% endif %}
 
 
-    {%if (outDateRange[0] or outDateRange[1])   %}
+    {%if (outDateRange[0] and outDateRange[1])   %}
 
 
     <form class="QuestionForm" id = "mainForm" action="/assessment/{{id}}" method="post">
@@ -93,7 +93,15 @@
       </form>
 
       {%else%}
-        <h1>ERROR- You do not have Acesss to this Assesment, Return to home</h1>
+
+        {%if not outDateRange[0]%}
+          <h1>Assessment Start Date not met</h1>
+        {%elif not outDateRange[1] %}
+          <h1>Assessment end date exceeded</h1>
+        {%else%}
+          <h1>You have exceeed the allowed number of attemps</h1>
+
+        {%endif%}
 
 
       {%endif%}
@@ -101,7 +109,7 @@
 </div>
 
 <script src="{{ url_for('static', filename="Script_RC/AssesmentTime.js") }}"></script>
-<script type="text/javascript">countdown({{ass.time_limit.strftime('%H')|tojson}}, {{ass.time_limit.strftime('%M')|tojson}})</script>
+<script type="text/javascript">countdown({{ass.time_limit.strftime('%H')|tojson}}, {{ass.time_limit.strftime('%M')|tojson}}, {{current_user.is_staff|tojson}})</script>
 
 
 {% endblock %}
