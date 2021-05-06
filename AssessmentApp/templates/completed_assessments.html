@@ -26,17 +26,19 @@
     </thead>
 
     <tbody>
-      {% for a in Assessments %}
+      <!-- for -->
+      {%for r in res%}
       <tr>
-        <td>{{a.assessment_results.user_id}}</td>
-        <td>{{a.assessment_details.assessment_name}}</td>
-        <td>{{a.assessment_results.date_completed}}</td>
-        <td>{{a.assessment_results.grade}}</td>
-        <td>{{a.assessment_results.attempt_number}}</td>
+        <td>{{current_user.id}}</td>
+        <td>{{asse_details[r.assessment_id].assessment_name}}</td>
+        <td>a.assessment_results.date_completed</td>
+        <td>{{r.gade}}</td>
+        <td>{{r.attempt_number}}</td>
         <td><a href="">View</a></td>
         <!-- the 1 is the assessment id you want to look at. -->
       </tr>
-      {% endfor %}
+      {%endfor%}
+      <!-- end for -->
     </tbody>
 
     <tfoot>

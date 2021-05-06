@@ -21,10 +21,10 @@
         <th scope="col" colspan="2">Module Name:</th>
       </tr>
       <tr>
-        <th scope="col" colspan="2">{{Assname.assessment_name}} Statistics</th>
+        <th scope="col" colspan="2">{{asse.assessment_name}} Statistics</th>
       </tr>
       <tr>
-        <th scope="col" colspan="2">Attempt Number: {{Attempt.attempt_number}}</th>
+        <th scope="col" colspan="2">Attempt Number: </th>
       </tr>
     </thead>
 
@@ -39,19 +39,19 @@
       <tr>
         <!-- the grade the student/user got -->
         <th scope="row">Actual Grade</th>
-        <td>{{Results[0].grade}}</td>
+        <td>{{res[0].grade}}</td>
         <!--Fetched data comes here-->
       </tr>
 
       <tr>
         <!-- the average grade across all of the students results -->
         <th scope="row">Class Average</th>
-        <!-- 
+        <!--
           pass "Results" to "Average", and set the return of average to "ave"
           Results = 1,2,4,5,6,7
-          display ave 
+          display ave
           -->
-        <td>{{ average }}</td>
+        <td>{{ avg1 }}</td>
         <!--Calculate your average in the Python code and pass that value into your template.-->
       </tr>
 
