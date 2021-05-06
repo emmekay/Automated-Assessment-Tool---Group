@@ -22,10 +22,12 @@ function countdown(H, M){
     dateObject.setSeconds(dateObject.getSeconds() - 1);
     if (dateObject.getHours() > 0 || dateObject.getMinutes() > 0 || dateObject.getSeconds() > 0 ){
       document.getElementById("testTimer").textContent =   dateObject.getHours() + ":" + dateObject.getMinutes() + ":" + dateObject.getSeconds();
-    } else {
-      // mainForm
-      document.getElementById("mainForm").submit();
     }
+
+    // else {
+    //   // mainForm
+    //   document.getElementById("mainForm").submit();
+    // }
 
 
   }, 1000)
