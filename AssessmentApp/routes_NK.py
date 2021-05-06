@@ -62,24 +62,28 @@ def assessment_statistics(assess_id, id_assessment):
     # Pulling all of class results for this assessment from db
     class_results = assessment_results.query.filter_by(assessment_id=assess_id).all()
 
-    #
-    module_details = modules.query.filter_by(id=assessment_details.module_id).all()
+
+
+    assess_details = assessment_details.query.filter_by(id=assess_id).first()
 
     #
-    ass_id = []
-    #
-    assess_details = {}
+    module_details = modules.query.filter_by(id=assess_details.module_id).first()
 
     #
-    for m in module_details:
-        if m.module_id not in ass_id:
-            ass_id.append(m.module_id)
-
-    # Linking assessment details to assessment results using assess_id
-    for m_id in ass_id:
-        #
-        temp = assessment_details.query.filter_by(id=m_id).first()
-        assess_details[m_id] = temp
+    # ass_id = []
+    # #
+    # assess_details = {}
+    #
+    # #
+    # for m in module_details:
+    #     if m.module_id not in ass_id:
+    #         ass_id.append(m.module_id)
+    #
+    # # Linking assessment details to assessment results using assess_id
+    # for m_id in ass_id:
+    #     #
+    #     temp = assessment_details.query.filter_by(id=m_id).first()
+    #     assess_details[m_id] = temp
 
     # Calculating class average using all grades from the assessment limited to 1 decimal place
     all_grades = []
@@ -98,7 +102,6 @@ def assessment_statistics(assess_id, id_assessment):
     print(assess_details)
     return render_template(
         "assessment_statistics.html",
-        assess=assess,
         module_details=module_details,
         assess_details=assess_details,
         class_average=class_average,
