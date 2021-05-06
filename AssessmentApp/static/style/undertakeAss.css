@@ -76,3 +76,62 @@
   margin: auto;
   max-width: 75vw;
 }
+
+
+
+#cQ_info_Form table{
+  border: 1px solid black;
+}
+
+#cQ_info_Form table td{
+  border: 1px solid black;
+}
+
+#cQ_QuesTable_Form table{
+  border: 1px solid black;
+}
+
+#cQ_QuesTable_Form table td{
+  border: 1px solid black;
+}
+
+#cQ_QuestionType_One table{
+  border: 1px solid black;
+}
+
+#cQ_QuestionType_One table td{
+  border: 1px solid black;
+}
+
+#cQ_QuestionType_Two table{
+  border: 1px solid black;
+}
+
+#cQ_QuestionType_Two table td{
+  border: 1px solid black;
+}
+
+#cQ_Create_Questions{
+  font-size: 200px;
+  font-weight: bold;
+}
+
+#cQ_Question_Type table{
+  border: 1px solid black;
+
+}
+
+#cQ_Question_Type table td{
+  border: 1px solid black;
+  padding: 15px;
+  border-spacing: 15px;
+  font-size: 50px;
+}
+
+#cQ_Add_Question{
+  margi: -10px;
+}
+
+.feedbackStyle {
+  margin-left: 5%;
+}
