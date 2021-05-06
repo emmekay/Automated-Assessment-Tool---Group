@@ -7,9 +7,9 @@ function countdown(H, M){
   dateObject.setSeconds(0);
 
 
-  dateObject.setHours(0);
-  dateObject.setMinutes(1);
-  dateObject.setSeconds(30);
+  // dateObject.setHours(0);
+  // dateObject.setMinutes(1);
+  // dateObject.setSeconds(30);
 
 
 
