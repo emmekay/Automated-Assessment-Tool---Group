@@ -97,7 +97,6 @@ def edit_assessment(assess_id):
   module = modules.query.filter(modules.id==assessment_details.module_id)
   mod = modules.query.filter(modules.id==assessment_details.module_id).first()
   if request.method == "POST":
-      #assess.module_id = module.id
       ass.assessment_type = bool(request.form['assType'])
       ass.assessment_name = request.form['assTitle']
       ass.time_limit = datetime.strptime(request.form['assTime'], '%Y-%m-%d %H:%M:%S')

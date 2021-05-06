@@ -12,7 +12,7 @@ def addAss(id):
         module_id = id # request.form['module']
         assessment_type = bool(request.form['assType'])
         assessment_name = request.form['assTitle']
-        time_limit = datetime.strptime(request.form['assTime'], '%Y-%m-%d %H:%M')
+        time_limit = datetime.strptime(request.form['assTime'], '%H:%M')
         start_date = datetime.strptime(request.form['assStart'] +" "+ request.form['assStartTime'], '%Y-%m-%d %H:%M')
         end_date = datetime.strptime(request.form['assEnd'] +" "+ request.form['assEndTime'], '%Y-%m-%d %H:%M')
         release = datetime.strptime(request.form['assRel'] +" "+ request.form['assRelTime'], '%Y-%m-%d %H:%M')
