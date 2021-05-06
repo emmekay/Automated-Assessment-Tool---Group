@@ -2,9 +2,7 @@
 
 {% block head %}
   <title>Add Assessment</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style/undertakeAss.css') }}">
-
-  <script src="{{url_for('static', filename='Script_RC\AssesmentTime.js')}}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/undertakeAss.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -15,18 +13,23 @@
     <div class="assInfoTable">
     <table >
       <tr>
-        <td>Start:  {{ass.start_date.strftime('%H:%M %b %d %Y')}}</td> <td>End:  {{ass.end_date.strftime('%H:%M %b %d %Y')}}</td> <td>Duration: {{ass.time_limit.strftime('%H:%M')}} </td>
+        <td>Start:  {{ass.start_date.strftime('%H:%M %b %d %Y')}}</td> <td>End:  {{ass.end_date.strftime('%H:%M %b %d %Y')}}</td> <td>Duration: <span id = "testTimer">00:00:00</span> </td>
         </tr>
     </table>
       </div>
 
     <div class="assInstruction">
 
+
+
     <h3>Assessment Instructions</h3>
     <p>{{ass.assessment_instructions}}</p>
     <!-- <br> -->
 
     </div>
+
+
+    <!-- <p id = "testTimer">1</p> -->
 
 
     {% if get_flashed_messages() %}
@@ -37,7 +40,7 @@
     {%if outDateRange[0] or outDateRange[1]  %}
 
 
-    <form class="QuestionForm" action="/assessment/{{id}}" method="post">
+    <form class="QuestionForm" id = "mainForm" action="/assessment/{{id}}" method="post">
 
 
 
@@ -53,7 +56,7 @@
             <div class="questionBoxes">
 
             {%if question.answer_1 %}
-              <input id ="{{question.id}}A" type="radio" name="Q{{question.id}}" value="1">
+              <input id ="{{question.id}}A" type="radio" name="Q{{question.id}}" value="1" checked="checked">
               <label for="{{question.id}}A">{{question.answer_1}} </label>
               <br>
               <input id ="{{question.id}}B" type="radio" name="Q{{question.id}}" value="2">
@@ -67,7 +70,7 @@
               <br>
             {%else%}
 
-            <input id ="{{question.id}}A" type="radio" name="Q{{question.id}}" value="True">
+            <input id ="{{question.id}}A" type="radio" name="Q{{question.id}}" value="True" checked="checked">
             <label for="{{question.id}}A">True </label>
             <br>
             <input id ="{{question.id}}B" type="radio" name="Q{{question.id}}" value="False">
@@ -95,6 +98,10 @@
       {%endif%}
 
 </div>
+
+<script src="{{ url_for('static', filename="Script_RC/AssesmentTime.js") }}"></script>
+<script type="text/javascript">countdown({{ass.time_limit.strftime('%H')|tojson}}, {{ass.time_limit.strftime('%M')|tojson}})</script>
+
 
 {% endblock %}
 
