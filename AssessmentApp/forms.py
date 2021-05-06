@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, Form, SelectField, BooleanField
 from wtforms.validators import DataRequired, Email, Length, EqualTo, ValidationError, InputRequired, Regexp
-from AssessmentApp.models import user
+from AssessmentApp.models import *
 
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(min=3, max=15)])
@@ -27,21 +27,6 @@ class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(),Email()])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Login')
-
-
-class Survey(FlaskForm):
-    question_1 = StringField('On a scale of 1-5, with 1 being very easy and 5 being very difficult, how easy would you rate this assessment?', validators=[
-        DataRequired(), Length(min=1, max=1)])
-    question_2 = StringField('On a scale of 1-5, with 1 being not at all relevant and 5 relevant to all material, how relevant would you rate this assessment to the teaching you have learned in this module?', validators=[
-        DataRequired(), Length(min=1, max=1)])
-    question_3 = StringField('On a scale of 1-5, with 1 being very easy and 5 being very difficult, how easy would you rate this assessment?', validators=[
-        DataRequired(), Length(min=1, max=1)])
-    question_4 = StringField('On a scale of 1-5, with 1 being very easy and 5 being very difficult, how easy would you rate this assessment?', validators=[
-        DataRequired(), Length(min=1, max=1)])
-    question_5 = StringField('On a scale of 1-5, with 1 being very easy and 5 being very difficult, how easy would you rate this assessment?', validators=[
-        DataRequired(), Length(min=1, max=1)])
-    question_6 = StringField('Any Additional Comments ', validators=[Length(min=0, max=2000)])
-    submit = SubmitField('Submit')
 
 
 """class CommentForm(FlaskForm):

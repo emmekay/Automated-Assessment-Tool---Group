@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+<!-- EK Page -->
+
+{% block  head %}
+
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style/mainStyle.css') }}">
+{% endblock %}
+{% block body %}
+<title>Completion Successful</title>
+<h2>Your survey has been submitted!</h2>
+<a href="{{ url_for('staffaccount') }}">
+    <li>Return to Your Account</li>
+</a>
+{% endblock %}

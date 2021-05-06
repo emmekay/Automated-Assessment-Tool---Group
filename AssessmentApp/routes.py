@@ -7,7 +7,8 @@ from AssessmentApp.forms import LoginForm, RegistrationForm
 from AssessmentApp.models import *
 from AssessmentApp.routes_RC import *
 from AssessmentApp.routes_EK import *
-from AssessmentApp.routes_QL import *
+from AssessmentApp.routes_NK import *
+#from AssessmentApp.routes_QL import *
 
 
 @app.route('/',methods=['GET','POST'])
@@ -19,7 +20,7 @@ def login():
     if User is not None and User.verify_password(form.password.data):
       login_user(User)
       flash('Login successful!')
-      return redirect(url_for('home'))
+      return redirect(url_for('staffaccount'))
     flash('Invalid email address or password.')
     return render_template('login.html',form=form)
 
@@ -28,7 +29,7 @@ def login():
 
 @app.route('/home',methods=['GET','POST'])
 def home():
-  return render_template('index.html')
+  return render_template('staffaccount.html')
 
 # @app.route('/addQ/<int:id>', methods = ["GET", "POST"])
 # def addQ(id):
@@ -122,18 +123,6 @@ def delete_assessment(assess_id):
   return redirect(url_for('view_assessments', module_id = mod.id))
 
 
-@app.route('/my_assessments')
-def my_assessments():
-    return render_template('my_assessments.html')
-
-@app.route('/completed_assessments')
-def completed_assessments():
-    return render_template('completed_assessments.html')
-
-@app.route('/assessment_statistics')
-def assessment_statistics():
-    return render_template('assessment_statistics.html')
-
 @app.route("/register", methods=['GET', 'POST'])
 def register():
   form = RegistrationForm()
@@ -144,6 +133,10 @@ def register():
     flash('Registration Succesful, Please login now.')
     return redirect(url_for('login'))
   return render_template('register.html', title='Register', form=form)
+
+@app.route('/createQuestion')
+def createQuestion():
+  return render_template('createQuestion.html')
 
 
  # return render_template('login.html',form=form)
