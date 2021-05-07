@@ -1,14 +1,6 @@
-SQLITE GENERAL INFO
+GENERAL INFO
 
 FOR GROUP MEMBER INFORMATION
-
-GUI INFERACE FOR SQL VIA 'DB BROSWER FOR SQLITE"
-FREE INSTALL ON PERSONAL PCS
-CAN GET ON UNI LAPTOPS VIA ZENworks. 
-
-SQLite require no installtion to work with python, python can acess it nativly. 
-
-To use with in this server interact VIA sql_alchemy 
 
 --ADDING TABLES---
 
@@ -23,3 +15,5 @@ CREATE INSTANCE OF MODEL WITH REQUIRED INFO EG:
 ADD TO DB AND COMMIT CHANGES
 > db.add(testToAdd)
 > db.commit() 
+
+References/Sources 
