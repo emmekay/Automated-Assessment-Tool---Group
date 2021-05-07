@@ -2,8 +2,8 @@
 
 {% block head %}
 
-  <title>Completed Assessments</title>
-  <link rel="stylesheet" href="../static/style/assessmentStatsStyle.css">
+<title>Completed Assessments</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style/assessmentStatsStyle.css') }}">
 
 {% endblock %}
 
@@ -11,11 +11,10 @@
 
 <!--Section for the tables with assessment information-->
 <div class="content-tables">
-
   <table class="completed-assessments-table">
-
     <thead>
       <tr>
+        <th scope="col">Student Number</th>
         <th scope="col">Completed Assessment(s)</th>
         <th scope="col">Date Completed</th>
         <th scope="col">Mark</th>
@@ -25,20 +24,24 @@
     </thead>
 
     <tbody>
-      <p>{{current_user.id}}</p>
+
+      {% for r in result_ids %}
       <tr>
-        <td></td> <!--Fetched module name comes here-->
-        <td></td> <!--Fetched data comes here-->
-        <td></td> <!--Fetched data comes here-->
-        <td></td> <!--Fetched data comes here-->
-        <td><a href="">View</a></td>
-        <!-- the 1 is the assessment id you want to look at. -->
+        <td>{{ current_user.id }}</td> <!-- Student Number -->
+        <td>{{ assess_details[r.assessment_id].assessment_name }}</td> <!-- Completed Assessment(s) -->
+        <td>{{ r.date_completed }}</td> <!-- Date Completed -->
+        <td>{{ r.grade }}</td> <!-- Mark -->
+        <td>{{ r.attempt_number }}</td> <!-- Attempt Number -->
+        <td><a href="">View</a></td> <!-- Action -->
       </tr>
+      {% endfor %}
+
     </tbody>
 
     <tfoot>
       <tr>
-        <td colspan="4">Have an issue with your marks? <a href="">Report here</a></td> <!--Add link to Report Issue page-->
+        <td colspan="4">Have an issue with your marks? <a href="">Report here</a></td>
+        <!--Add link to Report Issue page-->
       </tr>
     </tfoot>
 
