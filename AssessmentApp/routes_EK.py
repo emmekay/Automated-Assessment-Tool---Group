@@ -62,26 +62,27 @@ def studentaccount():
 @app.route("/surveyresults")  # EK
 #@app.route("/surveyresults/<int:>/<int:asse_id>", methods=['GET'])
 def surveyresults():
+    return render_template('surveyresults.html', title='Feedback Summary')
 
     # Pull all survey results 
-    survey_res = surveyresults.query.filter_by(assess_id=assessment_id).all()
+    #survey_res = surveyresults.query.filter_by(assess_id=assessment_id).all()
 
-    assess_details = assessment_details.query.filter_by(id=assessment_id).first()
+    #assess_details = assessment_details.query.filter_by(id=assessment_id).first()
 
-    module_details = modules.query.filter_by(id=assess_details.module_id).first()
+   # module_details = modules.query.filter_by(id=assess_details.module_id).first()
 
     #Caluclate percentages 
-    all_surveys = []
-    for result in surveyresults:
-        all_surveys.append(result.survey)
-        Q1percent = (count(*) * 100.0 ) / ( count(*))
+   #''' all_surveys = []
+    #for result in surveyresults:
+     #   all_surveys.append(result.survey)
+      #  Q1percent = (count(*) * 100.0 ) / ( count(*))'''
 
     
    # rest = surveyinput.query.filter_by(user_id=current_user.id, assessment_id=id).all()
    # res = assessment_results(user_id=current_user.id, assessment_id=id, attempt_number=len(
        # att)+1, grade=round((correct/totalPossibleMarks)*100), date_completed=datetime.now())
     #question = select 'question_1', count(*) * 100.0 / (select count(*) from surveyinput)
-    return render_template('surveyresults.html', title='Feedback Summary')
+    #return render_template('surveyresults.html', title='Feedback Summary')
 
 
 @app.route("/surveysubmit")  # EK
