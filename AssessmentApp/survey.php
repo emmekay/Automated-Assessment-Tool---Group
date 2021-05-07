@@ -1,5 +1,5 @@
-<?php
-    '''$username = "c2101138"; 
+<?php'''
+    $username = "c2101138"; 
     $password = "Password123";   
     $host = "csmysql.cs.cf.ac.uk:3306";
     $database= "c2101138_cmt313";
@@ -8,10 +8,7 @@
     $connection = mysql_select_db($database, $server);
 
     $myquery = "
-select 'question_1', count(*) * 100.0 / (select count(*) from surveyinput)
-from surveyinput
-WHERE `question_1` = 3
-group by 'question_1';`
+SELECT 'assessment_id', 'question_1' FROM 'surveyinput'
 ";
     $query = mysql_query($myquery);
     
@@ -28,4 +25,5 @@ group by 'question_1';`
     
     echo json_encode($data);     
      
-    mysql_close($server);'''
+    mysql_close($server);
+'''
