@@ -2,7 +2,7 @@
 
 {% block head %}
 <title>Student Feedback Results</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style/mainStyle.css') }}">
+<link rel="stylesheet" href="../static/style/assessmentStatsStyle.css">
 {% endblock %}
 
 {% block body %}
@@ -19,39 +19,121 @@
     <h2>CMT 330 Software Engineering </h2>
     <h2>Assessment 1: Business Case<!--Insert link for assessment details here --></h2>
     <h2>Survey Results</h2><br>
+   
+    <div class="content-tables">
+        <table class="completed-assessments-table">
+            <thead>
+                <tr>
+                    <th scope="col">Module Number</th>
+                    <th scope="col">Assessment Number</th>
+                    <th scope="col">Question 1 - Percentage answered 1</th>
+                    <th scope="col">Question 1 - Percentage answered 2</th>
+                    <th scope="col">Question 1 - Percentage answered 3</th>
+                    <th scope="col">Question 1 - Percentage answered 4</th>
+                    <th scope="col">Question 1 - Percentage answered 5</th>
+                </tr>
+            </thead>
+            <br>
+            <table class="completed-assessments-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Module Number</th>
+                        <th scope="col">Assessment Number</th>
+                        <th scope="col">Question 2 - Percentage answered 1</th>
+                        <th scope="col">Question 2 - Percentage answered 2</th>
+                        <th scope="col">Question 2 - Percentage answered 3</th>
+                        <th scope="col">Question 2 - Percentage answered 4</th>
+                        <th scope="col">Question 2 - Percentage answered 5</th>
+                    </tr>
+                </thead>
+                <br>
+                <table class="completed-assessments-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Module Number</th>
+                            <th scope="col">Assessment Number</th>
+                            <th scope="col">Question 3 - Percentage answered 1</th>
+                            <th scope="col">Question 3 - Percentage answered 2</th>
+                            <th scope="col">Question 3 - Percentage answered 3</th>
+                            <th scope="col">Question 3 - Percentage answered 4</th>
+                            <th scope="col">Question 3 - Percentage answered 5</th>
+                        </tr>
+                    </thead>
+                    <br>
+                    <table class="completed-assessments-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Module Number</th>
+                                <th scope="col">Assessment Number</th>
+                                <th scope="col">Question 4 - Percentage answered 1</th>
+                                <th scope="col">Question 4 - Percentage answered 2</th>
+                                <th scope="col">Question 4 - Percentage answered 3</th>
+                                <th scope="col">Question 4 - Percentage answered 4</th>
+                                <th scope="col">Question 4 - Percentage answered 5</th>
+                            </tr>
+                        </thead>
+                        <br>
+                        <table class="completed-assessments-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Module Number</th>
+                                    <th scope="col">Assessment Number</th>
+                                    <th scope="col">Question 5 - Percentage answered 1</th>
+                                    <th scope="col">Question 5 - Percentage answered 2</th>
+                                    <th scope="col">Question 5 - Percentage answered 3</th>
+                                    <th scope="col">Question 5 - Percentage answered 4</th>
+                                    <th scope="col">Question 5 - Percentage answered 5</th>
+                                </tr>
+                            </thead>
+                            <br>
+                            <table class="completed-assessments-table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Module Number</th>
+                                        <th scope="col">Assessment Number</th>
+                                        <th scope="col">Question 6 - Additional Comments Submitted</th>
+                                    </tr>
+                                </thead>
+                        
+            <tbody>
+    
+                {% for r in result_ids %}
+                <tr>
+                    
+                    <td>{{ assess_details[r.assessment_id].assessment_name }}</td> <!-- Completed Assessment(s) -->
+                    <td>{{ r.date_completed }}</td> <!-- Date Completed -->
+                    <td>{{ r.grade }}</td> <!-- Mark -->
+                    <td>{{ r.attempt_number }}</td> <!-- Attempt Number -->
+                    <td><a href="">View</a></td> <!-- Action -->
+                </tr>
+                {% endfor %}
+    
+            </tbody>
+    
+            <tfoot>
+                <tr>
+                    <p> Q1: On a scale of 1 - 5, with 1 being very easy and 5 being very difficult, how easy was it to
+                        complete this assessment through this portal?<br>
+                        <img src="{{ url_for('static', filename='img/Q1chart.jpg') }}">
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
     <p> Q1: On a scale of 1 - 5, with 1 being very easy and 5 being very difficult, how easy was it to
         complete this assessment through this portal?<br>
         <img src="{{ url_for('static', filename='img/Q1chart.jpg') }}">
-    <p> Q2: On a scale of 1 - 5, with 1 being very easy and 5 being very difficult, how easy was it to
-        complete this assessment through this portal?<br>
-        <img src="{{ url_for('static', filename='img/Q1chart.jpg') }}">
-    <p> Q3: On a scale of 1 - 5, with 1 being very easy and 5 being very difficult, how easy was it to
-        complete this assessment through this portal?<br>
-        <img src="{{ url_for('static', filename='img/Q1chart.jpg') }}">
-    </p>
-    <p> Q4: On a scale of 1 - 5, with 1 being very easy and 5 being very difficult, how easy was it to
-        complete this assessment through this portal?<br>
-        <img src="{{ url_for('static', filename='img/Q1chart.jpg') }}">
-    </p>
-    <p> Q5: On a scale of 1 - 5, with 1 being very easy and 5 being very difficult, how easy was it to
-        complete this assessment through this portal?<br>
-        <img src="{{ url_for('static', filename='img/Q1chart.jpg') }}">
-    </p>
-    <p> Q6: Additional Comments <br>
-        TEXT COMMENTS
-        <p>Comment 1 - "Some of these questions were wordly badly." <br> Comment 2 - "I really love this module so far, and this assessment was very relevant to what we learn." <br> Comment 3 - "This is the best class and best professor ever!" <br> Comment 4 - "I don't understand anything!"  </p> <!-- Insert Link for Text Comments here -->
-    </p><br><br>
-
+    
     <p>jhgjhgjh{% for question_1 in Results %}
     <div class="module-title">
         <h1>iljlkj {{ surveyinput.question_1 }}</h1>
     </div></p>
 
-    d3.json("AssessmentApp/survey.php", function(error, data) {
+    <!--d3.json("AssessmentApp/survey.php", function(error, data) {
         data.forEach(function(d) {
             d.date = parseDate(d.date);
             d.close = +d.close;
-    });
+    });-->
     {% endfor %}
 
     

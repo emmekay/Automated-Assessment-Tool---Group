@@ -64,17 +64,17 @@ def studentaccount():
 def surveyresults():
 
     # Pull all survey results 
-    survey_res = surveyresults.query.filter_by(assess_id=assessment_id).all()
+    #survey_res = surveyresults.query.filter_by(assess_id=assessment_id).all()
 
-    assess_details = assessment_details.query.filter_by(id=assessment_id).first()
+    #assess_details = assessment_details.query.filter_by(id=assessment_id).first()
 
-    module_details = modules.query.filter_by(id=assess_details.module_id).first()
+    #module_details = modules.query.filter_by(id=assess_details.module_id).first()
 
     #Caluclate percentages 
-    all_surveys = []
+    '''all_surveys = []
     for result in surveyresults:
         all_surveys.append(result.survey)
-        Q1percent = (count(*) * 100.0 ) / ( count(*))
+        Q1percent = (count(*) * 100.0 ) / ( count(*))'''
 
     
    # rest = surveyinput.query.filter_by(user_id=current_user.id, assessment_id=id).all()
