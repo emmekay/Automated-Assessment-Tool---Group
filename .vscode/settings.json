@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "c:\\Users\\ndung\\Desktop\\Cardiff University\\CMT313 - Software Engineering\\Assignment 2\\Team H Automated Assessment Tool\\cmt-313-team-h\\venv\\Scripts\\python.exe"
+    "python.pythonPath": "c:\\Users\\ndung\\Desktop\\Cardiff University\\CMT313 - Software Engineering\\Assignment 2\\Team H Automated Assessment Tool\\cmt-313-team-h\\venv\\Scripts\\python.exe",
+    "python.formatting.provider": "black"
 }
