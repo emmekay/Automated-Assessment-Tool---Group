@@ -59,10 +59,36 @@ def studentaccount():
     return render_template('studentaccount.html', title='My Account')
 
 
-@app.route("/surveyresults")  # EK
-#@app.route("/surveyresults/<int:>/<int:asse_id>", methods=['GET'])
+@app.route("/surveyresults")
 def surveyresults():
     return render_template('surveyresults.html', title='Feedback Summary')
+
+@app.route("/surveysubmit")  # EK
+def surveysubmit():
+    return render_template('surveysubmit.html', title='Submission Successful')
+#@app.route("/surveyresults/<int:mod_id>/<int:assess_id>/<int:survey_id>")  # EK
+#@app.route("/surveyresults/<int:>/<int:asse_id>", methods=['GET'])
+#def surveyresults(mod_id, assess_id, survey_id):
+    #question_1 = surveyinput.question_1
+    #surv = surveyinput.query.filter_by(id=id).first()
+   # questionIds = assessment_questions.query.filter_by(assessment_id=id).all()
+
+    #q1response = [question_1.query.filter_by(id=q.question_id).first() for q in surv]
+    # current_user.id
+    #print(q1response)
+#select 'question_1', cast(count(*) * 100.0 / (select count(*)) from surveyinput)
+#WHERE `question_1` = 3
+#group by 'question_1'
+
+    #q1results = surveyinput.query.filter_by(question_1 = question_1).all()
+    #questionIds = assessment_questions.query.filter_by(assessment_id=id).all()
+    #print(q1results) 
+    #all_surveys = []
+    #for result in q1results:
+     #   all_surveys.append(result.question_1)
+    #q1_choice1 = (all_surveys.count(str(1)))
+   # return render_template('surveyresults.html', title='Feedback Summary')
+   # return render_template('surveyresults.html', q1_choice1 = q1_choice1, title='Feedback Summary')
 
     # Pull all survey results 
     #survey_res = surveyresults.query.filter_by(assess_id=assessment_id).all()
@@ -72,9 +98,10 @@ def surveyresults():
    # module_details = modules.query.filter_by(id=assess_details.module_id).first()
 
     #Caluclate percentages 
-   #''' all_surveys = []
+   #all_surveys = []
     #for result in surveyresults:
-     #   all_surveys.append(result.survey)
+     #   all_surveys.append(result.question_1)
+    #q1_average = (sum(all_surveys) / len(all_surveys))
       #  Q1percent = (count(*) * 100.0 ) / ( count(*))'''
 
     
@@ -82,9 +109,5 @@ def surveyresults():
    # res = assessment_results(user_id=current_user.id, assessment_id=id, attempt_number=len(
        # att)+1, grade=round((correct/totalPossibleMarks)*100), date_completed=datetime.now())
     #question = select 'question_1', count(*) * 100.0 / (select count(*) from surveyinput)
-    #return render_template('surveyresults.html', title='Feedback Summary')
+    #return render_template('surveyresults.html', q1_average=q1_average, title='Feedback Summary')
 
-
-@app.route("/surveysubmit")  # EK
-def surveysubmit():
-    return render_template('surveysubmit.html', title='Submission Successful')
