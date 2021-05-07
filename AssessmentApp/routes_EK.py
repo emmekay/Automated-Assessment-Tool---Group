@@ -8,7 +8,7 @@ from flask_wtf import FlaskForm
 
 
 
-
+from AssessmentApp import *
 from AssessmentApp import app, db
 from AssessmentApp.models import *
 from AssessmentApp.forms import *
@@ -24,9 +24,9 @@ from AssessmentApp.forms import *
 def survey(mod_id, asse_id):
     #form = Survey()
     #if form.validate_on_submit():
-    print(mod_id)
-    print(asse_id)
-    print(current_user.id)
+    #print(mod_id)
+    #print(asse_id)
+    #print(current_user.id)
     
 
     if request.method == "POST":
@@ -60,7 +60,12 @@ def studentaccount():
 
 
 @app.route("/surveyresults")  # EK
+#@app.route("/surveyresults/<int:>/<int:asse_id>", methods=['GET'])
 def surveyresults():
+   # rest = surveyinput.query.filter_by(user_id=current_user.id, assessment_id=id).all()
+   # res = assessment_results(user_id=current_user.id, assessment_id=id, attempt_number=len(
+       # att)+1, grade=round((correct/totalPossibleMarks)*100), date_completed=datetime.now())
+    #question = select 'question_1', count(*) * 100.0 / (select count(*) from surveyinput)
     return render_template('surveyresults.html', title='Feedback Summary')
 
 
