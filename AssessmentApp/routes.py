@@ -88,8 +88,9 @@ def view_modules():
 @app.route("/view-assessments/<int:module_id>")
 def view_assessments(module_id):
   assess = assessment_details.query.filter(assessment_details.module_id==module_id)
+  results = assessment_results.query.filter(assessment_results.user_id==current_user.id)
 
-  return render_template('view_assessments.html', assess=assess, id = module_id )
+  return render_template('view_assessments.html', assess=assess, id = module_id, results=results )
 
 @app.route("/edit-assessments/<int:assess_id>", methods = ["GET", "POST"])
 def edit_assessment(assess_id):
@@ -98,7 +99,6 @@ def edit_assessment(assess_id):
   module = modules.query.filter(modules.id==assessment_details.module_id)
   mod = modules.query.filter(modules.id==assessment_details.module_id).first()
   if request.method == "POST":
-      #assess.module_id = module.id
       ass.assessment_type = bool(request.form['assType'])
       ass.assessment_name = request.form['assTitle']
       ass.time_limit = datetime.strptime(request.form['assTime'], '%Y-%m-%d %H:%M:%S')

@@ -12,7 +12,7 @@ def addAss(id):
         module_id = id # request.form['module']
         assessment_type = bool(request.form['assType'])
         assessment_name = request.form['assTitle']
-        time_limit = datetime.strptime(request.form['assTime'], '%Y-%m-%d %H:%M')
+        time_limit = datetime.strptime(request.form['assTime'], '%H:%M')
         start_date = datetime.strptime(request.form['assStart'] +" "+ request.form['assStartTime'], '%Y-%m-%d %H:%M')
         end_date = datetime.strptime(request.form['assEnd'] +" "+ request.form['assEndTime'], '%Y-%m-%d %H:%M')
         release = datetime.strptime(request.form['assRel'] +" "+ request.form['assRelTime'], '%Y-%m-%d %H:%M')
@@ -42,14 +42,19 @@ def Ass(id):
     assQuestions = [ question.query.filter_by(id=q.question_id).first() for q in questionIds]
     # current_user.id
     prev = assessment_results.query.filter_by(assessment_id=id, user_id = current_user.id).all()
-    if (len(prev) >= ass.allowed_attemps):
-        flash("You have exceeded the toal numebr of attempts" )
+
+    inAttemptRange = ass.allowed_attemps <= len(prev)
+    # inAttemptRange = False
+
+    # print(inAttemptRange)
+    # if (len(prev) >= ass.allowed_attemps):
+    #     flash("You have exceeded the toal numebr of attempts" )
     # TEMP
-    outDateRange = [0,0]
-    if ass.start_date < datetime.utcnow():
-        outDateRange[0] = 1
-    if ass.end_date > datetime.utcnow():
-        outDateRange[1] = 1
+    outDateRange = [False,False]
+    if ass.start_date <= datetime.utcnow():
+        outDateRange[0] = True
+    if ass.end_date >= datetime.utcnow():
+        outDateRange[1] = True
 
 
     # Temp END
@@ -71,21 +76,24 @@ def Ass(id):
 
 
         #IF FORMATIVE
-        if not ass.assessment_type:
+        if ass.assessment_type == 0:
             flash(str(correct) + "/" + str(totalPossibleMarks) + " Marks")
         else:
+            flash("This Assessment is Sumative, no instant results avialible. ")
+
+        if (len(assQuestions) > 0 and not current_user.is_staff):
             att = assessment_results.query.filter_by(user_id = current_user.id, assessment_id = id).all()
             res = assessment_results(user_id = current_user.id, assessment_id = id, attempt_number = len(att)+1, grade = round((correct/totalPossibleMarks)*100), date_completed = datetime.now())
             db.session.add(res)
             db.session.commit()
-            flash("This Assessment is Sumative, no instant results avialible. ")
+
 
         return render_template('Confi.html', ass = ass, assQuestions =assQuestions, res1 =res1)
         # return redirect(url_for('confirmation', id = id))
 
 
 
-    return render_template('UndertakeAss.html',  assQuestions =assQuestions, ass = ass, id = id, outDateRange = outDateRange)
+    return render_template('UndertakeAss.html',  assQuestions =assQuestions, ass = ass, id = id, outDateRange = outDateRange, inAttemptRange = inAttemptRange, totalQ = len(assQuestions))
 
 
 

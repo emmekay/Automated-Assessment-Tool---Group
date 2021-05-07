@@ -2,7 +2,7 @@
 
 {% block head %}
   <title>Add Assessment</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style/undertakeAss.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/undertakeAss.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -13,12 +13,14 @@
     <div class="assInfoTable">
     <table >
       <tr>
-        <td>Start:  {{ass.start_date.strftime('%H:%M %b %d %Y')}}</td> <td>End:  {{ass.end_date.strftime('%H:%M %b %d %Y')}}</td> <td>Duration: {{ass.time_limit.strftime('%H:%M')}} </td>
+        <td>Start:  {{ass.start_date.strftime('%H:%M %b %d %Y')}}</td> <td>End:  {{ass.end_date.strftime('%H:%M %b %d %Y')}}</td> <td>Duration: <span id = "testTimer">00:00:00</span> </td>
         </tr>
     </table>
       </div>
 
     <div class="assInstruction">
+
+
 
     <h3>Assessment Instructions</h3>
     <p>{{ass.assessment_instructions}}</p>
@@ -27,15 +29,18 @@
     </div>
 
 
+    <!-- <p id = "testTimer">1</p> -->
+
+
     {% if get_flashed_messages() %}
         <p>RESULT = {{get_flashed_messages()[0]}}</p>
     {% endif %}
 
 
-    {%if outDateRange[0] or outDateRange[1]  %}
+    {%if (outDateRange[0] and outDateRange[1])   %}
 
 
-    <form class="QuestionForm" action="/assessment/{{id}}" method="post">
+    <form class="QuestionForm" id = "mainForm" action="/assessment/{{id}}" method="post">
 
 
 
@@ -51,7 +56,7 @@
             <div class="questionBoxes">
 
             {%if question.answer_1 %}
-              <input id ="{{question.id}}A" type="radio" name="Q{{question.id}}" value="1">
+              <input id ="{{question.id}}A" type="radio" name="Q{{question.id}}" value="1" checked="checked">
               <label for="{{question.id}}A">{{question.answer_1}} </label>
               <br>
               <input id ="{{question.id}}B" type="radio" name="Q{{question.id}}" value="2">
@@ -65,7 +70,7 @@
               <br>
             {%else%}
 
-            <input id ="{{question.id}}A" type="radio" name="Q{{question.id}}" value="True">
+            <input id ="{{question.id}}A" type="radio" name="Q{{question.id}}" value="True" checked="checked">
             <label for="{{question.id}}A">True </label>
             <br>
             <input id ="{{question.id}}B" type="radio" name="Q{{question.id}}" value="False">
@@ -80,19 +85,32 @@
 
       <br><br>
 
-
+      {%if not current_user.is_staff and totalQ >0 %}
       <input id = "submitAss" type="submit" name="Submit" value="Submit">
+      {%endif%}
 
 
       </form>
 
       {%else%}
-        <h1>ERROR- You do not have Acesss to this Assesment, Return to home</h1>
+
+        {%if not outDateRange[0]%}
+          <h1>Assessment Start Date not met</h1>
+        {%elif not outDateRange[1] %}
+          <h1>Assessment end date exceeded</h1>
+        {%else%}
+          <h1>You have exceeed the allowed number of attemps</h1>
+
+        {%endif%}
 
 
       {%endif%}
 
 </div>
+
+<script src="{{ url_for('static', filename="Script_RC/AssesmentTime.js") }}"></script>
+<script type="text/javascript">countdown({{ass.time_limit.strftime('%H')|tojson}}, {{ass.time_limit.strftime('%M')|tojson}}, {{current_user.is_staff|tojson}})</script>
+
 
 {% endblock %}
 

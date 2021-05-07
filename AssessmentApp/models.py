@@ -66,6 +66,8 @@ class assessment_details(db.Model):
     release =  db.Column(db.DateTime, nullable = False)
     end_date =  db.Column(db.DateTime, nullable = False)
     start_date =  db.Column(db.DateTime, nullable = False)
+    
+    # ondelete='CASCADE'
 
 class assessment_results(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -75,11 +77,15 @@ class assessment_results(db.Model):
     grade = db.Column(db.Integer, nullable = False)
     date_completed = db.Column(db.DateTime, nullable=False)
 
+    # passive_deletes=True
+
 class assessment_questions(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     question_id = db.Column(db.Integer, db.ForeignKey('question.id'))
     assessment_id = db.Column(db.Integer, db.ForeignKey('assessment_details.id'))
     question_type = db.Column(db.Boolean, nullable = False) # 0 = true/false, 1 = multiple choice
+
+    # passive_deletes=True
 
 class question(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -106,6 +112,8 @@ class surveyinput(db.Model):
     question_4 = db.Column(db.Integer, nullable = False)
     question_5 = db.Column(db.Integer, nullable = False)
     question_6 = db.Column(db.Text, nullable = True)
+
+    # passive_deletes=True
 
 @login_manager.user_loader
 def load_user(user_id):
