@@ -32,7 +32,9 @@
         <td>{{ r.date_completed }}</td> <!-- Date Completed -->
         <td>{{ r.grade }}</td> <!-- Mark -->
         <td>{{ r.attempt_number }}</td> <!-- Attempt Number -->
-        <td><a href="">View</a></td> <!-- Action -->
+        <td><a href="{{ url_for('assessment_statistics', assess_id=r.assessment_id, id_assessment=r.id)}}">View</a>
+        </td>
+        <!-- Action -->
       </tr>
       {% endfor %}
 
