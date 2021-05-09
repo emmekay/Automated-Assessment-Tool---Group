@@ -1,8 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
-from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy, functools
 from flask_login import login_user, logout_user, login_required, current_user
 from datetime import datetime
 from flask_wtf import FlaskForm
+from sqlalchemy import func
 #from datetime import datetime
 
 
@@ -14,20 +15,10 @@ from AssessmentApp.models import *
 from AssessmentApp.forms import *
 
 
-#@app.route("/survey")
-#def survey():
-    #print("Total number of surveys is", survey.query.count())
- #   return render_template('survey.html', title='Assessment Completed')
 
 
 @app.route("/survey/<int:mod_id>/<int:asse_id>", methods=['GET', 'POST'])
-def survey(mod_id, asse_id):
-    #form = Survey()
-    #if form.validate_on_submit():
-    #print(mod_id)
-    #print(asse_id)
-    #print(current_user.id)
-    
+def survey(mod_id, asse_id):    
 
     if request.method == "POST":
         question_1 = request.form['question_1']
@@ -59,31 +50,95 @@ def studentaccount():
     return render_template('studentaccount.html', title='My Account')
 
 
-@app.route("/surveyresults")  # EK
-#@app.route("/surveyresults/<int:>/<int:asse_id>", methods=['GET'])
+@app.route("/surveyresults")
+
 def surveyresults():
+
+    q1_total = surveyinput.query.filter(surveyinput.question_1).count()
+
+    # Total Questions by Module 1 Assessment 1 
+    m1a1qtot = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1).count()   
+    # Total Questions by Module 1 Assessment 2
+    m1a2qtot = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 2, surveyinput.question_1).count()  # Question 1
+    # Module 2 Assessment 1 
+    m2a1qtot = surveyinput.query.filter(surveyinput.module_id == 2, surveyinput.assessment_id == 1, surveyinput.question_1).count()  # Question 2
+    # Module 2 Assessment 2 
+    m2a2qtot = surveyinput.query.filter(surveyinput.module_id == 2, surveyinput.assessment_id == 2, surveyinput.question_1).count()  # Question 3
+    # Module 2 Assessment 3
+    m2a3qtot = surveyinput.query.filter(surveyinput.module_id == 2, surveyinput.assessment_id == 3, surveyinput.question_1).count()  # Question 4
+    # Module 2 Assessment 4 
+    m2a4qtot = surveyinput.query.filter(surveyinput.module_id == 2, surveyinput.assessment_id == 4, surveyinput.question_1).count()  # Question 5
+
+    # Total Questions by Module 2 Assessment 1
+#    m1a1q1tot = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1).count()  # Question 1
+#    m1a1q2tot = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_2).count()  # Question 2
+#    m1a1q3tot = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_3).count()  # Question 3
+#    m1a1q4tot = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_4).count()  # Question 4
+#    m1a1q5tot = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_5).count()  # Question 5
+
+   # Question Counts Module 2 Assessment 2 
+    q1_1 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1 == 5).count()
+    mod_1 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1).count()
+    print(mod_1, m1a1qtot, m2a1qtot, m2a4qtot)
+    print(q1_1)
+    print(q1_total)
+    
+    return render_template('surveyresults.html', m1a1qtot=m1a1qtot, m1a2q2ot=m1a2qtot, m2a1qtot=m2a1qtot, m2a2qtot=m2a2qtot, m2a3qtot=m2a3qtot, m2a4qtot = m2a4qtot, mod_1=mod_1, q1_1=q1_1, q1_total=q1_total, title='Feedback Summary')
+
+@app.route("/surveysubmit")  # EK
+def surveysubmit():
+   return render_template('surveysubmit.html', title='Submission Successful')
+
+   #m1a1q2tot = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_2).count()  # Question 2
+   #m1a1q3tot = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_3).count()  # Question 3 
+   #m1a1q4tot = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_4).count()  # Question 4 
+   #m1a1q5tot = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_5).count()  # Question 5
+
+
+#@app.route("/surveyresults/<int:mod_id>/<int:assess_id>/<question_1>")
+#, surveyinput.question_1, surveyinput.module_id).group_by(
+   #surveyinput.question_1, surveyinput.module_id).all()
+   #print(result)
+#def surveyresults(mod_id, assess_id, question_1):
+   #q1results = surveyinput.query.group_by(mod_id=mod_id, assess_id=assess_id, question_1=question_1).all()
+   #print(q1results)
+   #atr = surveyinput.query.filter_by(user_id=current_user.id, assessment_id=id).all()
+   #question_1 = surveyinput.query.filter_by(question_1=question_1).all()
+   # ass = surveyinput.query.filter_by(question_1 = question_1).first()
+#@app.route("/surveyresults/<int:mod_id>/<int:assess_id>/<int:survey_id>")  # EK
+#@app.route("/surveyresults/<int:>/<int:asse_id>", methods=['GET'])
+
+    #question_1 = surveyinput.question_1
+    #surv = surveyinput.query.filter_by(id=id).first()
+   # questionIds = assessment_questions.query.filter_by(assessment_id=id).all()
+
+
+    #q1response = [question_1.query.filter_by(id=q.question_id).first() for q in surv]
+    # current_user.id
+    #print(q1response)
+#select 'question_1', cast(count(*) * 100.0 / (select count(*)) from surveyinput)
+#WHERE `question_1` = 3
+#group by 'question_1'
+#SELECT module_id, assessment_id, question_1, count(*) cnt FROM surveyinput group by module_id, assessment_id, question_1
+    
+    #questionIds = assessment_questions.query.filter_by(assessment_id=id).all()
+   
+    #all_surveys = []
+    #for result in q1results:
+     #   all_surveys.append(result.question_1)
+    #q1_choice1 = (all_surveys.count(str(1)))
+   # return render_template('surveyresults.html', title='Feedback Summary')
+   # return render_template('surveyresults.html', q1_choice1 = q1_choice1, title='Feedback Summary')
 
     # Pull all survey results 
     #survey_res = surveyresults.query.filter_by(assess_id=assessment_id).all()
 
-    #assess_details = assessment_details.query.filter_by(id=assessment_id).first()
+#@app.route("/survey")
+#def survey():
+   #print("Total number of surveys is", survey.query.count())
+ #   return render_template('survey.html', title='Assessment Completed')
 
-    #module_details = modules.query.filter_by(id=assess_details.module_id).first()
-
-    #Caluclate percentages 
-    '''all_surveys = []
-    for result in surveyresults:
-        all_surveys.append(result.survey)
-        Q1percent = (count(*) * 100.0 ) / ( count(*))'''
 
     
-   # rest = surveyinput.query.filter_by(user_id=current_user.id, assessment_id=id).all()
-   # res = assessment_results(user_id=current_user.id, assessment_id=id, attempt_number=len(
-       # att)+1, grade=round((correct/totalPossibleMarks)*100), date_completed=datetime.now())
-    #question = select 'question_1', count(*) * 100.0 / (select count(*) from surveyinput)
-    return render_template('surveyresults.html', title='Feedback Summary')
 
 
-@app.route("/surveysubmit")  # EK
-def surveysubmit():
-    return render_template('surveysubmit.html', title='Submission Successful')

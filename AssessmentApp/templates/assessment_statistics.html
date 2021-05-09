@@ -2,8 +2,8 @@
 
 {% block head %}
 
-  <title>Assessment Statistics</title>
-  <link rel="stylesheet" href="../static/style/assessmentStatsStyle.css">
+<title>Assessment Statistics</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style/assessmentStatsStyle.css') }}">
 
 {% endblock %}
 
@@ -12,43 +12,63 @@
 <!--Section for the tables with assessment information-->
 <div class="content-tables">
 
+
+
   <table class="assessment-statistics-table">
 
     <thead>
       <tr>
-        <th scope="col" colspan="2">Module Name:[module_name]</th> <!--Fetched data comes here-->
+        <!-- Module name of the current assessment -->
+        <th scope="col" colspan="2">Module Name: {{ module_details.module_name }}</th>
       </tr>
       <tr>
-        <th scope="col" colspan="2">[assessment_name] Statistics</th> <!--Fetched data comes here-->
+        <!-- Assessment name of the current assessment -->
+        <th scope="col" colspan="2">{{assess_details.assessment_name}} Statistics</th>
+      </tr>
+      <tr>
+        <!-- Attempt number of the current assessment -->
+        <th scope="col" colspan="2">Attempt Number: {{ user_results.attempt_number }}</th>
       </tr>
     </thead>
 
     <tbody>
+
       <tr>
+        <!--Assuming max mark for all assessments is 100%-->
         <th scope="row">Possible Grade</th>
-        <td>80</td> <!--Fetched data comes here-->
+        <td>100</td>
       </tr>
+
       <tr>
+        <!-- the grade the student got -->
         <th scope="row">Actual Grade</th>
-        <td>70</td> <!--Fetched data comes here-->
+        <td>{{ user_results.grade }}</td>
       </tr>
+
       <tr>
+        <!-- the average grade across all of the students results -->
         <th scope="row">Class Average</th>
-        <td>60</td> <!--Fetched data comes here-->
+        <td>{{ class_average }}</td>
       </tr>
+
       <tr>
+        <!-- the lowest grade across all of the students results -->
         <th scope="row">Lowest Grade</th>
-        <td>40</td> <!--Fetched data comes here-->
+        <td>{{ lowest_grade }}</td>
       </tr>
+
       <tr>
+        <!-- the highest grade across all of the students results -->
         <th scope="row">Highest Grade</th>
-        <td>90</td> <!--Fetched data comes here-->
+        <td>{{ highest_grade }}</td>
       </tr>
+
     </tbody>
 
     <tfoot>
       <tr>
-        <td colspan="4">Have an issue with your marks? <a href="">Report here</a></td> <!--Add link to Report Issue page-->
+        <td colspan="4">Have an issue with your marks? <a href="">Report here</a></td>
+        <!--Add link to Report Issue page-->
       </tr>
     </tfoot>
 

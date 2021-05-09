@@ -7,8 +7,9 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='style/mainStyle.css') }}">
 {% endblock %}
 {% block body %}
-<title>Completion Successful</title>
-<h2>Your survey has been submitted!</h2>
+<title>Survey Submitted Successfully</title><br>
+<h2>Thank you for {{current_user.username}} completing this survey {{current_user.username}}!</h2>
+<h3>Your feedback will be used to improve future assessments, future modules and the overall quality of teaching.<br> Your responses will be reviewed by a member of staff, however you will not receive a response about your survey responses.<br>If you have an urgent inquiry or experienced technical difficulties, please email your instructor directly. </h3>
 <a href="{{ url_for('staffaccount') }}">
     <li>Return to Your Account</li>
 </a>
