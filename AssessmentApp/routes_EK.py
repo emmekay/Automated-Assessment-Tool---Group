@@ -55,6 +55,7 @@ def studentaccount():
 def surveyresults():
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     # Pull all survey results 
     #survey_res = surveyresults.query.filter_by(assess_id=assessment_id).all()
 
@@ -68,6 +69,8 @@ def surveyresults():
         all_surveys.append(result.survey)
         Q1percent = (count(*) * 100.0 ) / ( count(*))'''
 =======
+=======
+>>>>>>> efe96008275b2c88ff8f123c727f86cc930516e4
     q1_total = surveyinput.query.filter(surveyinput.question_1).count()
 
     # Total Questions by Module 1 Assessment 1 
@@ -152,7 +155,10 @@ def surveysubmit():
    #print("Total number of surveys is", survey.query.count())
  #   return render_template('survey.html', title='Assessment Completed')
 
+<<<<<<< HEAD
 >>>>>>> cda34d11f4318436e67e1894c34f94e583e757de
+=======
+>>>>>>> efe96008275b2c88ff8f123c727f86cc930516e4
 
     
 
