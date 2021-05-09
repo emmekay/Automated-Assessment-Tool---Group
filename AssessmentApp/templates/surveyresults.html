@@ -1,19 +1,84 @@
-{% extends 'base.html' %} <!-- EK Page -->
+{% extends 'base.html' %}
+<!-- EK Page -->
 
 {% block head %}
 <title>Student Feedback Results</title>
+<<<<<<< HEAD
 <link rel="stylesheet" href="../static/style/assessmentStatsStyle.css">
+=======
+<link rel="stylesheet" href="../static/style/surveystyle.css">
+>>>>>>> cda34d11f4318436e67e1894c34f94e583e757de
 {% endblock %}
 
 {% block body %}
 
 <!--<div class="">
 
-    <h2>Your Modules</h2> <br>--><!-- Add link to Module details page with each module title page here-->
-    <p>CMT 330 Software Engineering</p><br>
-    <p>CMT 331 Software Development</p><br>
+    <h2>Your Modules</h2> <br>-->
+<!-- Add link to Module details page with each module title page here-->
+<p>CMT 330 Software Engineering</p><br>
+<p>CMT 331 Software Development</p><br>
+{{ q1_choice1 }}
+
+<br><br>
+
+<h2>CMT 330 Software Engineering </h2>
+<h2>Assessment 1: Business Case
+    <!--Insert link for assessment details here -->
+</h2>
+<h2>Survey Results</h2><br>
+
+<div class="content-tables">
+    <table class="survey-table">
+        <thead>
+            <h2>Questions Regarding Assessment</h2>
+            <h3>Question 1 : Rate the ease of using this automated
+            assessment tool to complete your assessment.</h3>
+            <tr>
+                <th scope="col">Module Number</th>
+                <th scope="col">Assessment Number</th>
+                <th scope="col">Question 1 - Very Easy </th>
+                <th scope="col">Question 1 - Easy </th>
+                <th scope="col">Question 1 - Moderate</th>
+                <th scope="col">Question 1 - Difficult</th>
+                <th scope="col">Question 1 - Very Difficult</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="col">1</th>
+                <th scope="col">1</th>
+                <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }} </th>
+                <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }}</th>
+                <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }}</th>
+                <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }}</th>
+                <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }}</th>
+            </tr>
             
+        </tbody>
+        
+        <br>
+    <table class="survey-table">
+        <thead>
+            <h3>Question 2 : Did you experience any technical issues during this assessment related to the assessment itself?</h3>
+            <tr>
+                <th scope="col">Module Number</th>
+                <th scope="col">Assessment Number</th>
+                <th scope="col">Several Issues that Affected Outcome </th>
+                <th scope="col">Minor Issues </th>
+                <th scope="col">No Issues</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="col">1</th>
+                <th scope="col">1</th>
+                <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }} </th>
+                <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }}</th>
+                <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }}</th>
+            </tr>
     
+<<<<<<< HEAD
     <br><br>
 
     <h2>CMT 330 Software Engineering </h2>
@@ -22,10 +87,15 @@
    
     <div class="content-tables">
         <table class="completed-assessments-table">
+=======
+        </tbody>
+        <table class="survey-table">
+>>>>>>> cda34d11f4318436e67e1894c34f94e583e757de
             <thead>
                 <tr>
                     <th scope="col">Module Number</th>
                     <th scope="col">Assessment Number</th>
+<<<<<<< HEAD
                     <th scope="col">Question 1 - Percentage answered 1</th>
                     <th scope="col">Question 1 - Percentage answered 2</th>
                     <th scope="col">Question 1 - Percentage answered 3</th>
@@ -35,10 +105,22 @@
             </thead>
             <br>
             <table class="completed-assessments-table">
+=======
+                    <th scope="col">Question 2 - Percentage answered 1</th>
+                    <th scope="col">Question 2 - Percentage answered 2</th>
+                    <th scope="col">Question 2 - Percentage answered 3</th>
+                    <th scope="col">Question 2 - Percentage answered 4</th>
+                    <th scope="col">Question 2 - Percentage answered 5</th>
+                </tr>
+            </thead>
+            <br>
+            <table class="survey-table">
+>>>>>>> cda34d11f4318436e67e1894c34f94e583e757de
                 <thead>
                     <tr>
                         <th scope="col">Module Number</th>
                         <th scope="col">Assessment Number</th>
+<<<<<<< HEAD
                         <th scope="col">Question 2 - Percentage answered 1</th>
                         <th scope="col">Question 2 - Percentage answered 2</th>
                         <th scope="col">Question 2 - Percentage answered 3</th>
@@ -48,10 +130,22 @@
                 </thead>
                 <br>
                 <table class="completed-assessments-table">
+=======
+                        <th scope="col">Question 3 - Percentage answered 1</th>
+                        <th scope="col">Question 3 - Percentage answered 2</th>
+                        <th scope="col">Question 3 - Percentage answered 3</th>
+                        <th scope="col">Question 3 - Percentage answered 4</th>
+                        <th scope="col">Question 3 - Percentage answered 5</th>
+                    </tr>
+                </thead>
+                <br>
+                <table class="survey-table">
+>>>>>>> cda34d11f4318436e67e1894c34f94e583e757de
                     <thead>
                         <tr>
                             <th scope="col">Module Number</th>
                             <th scope="col">Assessment Number</th>
+<<<<<<< HEAD
                             <th scope="col">Question 3 - Percentage answered 1</th>
                             <th scope="col">Question 3 - Percentage answered 2</th>
                             <th scope="col">Question 3 - Percentage answered 3</th>
@@ -61,10 +155,22 @@
                     </thead>
                     <br>
                     <table class="completed-assessments-table">
+=======
+                            <th scope="col">Question 4 - Percentage answered 1</th>
+                            <th scope="col">Question 4 - Percentage answered 2</th>
+                            <th scope="col">Question 4 - Percentage answered 3</th>
+                            <th scope="col">Question 4 - Percentage answered 4</th>
+                            <th scope="col">Question 4 - Percentage answered 5</th>
+                        </tr>
+                    </thead>
+                    <br>
+                    <table class="survey-table">
+>>>>>>> cda34d11f4318436e67e1894c34f94e583e757de
                         <thead>
                             <tr>
                                 <th scope="col">Module Number</th>
                                 <th scope="col">Assessment Number</th>
+<<<<<<< HEAD
                                 <th scope="col">Question 4 - Percentage answered 1</th>
                                 <th scope="col">Question 4 - Percentage answered 2</th>
                                 <th scope="col">Question 4 - Percentage answered 3</th>
@@ -74,10 +180,22 @@
                         </thead>
                         <br>
                         <table class="completed-assessments-table">
+=======
+                                <th scope="col">Question 5 - Percentage answered 1</th>
+                                <th scope="col">Question 5 - Percentage answered 2</th>
+                                <th scope="col">Question 5 - Percentage answered 3</th>
+                                <th scope="col">Question 5 - Percentage answered 4</th>
+                                <th scope="col">Question 5 - Percentage answered 5</th>
+                            </tr>
+                        </thead>
+                        <br>
+                        <table class="survey-table">
+>>>>>>> cda34d11f4318436e67e1894c34f94e583e757de
                             <thead>
                                 <tr>
                                     <th scope="col">Module Number</th>
                                     <th scope="col">Assessment Number</th>
+<<<<<<< HEAD
                                     <th scope="col">Question 5 - Percentage answered 1</th>
                                     <th scope="col">Question 5 - Percentage answered 2</th>
                                     <th scope="col">Question 5 - Percentage answered 3</th>
@@ -130,14 +248,45 @@
     </div></p>
 
     <!--d3.json("AssessmentApp/survey.php", function(error, data) {
+=======
+                                    <th scope="col">Question 6 - Additional Comments Submitted</th>
+                                </tr>
+                            </thead>
+
+                        
+
+                            <tfoot>
+                                <tr>
+                                
+                                </tr>
+                            </tfoot>
+                        </table>
+</div>
+
+<p> Q1: On a scale of 1 - 5, with 1 being very easy and 5 being very difficult, how easy was it to
+    complete this assessment through this portal?<br>
+    <img src="{{ url_for('static', filename='img/Q1chart.jpg') }}">
+
+<p>jhgjhgjh{% for question_1 in Results %}
+<div class="module-title">
+    <h1>iljlkj {{ surveyinput.question_1 }}</h1>
+</div>
+</p>
+
+<!--d3.json("AssessmentApp/survey.php", function(error, data) {
+>>>>>>> cda34d11f4318436e67e1894c34f94e583e757de
         data.forEach(function(d) {
             d.date = parseDate(d.date);
             d.close = +d.close;
     });-->
+<<<<<<< HEAD
     {% endfor %}
+=======
+{% endfor %}
 
-    
-   
+
+>>>>>>> cda34d11f4318436e67e1894c34f94e583e757de
+
 
 </div>
 
