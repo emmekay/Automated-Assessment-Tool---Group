@@ -39,15 +39,10 @@ def survey(mod_id, asse_id):
     return render_template('survey.html', title='Survey', mod_id = mod_id, asse_id = asse_id)#, form=form)
 #user_id=form.user_id.data, assessment_id=form.assessment_id.data,
 
-@app.route("/staffaccount")  # EK
-def staffaccount():
+@app.route("/myaccount")  # EK
+def myaccount():
     Modules = modules.query.all()
-    return render_template('staffaccount.html', title='My Account', Modules = Modules )
-
-
-@app.route("/studentaccount")  # EK
-def studentaccount():
-    return render_template('studentaccount.html', title='My Account')
+    return render_template('myaccount.html', title='My Account', Modules = Modules )
 
 
 @app.route("/surveyresults")
