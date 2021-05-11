@@ -1,0 +1,29 @@
+.module_table {
+  width: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
+  background-color: white;
+  border-radius: 20px;
+
+}
+.module_table td {
+  width: 50%;
+  /* border-bottom: 1px solid black; */
+}
+/* .lower_row{
+  border-bottom: 1px solid black;
+
+
+} */
+
+/* #mod_name {
+  width: 75%;
+} */
+
+#mod_links{
+  text-align: right;
+}
+
+#mod_title{
+  text-align: center;
+}

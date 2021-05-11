@@ -6,15 +6,25 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Welcome to view Modules</h1>
-    {% for module in Modules %}
-        {% if current_user.has_enrolled(module) %}
-            <div class="module-title">
-                <h1>{{ module.module_name }}</h1>
-            </div>
-            <div class="view-assess">
-                <a href="{{ url_for('view_assessments', module_id=module.id) }}"><span>View Assessments</span></a>
-            </div>
-        {% endif %}
-    {% endfor %}
+    <h1 id ="mod_title">My Modules</h1>
+
+
+
+    <table class = "module_table" >
+
+    <tbody>
+      {% for module in Modules %}
+      {% if current_user.has_enrolled(module) %}
+      <tr>
+        <td id = "mod_name"class=""><h2>{{ module.module_name }}</h2></td>
+        <td id = "mod_links"class="">  <a href="{{ url_for('view_assessments', module_id=module.id) }}"><span>View Assessments</span></a></td>
+
+      <!-- </tr>
+      <tr><td class="lower_row" colspan="2"></td>
+      </tr> -->
+      {% endif %}
+      {% endfor %}
+
+    </tbody>
+    </table>
 {% endblock %}
