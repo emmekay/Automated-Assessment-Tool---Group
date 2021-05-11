@@ -39,15 +39,15 @@ def survey(mod_id, asse_id):
     return render_template('survey.html', title='Survey', mod_id = mod_id, asse_id = asse_id)#, form=form)
 #user_id=form.user_id.data, assessment_id=form.assessment_id.data,
 
-@app.route("/staffaccount")  # EK
-def staffaccount():
+@app.route("/myaccount")  # EK
+def myaccount():
     Modules = modules.query.all()
-    return render_template('staffaccount.html', title='My Account', Modules = Modules )
+    return render_template('myaccount.html', title='My Account', Modules = Modules )
 
 
-@app.route("/studentaccount")  # EK
-def studentaccount():
-    return render_template('studentaccount.html', title='My Account')
+@app.route("/surveysubmit")  # EK
+def surveysubmit():
+   return render_template('surveysubmit.html', title='Submission Successful')
 
 
 @app.route("/surveyresults")
@@ -66,41 +66,63 @@ def surveyresults():
     for result in surveyresults:
         all_surveys.append(result.survey)
         Q1percent = (count(*) * 100.0 ) / ( count(*))'''
-
-    q1_total = surveyinput.query.filter(surveyinput.question_1).count()
-
-    # Total Questions by Module 1 Assessment 1 
+    # Total Question Counts 
+    # Total Questions by Mod 1 Assess 1 
     m1a1qtot = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1).count()   
-    # Total Questions by Module 1 Assessment 2
-    m1a2qtot = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 2, surveyinput.question_1).count()  # Question 1
-    # Module 2 Assessment 1 
-    m2a1qtot = surveyinput.query.filter(surveyinput.module_id == 2, surveyinput.assessment_id == 1, surveyinput.question_1).count()  # Question 2
-    # Module 2 Assessment 2 
-    m2a2qtot = surveyinput.query.filter(surveyinput.module_id == 2, surveyinput.assessment_id == 2, surveyinput.question_1).count()  # Question 3
-    # Module 2 Assessment 3
-    m2a3qtot = surveyinput.query.filter(surveyinput.module_id == 2, surveyinput.assessment_id == 3, surveyinput.question_1).count()  # Question 4
-    # Module 2 Assessment 4 
-    m2a4qtot = surveyinput.query.filter(surveyinput.module_id == 2, surveyinput.assessment_id == 4, surveyinput.question_1).count()  # Question 5
+    # Total Questions by Mod 1 Assess 2
+    m1a2qtot = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 2, surveyinput.question_1).count()  
+    # Total Questions Mod 2 Assess 1 
+    m2a1qtot = surveyinput.query.filter(surveyinput.module_id == 2, surveyinput.assessment_id == 1, surveyinput.question_1).count()  
+    # Total Questions Mod 2 Assess 2 
+    m2a2qtot = surveyinput.query.filter(surveyinput.module_id == 2, surveyinput.assessment_id == 2, surveyinput.question_1).count()  
+    # Total Questions Mod 2 Assess 3
+    m2a3qtot = surveyinput.query.filter(surveyinput.module_id == 2, surveyinput.assessment_id == 3, surveyinput.question_1).count()  
+    # Total QUestions Mod 2 Assess 4 
+    m2a4qtot = surveyinput.query.filter(surveyinput.module_id == 2, surveyinput.assessment_id == 4, surveyinput.question_1).count() 
 
-    # Total Questions by Module 2 Assessment 1
-#    m1a1q1tot = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1).count()  # Question 1
-#    m1a1q2tot = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_2).count()  # Question 2
-#    m1a1q3tot = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_3).count()  # Question 3
-#    m1a1q4tot = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_4).count()  # Question 4
-#    m1a1q5tot = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_5).count()  # Question 5
+    # Answer Counts 
+    # Module 1 Assess 1 Q1
+    m1a1q1_1 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1 == 1).count()
+    m1a1q1_2 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1 == 2).count()
+    m1a1q1_3 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1 == 3).count()
+    m1a1q1_4 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1 == 4).count()
+    m1a1q1_5 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1 == 5).count()
 
-   # Question Counts Module 2 Assessment 2 
-    q1_1 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1 == 5).count()
-    mod_1 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1).count()
-    print(mod_1, m1a1qtot, m2a1qtot, m2a4qtot)
-    print(q1_1)
-    print(q1_total)
+    # Module 1 Assess 1 Q2
+    m1a1q2_1 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1 == 1).count()
+    m1a1q2_2 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1 == 2).count()
+    m1a1q2_3 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1 == 3).count()
     
-    return render_template('surveyresults.html', m1a1qtot=m1a1qtot, m1a2q2ot=m1a2qtot, m2a1qtot=m2a1qtot, m2a2qtot=m2a2qtot, m2a3qtot=m2a3qtot, m2a4qtot = m2a4qtot, mod_1=mod_1, q1_1=q1_1, q1_total=q1_total, title='Feedback Summary')
+    # Module 1 Assess 1 Q3
+    m1a1q3_1 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1 == 1).count()
+    m1a1q31per = round(m1a1q3_1 / m1a1qtot)
+    m1a1q3_2 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1 == 2).count()
+    m1a1q3_3 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1 == 3).count()
+    m1a1q3_4 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1 == 4).count()
+    m1a1q3_5 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1 == 5).count()
 
-@app.route("/surveysubmit")  # EK
-def surveysubmit():
-   return render_template('surveysubmit.html', title='Submission Successful')
+    # Module 1 Assess 1 Q4
+    m1a1q4_1 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1 == 1).count()
+    m1a1q4_2 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1 == 2).count()
+    m1a1q4_3 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1 == 3).count()
+    m1a1q4_4 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1 == 4).count()
+    m1a1q4_5 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1 == 5).count()
+
+    # Module 1 Assess 1 Q5
+    m1a1q5_1 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1 == 1).count()
+    m1a1q5_2 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1 == 2).count()
+    m1a1q5_3 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1 == 3).count()
+    m1a1q5_4 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1 == 4).count()
+    m1a1q5_5 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1 == 5).count()
+
+    print(m1a1q31per)
+    
+    return render_template('surveyresults.html', m1a1qtot=m1a1qtot, m1a2q2ot=m1a2qtot, m2a1qtot=m2a1qtot, m2a2qtot=m2a2qtot, m2a3qtot=m2a3qtot, m2a4qtot=m2a4qtot, m1a1q1_1=m1a1q1_1, m1a1q1_2=m1a1q1_2, m1a1q1_3=m1a1q1_3,  m1a1q1_4=m1a1q1_4, m1a1q1_5=m1a1q1_5, m1a1q2_1=m1a1q2_1,  m1a1q2_2=m1a1q2_2, m1a1q2_3=m1a1q2_3, m1a1q3_1=m1a1q3_1,  m1a1q3_2=m1a1q3_2, m1a1q3_3=m1a1q3_3, m1a1q3_4=m1a1q3_4,  m1a1q3_5=m1a1q3_5, m1a1q4_1=m1a1q4_1, m1a1q4_2=m1a1q4_2, m1a1q4_3=m1a1q4_3, m1a1q4_4=m1a1q4_4, m1a1q4_5=m1a1q4_5, m1a1q5_1=m1a1q5_1, m1a1q5_2=m1a1q5_2, m1a1q5_3=m1a1q5_3,  m1a1q5_4=m1a1q5_4, m1a1q5_5=m1a1q5_5, m1a1q31per=m1a1q31per, title='Feedback Summary')
+
+    # print(mod_1, m1a1qtot, m2a1qtot, m2a4qtot)
+    # print(q1_1)
+    # print(q1_total)
+
 
    #m1a1q2tot = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_2).count()  # Question 2
    #m1a1q3tot = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_3).count()  # Question 3 
