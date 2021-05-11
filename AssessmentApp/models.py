@@ -66,7 +66,7 @@ class assessment_details(db.Model):
     release =  db.Column(db.DateTime, nullable = False)
     end_date =  db.Column(db.DateTime, nullable = False)
     start_date =  db.Column(db.DateTime, nullable = False)
-    
+
     # ondelete='CASCADE'
 
 class assessment_results(db.Model):
@@ -76,6 +76,7 @@ class assessment_results(db.Model):
     attempt_number = db.Column(db.Integer, nullable = False)
     grade = db.Column(db.Integer, nullable = False)
     date_completed = db.Column(db.DateTime, nullable=False)
+    result_string = db.Column(db.Text, nullable = True) # string to hold if each quesiton is right or wrong
 
     # passive_deletes=True
 
