@@ -24,6 +24,22 @@ def createQuestion():
         db.session.commit()
         return redirect(url_for(createQuestion))
 
+        # Add question type two
+        quesTypeTwo_Content = request.form['cQ_T2_Question_Content']
+        quesTypeTwo_DifLevel = request.form['cQ_T2_Difficulty_Level']
+        quesTypeTwo_Point = request.form['cQ_T2_Point']
+        quesTypeTwo_Option1 = request.form['cQ_T2_Option1']
+        quesTypeTwo_Option2 = request.form['cQ_T2_Option2']
+        quesTypeTwo_Option3 = request.form['cQ_T2_Option3']
+        quesTypTwo_Option4 = request.form['cQ_T2_Option4']
+        quesTypeTwo_CorrAnswer = request.form['cQ_T2_Correct_Answer']
+        quesType_Two = question(question=quesTypeTwo_Content, difficulty=quesTypeTwo_DifLevel, value=quesTypeTwo_Point,\
+                                answer_1=quesTypTwo_Option1, answer_2=quesTypeTwo_Option2, answer_3=quesTypeTwo_Option3,\
+                                answer_4=quesTypeTwo_Option4, correct_answer=quesTypeTwo_CorrAnswer,)
+        db.session.add(quesType_Two)
+        db.session.commit()
+        return redirect(url_for(createQuestion))
+
         # #   Edit or delete question
         # if request.form['cQ_EDITorDELETE'] == 'EDIT':
 
