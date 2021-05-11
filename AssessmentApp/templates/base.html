@@ -46,12 +46,13 @@
 
         <ul>
           <!-- <li></li> -->
-          <li><span onclick="location.href = '/home'">Home</span></li>
-          <li><span onclick="location.href = '/staffaccount'">My Account</span></li>
+          <li><span onclick="location.href = '/myaccount'">My Account</span></li>
           <span onclick="location.href = '/view-modules'"><li>Modules</li></span>
           <li>Results</li>
-          <li><span onclick="location.href = '/surveyresults'">Feedback</span></li></a>
-          <li>Calendar</li>
+          {% if current_user.is_staff %}
+            <li><span onclick="location.href = '/surveyresults'">Feedback</span></li></a>
+          {% else %}
+          {% endif %}
         </ul>
       </div>
 
@@ -67,7 +68,9 @@
 
     <footer>
 
-      <p>Home | Acount | Modules | Results | Feedback | Calendar <p>
+      <p>               | <span onclick="location.href = '/myaccount'">My Account</span> | <span onclick="location.href = '/view-modules'">Modules</span> | 
+        <span>Results</span> | 
+        <span onclick="location.href = '/surveyresults'">Feedback</span> |
       <p>CMT 313 Group H - Auto Assessment Tool</p>
       
 
