@@ -83,10 +83,15 @@ def surveyresults():
     # Answer Counts 
     # Module 1 Assess 1 Q1
     m1a1q1_1 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1 == 1).count()
+    m1a1q11per = round(m1a1q1_1 / m1a1qtot)*100
     m1a1q1_2 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1 == 2).count()
+    m1a1q12per = round(m1a1q1_2 / m1a1qtot)*100
     m1a1q1_3 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1 == 3).count()
+    m1a1q13per = round(m1a1q1_3 / m1a1qtot)*100
     m1a1q1_4 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1 == 4).count()
+    m1a1q14per = round(m1a1q1_4 / m1a1qtot)*100
     m1a1q1_5 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1 == 5).count()
+    m1a1q15per = round(m1a1q1_5 / m1a1qtot)*100
 
     # Module 1 Assess 1 Q2
     m1a1q2_1 = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_1 == 1).count()
@@ -117,7 +122,7 @@ def surveyresults():
 
     print(m1a1q31per)
     
-    return render_template('surveyresults.html', m1a1qtot=m1a1qtot, m1a2q2ot=m1a2qtot, m2a1qtot=m2a1qtot, m2a2qtot=m2a2qtot, m2a3qtot=m2a3qtot, m2a4qtot=m2a4qtot, m1a1q1_1=m1a1q1_1, m1a1q1_2=m1a1q1_2, m1a1q1_3=m1a1q1_3,  m1a1q1_4=m1a1q1_4, m1a1q1_5=m1a1q1_5, m1a1q2_1=m1a1q2_1,  m1a1q2_2=m1a1q2_2, m1a1q2_3=m1a1q2_3, m1a1q3_1=m1a1q3_1,  m1a1q3_2=m1a1q3_2, m1a1q3_3=m1a1q3_3, m1a1q3_4=m1a1q3_4,  m1a1q3_5=m1a1q3_5, m1a1q4_1=m1a1q4_1, m1a1q4_2=m1a1q4_2, m1a1q4_3=m1a1q4_3, m1a1q4_4=m1a1q4_4, m1a1q4_5=m1a1q4_5, m1a1q5_1=m1a1q5_1, m1a1q5_2=m1a1q5_2, m1a1q5_3=m1a1q5_3,  m1a1q5_4=m1a1q5_4, m1a1q5_5=m1a1q5_5, m1a1q31per=m1a1q31per, title='Feedback Summary')
+    return render_template('surveyresults.html', m1a1qtot=m1a1qtot, m1a2q2ot=m1a2qtot, m2a1qtot=m2a1qtot, m2a2qtot=m2a2qtot, m2a3qtot=m2a3qtot, m2a4qtot=m2a4qtot, m1a1q1_1=m1a1q1_1, m1a1q1_2=m1a1q1_2, m1a1q1_3=m1a1q1_3,  m1a1q1_4=m1a1q1_4, m1a1q1_5=m1a1q1_5, m1a1q2_1=m1a1q2_1,  m1a1q2_2=m1a1q2_2, m1a1q2_3=m1a1q2_3, m1a1q3_1=m1a1q3_1,  m1a1q3_2=m1a1q3_2, m1a1q3_3=m1a1q3_3, m1a1q3_4=m1a1q3_4,  m1a1q3_5=m1a1q3_5, m1a1q4_1=m1a1q4_1, m1a1q4_2=m1a1q4_2, m1a1q4_3=m1a1q4_3, m1a1q4_4=m1a1q4_4, m1a1q4_5=m1a1q4_5, m1a1q5_1=m1a1q5_1, m1a1q5_2=m1a1q5_2, m1a1q5_3=m1a1q5_3,  m1a1q5_4=m1a1q5_4, m1a1q5_5=m1a1q5_5, m1a1q11per = m1a1q11per, m1a1q12per = m1a1q12per, m1a1q13per = m1a1q13per, m1a1q14per = m1a1q14per, m1a1q15per = m1a1q15per, m1a1q31per=m1a1q31per, title='Feedback Summary')
 
     # print(mod_1, m1a1qtot, m2a1qtot, m2a4qtot)
     # print(q1_1)

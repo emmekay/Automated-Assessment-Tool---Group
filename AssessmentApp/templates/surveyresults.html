@@ -10,29 +10,21 @@
 
     {% block body %}
     {% if current_user.is_staff %}
-
-        <!--<div class="">
-
-            <h2>Your Modules</h2> <br>-->
-        <!-- Add link to Module details page with each module title page here-->
-        <p>CMT 330 Software Engineering</p><br>
-        <p>CMT 331 Software Development</p><br>
         {{ q1_choice1 }}
 
         <br><br>
 
-        <h2>CMT 330 Software Engineering </h2>
-        <h2>Assessment 1: Business Case
-            <!--Insert link for assessment details here -->
-        </h2>
-        <h2>Survey Results</h2><br>
+        <h2>Student Feedback & Survey Results</h2>
+        <h3>All feedback is anonymous and ordered by Module and Assessment.</h3>
 
         <div class="content-tables">
-            <table class="survey-table">
+            <table class="survey-table w3-striped w3-bordered">
                 <thead>
-                    <h2>Questions Regarding Assessment</h2>
-                    <h3>Question 1 : Rate the ease of using this automated
-                    assessment tool to complete your assessment.</h3>
+                    <h2><strong>Questions about using this Automated Assessment Tool</strong></h2>
+                    <tr>
+                        <th colspan="7">Question 1 : Rate the ease of using this automated 
+                            assessment tool to complete your assessment.</th> <!--Question 1-->
+                    </tr>
                     <tr>
                         <th scope="col">Module Number</th>
                         <th scope="col">Assessment Number</th>
@@ -45,21 +37,23 @@
                 </thead>
                 <tbody>
                     <tr>
+                        <th scope="col">1</th> <!--Question 1 Answers -->
                         <th scope="col">1</th>
-                        <th scope="col">1</th>
-                        <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }} </th>
-                        <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }}</th> 
-                        <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }}</th>
-                        <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }}</th>
-                        <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }}</th>
+                        <th scope="col">{{ m1a1q1_1 }} out of {{ m1a1qtot }} = {{ m1a1q11per }}% </th>
+                        <th scope="col">{{ m1a1q1_2 }} out of {{ m1a1qtot }} = {{ m1a1q12per }}%</th>
+                        <th scope="col">{{ m1a1q1_3 }} out of {{ m1a1qtot }} = {{ m1a1q13per }}%</th>
+                        <th scope="col">{{ m1a1q1_4 }} out of {{ m1a1qtot }} = {{ m1a1q14per }}%</th>
+                        <th scope="col">{{ m1a1q1_5 }} out of {{ m1a1qtot }} = {{ m1a1q15per }}%</th>
                     </tr>
                     
                 </tbody>
                 
                 <br>
-            <table class="survey-table">
+            <table class="survey-table w3-striped w3-bordered"> <!-- Question 2-->
                 <thead>
-                    <h3>Question 2 : Did you experience any technical issues during this assessment related to the assessment itself?</h3>
+                    <tr>
+                        <th colspan="7">Question 2 : Did you experience any technical issues during this assessment related to the assessment itself?</th>
+                    </tr>
                     <tr>
                         <th scope="col">Module Number</th>
                         <th scope="col">Assessment Number</th>
@@ -67,68 +61,131 @@
                         <th scope="col">Minor Issues </th>
                         <th scope="col">No Issues</th>
                     </tr>
+                    </tr>
                 </thead>
                 <tbody>
                     <tr>
+                        <th scope="col">1</th> <!-- Question 2 Answers -->
                         <th scope="col">1</th>
-                        <th scope="col">1</th>
-                        <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }} </th>
+                        <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }} = {{ m1a1q31per }}% </th>
                         <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }}</th>
                         <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }}</th>
                     </tr>
-            <br><br>
-
-                                <th scope="col">Question 3 - {{ m1a1q31per }}Percentage answered 1</th>
-                                <th scope="col">Question 3 - Percentage answered 2</th>
-                                <th scope="col">Question 3 - Percentage answered 3</th>
-                                <th scope="col">Question 3 - Percentage answered 4</th>
-                                <th scope="col">Question 3 - Percentage answered 5</th>
-                            </tr>
-                        </thead>
-                        <br>
-                        <table class="survey-table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Module Number</th>
-                                    <th scope="col">Assessment Number</th>
-                                    <th scope="col">Question 3 - Percentage answered 1</th>
-                                    <th scope="col">Question 3 - Percentage answered 2</th>
-                                    <th scope="col">Question 3 - Percentage answered 3</th>
-                                    <th scope="col">Question 3 - Percentage answered 4</th>
-                                    <th scope="col">Question 3 - Percentage answered 5</th>
-                                </tr>
-                            </thead>
-                            <br>
-                            <table class="survey-table">
-                                    <th scope="col">Question 4 - Percentage answered 1</th>
-                                    <th scope="col">Question 4 - Percentage answered 2</th>
-                                    <th scope="col">Question 4 - Percentage answered 3</th>
-                                    <th scope="col">Question 4 - Percentage answered 4</th>
-                                    <th scope="col">Question 4 - Percentage answered 5</th>
-                                </tr>
-                            </thead>
-                            <br>
-                            <table class="survey-table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Module Number</th>
-                                        <th scope="col">Assessment Number</th>
-                                        <th scope="col">Question 4 - Percentage answered 1</th>
-                                        <th scope="col">Question 4 - Percentage answered 2</th>
-                                        <th scope="col">Question 4 - Percentage answered 3</th>
-                                        <th scope="col">Question 4 - Percentage answered 4</th>
-                                        <th scope="col">Question 4 - Percentage answered 5</th>
-                                    </tr>
-                                </thead>
-                            
-                                
+                </tbody>
+                <br>
+                <table class="survey-table w3-striped w3-bordered"> <!-- Question 3 -->
+                    <thead>
+                        <h2><strong>Questions About Assessment Content</strong></h2>
+                        <tr>
+                            <th colspan="7">Question 3 : How relevant was the assessment to the coursework you have completed within your course?</th>
+                        </tr>
+                        <tr>
+                            <th scope="col">Module Number</th>
+                            <th scope="col">Assessment Number</th>
+                            <th scope="col">Extremely Irrelevant</th>
+                            <th scope="col">Moderately Irrelevant </th>
+                            <th scope="col">Neither Relevant nor Irrelevant</th>
+                            <th scope="col">Moderately Relevant</th>
+                            <th scope="col">Extremely Relevant</th>
+                        </tr>
+                    </thead>
                     <tbody>
-            
+                        <tr>
+                            <th scope="col">1</th>    <!-- Question 3 Answers -->
+                            <th scope="col">1</th>
+                            <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }} = {{ m1a1q31per }}% </th>
+                            <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }}</th>
+                            <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }}</th>
+                            <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }}</th>
+                            <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }}</th>
+                        </tr>
+                
+                    </tbody>
+                <table class="survey-table w3-striped w3-bordered"> <!-- Question 4 -->
+                    <thead>
+                        <tr>
+                            <th colspan="7">Question 4 : The assessment questions worded so they were easy to understand what the question was asking.</th>
+                        </tr>
+                        <tr>
+                            <th scope="col">Module Number</th>
+                            <th scope="col">Assessment Number</th>
+                            <th scope="col">Strongly Disagree</th>
+                            <th scope="col">Slightly Disagree</th>
+                            <th scope="col">Neither Agree or Disagree</th>
+                            <th scope="col">Slightly Agree</th>
+                            <th scope="col">Strongly Agree</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="col">1</th><!--Question 4 Answers -->
+                            <th scope="col">1</th>
+                            <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }} = {{ m1a1q31per }}% </th>
+                            <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }}</th>
+                            <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }}</th>
+                            <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }}</th>
+                            <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }}</th>
+                        </tr>
+                
+                    </tbody>
+                
+                    <br>
+                <table class="survey-table w3-striped w3-bordered">
+                    <thead>
+                        <h2><strong>Questions about Module</strong></h2>
+                        <tr>
+                            <th colspan="7">Question 5 : How relevant is this particular module in reaching the learning outcomes set by your degree program?</th><!--Question 5-->
+                        </tr>
+                        <tr>
+                            <th scope="col">Module Number</th>
+                            <th scope="col">Assessment Number</th>
+                            <th scope="col">Extremely Irrelevant</th>
+                            <th scope="col">Slightly Irrelevant</th>
+                            <th scope="col">Neither Relevant nor Irrelevant</th>
+                            <th scope="col">Slightly Relevant</th>
+                            <th scope="col">Extremely Relevant</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="col">1</th><!--Question 5 Answers -->
+                            <th scope="col">1</th>
+                            <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }} = {{ m1a1q31per }}% </th>
+                            <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }}</th>
+                            <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }}</th>
+                            <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }}</th>
+                            <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }}</th>
+                        </tr>
+                
+                    </tbody>
+                
+                    <br>
+                <table class="survey-table w3-striped w3-bordered">
+                    <thead>
+                        <tr>
+                            <th colspan="7">Question 6 : Any additional Feedback Comments </th><!--Question 6-->
+                        </tr>
+                        <tr>
+                            <th scope="col">Module Number</th>
+                            <th scope="col">Assessment Number</th>
+                            <th colspan="5" >Comments</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="col">1</th><!--Question 6 Answers -->
+                            <th scope="col">1</th>
+                            <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }} = {{ m1a1q31per }}% </th>
+                            <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }}</th>
+                            <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }}</th>
+                            <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }}</th>
+                            <th scope="col">{{ q1_1 }} out of {{ m1a1qtot }}</th>
+                        </tr>
+                    </tbody>
+                    <br>
                     
-
-            <p> Q1: On a scale of 1 - 5, with 1 being very easy and 5 being very difficult, how easy was it to
-                complete this assessment through this portal?<br>
-                <img src="{{ url_for('static', filename='img/Q1chart.jpg') }}">
+            
+                
     {% else %}
         <br><br><br><br>
         <h2>ERROR! You must be logged in as a staff member to view feedback results. <br> If you are a staff member please login to
@@ -139,4 +196,5 @@
     {% endif %}
 
     {% endblock %}
+
   
