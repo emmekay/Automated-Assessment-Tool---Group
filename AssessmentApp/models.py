@@ -77,7 +77,7 @@ class assessment_results(db.Model):
     grade = db.Column(db.Integer, nullable = False)
     date_completed = db.Column(db.DateTime, nullable=False)
     result_string = db.Column(db.Text, nullable = True) # string to hold if each quesiton is right or wrong
-
+    answer_string = db.Column(db.Text, nullable = True)
     # passive_deletes=True
 
 class assessment_questions(db.Model):
