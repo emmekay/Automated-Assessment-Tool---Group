@@ -9,11 +9,11 @@
 
 <div class="">
 
-    <h2 id ="assTitle">CMT{{ass.id}} - {{ass.assessment_name}}</h2>
+    <h2 id ="assTitle">{{ass.assessment_name}}</h2>
     <div class="assInfoTable">
     <table >
       <tr>
-        <td>Start:  {{ass.start_date.strftime('%H:%M %b %d %Y')}}</td> <td>End:  {{ass.end_date.strftime('%H:%M %b %d %Y')}}</td> <td>Duration: <span id = "testTimer">00:00:00</span> </td>
+        <td>Start:  {{ass.start_date.strftime('%H:%M %b %d %Y')}}</td> <td>End:  {{ass.end_date.strftime('%H:%M %b %d %Y')}}</td> <td>Duration: <span id = "testTimer">{{ass.time_limit.strftime('%H:%M:%S')}}</span> </td>
         </tr>
     </table>
       </div>
@@ -109,7 +109,11 @@
 </div>
 
 <script src="{{ url_for('static', filename="Script_RC/AssesmentTime.js") }}"></script>
+
+{%if not current_user.is_staff and totalQ >0 %}
 <script type="text/javascript">countdown({{ass.time_limit.strftime('%H')|tojson}}, {{ass.time_limit.strftime('%M')|tojson}}, {{current_user.is_staff|tojson}})</script>
+
+{%endif%}
 
 
 {% endblock %}
