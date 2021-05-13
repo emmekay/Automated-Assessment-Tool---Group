@@ -29,12 +29,13 @@
 
     </div>
 
-    <h2>Feedback</h2>
+    
     <div class="feedbackStyle">
 
 
       {%for question in assQuestions%}
-
+      {% if ass.assessment_type == 0 %}
+      <h2>Feedback</h2>
       <div class="singleQuestion">
           {%if res1[question.id]%}
           <p>{{i}} Q {{question.id}}: Correct</p>
@@ -43,18 +44,15 @@
           <p>{{i}} Q {{question.id}}: Incorrect</p>
           <p>Feedback: {{question.incorrect_feedback}}</p>
           {%endif%}
-
-
-
       </div>
-
+      {% endif %}
 
 
 
       {%endfor%}
 
       <div class="">
-          <p>Assessment id = {{ass.id}} , Module id= {{ass.module_id}}</p>
+          <!-- <p>Assessment id = {{ass.id}} , Module id= {{ass.module_id}}</p> -->
           <p><a href="{{url_for('survey',  mod_id = ass.module_id, asse_id = ass.id)}}">Click for Satisfaction Survey</a></p>
 
 
