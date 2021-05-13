@@ -83,7 +83,7 @@ def Ass(id):
         if ass.assessment_type == 0:
             flash(str(correct) + "/" + str(totalPossibleMarks) + " Marks")
         else:
-            flash("This Assessment is Sumative, no instant results avialible. ")
+            flash("This Assessment is Summative, no instant results available. ")
 
         print(res4)
         if (len(assQuestions) > 0 and not current_user.is_staff):

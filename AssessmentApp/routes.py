@@ -88,8 +88,9 @@ def view_modules():
 def view_assessments(module_id):
   assess = assessment_details.query.filter(assessment_details.module_id==module_id)
   results = assessment_results.query.filter(assessment_results.user_id==current_user.id)
+  present = datetime.now()
 
-  return render_template('view_assessments.html', assess=assess, id = module_id, results=results )
+  return render_template('view_assessments.html', assess=assess, id = module_id, results=results, present=present )
 
 @app.route("/edit-assessments/<int:assess_id>", methods = ["GET", "POST"])
 def edit_assessment(assess_id):
