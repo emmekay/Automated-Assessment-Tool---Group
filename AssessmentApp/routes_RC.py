@@ -62,6 +62,7 @@ def Ass(id):
         correct = 0
         totalPossibleMarks = 0
         res1 = {}
+        res2 = {}
         res4 = ""
         myAnswer = ""
         for i, q in enumerate (assQuestions):#
@@ -84,7 +85,9 @@ def Ass(id):
         myAnswer = myAnswer[:-1]
 
         #IF FORMATIVE
+        isFormative = False
         if ass.assessment_type == 0:
+            isFormative = True
             flash(str(correct) + "/" + str(totalPossibleMarks) + " Marks")
         else:
             flash("This Assessment is Summative, no instant results available. ")
@@ -97,7 +100,7 @@ def Ass(id):
             db.session.commit()
 
 
-        return render_template('Confi.html', ass = ass, assQuestions =assQuestions, res1 =res1)
+        return render_template('Confi.html', ass = ass, assQuestions =assQuestions, res1 =res1, isFormative = isFormative, myAnswer = myAnswer)
         # return redirect(url_for('confirmation', id = id))
 
 

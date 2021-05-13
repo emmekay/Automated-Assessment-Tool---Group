@@ -136,5 +136,73 @@
 }
 
 .feedbackStyle {
-  margin-left: 5%;
+  /* margin-left: 5%; */
+  margin: 5%;
+  /* margin-top: 2%; */
+  padding: 5%;
+  padding-top: 1%;
+  /* pad */
+  background-color: white;
+  border-radius: 25px;
+
+}
+.feedbackStyle h2 {
+  text-align: center;
+}
+
+
+.QuestionForm{
+  background-color: white;
+  margin: 1%;
+  border-radius: 25px;
+  padding: 2%;
+}
+
+.singleQuestionFeedback {
+  text-align: center;
+}
+
+.satButton{
+  padding: 0.5%;
+}
+.satButton p{
+  text-align: center;
+}
+.satButton a{
+  padding: 0.5%;
+  color: black;
+  text-decoration: none;
+  border: 1px solid black
+}
+
+.satButton a:hover{
+  padding: 0.5%;
+  border: 1px solid red;
+  color: red;
+  cursor: pointer;
+}
+
+#correctAnswerFeed {
+  color: green;
+}
+#incorrectAnswerFeed {
+  color: red;
+}
+
+.resultFormative{
+  text-align: center;
+}
+
+
+#subButton {
+  float: right;
+  width: 30%;
+  background: none;
+  border: 1px solid black;
+}
+
+#subButton:hover {
+  color: red;
+  border: 1px solid blue;
+  cursor: pointer;
 }
