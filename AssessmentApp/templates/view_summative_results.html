@@ -10,10 +10,9 @@
         {% if ass.id == id %}
             <h2>Assessment Results for : {{ ass.assessment_name }}</h2>
         {% endif %}
-    {% endfor %}
     {% for res in results %}
         {% if res.assessment_id == id %}
-            <h2>Attempt Number : {{res.attempt_number}}</h2>
+            <h2>Attempt Number : {{res.attempt_number}}, Grade : {{res.grade}}%</h2>
             {% for q in assQuestions %}
                 {% set my_answers = res.answer_string.split(",") %}
                 {% if q.correct_answer is not none %}
@@ -44,5 +43,6 @@
                 {% endif %}
             {%endfor%}
         {% endif %}
+        {% endfor %}
     {% endfor %}
 {% endblock %}

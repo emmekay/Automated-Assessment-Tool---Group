@@ -12,36 +12,61 @@
     {% endfor %}
     {% for ass in assess %}
     <form class="edit_assess" action="{{ url_for('edit_assessment', assess_id = ass.id) }}" method="post">
-        {% if ass.assessment_type == 1%}
-        <select name="assType" id="">
-          <option value="0" selected="selected">Sumative</option>
-          <option value="1">Formative</option>
-        </select>
-        {% else %}
-        <select name="assType" id="">
-          <option value="0">Sumative</option>
-          <option value="1" selected="selected">Formative</option>
-        </select>
-        {% endif %}
-        <br>
-        <p>Assessment name</p><input type="text" name="assTitle" value='{{ ass.assessment_name }}'>
-        <br>
-        <p>Time limit</p><input type="text" name="assTime" value='{{ ass.time_limit }}'>
-        <br>
-        <p>release date</p><input type="text" name="assRel" value='{{ ass.release}}'>
-        <br>
-        <p>start date</p><input type="text" name="assStart" value='{{ ass.start_date }}'>
-        <br>
-        <p>end date</p><input type="text" name="assEnd" value='{{ ass.end_date }}'>
-        <br>
-        <p>weighting</p><input type="text" name="assWeight" value='{{ ass.weighting }}'>
-        <br>
-        <p>allowed attempts</p><input type="text" name="assAttemps" value='{{ ass.allowed_attemps }}'>
-        <br>
-        <p>instructions</p><input type="text" name="assInstruc" value='{{ ass.assessment_instructions }}'>
-        <br>
-        <br>
-        <input id = "edit_button" type="submit" name="" value="Edit">
+      <table>
+        <tr>
+          <td><label for="assType">Assessment Type</label></td>          
+          {% if ass.assessment_type == 1%}
+          <td>
+            <select class="textInput" name="assType" id="">
+              <option value="0" selected="selected">Sumative</option>
+              <option value="1">Formative</option>
+            </select>
+          </td>
+          {% else %}
+          <td>
+            <select class="textInput" name="assType" id="">
+              <option value="0">Sumative</option>
+              <option value="1" selected="selected">Formative</option>
+            </select>
+          </td>
+          {% endif %}
+        </tr>
+        <tr>
+          <td><p>Assessment name</p></td>
+          <td><input type="text" name="assTitle" value='{{ ass.assessment_name }}'></td>
+        </tr>
+        <tr>
+          <td><p>Time limit</p></td>
+          <td><input type="text" name="assTime" value='{{ ass.time_limit }}'></td>
+        </tr>
+        <tr>
+          <td><p>Release date</p></td>
+          <td><input type="text" name="assRel" value='{{ ass.release}}'></td>
+        </tr>
+        <tr>
+          <td><p>Start date</p></td>
+          <td><input type="text" name="assStart" value='{{ ass.start_date }}'></td>
+        </tr>
+        <tr>
+          <td><p>End date</p></td>
+          <td><input type="text" name="assEnd" value='{{ ass.end_date }}'></td>
+        </tr> 
+        <tr>
+          <td><p>Weighting</p></td>
+          <td><input type="text" name="assWeight" value='{{ ass.weighting }}'></td>          
+        </tr>
+        <tr>
+          <td><p>allowed attempts</p></td>
+          <td><input type="text" name="assAttemps" value='{{ ass.allowed_attemps }}'></td>
+        </tr>
+        <tr>
+          <td><p>Assessment Instructions</p></td>
+          <td><input type="text" name="assInstruc" value='{{ ass.assessment_instructions }}'></td>
+        </tr>
+        <tr>
+          <td><input id = "edit_button" type="submit" name="" value="Edit"></td>
+        </tr>
+      </table>
     </form>
     {% endfor %}
 {% endblock %}
