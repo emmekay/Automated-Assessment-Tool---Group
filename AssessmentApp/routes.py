@@ -20,7 +20,6 @@ def login():
     User = user.query.filter_by(email=form.email.data).first()
     if User is not None and User.verify_password(form.password.data):
       login_user(User)
-      flash('Login successful!')
       return redirect(url_for('myaccount'))
     flash('Invalid email address or password.')
     return render_template('login.html',form=form)
@@ -77,6 +76,7 @@ def login():
 @app.route("/logout")
 def logout():
   logout_user()
+  flash('Logout Successful!')
   return redirect(url_for('login'))
 
 @app.route("/view-modules")
