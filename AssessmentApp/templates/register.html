@@ -4,91 +4,129 @@
 {% endblock %}
 
 {% block body %}
+<img src="{{ url_for('static', filename='img/CardiffUniversitylogo.jpeg') }}">
 <div class="post-container">
     <div class="post-background">
         <h1 id="welcome-title">Registration</h1>
     </div>
 </div>
-<img src="{{ url_for('static', filename='img/CardiffUniversitylogo.jpeg') }}">
 <div class="post-container">
     <div class="post-background">
     <form method="POST" action="">
         {{ form.csrf_token }}
-        <div class="reg-form">
-            <div class="reg-instruction">
-                <span>Please enter a username, this must be between 3 and 5 characters long.</span>
-            </div>
-            <div class="reg-input-form-container">
-                <div class="reg-input-form">
-                    {{ form.username.label }} {{ form.username }}
+        <table>
+        <tr>
+            <div class="reg-form">
+                <td>
+                <div class="reg-instruction">
+                    <span>Please enter a username, this must be between 3 and 5 characters long.</span>
                 </div>
+                </td>
+                <td>
+                <div class="reg-input-form-container">
+                    <div class="reg-input-form">
+                         {{ form.username }}
+                    </div>
+                </div>
+                </td>
+                {% for error in form.username.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
             </div>
-            {% for error in form.username.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </div>
+        </tr>
+        <tr>
         <div class="reg-form">
+            <td>
             <div class="reg-instruction">
                 <span>Please enter an email, this must be a valid email address.</span>
             </div>
+            </td>
+            <td>
             <div class="reg-input-form-container">
                 <div class="reg-input-form">
-                    {{ form.email.label }} {{ form.email }}
+                    {{ form.email }}
                 </div>
             </div>
+            </td>
             {% for error in form.email.errors %} 
                 <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </div>
+        </tr>
+        <tr>
         <div class="reg-form">
+            <td>
             <div class="reg-instruction">
                 <span>Please enter your first name.</span>
             </div>
+            </td>
+            <td>
             <div class="reg-input-form-container">
                 <div class="reg-input-form">
-                    {{ form.first_name.label }} {{ form.first_name }}
+                     {{ form.first_name }}
                 </div>
             </div>
+            </td>
         </div>
+        </tr>
+        <tr>
         <div class="reg-form">
+            <td>
             <div class="reg-instruction">
                 <span>Please enter your last name.</span>
             </div>
+            </td>
+            <td>
             <div class="reg-input-form-container">
                 <div class="reg-input-form">
-                    {{ form.last_name.label }} {{ form.last_name }}
+                     {{ form.last_name }}
                 </div>
             </div>
+            </td>
         </div>
+        </tr>
+        <tr>
         <div class="reg-form">
+            <td>
             <div class="reg-instruction">
                 <span>Please enter a password, this must be between 6 and 8 characters long.</span>
             </div>
+            </td>
+            <td>
             <div class="reg-input-form-container">
                 <div class="reg-input-form">
-                    {{ form.password.label }} {{ form.password }}
+                    {{ form.password }}
                 </div>
             </div>
+            </td>
             {% for error in form.password.errors %}
                 <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </div>
+        </tr>
+        <tr>
         <div class="reg-form">
+            <td>
             <div class="reg-instruction">
                 <span>Please enter the same password, this must match the previously entered password.</span>
             </div>
+            </td>
+            <td>
             <div class="reg-input-form-container">
                 <div class="reg-input-form">
-                    {{ form.confirm_password.label }} {{ form.confirm_password }}
+                    {{ form.confirm_password }}
                 </div>
             </div>
+            </td>
             {% for error in form.confirm_password.errors %}
                 <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </div>
-        <div class="reg-submit">
-            <input type="submit" value="Register">
-        </div>
+        </tr>
+    </table>
+    <div class="reg-submit">
+        <input type="submit" value="Register">
+    </div>
     </form>
 </div>
 </div>

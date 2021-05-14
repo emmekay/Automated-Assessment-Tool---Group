@@ -26,21 +26,65 @@
                         {% set answ = q.answer_4 %}
                     {% endif %}
                 {% endif %}
-                <p><i>Question {{q.id}})</i>  {{q.question}}</p>
-                <p>Your Answer : {{ my_answers[loop.index0] }}</p>
-                {% if q.correct_answer is not none %}
-                    {% set index = 3 + q.correct_answer %}
-                    <p>Correct Answer : {{ answ }}</p>
-                {% else %}
-                    <p>Correct Answer : {{ q.type_2_answer }}</p>
-                {% endif %}
-                {% if res.result_string[loop.index0] == "1" %}
-                    <p>Feedback : {{q.correct_feedback}}</p>
-                    <br>
-                {% else %}
-                    <p>Feedback : {{q.incorrect_feedback}}</p>
-                    <br>
-                {% endif %}
+                <table>
+                    <tr>
+                        <td>
+                            <p class="feedback-info"><i>Question {{q.id}})</i></p>
+                        </td>
+                        <td>
+                            <p class="feedback-info">{{q.question}}</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="feedback-info"><i>Your Answer :</i></p>
+                        </td>
+                        <td>
+                            <p class="feedback-info">{{ my_answers[loop.index0] }}</p>
+                        </td>
+                    </tr>
+                    {% if q.correct_answer is not none %}
+                        {% set index = 3 + q.correct_answer %}
+                        <tr>
+                            <td>
+                                <p class="feedback-info"><i>Correct Answer :</i></p>
+                            </td>
+                            <td>
+                                <p class="feedback-info">{{ answ }}</p>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td>
+                                <p class="feedback-info"><i>Correct Answer :</i></p>
+                            </td>
+                            <td>
+                                <p class="feedback-info">{{ q.type_2_answer }}</p>
+                            </td>
+                        </tr>
+                    {% endif %}
+                    {% if res.result_string[loop.index0] == "1" %}
+                        <tr>
+                            <td>
+                                <p class="feedback-info"><i>Feedback :</i></p>
+                            </td>
+                            <td>
+                                <p class="feedback-info">{{q.correct_feedback}}</p>
+                            </td>
+                        </tr>
+                        <br>
+                    {% else %}
+                        <tr>
+                            <td>
+                                <p class="feedback-info"><i>Feedback :</i></p>
+                            </td>
+                            <td>
+                                <p class="feedback-info">{{q.incorrect_feedback}}</p>
+                            </td>
+                        </tr>
+                        <br>
+                    {% endif %}
+                </table>
             {%endfor%}
         {% endif %}
         {% endfor %}

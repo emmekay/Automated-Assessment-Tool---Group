@@ -1,5 +1,6 @@
 {% block head %}
   <title>Login</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style/login.css') }}">
 {% endblock %}
 
 {% block content %}
@@ -15,16 +16,19 @@
         {% endif %}
       {% endwith %}
       </div>
+    <img src="{{ url_for('static', filename='img/CardiffUniversityLogo.jpeg')}}" alt="">
+    <h1>Cardiff University Auto Assessment System</h1>
     <div class="login">
-    <h1>Log In</h1>
+    <h2>Log In</h2>
     <form method="POST" action="">
       {{ form.csrf_token }}
       {{ form.email.label }} <br/> {{ form.email }}<br/>
       <br/>{{ form.password.label }} <br/> {{ form.password }}<br/>
-      <br/><input type="submit" value="Login">
+      <br>
+      <input type="submit" value="Login">
     </form>
+    <a href="{{ url_for('register') }}">Register</a>
     </div>
-
   </div>
-  <a href="{{ url_for('register') }}">Register</a>
+  
 {% endblock %}

@@ -1,0 +1,18 @@
+.login {
+    text-align: center;
+    width: fit-content;
+    display: block;
+    margin: auto;
+    border-radius: 20px;
+    padding: 0px 30px;
+}
+
+img {
+    width: 25%;
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+h1 {
+    text-align: center;
+}
