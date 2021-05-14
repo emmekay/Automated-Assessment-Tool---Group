@@ -18,7 +18,7 @@
             <td>
             {% if current_user.is_staff == 1 %}
                 <a href="{{ url_for('edit_assessment', assess_id = ass.id) }}">Edit</a>
-                <a href="{{ url_for('delete_assessment', assess_id = ass.id) }}">Delete</a>
+                <a href="{{ url_for('delete_assessment', assess_id = ass.id) }}" onclick="return confirm('Are you sure you want to delete {{ass.assessment_name}}?')">Delete</a>
                 <a href="{{ url_for('createQuestion', assess_id = ass.id) }}">Create New Question</a>
             {% else %}
                 {% set attempts = [0] %}
@@ -30,8 +30,10 @@
                 {% if present >= ass.start_date and ass.end_date >= present %}
                     {% if ass.allowed_attemps > (attempts|max) and (attempts|max) == 0 %}
                         <a href="{{ url_for('Ass', id = ass.id) }}">Take</a>
+                        <p>{{ass.allowed_attemps}} attempts remaining.</p>
                     {% elif ass.allowed_attemps > (attempts|max) and (attempts|max) >= 1 %}
                         <a href="{{ url_for('Ass', id = ass.id) }}">Retake</a>
+                        <p>{{ass.allowed_attemps - (attempts|max)}} attempts remaining.</p>
                     {% else %}
                         <p>Sorry, you have run out of attempts.</p>
                     {% endif %}
