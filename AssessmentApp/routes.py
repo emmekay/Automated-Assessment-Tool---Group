@@ -9,6 +9,7 @@ from AssessmentApp.models import *
 from AssessmentApp.routes_RC import *
 from AssessmentApp.routes_EK import *
 from AssessmentApp.routes_NK import *
+from AssessmentApp.routes_JB import *
 #from AssessmentApp.routes_QL import *
 
 
