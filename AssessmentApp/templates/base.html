@@ -23,20 +23,13 @@
         <h1>&nbsp &nbsp Auto-Assessment Portal</h1>
       </div>
 
-      Hello, {{current_user.username}}
-      
-      <a href="{{url_for('logout')}}">Logout</a>
-       <div class="alert">
-        {% with messages = get_flashed_messages() %}
-          {% if messages %}
-              <ul>
-                  {% for message in messages %}
-                    <li style="list-style-type: none;">{{ message }}</li>
-                  {% endfor %}
-              </ul>
-          {% endif %}
-        {% endwith %}
-        </div>
+
+      <div class="">
+      <p> {{current_user.first_name}} {{current_user.last_name}} &nbsp; | &nbsp; <a id = "logOutLogIn" href="{{url_for('logout')}}">Logout</a></p>
+
+      </div>
+
+
 
     </header>
 
@@ -68,10 +61,9 @@
 
     <footer>
 
-      <p>               | <span onclick="location.href = '/myaccount'">My Account</span> | <span onclick="location.href = '/view-modules'">Modules</span> | 
-        <span>Results</span> |
+      <p><span onclick="location.href = '/myaccount'">My Account</span> | <span onclick="location.href = '/view-modules'">Modules</span> | <span>Results</span> </p>
       <p>CMT 313 Group H - Auto Assessment Tool</p>
-      
+
 
     </footer>
 

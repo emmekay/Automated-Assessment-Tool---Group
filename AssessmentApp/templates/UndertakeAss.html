@@ -9,11 +9,11 @@
 
 <div class="">
 
-    <h2 id ="assTitle">CMT{{ass.id}} - {{ass.assessment_name}}</h2>
+    <h1 id ="assTitle">{{ass.assessment_name}}</h1>
     <div class="assInfoTable">
     <table >
       <tr>
-        <td>Start:  {{ass.start_date.strftime('%H:%M %b %d %Y')}}</td> <td>End:  {{ass.end_date.strftime('%H:%M %b %d %Y')}}</td> <td>Duration: <span id = "testTimer">00:00:00</span> </td>
+        <td>Start:  {{ass.start_date.strftime('%H:%M %b %d %Y')}}</td> <td>End:  {{ass.end_date.strftime('%H:%M %b %d %Y')}}</td> <td>Duration: <span id = "testTimer">{{ass.time_limit.strftime('%H:%M:%S')}}</span> </td>
         </tr>
     </table>
       </div>
@@ -27,6 +27,7 @@
     <!-- <br> -->
 
     </div>
+    <br>
 
 
     <!-- <p id = "testTimer">1</p> -->
@@ -50,7 +51,7 @@
 
             <div class="singleQuestion">
 
-            <h3>{{loop.index}}. {{question.question}}</h3>
+            <h3>Q{{loop.index}}. {{question.question}}</h3>
 
 
             <div class="questionBoxes">
@@ -88,6 +89,7 @@
       {%if not current_user.is_staff and totalQ >0 %}
       <input id = "submitAss" type="submit" name="Submit" value="Submit">
       {%endif%}
+      <br>
 
 
       </form>
@@ -109,7 +111,11 @@
 </div>
 
 <script src="{{ url_for('static', filename="Script_RC/AssesmentTime.js") }}"></script>
+
+{%if not current_user.is_staff and totalQ >0 %}
 <script type="text/javascript">countdown({{ass.time_limit.strftime('%H')|tojson}}, {{ass.time_limit.strftime('%M')|tojson}}, {{current_user.is_staff|tojson}})</script>
+
+{%endif%}
 
 
 {% endblock %}
