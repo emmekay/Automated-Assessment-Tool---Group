@@ -2,17 +2,19 @@
 
 {% block head %}
   <title>Edit Assessment</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style/edit_assessment.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style/edit_assessments.css') }}">
 {% endblock %}
 
 {% block body %}
-    <h1>This is the edit assessment page</h1>
+    <h1 id="edit-title">Edit Assessment</h1>
     {% for mod in module %}
-      <p>{{ mod.module_name }}</p>
-    {% endfor %}
+            <span id="title-case">
+              <span id="mod-title">{{ mod.module_name }}</span>
+            </span>
+          {% endfor %}
     {% for ass in assess %}
     <form class="edit_assess" action="{{ url_for('edit_assessment', assess_id = ass.id) }}" method="post">
-      <table>
+      <table class="edit-table">
         <tr>
           <td><label for="assType">Assessment Type</label></td>          
           {% if ass.assessment_type == 1%}
@@ -33,35 +35,35 @@
         </tr>
         <tr>
           <td><p>Assessment name</p></td>
-          <td><input type="text" name="assTitle" value='{{ ass.assessment_name }}'></td>
+          <td><input type="text" class="textInput" name="assTitle" value='{{ ass.assessment_name }}'></td>
         </tr>
         <tr>
           <td><p>Time limit</p></td>
-          <td><input type="text" name="assTime" value='{{ ass.time_limit }}'></td>
+          <td><input type="text" class="textInput" name="assTime" value='{{ ass.time_limit }}'></td>
         </tr>
         <tr>
           <td><p>Release date</p></td>
-          <td><input type="text" name="assRel" value='{{ ass.release}}'></td>
+          <td><input type="text" class="textInput" name="assRel" value='{{ ass.release}}'></td>
         </tr>
         <tr>
           <td><p>Start date</p></td>
-          <td><input type="text" name="assStart" value='{{ ass.start_date }}'></td>
+          <td><input type="text" class="textInput" name="assStart" value='{{ ass.start_date }}'></td>
         </tr>
         <tr>
           <td><p>End date</p></td>
-          <td><input type="text" name="assEnd" value='{{ ass.end_date }}'></td>
+          <td><input type="text" class="textInput" name="assEnd" value='{{ ass.end_date }}'></td>
         </tr> 
         <tr>
           <td><p>Weighting</p></td>
-          <td><input type="text" name="assWeight" value='{{ ass.weighting }}'></td>          
+          <td><input type="text" class="textInput" name="assWeight" value='{{ ass.weighting }}'></td>          
         </tr>
         <tr>
           <td><p>allowed attempts</p></td>
-          <td><input type="text" name="assAttemps" value='{{ ass.allowed_attemps }}'></td>
+          <td><input type="text" class="textInput" name="assAttemps" value='{{ ass.allowed_attemps }}'></td>
         </tr>
         <tr>
           <td><p>Assessment Instructions</p></td>
-          <td><input type="text" name="assInstruc" value='{{ ass.assessment_instructions }}'></td>
+          <td><textarea type="text" class="textInput" name="assInstruc" rows="8">{{ ass.assessment_instructions }}</textarea></td>
         </tr>
         <tr>
           <td><input id = "edit_button" type="submit" name="" value="Edit"></td>
