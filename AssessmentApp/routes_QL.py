@@ -27,7 +27,7 @@ def createQuestion():
         # Add question type two
         quesTypeTwo_Content = request.form['QContent']
         quesTypeTwo_DifLevel = request.form['DifficultyLevel']
-        quesTypeTwo_Point = request.form['Point']
+        quesTypeTwo_Point = request.form['Points']
         quesTypeTwo_Option1 = request.form['Option1']
         quesTypeTwo_Option2 = request.form['Option2']
         quesTypeTwo_CorrAnswer = request.form['CorrectAnswer']
