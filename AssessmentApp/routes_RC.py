@@ -62,25 +62,32 @@ def Ass(id):
         correct = 0
         totalPossibleMarks = 0
         res1 = {}
+        res2 = {}
         res4 = ""
+        myAnswer = ""
         for i, q in enumerate (assQuestions):#
             totalPossibleMarks += q.value
             if q.correct_answer and request.form['Q' +str(q.id)] == str(q.correct_answer):
                 correct += q.value
                 res1[q.id] = True
                 res4 += "1"
+                myAnswer += request.form['Q' +str(q.id)] + ","
             elif (not q.correct_answer) and request.form['Q' +str(q.id)] == str(q.type_2_answer):
                 correct += q.value
                 res1[q.id] = True
                 res4 += "1"
+                myAnswer += request.form['Q' +str(q.id)] + ","
             else:
                 res1[q.id] = False
                 res4 += "0"
+                myAnswer += request.form['Q' +str(q.id)] + ","
 
-
+        myAnswer = myAnswer[:-1]
 
         #IF FORMATIVE
+        isFormative = False
         if ass.assessment_type == 0:
+            isFormative = True
             flash(str(correct) + "/" + str(totalPossibleMarks) + " Marks")
         else:
             flash("This Assessment is Summative, no instant results available. ")
@@ -88,12 +95,12 @@ def Ass(id):
         print(res4)
         if (len(assQuestions) > 0 and not current_user.is_staff):
             att = assessment_results.query.filter_by(user_id = current_user.id, assessment_id = id).all()
-            res = assessment_results(user_id = current_user.id, assessment_id = id, attempt_number = len(att)+1, grade = round((correct/totalPossibleMarks)*100), date_completed = datetime.now(), result_string = res4)
+            res = assessment_results(user_id = current_user.id, assessment_id = id, attempt_number = len(att)+1, grade = round((correct/totalPossibleMarks)*100), date_completed = datetime.now(), result_string = res4, answer_string = myAnswer)
             db.session.add(res)
             db.session.commit()
 
 
-        return render_template('Confi.html', ass = ass, assQuestions =assQuestions, res1 =res1)
+        return render_template('Confi.html', ass = ass, assQuestions =assQuestions, res1 =res1, isFormative = isFormative, myAnswer = myAnswer)
         # return redirect(url_for('confirmation', id = id))
 
 

@@ -7,42 +7,51 @@
 
 {% block body %}
 
-    {% if current_user.is_staff == 1 %}
-    <p><a href="{{url_for('addAss', id = id)}}">Add Assessment</a></p>
-    {%endif%}
-
-    <h1>View Assesments</h1>
-    {% for ass in assess %}
-        <h1>{{ ass.assessment_name }}</h1>
-        {% if current_user.is_staff == 1 %}
-            <a href="{{ url_for('edit_assessment', assess_id = ass.id) }}">Edit</a>
-            <a href="{{ url_for('delete_assessment', assess_id = ass.id) }}">Delete</a>
-            <a href="{{ url_for('createQuestion', assess_id = ass.id) }}">Create New Question</a>
-        {% else %}
-            {% set attempts = [0] %}
-            {% for res in results %}
-                {% if res.assessment_id == ass.id %}
-                    {% set attempts = attempts.append(res.attempt_number) %}
-                {% endif %}
-            {% endfor %}
-            {% if present > ass.start_date and ass.end_date > present %}
-                {% if ass.allowed_attemps > (attempts|max) and (attempts|max) == 0 %}
-                    <a href="{{ url_for('Ass', id = ass.id) }}">Take</a>
-                {% elif ass.allowed_attemps > (attempts|max) and (attempts|max) >= 1 %}
-                    <a href="{{ url_for('Ass', id = ass.id) }}">Retake</a>
-                {% else %}
-                    <p>Sorry, you have run out of attempts.</p>
-                {% endif %}
-            {% elif ass.assessment_type == 1 and present > ass.release %}
-                <a href="">View results</a>
-            {% elif present > ass.end_date %}
-                <p>This assessment closed at : {{ass.end_date}}</p>
-                {% if ass.assessment_type == 1 %}
-                    <p>Results to be released at : {{ass.release}}</p>
-                {% endif %}
+    <h1 id="ass-title">View Assesments</h1>
+    <table class = "ass-table" >
+        <tbody>
+        {% for ass in assess %}
+        <tr>
+            <td>
+                <h1>{{ ass.assessment_name }}</h1>
+            </td>
+            <td>
+            {% if current_user.is_staff == 1 %}
+                <a href="{{ url_for('edit_assessment', assess_id = ass.id) }}">Edit</a>
+                <a href="{{ url_for('delete_assessment', assess_id = ass.id) }}">Delete</a>
+                <a href="{{ url_for('createQuestion', assess_id = ass.id) }}">Create New Question</a>
             {% else %}
-                <p>Sorry, this assessment opens : {{ass.start_date}}</p>
+                {% set attempts = [0] %}
+                {% for res in results %}
+                    {% if res.assessment_id == ass.id %}
+                        {% set attempts = attempts.append(res.attempt_number) %}
+                    {% endif %}
+                {% endfor %}
+                {% if present >= ass.start_date and ass.end_date >= present %}
+                    {% if ass.allowed_attemps > (attempts|max) and (attempts|max) == 0 %}
+                        <a href="{{ url_for('Ass', id = ass.id) }}">Take</a>
+                    {% elif ass.allowed_attemps > (attempts|max) and (attempts|max) >= 1 %}
+                        <a href="{{ url_for('Ass', id = ass.id) }}">Retake</a>
+                    {% else %}
+                        <p>Sorry, you have run out of attempts.</p>
+                    {% endif %}
+                {% elif ass.assessment_type == 1 and present >= ass.release %}
+                    <a href="{{ url_for('summative_results', assess_id = ass.id) }}">View results</a>
+                {% elif present >= ass.end_date %}
+                    <p>This assessment closed at : {{ass.end_date}}</p>
+                    {% if ass.assessment_type == 1 %}
+                        <p>Results to be released at : {{ass.release}}</p>
+                    {% endif %}
+                {% else %}
+                    <p>Sorry, this assessment opens : {{ass.start_date}}</p>
+                {% endif %}
             {% endif %}
-        {% endif %}
-    {% endfor %}
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% if current_user.is_staff == 1 %}
+        <h2 id="add-ass"><a href="{{url_for('addAss', id = id)}}">Add Assessment</a></h2>
+    {%endif%}
 {% endblock %}
