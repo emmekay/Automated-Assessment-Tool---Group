@@ -8,6 +8,9 @@ from sqlalchemy import func
 # from datetime import datetime
 
 
+# from datetime import datetime
+
+
 from AssessmentApp import *
 from AssessmentApp import app, db
 from AssessmentApp.models import *
@@ -45,9 +48,6 @@ def survey(mod_id, asse_id):
     return render_template(
         "survey.html", title="Survey", mod_id=mod_id, asse_id=asse_id
     )  # , form=form)
-
-
-# user_id=form.user_id.data, assessment_id=form.assessment_id.data,
 
 
 @app.route("/myaccount")  # EK
@@ -326,52 +326,69 @@ def surveyresults():
     # print(q1_1)
     # print(q1_total)
 
+    # m1a1q2tot = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_2).count()  # Question 2
+    # m1a1q3tot = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_3).count()  # Question 3
+    # m1a1q4tot = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_4).count()  # Question 4
+    # m1a1q5tot = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_5).count()  # Question 5
 
-# m1a1q2tot = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_2).count()  # Question 2
-# m1a1q3tot = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_3).count()  # Question 3
-# m1a1q4tot = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_4).count()  # Question 4
-# m1a1q5tot = surveyinput.query.filter(surveyinput.module_id == 1, surveyinput.assessment_id == 1, surveyinput.question_5).count()  # Question 5
+    # @app.route("/surveyresults/<int:mod_id>/<int:assess_id>/<question_1>")
+    # , surveyinput.question_1, surveyinput.module_id).group_by(
+    # surveyinput.question_1, surveyinput.module_id).all()
+    # print(result)
+    # def surveyresults(mod_id, assess_id, question_1):
+    # q1results = surveyinput.query.group_by(mod_id=mod_id, assess_id=assess_id, question_1=question_1).all()
+    # print(q1results)
+    # atr = surveyinput.query.filter_by(user_id=current_user.id, assessment_id=id).all()
+    # question_1 = surveyinput.query.filter_by(question_1=question_1).all()
+    # ass = surveyinput.query.filter_by(question_1 = question_1).first()
+    # @app.route("/surveyresults/<int:mod_id>/<int:assess_id>/<int:survey_id>")  # EK
+    # @app.route("/surveyresults/<int:>/<int:asse_id>", methods=['GET'])
 
+    # question_1 = surveyinput.question_1
+    # surv = surveyinput.query.filter_by(id=id).first()
+    # questionIds = assessment_questions.query.filter_by(assessment_id=id).all()
 
-# @app.route("/surveyresults/<int:mod_id>/<int:assess_id>/<question_1>")
-# , surveyinput.question_1, surveyinput.module_id).group_by(
-# surveyinput.question_1, surveyinput.module_id).all()
-# print(result)
-# def surveyresults(mod_id, assess_id, question_1):
-# q1results = surveyinput.query.group_by(mod_id=mod_id, assess_id=assess_id, question_1=question_1).all()
-# print(q1results)
-# atr = surveyinput.query.filter_by(user_id=current_user.id, assessment_id=id).all()
-# question_1 = surveyinput.query.filter_by(question_1=question_1).all()
-# ass = surveyinput.query.filter_by(question_1 = question_1).first()
-# @app.route("/surveyresults/<int:mod_id>/<int:assess_id>/<int:survey_id>")  # EK
-# @app.route("/surveyresults/<int:>/<int:asse_id>", methods=['GET'])
+    # q1response = [question_1.query.filter_by(id=q.question_id).first() for q in surv]
+    # current_user.id
+    # print(q1response)
+    # select 'question_1', cast(count(*) * 100.0 / (select count(*)) from surveyinput)
+    # WHERE `question_1` = 3
+    # group by 'question_1'
+    # SELECT module_id, assessment_id, question_1, count(*) cnt FROM surveyinput group by module_id, assessment_id, question_1
 
-# question_1 = surveyinput.question_1
-# surv = surveyinput.query.filter_by(id=id).first()
-# questionIds = assessment_questions.query.filter_by(assessment_id=id).all()
+    # questionIds = assessment_questions.query.filter_by(assessment_id=id).all()
 
+    # all_surveys = []
+    # for result in q1results:
+    #   all_surveys.append(result.question_1)
+    # q1_choice1 = (all_surveys.count(str(1)))
+    # return render_template('surveyresults.html', title='Feedback Summary')
+    # return render_template('surveyresults.html', q1_choice1 = q1_choice1, title='Feedback Summary')
 
-# q1response = [question_1.query.filter_by(id=q.question_id).first() for q in surv]
-# current_user.id
-# print(q1response)
-# select 'question_1', cast(count(*) * 100.0 / (select count(*)) from surveyinput)
-# WHERE `question_1` = 3
-# group by 'question_1'
-# SELECT module_id, assessment_id, question_1, count(*) cnt FROM surveyinput group by module_id, assessment_id, question_1
+    # Pull all survey results
+    # survey_res = surveyresults.query.filter_by(assess_id=assessment_id).all()
 
-# questionIds = assessment_questions.query.filter_by(assessment_id=id).all()
+    # @app.route("/survey")
+    # def survey():
+    # print("Total number of surveys is", survey.query.count())
+    #   return render_template('survey.html', title='Assessment Completed')
 
-# all_surveys = []
-# for result in q1results:
-#   all_surveys.append(result.question_1)
-# q1_choice1 = (all_surveys.count(str(1)))
-# return render_template('surveyresults.html', title='Feedback Summary')
-# return render_template('surveyresults.html', q1_choice1 = q1_choice1, title='Feedback Summary')
-
-# Pull all survey results
-# survey_res = surveyresults.query.filter_by(assess_id=assessment_id).all()
-
-# @app.route("/survey")
-# def survey():
-# print("Total number of surveys is", survey.query.count())
-#   return render_template('survey.html', title='Assessment Completed')
+    # Module 1 Assess 1 Q2
+    m1a1q2_1 = surveyinput.query.filter(
+        surveyinput.module_id == 1,
+        surveyinput.assessment_id == 1,
+        surveyinput.question_1 == 1,
+    ).count()
+    m1a1q21per = round((m1a1q2_1 / m1a1qtot) * 100)
+    m1a1q2_2 = surveyinput.query.filter(
+        surveyinput.module_id == 1,
+        surveyinput.assessment_id == 1,
+        surveyinput.question_1 == 2,
+    ).count()
+    m1a1q22per = round((m1a1q2_2 / m1a1qtot) * 100)
+    m1a1q2_3 = surveyinput.query.filter(
+        surveyinput.module_id == 1,
+        surveyinput.assessment_id == 1,
+        surveyinput.question_1 == 3,
+    ).count()
+    m1a1q23per = round((m1a1q2_3 / m1a1qtot) * 100)

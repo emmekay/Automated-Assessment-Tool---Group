@@ -1,0 +1,63 @@
+/* Styling the table(s) individually */
+.survey-table {
+  border-collapse: collapse;
+  border-bottom: 2px solid #504646;
+  margin: 5px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Styling the container of the table */
+.content-tables {
+  /*margin: auto;*/
+  width: 25%;
+  padding: 5px;
+}
+
+/* Styling the Table headings */
+.content-tables thead tr {
+  background-color: #9e5858; /* Make sure color corresponds with color scheme */
+  color: #ffffff;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Styling the table cells  */
+ .content-tables th,
+ .content-tables td {
+  padding: 4px 5px;
+  border-bottom: 2px solid #443939;
+ }
+/* adding a bottom table border under each row */
+.content-tables tbody tr {
+  border-bottom: 1px solid #b8acac;
+}
+
+/* making each 2nd row a light grey color */
+.content-tables tbody tr:nth-of-type(even) {
+  background-color: #776e6ece;
+  border-bottom: 2px solid #9e5858;
+}
+
+/* making the last table row border the same as header */
+.content-tables tbody tr:last-of-type {
+  border-bottom: 2px solid #9e5858; /* Make sure color corresponds with color scheme */
+}
+
+/* making the current row stand out */
+.content-tables tbody tr.active-row {
+  font-weight: bold;
+  color: #9e5858; /* Make sure color corresponds with color scheme */
+}
+
+
+.surveyform td{
+  padding-right:  2%;
+  padding-bottom: 1%;
+  background-color: #f3bebece;
+
+} 
+/* Survey form box */

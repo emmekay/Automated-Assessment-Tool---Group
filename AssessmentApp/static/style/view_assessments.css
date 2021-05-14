@@ -1,0 +1,29 @@
+#ass-title {
+    text-align: center;
+}
+
+.ass-table {
+    width: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.ass-table a {
+    padding: 1% 3%;
+    text-decoration: none;
+    background-color:  rgb(119, 119, 134, 0.2);
+    border-radius: 10px;
+}
+
+#add-ass {
+    text-align: right;
+}
+
+#add-ass a {
+    background-color: white;
+    padding: 1% 1%;
+    border-radius: 10px;
+    text-decoration: none;
+}

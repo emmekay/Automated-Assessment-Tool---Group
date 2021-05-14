@@ -9,7 +9,7 @@
 
 <div class="">
 
-    <h2 id = "title">Create New Assessment</h2> <br>
+    <h1 id = "title">Create New Assessment</h1> <br>
 
     <form class="aDetails" action="{{url_for('addAss', id = id)}}" method="post">
 
@@ -38,11 +38,13 @@
 
        <tr>
          <td> <label for="assTime">Assessment Time Avallable</label></td>
-         <td> <input class="" type="time" name="assTime" value=""></td>
+         <td> <input class="textInput" type="time" name="assTime" value=""></td>
        </tr>
 
        <tr>
          <td><label for="assStart">Assessment Release Date</label></td>
+
+
          <td><input class="" type="date" name="assRel" value=""><input class="" type="time" name="assRelTime" value=""></td>
        </tr>
 

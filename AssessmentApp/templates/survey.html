@@ -10,7 +10,7 @@
 {% block body %}
 
 <div class="">
-    <div style="border:1px dotted red;padding:2%;">
+    <div style="border:1px dotted red;padding: 8px;">
         <h2>Please complete this satisfaction survey to describe your experience completing this assessment.</h2><br>
         <h3>Name : {{current_user.first_name}} {{current_user.last_name}}</h3>
         <h3>Email : {{current_user.email}}</h3>
@@ -19,7 +19,7 @@
     </div>
 
 
-    <button><a href='/staffaccount'>Opt out of survey and return to My Account</a></button>
+    <button><a href='/myaccount'>Opt out of survey and return to My Account</a></button>
 
 
 </div>
@@ -57,11 +57,11 @@
                     <td>
                         <select class="textInput" name="question_2" id="">
                             <option value="0"> </option>
-                            <option value="1">Several Issues</option>
-                            <option value="2">One Technical Issue</option>
-                            <option value="3">N/A</option>
-                            <option value="4">N/A</option>
-                            <option value="5">No Issues</option>
+                            <option value="1">Several Issues that Affected Assessment Outcome</option>
+                            <option value="2">Minor Issues </option>
+                            <option value="3">No Issues</option>
+                            <option value="4">To Delete</option>
+                            <option value="5">To Delete</option>
                         </select>
                     </td>
                 </tr>
@@ -107,7 +107,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><label for="question_6">I have felt supported by the teaching staff while completing this module.</label></td>
+                    <td><label for="question_6">Please leave any additional feedback comments in this box.</label></td>
                     <td><input class="textInput" type="text" name="question_6" value=""></td>
                 </tr>
                 <tr>

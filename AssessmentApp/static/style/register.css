@@ -1,0 +1,40 @@
+img {
+    width: 25%;
+    margin: auto;
+    display: block;
+    text-align: center;
+}
+
+.post-container {
+    margin: auto;
+    display: block;
+    text-align: center;
+    width: 75%;
+}
+
+.reg-instruction {
+    width: 500px;
+    word-wrap: break-word;
+}
+
+.reg-submit {
+    padding-top: 20px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+tr,td {
+    border-collapse: separate;
+    border-spacing: 0px 15px;
+    padding: 15px;
+}
+
+.reg-submit input {
+    width: 150px;
+}
+
+.reg-input-form {
+    width: 30%;
+}

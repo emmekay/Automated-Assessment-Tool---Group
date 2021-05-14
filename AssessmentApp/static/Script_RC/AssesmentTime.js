@@ -15,7 +15,7 @@ function countdown(H, M, Staff){
 
 
 
-  var t = 100000
+  // var t = (M*60) + (H*60*60)
   var x = setInterval(function() {
 
     // t -=1;
@@ -24,11 +24,9 @@ function countdown(H, M, Staff){
       document.getElementById("testTimer").textContent =   dateObject.getHours() + ":" + dateObject.getMinutes() + ":" + dateObject.getSeconds();
     }
 
-    // else {
-    //   if (!Staff){
-    //   document.getElementById("mainForm").submit();
-  //      }
-    // }
+    else {
+      document.getElementById("mainForm").submit();
+    }
 
 
   }, 1000)

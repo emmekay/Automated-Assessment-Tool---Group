@@ -1,0 +1,21 @@
+.section-container {
+    padding: 1% 1%;
+}
+
+.section-background {
+    background-color: white;
+    border-radius: 20px;
+    padding: 1% 1%;
+}
+
+.acc-table  {
+    width: 50%;
+}
+
+.other-table {
+    width: 100%;
+}
+
+.other-table td {
+    width: 75%;
+}
