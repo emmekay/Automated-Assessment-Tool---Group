@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+<!-- EK Page -->
+
+{% block head %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style/myAccount.css') }}">
+<title>My Account</title>
+
+{% endblock %}
+
+{% block body %}
+<div class="section-container">
+    <div class="section-background">
+        <h2><strong>My Account</strong></h2>
+        <table class="acc-table">
+            <tr>
+                <td><h3>Name : </h3></td>
+                <td><h3>{{current_user.first_name}} {{current_user.last_name}}</h3></td>
+            </tr>
+            <tr>
+                <td><h3>Email :</h3></td>
+                <td><h3>{{current_user.email}}</h3></td>
+            </tr>
+            <tr>
+                <td><h3>Username :</h3></td>
+                <td><h3>{{current_user.username}}</h3></td>
+            </tr>
+        </table>
+    </div>
+</div>
+    <div class="section-container">
+        <div class="section-background">
+            <h2>My Modules</h2> <!-- Add link to Module details page with each module title page here-->
+            <table class="other-table">
+                {% for module in Modules %}
+                    {% if current_user.has_enrolled(module) %}
+                        <tr>
+                            <td>
+                                <div class="module-title">
+                                    <h3>{{ module.module_name }}</h3>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="view-assess">
+                                    <a href="{{ url_for('view_assessments', module_id=module.id) }}"><span>View Assessments</span></a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>  
+    <div class="section-container">
+        <div class="section-background">
+            <table class="other-table">
+                <tr>
+                    <td>
+                        <h2>Graded Assessments</h2>
+                    </td>
+                    <td>
+                        <div class="view-assess">
+                            <a href="{{ url_for('completed_assessments', user_id=current_user.id)}}"><span>View Current Marks</span></a>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="section-container">
+        <div class="section-background">
+            <table class="other-table">
+                <tr>
+                    <td>
+                        <h2>All Assessments</h2>
+                    </td>
+                    <td>
+                        <div class="view-assess">
+                            <a href="{{ url_for('my_assessments', user_id=current_user.id)}}"><span>View All Assessments</span></a>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    {% endblock %}

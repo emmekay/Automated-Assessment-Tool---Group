@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import desc
 from datetime import datetime
 from flask_login import login_user, logout_user, login_required, current_user
 from AssessmentApp import app, login_manager
@@ -19,8 +20,7 @@ def login():
     User = user.query.filter_by(email=form.email.data).first()
     if User is not None and User.verify_password(form.password.data):
       login_user(User)
-      flash('Login successful!')
-      return redirect(url_for('staffaccount'))
+      return redirect(url_for('myaccount'))
     flash('Invalid email address or password.')
     return render_template('login.html',form=form)
 
@@ -29,7 +29,7 @@ def login():
 
 @app.route('/home',methods=['GET','POST'])
 def home():
-  return render_template('staffaccount.html')
+  return render_template('myaccount.html')
 
 # @app.route('/addQ/<int:id>', methods = ["GET", "POST"])
 # def addQ(id):
@@ -45,7 +45,7 @@ def login():
     login_user(User)
     flash('Login successful!')
     # return
-    return redirect("/staffaccount")
+    return redirect("")
     #flash('Invalid email address or password.')
 
     #return render_template('login.html',form=form)
@@ -55,7 +55,7 @@ def login():
 
 @app.route('/home',methods=['GET','POST'])
 def home():
-  return render_template('index.html')
+  return render_template('')
 
 @app.route("/login",methods=['GET','POST'])
 def login():
@@ -76,6 +76,7 @@ def login():
 @app.route("/logout")
 def logout():
   logout_user()
+  flash('Logout Successful!')
   return redirect(url_for('login'))
 
 @app.route("/view-modules")
@@ -88,8 +89,21 @@ def view_modules():
 def view_assessments(module_id):
   assess = assessment_details.query.filter(assessment_details.module_id==module_id)
   results = assessment_results.query.filter(assessment_results.user_id==current_user.id)
+  present = datetime.utcnow()
 
-  return render_template('view_assessments.html', assess=assess, id = module_id, results=results )
+  return render_template('view_assessments.html', assess=assess, id = module_id, results=results, present=present )
+
+@app.route("/summative-results/<int:assess_id>")
+def summative_results(assess_id):
+  assess = assessment_details.query.filter(assessment_details.id==assess_id)
+  results = assessment_results.query.filter(assessment_results.user_id==current_user.id).order_by(assessment_results.attempt_number.desc()).all()
+  questionIds = assessment_questions.query.filter_by(assessment_id=assess_id).all()
+  assQuestions = [ question.query.filter_by(id=q.question_id).first() for q in questionIds]
+  
+  present = datetime.now()
+  
+
+  return render_template('view_summative_results.html', assess=assess, id = assess_id, results=results, present=present, questionIds=questionIds, assQuestions=assQuestions)
 
 @app.route("/edit-assessments/<int:assess_id>", methods = ["GET", "POST"])
 def edit_assessment(assess_id):
