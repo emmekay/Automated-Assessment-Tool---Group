@@ -52,3 +52,12 @@
   font-weight: bold;
   color: #9e5858; /* Make sure color corresponds with color scheme */
 }
+
+
+.surveyform td{
+  padding-right:  2%;
+  padding-bottom: 1%;
+  background-color: #f3bebece;
+
+} 
+/* Survey form box */
