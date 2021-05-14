@@ -14,6 +14,9 @@
 
         <br><br>
 
+
+
+
         <h2>Student Feedback & Survey Results</h2>
         <h3>All feedback is anonymous and ordered by Module and Assessment.</h3>
 
@@ -22,7 +25,7 @@
                 <thead>
                     <h2><strong>Questions about using this Automated Assessment Tool</strong></h2>
                     <tr>
-                        <th colspan="7">Question 1 : Rate the ease of using this automated 
+                        <th colspan="7">Question 1 : Rate the ease of using this automated
                             assessment tool to complete your assessment.</th> <!--Question 1-->
                     </tr>
                     <tr>
@@ -36,18 +39,25 @@
                     </tr>
                 </thead>
                 <tbody>
+                  {% for m_id in enrolled_mod%}
+
+                  {%for a_id in Assessments[m_id]%}
+
+
                     <tr>
-                        <th scope="col">1</th> <!--Question 1 Answers -->
-                        <th scope="col">1</th>
-                        <th scope="col">{{ m1a1q1_1 }} out of {{ m1a1qtot }} = {{ m1a1q11per }}% </th>
-                        <th scope="col">{{ m1a1q1_2 }} out of {{ m1a1qtot }} = {{ m1a1q12per }}%</th>
-                        <th scope="col">{{ m1a1q1_3 }} out of {{ m1a1qtot }} = {{ m1a1q13per }}%</th>
-                        <th scope="col">{{ m1a1q1_4 }} out of {{ m1a1qtot }} = {{ m1a1q14per }}%</th>
-                        <th scope="col">{{ m1a1q1_5 }} out of {{ m1a1qtot }} = {{ m1a1q15per }}%</th>
+                        <th scope="col">{{m_id}}</th> <!--Question 1 Answers -->
+                        <th scope="col">{{a_id}}</th>
+                        <th scope="col">{{ survey_Results[a_id][0][0] }} </th>
+                        <th scope="col">{{ survey_Results[a_id][0][1] }}</th>
+                        <th scope="col">{{ survey_Results[a_id][0][2] }}</th>
+                        <th scope="col">{{ survey_Results[a_id][0][3] }}</th>
+                        <th scope="col">{{ survey_Results[a_id][0][4] }}</th>
                     </tr>
-                    
+                    {%endfor%}
+                    {%endfor%}
+
                 </tbody>
-                
+
                 <br>
             <table class="survey-table w3-striped w3-bordered"> <!-- Question 2-->
                 <thead>
@@ -90,16 +100,20 @@
                         </tr>
                     </thead>
                     <tbody>
+                      {%for a_id in Assessments_id%}
+
+
                         <tr>
-                            <th scope="col">1</th>    <!-- Question 3 Answers -->
-                            <th scope="col">1</th>
-                            <th scope="col">{{ m1a1q3_1 }} out of {{ m1a1qtot }} = {{ m1a1q231per }}% </th>
-                            <th scope="col">{{ m1a1q3_2 }} out of {{ m1a1qtot }} = {{ m1a1q32per }}%</th>
-                            <th scope="col">{{ m1a1q3_3 }} out of {{ m1a1qtot }} = {{ m1a1q33per }}%</th>
-                            <th scope="col">{{ m1a1q3_4 }} out of {{ m1a1qtot }} = {{ m1a1q34per }}%</th>
-                            <th scope="col">{{ m1a1q3_5 }} out of {{ m1a1qtot }} = {{ m1a1q35per }}%</th>
+                            <th scope="col">n/a</th> <!--Question 1 Answers -->
+                            <th scope="col">{{a_id}}</th>
+                            <th scope="col">{{ survey_Results[a_id][2][0] }} </th>
+                            <th scope="col">{{ survey_Results[a_id][2][1] }}</th>
+                            <th scope="col">{{ survey_Results[a_id][2][2] }}</th>
+                            <th scope="col">{{ survey_Results[a_id][2][3] }}</th>
+                            <th scope="col">{{ survey_Results[a_id][2][4] }}</th>
                         </tr>
-                
+                        {%endfor%}
+
                     </tbody>
                 <table class="survey-table w3-striped w3-bordered"> <!-- Question 4 -->
                     <thead>
@@ -126,9 +140,9 @@
                             <th scope="col">{{ m1a1q4_4 }} out of {{ m1a1qtot }} = {{ m1a1q44per }}%</th>
                             <th scope="col">{{ m1a1q4_5 }} out of {{ m1a1qtot }} = {{ m1a1q45per }}%</th>
                         </tr>
-                
+
                     </tbody>
-                
+
                     <br>
                 <table class="survey-table w3-striped w3-bordered">
                     <thead>
@@ -156,9 +170,9 @@
                             <th scope="col">{{ m1a1q5_4 }} out of {{ m1a1qtot }} = {{ m1a1q54per }}%</th>
                             <th scope="col">{{ m1a1q5_5 }} out of {{ m1a1qtot }} = {{ m1a1q55per }}%</th>
                         </tr>
-                
+
                     </tbody>
-                
+
                     <br>
                 <table class="survey-table w3-striped w3-bordered">
                     <thead>
@@ -179,18 +193,16 @@
                         </tr>
                     </tbody>
                     <br>
-                    
-            
-                
+
+
+
     {% else %}
         <br><br><br><br>
         <h2>ERROR! You must be logged in as a staff member to view feedback results. <br> If you are a staff member please login to
             view this page.<br> If you are not a staff member please return to your account page</h2><br><br>
         <h3><button><a href='/myaccount'>Return to My Account</a></button></h3>
-        
-        
+
+
     {% endif %}
 
     {% endblock %}
-
-  

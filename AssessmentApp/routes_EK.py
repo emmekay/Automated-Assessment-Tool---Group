@@ -64,6 +64,53 @@ def surveysubmit():
 @app.route("/surveyresults")
 def surveyresults():
 
+    Modules = modules_enrolment.query.filter_by(user_id = current_user.id).all()
+    enrolled_mod = []
+    for m in Modules:
+        enrolled_mod.append(m.module_id)
+
+    Assessments = {}
+
+    Assessments_id = []
+
+
+    for m_id in enrolled_mod:
+
+        temp = []
+
+        Asse = assessment_details.query.filter_by(module_id = m_id).all()
+
+        for a in Asse:
+            temp.append(a.id)
+            Assessments_id.append(a.id)
+
+        Assessments[m_id] = temp
+
+
+    # print(Assessments_id)
+
+    survey_Results = {}
+
+    for a_id in Assessments_id:
+        temp_answers = [[0,0,0,0,0],[0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]
+        temp_survey = surveyinput.query.filter_by(assessment_id=a_id).all()
+        for s in temp_survey:
+            temp_answers[0][s.question_1 - 1] += 1
+            temp_answers[1][s.question_2 - 1] += 1
+            temp_answers[2][s.question_3 - 1] += 1
+            temp_answers[3][s.question_4 - 1] += 1
+            temp_answers[4][s.question_5 - 1] += 1
+        survey_Results[a_id] =  temp_answers
+
+    print(survey_Results)
+
+
+
+
+
+
+
+
     # Pull all survey results
     # survey_res = surveyresults.query.filter_by(assess_id=assessment_id).all()
 
@@ -263,7 +310,9 @@ def surveyresults():
     ).count()
     m1a1q55per = round((m1a1q5_3 / m1a1qtot) * 100)
 
-    print(m1a1q15per)
+    # print(m1a1q15per)
+    # print(Assessments_id)
+    # print(Assessments[1])
 
     return render_template(
         "surveyresults.html",
@@ -320,6 +369,11 @@ def surveyresults():
         m1a1q54per=m1a1q54per,
         m1a1q55per=m1a1q55per,
         title="Feedback Summary",
+        Assessments_id = Assessments_id,
+        survey_Results = survey_Results,
+        enrolled_mod = enrolled_mod,
+        Assessments = Assessments
+
     )
 
     # print(mod_1, m1a1qtot, m2a1qtot, m2a4qtot)
