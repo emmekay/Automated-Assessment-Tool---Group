@@ -61,17 +61,17 @@
     </form>
     </div>
 {#    If choose type two#}
-    <div id="cQ_QuestionType_Two">
+<div id="cQ_QuestionType_Two">
     <form>
     <table>
         <tr>
             <td><label for="content">Question Content</label></td>
-            <td><textarea name="QContent" class="" cols="40" rows="8"></textarea></td>
+            <td><textarea id="QContent" name="QContent" class="" cols="40" rows="8"></textarea></td>
         </tr>
         <tr>
             <td>Difficulty Level</td>
             <td>
-                <select id="cQ_T1_Difficulty_Level" name="cQ_Difficulty_Level">
+                <select id="DifficultyLevel" name="DifficultyLevel">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -81,21 +81,21 @@
             </td>
         </tr>
         <tr>
-            <td><label for="points">Points</label></td>
-            <td><input type="text" name="point"></td>
+            <td><label for="Points">Points</label></td>
+            <td><input type="text" id="Point" name="Point"></td>
         </tr>
         <tr>
             <td><label for="Option 1">Option 1</label></td>
-            <td><label for="true">True</label></td>
+            <td><label for="true" id="Option1" name="Option1">True</label></td>
         </tr>
         <tr>
             <td><label for="Option 2">Option 2</label></td>
-            <td><label for="false">False</label></td>
+            <td><label for="false"id="Option2" name="Option2">False</label></td>
         </tr>
         <tr>
             <td><label for="canswer">Correct Answer</label></td>
             <td>
-                <select name="correctanswer">
+                <select name="CorrectAnswer">
                     <option value="True">True</option>
                     <option value="False">False</option>
                 </select>
@@ -108,10 +108,6 @@
         <tr>
             <td><label for="ifeedback">Incorrect Feedback</label></td>
             <td><input type="text" name="incorrectfeedback"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><input type="submit" value="Submit"></td>
         </tr>
     </table>
         <input id="cQ_Add_Question" name="cQ_Add_Question" type="submit" value="Add Question">
