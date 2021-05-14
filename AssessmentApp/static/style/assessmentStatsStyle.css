@@ -22,7 +22,7 @@
 
 /* Styling the Table headings */
 .content-tables thead tr {
-  background-color: #009879; /* Make sure color corresponds with color scheme */
+  background-color: #990000; /* Make sure color corresponds with color scheme */
   color: #ffffff;
   text-align: center;
   font-weight: bold;
@@ -46,7 +46,7 @@
 
 /* making the last table row border the same as header */
 .content-tables tbody tr:last-of-type {
-  border-bottom: 2px solid #009879; /* Make sure color corresponds with color scheme */
+  border-bottom: 2px solid #990000; /* Make sure color corresponds with color scheme */
 }
 
 /* making the current row stand out */

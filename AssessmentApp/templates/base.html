@@ -1,53 +1,57 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/mainStyle.css') }}">
-    {% block head %}{% endblock %}
-  </head>
 
-  <body>
-    <header class = "mainHeader">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style/mainStyle.css') }}">
+  {% block head %}{% endblock %}
+</head>
 
-      <!-- <img id="cardiffLogo" src="{{ url_for('static', filename='img\Cardiff_University.png') }}"/> -->
-      <!-- <div class="logoTitle"> -->
+<body>
+  <header class="mainHeader">
 
-
-
-      <div class="title">
-        <img id = "cLogo" src="{{ url_for('static', filename='img/Cardiffminilogo.jpeg') }}" >
-        <!-- <p>     </p> -->
-        <h1>&nbsp &nbsp Auto-Assessment Portal</h1>
-      </div>
-
-
-      <div class="">
-      <p> {{current_user.first_name}} {{current_user.last_name}} &nbsp; | &nbsp; <a id = "logOutLogIn" href="{{url_for('logout')}}">Logout</a></p>
-
-      </div>
+    <!-- <img id="cardiffLogo" src="{{ url_for('static', filename='img\Cardiff_University.png') }}"/> -->
+    <!-- <div class="logoTitle"> -->
 
 
 
-    </header>
+    <div class="title">
+      <img id="cLogo" src="{{ url_for('static', filename='img/Cardiffminilogo.jpeg') }}">
+      <!-- <p>     </p> -->
+      <h1>&nbsp &nbsp Auto-Assessment Portal</h1>
+    </div>
 
-    <div class="outerContainer">
 
-      <div class="sideBar">
+    <div class="">
+      <p> {{current_user.first_name}} {{current_user.last_name}} &nbsp; | &nbsp; <a id="logOutLogIn"
+          href="{{url_for('logout')}}">Logout</a></p>
 
-        <ul>
-          <!-- <li></li> -->
-          <li><span onclick="location.href = '/myaccount'">My Account</span></li>
-          <span onclick="location.href = '/view-modules'"><li>Modules</li></span>
-          <li>Results</li>
-          {% if current_user.is_staff %}
-            <li><span onclick="location.href = '/surveyresults'">Feedback</span></li></a>
-          {% else %}
-          {% endif %}
-        </ul>
-      </div>
+    </div>
+
+
+
+  </header>
+
+  <div class="outerContainer">
+
+    <div class="sideBar">
+
+      <ul>
+        <!-- <li></li> -->
+        <li><span onclick="location.href = '/myaccount'">My Account</span></li>
+        <span onclick="location.href = '/view-modules'">
+          <li>Modules</li>
+        </span>
+        <li><a href="{{ url_for('completed_assessments', user_id=current_user.id)}}">Results</a></li>
+        {% if current_user.is_staff %}
+        <li><span onclick="location.href = '/surveyresults'">Feedback</span></li></a>
+        {% else %}
+        {% endif %}
+      </ul>
+    </div>
 
 
     <main>
@@ -57,15 +61,17 @@
 
 
 
-    </div>
+  </div>
 
-    <footer>
+  <footer>
 
-      <p><span onclick="location.href = '/myaccount'">My Account</span> | <span onclick="location.href = '/view-modules'">Modules</span> | <span>Results</span> </p>
-      <p>CMT 313 Group H - Auto Assessment Tool</p>
+    <p><span onclick="location.href = '/myaccount'">My Account</span> | <span
+        onclick="location.href = '/view-modules'">Modules</span> | <span>Results</span> </p>
+    <p>CMT 313 Group H - Auto Assessment Tool</p>
 
 
-    </footer>
+  </footer>
 
-  </body>
+</body>
+
 </html>
