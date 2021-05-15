@@ -137,14 +137,24 @@ def Ass(id):
         correct = 0
         totalPossibleMarks = 0
         res1 = {}
-        res2 = {}
+        ans = {}
+        # key = ['answer_1', 'answer_2']
         res4 = ""
         myAnswer = ""
         for i, q in enumerate (assQuestions):#
             totalPossibleMarks += q.value
+
+            # Save answer
+            if q.correct_answer:
+                ans[q.id] = getattr(q, "answer_"+ str(request.form['Q' +str(q.id)])) , getattr(q, "answer_"+ str(q.correct_answer))
+            else:
+                ans[q.id] = str(request.form['Q' +str(q.id)]) , str(q.type_2_answer)
+
+
             if q.correct_answer and request.form['Q' +str(q.id)] == str(q.correct_answer):
                 correct += q.value
                 res1[q.id] = True
+
                 res4 += "1"
                 myAnswer += request.form['Q' +str(q.id)] + ","
             elif (not q.correct_answer) and request.form['Q' +str(q.id)] == str(q.type_2_answer):
@@ -175,7 +185,7 @@ def Ass(id):
             db.session.commit()
 
 
-        return render_template('Confi.html', ass = ass, assQuestions =assQuestions, res1 =res1, isFormative = isFormative, myAnswer = myAnswer)
+        return render_template('Confi.html', ass = ass, assQuestions =assQuestions, res1 =res1, isFormative = isFormative, myAnswer = myAnswer, ans = ans)
         # return redirect(url_for('confirmation', id = id))
 
 

@@ -41,14 +41,18 @@
 
 
       <div class="singleQuestion singleQuestionFeedback">
-          {%if res1[question.id]%}
           <h3 >{{i}} Q{{question.id}}</h3>
-          <p id = "correctAnswerFeed">Correct</p>
+          <p>Answer - {{ans[question.id][1]}} </p>
+          {%if res1[question.id]%}
+
+          <p id = "correctAnswerFeed">Your Answer - {{ans[question.id][0]}}</p>
+          <!-- <p id = "correctAnswerFeed">Correct</p> -->
           <h4>Feedback</h4>
           <p>{{question.correct_feedback}}</p>
           {%else%}
-          <h3>{{i}} Q{{question.id}}</h3>
-          <p id = "incorrectAnswerFeed">Incorrect</p>
+          <p id = "incorrectAnswerFeed">Your Answer - {{ans[question.id][0]}}</p>
+
+          <!-- <p id = "incorrectAnswerFeed">Incorrect</p> -->
           <h4>Feedback</h4>
           <p>{{question.incorrect_feedback}}</p>
           {%endif%}
