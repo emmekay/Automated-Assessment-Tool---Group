@@ -36,3 +36,8 @@
   padding: 2%;
   border-radius: 25px;
 }
+
+#errorMes{
+  text-align: center;
+  color: red;
+}

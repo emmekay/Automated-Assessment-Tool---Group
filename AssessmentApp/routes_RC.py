@@ -1,38 +1,113 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_login import login_user, logout_user, login_required, current_user
 from flask_sqlalchemy import SQLAlchemy
+from flask_wtf import FlaskForm
 from datetime import datetime
 
 from AssessmentApp import app
 from AssessmentApp.models import *
+from AssessmentApp.forms_RC import *
 
 @app.route('/addAss/<int:id>' , methods = ["GET", "POST"])
 def addAss(id):
+    form = AsseDetails()
+
+    # if form.validate_on_submit():
+    #     return "Test"
+    # flash("Assessment Successfuly Created")
     if request.method == "POST":
+        # return "Test"
+        Inval = False
+        if form.aWeight.data == None:
+            flash("Invalid Input- Weighting must be between 0-100")
+            Inval = True
+        if form.aAttemps.data == None:
+            flash("Invalid Input- Attempts must be between 1-100")
+            Inval = True
+        if form.aEnd.data <= form.aStart.data:
+            flash("Invalid Input- Start Date must be before End Date")
+            Inval = True
+
+        if Inval == True:
+            return redirect(url_for('addAss', id = id))
+
+
+
+
+
         module_id = id # request.form['module']
-        assessment_type = bool(request.form['assType'])
-        assessment_name = request.form['assTitle']
-        time_limit = datetime.strptime(request.form['assTime'], '%H:%M')
-        start_date = datetime.strptime(request.form['assStart'] +" "+ request.form['assStartTime'], '%Y-%m-%d %H:%M')
-        end_date = datetime.strptime(request.form['assEnd'] +" "+ request.form['assEndTime'], '%Y-%m-%d %H:%M')
-        release = datetime.strptime(request.form['assRel'] +" "+ request.form['assRelTime'], '%Y-%m-%d %H:%M')
-        # assMarks = int(request.form['assMarks'])
-        weighting = int(request.form['assWeight'])
-        allowed_attemps = int(request.form['assAttemps'])
-        assessment_instructions = request.form['assInstruc']
+        assessment_type = bool(form.aType.data)
+
+
+
+        assessment_name = form.aTitle.data
+        time_limit =datetime.combine( form.aStart.data, form.aTimeAva.data)
+        time_limit.date()
+        # print(type(time_limit))
+        start_date = datetime.combine( form.aStart.data , form.aStartTime.data)
+
+        end_date = datetime.combine( form.aEnd.data , form.aEndTime.data)
+        # print(end_date)
+        release = datetime.combine( form.aRel.data , form.aRelTime.data)
+        weighting = int(form.aWeight.data)
+        if weighting >100 or weighting <0:
+            flash("Invalid Input- Weighting must be between 1-100")
+            Inval = True
+
+        allowed_attemps = int(form.aAttemps.data)
+
+        if allowed_attemps >100 or allowed_attemps <0:
+            flash("Invalid Input- Attempts must be between 1-100")
+            Inval = True
+
+
+        assessment_instructions = form.aDes.data
+
+
+        if Inval == True:
+            return redirect(url_for('addAss', id = id))
+
+        ass = assessment_details(module_id = module_id, assessment_type = assessment_type, assessment_name = assessment_name, time_limit = time_limit, start_date = start_date, end_date = end_date, release = release, weighting = weighting, allowed_attemps = allowed_attemps,  assessment_instructions = assessment_instructions)
+
+
+        db.session.add(ass)
+        db.session.commit()
+
+
+        # flash("Assessment Successfuly Created")
+        return redirect(url_for('view_assessments', module_id = id))
+
+
+
+
+
+    #     start_date = datetime.strptime(request.form['assStart'] +" "+ request.form['assStartTime'], '%Y-%m-%d %H:%M')
+    #     end_date = datetime.strptime(request.form['assEnd'] +" "+ request.form['assEndTime'], '%Y-%m-%d %H:%M')
+    #     release = datetime.strptime(request.form['assRel'] +" "+ request.form['assRelTime'], '%Y-%m-%d %H:%M')
+    #     # assMarks = int(request.form['assMarks'])
+    #     weighting = int(request.form['assWeight'])
+    #     allowed_attemps = int(request.form['assAttemps'])
+    #     assessment_instructions = request.form['assInstruc']
+
+        # if (start_date >= end_date) or (start_date >= release) or allowed_attemps<=0 or weighting <0:
+        #     flash("test")
+        #     return render_template('AssessmentDetails.html', id = id)
+
+
 
 
 
 
         # print(assType)
-        ass = assessment_details(module_id = module_id, assessment_type = assessment_type, assessment_name = assessment_name, time_limit = time_limit, start_date = start_date, end_date = end_date, release = release, weighting = weighting, allowed_attemps = allowed_attemps,  assessment_instructions = assessment_instructions)
-        db.session.add(ass)
-        db.session.commit()
+        # ass = assessment_details(module_id = module_id, assessment_type = assessment_type, assessment_name = assessment_name, time_limit = time_limit, start_date = start_date, end_date = end_date, release = release, weighting = weighting, allowed_attemps = allowed_attemps,  assessment_instructions = assessment_instructions)
+        # db.session.add(ass)
+        # db.session.commit()
 
-        redirect(url_for('view_assessments', module_id = id))
+        # return redirect(url_for('view_assessments', module_id = id))
+    # return "test"
 
 
-    return render_template('AssessmentDetails.html', id = id)
+    return render_template('AssessmentDetails.html', id = id, form = form)
 
 @app.route('/assessment/<int:id>', methods = ["GET", "POST"])
 def Ass(id):

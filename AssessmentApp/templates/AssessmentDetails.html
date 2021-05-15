@@ -9,76 +9,85 @@
 
 <div class="">
 
+  {{ form.csrf_token }}
+
+
+
     <h1 id = "title">Create New Assessment</h1> <br>
 
-    <form class="aDetails" action="{{url_for('addAss', id = id)}}" method="post">
-
-      <table >
-
-       <!-- <tr>
-         <td><label for="module">Module Code</label></td>
-         <td><input  class="textInput" type="text" name="module" value=""></td>
-       </tr> -->
-       <tr>
-         <td><label for="assType">Assessment Type</label></td>
-         <td>
-
-            <select class="textInput" name="assType" id="">
-              <option value="0">Sumative</option>
-              <option value="1">Formative</option>
-            </select>
-
-         </td>
-       </tr>
-
-       <tr>
-         <td><label for="assTitle">Assessment Title</label></td>
-         <td><input  class="textInput" type="text" name="assTitle" value=""></td>
-       </tr>
-
-       <tr>
-         <td> <label for="assTime">Assessment Time Avallable</label></td>
-         <td> <input class="textInput" type="time" name="assTime" value=""></td>
-       </tr>
-
-       <tr>
-         <td><label for="assStart">Assessment Release Date</label></td>
 
 
-         <td><input class="" type="date" name="assRel" value=""><input class="" type="time" name="assRelTime" value=""></td>
-       </tr>
 
-       <tr>
-         <td><label for="assStart">Assessment Start Date</label></td>
-         <td><input class="" type="date" name="assStart" value=""><input class="" type="time" name="assStartTime" value=""></td>
-       </tr>
-
-       <tr>
-         <td><label for="assEnd">Assessment End Date</label></td>
-         <td><input class="" type="date" name="assEnd" value=""><input class="" type="time" name="assEndTime" value=""></td>
-       </tr>
-
-       <!-- <tr>
-         <td><label for="assMarks">Assessment Marks Available</label></td>
-         <td><input class="textInput" type="text" name="assMarks" value=""></td>
-       </tr> -->
+    <!-- aType = SelectField('Assessment Type', choices = [(0, 'Summative'), (1, 'Formative')], validators=[DataRequired()])
+    aTitle = StringField('Assessment Title', validators=[DataRequired()])
+    aTimeAva = DateTimeField('Assessment Time Available', validators=[DataRequired()])
+    aStart = DateTimeField('Assessment Start Date', validators=[DataRequired()])
+    aEnd = DateTimeField('Assessment End Date', validators=[DataRequired()])
+    aRel = DateTimeField('Assessment Result Date', validators=[])
+    aWeight = IntegerField('Assessment Weighting', validators=[DataRequired()])
+    aAttemps = IntegerField('Allowed Attempts', validators=[DataRequired()])
+    aDes = TextAreaField('Assessment Description and Instructions', validators=[DataRequired()])
+    submit = SubmitField('Submit') -->
 
 
-       <tr>
-         <td><label for="assWeight">Assessment Weighting</label></td>
-         <td><input type="number" class="textInput" name="assWeight" min="0" max="100"></td>
-       </tr>
 
+    <form class="aDetails" action="{{url_for('addAss', id = id)}}" method="POST">
+
+      {% if get_flashed_messages() %}
+        <p id = "errorMes">Invalid Input</p>
+        {%for m in get_flashed_messages()%}
+          <p id = "errorMes">{{m}}</p>
+        {%endfor%}
+
+      {% endif %}
+
+      <table>
 
         <tr>
-          <td><label for="assAttemps">Allowed Attempts</label></td>
-          <td><input type="number" class="textInput" name="assAttemps" min="1" max="100"></td>
+          <td><label for="assTitle">{{ form.aType.label }}</label></td>
+           <td>{{ form.aType(class_='textInput') }}<td>
+          <!-- <td><input  class="textInput" type="text" name="assTitle" value=""></td> -->
         </tr>
+
+       <tr>
+         <td><label for="assTitle">{{ form.aTitle.label }}</label></td>
+          <td>{{ form.aTitle(class_='textInput') }}<td>
+       </tr>
+
+       <tr>
+         <td><label for="assTitle">{{ form.aTimeAva.label }}</label></td>
+          <td>{{ form.aTimeAva(class_='textInput') }}<td>
+       </tr>
+
+       <tr>
+         <td><label for="assTitle">{{ form.aStart.label }}</label></td>
+          <td>{{ form.aStart }} {{form.aStartTime}}<td>
+       </tr>
+
+       <tr>
+         <td><label for="assTitle">{{ form.aEnd.label }}</label></td>
+          <td>{{ form.aEnd }}{{form.aEndTime}}<td>
+       </tr>
+
+       <tr>
+         <td><label for="assTitle">{{ form.aRel.label }}</label></td>
+          <td>{{ form.aRel }}{{form.aRelTime}}<td>
+       </tr>
 
 
        <tr>
-         <td><label for="assInstruc">Assessment Description and Instructions</label></td>
-         <td><textarea class="textInput" name="assInstruc" rows="8" cols="40"></textarea></td>
+         <td><label for="assTitle">{{ form.aWeight.label }}</label></td>
+          <td>{{ form.aWeight(class_='textInput') }}<td>
+       </tr>
+
+       <tr>
+         <td><label for="assTitle">{{ form.aAttemps.label }}</label></td>
+          <td>{{ form.aAttemps(class_='textInput') }}<td>
+       </tr>
+
+       <tr>
+         <td><label for="assTitle">{{ form.aDes.label }}</label></td>
+          <td>{{ form.aDes(class_='textInput', rows='8',cols='40') }}<td>
        </tr>
 
        <tr>
@@ -86,7 +95,8 @@
          <td >  <input id = "saveButton" type="submit" name="" value="Save"></td>
        </tr>
 
-      </table>
+       </table>
+
 
 
 
