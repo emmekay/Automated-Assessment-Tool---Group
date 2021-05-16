@@ -8,6 +8,12 @@
 {% block body %}
 
     <h1 id="ass-title">View Assesments</h1>
+    <div class="confi">
+
+      {% if get_flashed_messages() %}
+          <p>{{get_flashed_messages()[0]}}</p>
+      {% endif %}
+    </div>
     <table class = "ass-table" >
         <tbody>
         {% for ass in assess %}

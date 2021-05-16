@@ -17,10 +17,8 @@ class AsseDetails(FlaskForm):
     aStartTime = TimeField('Assessment Start Date', validators=[DataRequired()],format='%H:%M')
     aEnd = DateField('Assessment End Date', validators=[DataRequired()],format='%Y-%m-%d')#DateTimeField('Assessment End Date', validators=[DataRequired()])
     aEndTime = TimeField('Assessment End Date', validators=[DataRequired()],format='%H:%M')
-
     aRel = DateField('Assessment Result Date', format='%Y-%m-%d')
     aRelTime = TimeField('Assessment Result Date', format='%H:%M')
-
     aWeight = DecimalField('Assessment Weighting', validators=[DataRequired(), NumberRange(min=0, max=100, message='Range of (0,100)')])
     aAttemps = IntegerField('Allowed Attempts', validators=[DataRequired(), NumberRange(min=1, max=100, message="Range of (1,100)")])
     aDes = TextAreaField('Assessment Description and Instructions')
