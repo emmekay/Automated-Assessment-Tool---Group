@@ -139,4 +139,6 @@ footer {
 
 }
 
-
+.footerNav p:hover{
+  cursor: pointer;
+}

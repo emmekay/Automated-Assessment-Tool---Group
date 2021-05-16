@@ -62,15 +62,18 @@
 
 
   </div>
+  <div class="footerNav">
 
   <footer>
 
+
     <p><span onclick="location.href = '/myaccount'">My Account</span> | <span
-        onclick="location.href = '/view-modules'">Modules</span> | <span>Results</span> </p>
+        onclick="location.href = '/view-modules'">Modules</span> | <span onclick="location.href = '/completed_assessments/{{current_user.id|tojson}}'">Results</span> </p>
     <p>CMT 313 Group H - Auto Assessment Tool</p>
 
 
   </footer>
+  </div>
 
 </body>
 
