@@ -81,12 +81,14 @@ def logout():
   return redirect(url_for('login'))
 
 @app.route("/view-modules")
+@login_required
 def view_modules():
   #enrolled = modules_enrolment.query.all()
   Modules = modules.query.all()
   return render_template('view_modules.html', Modules=Modules)
 
 @app.route("/view-assessments/<int:module_id>")
+@login_required
 def view_assessments(module_id):
   assess = assessment_details.query.filter(assessment_details.module_id==module_id)
   results = assessment_results.query.filter(assessment_results.user_id==current_user.id)
@@ -95,18 +97,20 @@ def view_assessments(module_id):
   return render_template('view_assessments.html', assess=assess, id = module_id, results=results, present=present )
 
 @app.route("/summative-results/<int:assess_id>")
+@login_required
 def summative_results(assess_id):
   assess = assessment_details.query.filter(assessment_details.id==assess_id)
   results = assessment_results.query.filter(assessment_results.user_id==current_user.id).order_by(assessment_results.attempt_number.desc()).all()
   questionIds = assessment_questions.query.filter_by(assessment_id=assess_id).all()
   assQuestions = [ question.query.filter_by(id=q.question_id).first() for q in questionIds]
-  
+
   present = datetime.now()
-  
+
 
   return render_template('view_summative_results.html', assess=assess, id = assess_id, results=results, present=present, questionIds=questionIds, assQuestions=assQuestions)
 
 @app.route("/edit-assessments/<int:assess_id>", methods = ["GET", "POST"])
+@login_required
 def edit_assessment(assess_id):
   assess = assessment_details.query.filter(assessment_details.id==assess_id)
   ass = assessment_details.query.filter(assessment_details.id==assess_id).first()
@@ -125,10 +129,11 @@ def edit_assessment(assess_id):
 
       db.session.commit()
       return redirect(url_for('view_assessments', module_id = mod.id))
-    
+
   return render_template('edit_assessment.html', assess=assess, module=module)
 
 @app.route("/delete-assessments/<int:assess_id>")
+@login_required
 def delete_assessment(assess_id):
   assess = assessment_details.query.filter(assessment_details.id==assess_id).first()
   mod = modules.query.filter(modules.id==assessment_details.module_id).first()
