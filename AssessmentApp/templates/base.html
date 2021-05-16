@@ -45,7 +45,7 @@
         <span onclick="location.href = '/view-modules'">
           <li>Modules</li>
         </span>
-        <li><a href="{{ url_for('completed_assessments', user_id=current_user.id)}}">Results</a></li>
+        <li> <span onclick="location.href = '/completed_assessments/{{current_user.id|tojson}}'">Results</span> </li>
         {% if current_user.is_staff %}
         <li><span onclick="location.href = '/surveyresults'">Feedback</span></li></a>
         {% else %}

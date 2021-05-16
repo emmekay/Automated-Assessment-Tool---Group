@@ -95,15 +95,19 @@
       </form>
 
       {%else%}
+      <div class="confi">
+
 
         {%if not outDateRange[0]%}
-          <h1>Assessment Start Date not met</h1>
+          <h1> Assessment will be available on {{ass.start_date.strftime('%H:%M %b %d %Y')}}</h1>
         {%elif not outDateRange[1] %}
-          <h1>Assessment end date exceeded</h1>
+          <h1>Assessment deadline was passed on {{ass.end_date.strftime('%H:%M %b %d %Y')}}</h1>
         {%else%}
           <h1>You have exceeed the allowed number of attemps</h1>
 
         {%endif%}
+
+      </div>
 
 
       {%endif%}

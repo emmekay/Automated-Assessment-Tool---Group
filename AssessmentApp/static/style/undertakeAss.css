@@ -206,3 +206,9 @@
   border: 1px solid blue;
   cursor: pointer;
 }
+
+.confi{
+  text-align: center;
+  background-color: white;
+  border-radius: 20px;
+}
