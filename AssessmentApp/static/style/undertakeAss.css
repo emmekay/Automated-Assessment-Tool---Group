@@ -177,8 +177,8 @@
 
 .satButton a:hover{
   padding: 0.5%;
-  border: 1px solid red;
-  color: red;
+  border: 1px solid #990000;
+  color: #990000;
   cursor: pointer;
 }
 
@@ -196,14 +196,14 @@
 
 #subButton {
   float: right;
-  width: 30%;
+  width: 15%;
   background: none;
   border: 1px solid black;
 }
 
 #subButton:hover {
-  color: red;
-  border: 1px solid blue;
+  color: #990000;
+  border: 1px solid #990000;
   cursor: pointer;
 }
 

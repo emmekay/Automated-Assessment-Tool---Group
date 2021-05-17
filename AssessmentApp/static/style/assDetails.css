@@ -21,7 +21,7 @@
 }
 
 #saveButton:hover {
-  color: red;
+  color: #990000;;
   border: 1px solid red;
   cursor: pointer;
 }
