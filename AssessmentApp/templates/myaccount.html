@@ -11,7 +11,7 @@
 {% block body %}
 <div class="section-container">
     <div class="section-background">
-        <h2><strong>My Account</strong></h2>
+        <h2 class = "accountTitle"><strong>My Account</strong></h2>
         <table class="acc-table">
             <tr>
                 <td><h3>Name : </h3></td>
@@ -30,7 +30,7 @@
 </div>
     <div class="section-container">
         <div class="section-background">
-            <h2>My Modules</h2> <!-- Add link to Module details page with each module title page here-->
+            <h2 class = "accountTitle">My Modules</h2> <!-- Add link to Module details page with each module title page here-->
             <table class="other-table">
                 {% for module in Modules %}
                     {% if current_user.has_enrolled(module) %}
@@ -50,7 +50,7 @@
                 {% endfor %}
             </table>
         </div>
-    </div>  
+    </div>
     <div class="section-container">
         <div class="section-background">
             <table class="other-table">

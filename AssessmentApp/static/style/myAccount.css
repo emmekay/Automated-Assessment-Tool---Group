@@ -9,6 +9,12 @@
 }
 
 .acc-table  {
+    text-align: center;
+    width: 100%;
+}
+
+.acc-table td {
+
     width: 50%;
 }
 
@@ -18,4 +24,15 @@
 
 .other-table td {
     width: 75%;
+}
+.accountTitle {
+  text-align: center;
+}
+.other-table a {
+  padding: 1% 3%;
+  text-decoration: none;
+  color: #990000;;
+  background-color:  rgb(119, 119, 134, 0.2);
+  border-radius: 10px;
+
 }
