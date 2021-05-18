@@ -7,16 +7,16 @@
 
 {% block body %}
     <h1 id="edit-title">Edit Assessment</h1>
-    {% for mod in module %}
+
             <span id="title-case">
-              <span id="mod-title">{{ mod.module_name }}</span>
+              <span id="mod-title"><p class="centered">{{ mod.module_name }} {{ass.assessment_name}}</p></span>
             </span>
-          {% endfor %}
+
     {% for ass in assess %}
     <form class="edit_assess" action="{{ url_for('edit_assessment', assess_id = ass.id) }}" method="post">
       <table class="edit-table">
         <tr>
-          <td><label for="assType">Assessment Type</label></td>          
+          <td><label for="assType">Assessment Type</label></td>
           {% if ass.assessment_type == 1%}
           <td>
             <select class="textInput" name="assType" id="">
@@ -52,10 +52,10 @@
         <tr>
           <td><p>End date</p></td>
           <td><input type="text" class="textInput" name="assEnd" value='{{ ass.end_date }}'></td>
-        </tr> 
+        </tr>
         <tr>
           <td><p>Weighting</p></td>
-          <td><input type="text" class="textInput" name="assWeight" value='{{ ass.weighting }}'></td>          
+          <td><input type="text" class="textInput" name="assWeight" value='{{ ass.weighting }}'></td>
         </tr>
         <tr>
           <td><p>allowed attempts</p></td>
@@ -66,6 +66,7 @@
           <td><textarea type="text" class="textInput" name="assInstruc" rows="8">{{ ass.assessment_instructions }}</textarea></td>
         </tr>
         <tr>
+          <td></td>
           <td><input id = "edit_button" type="submit" name="" value="Edit"></td>
         </tr>
       </table>

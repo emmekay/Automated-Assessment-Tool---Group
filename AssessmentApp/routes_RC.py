@@ -18,13 +18,13 @@ def addAssessment(id):
 
         Inval = False
         if form.aWeight.data == None:
-            flash("Invalid Input- Weighting must be between 0-100")
+            flash("Weighting must be between 0-100")
             Inval = True
         if form.aAttemps.data == None:
-            flash("Invalid Input- Attempts must be between 1-100")
+            flash("Attempts must be between 1-100")
             Inval = True
         if form.aEnd.data <= form.aStart.data:
-            flash("Invalid Input- Start Date must be before End Date")
+            flash("Start Date must be before End Date")
             Inval = True
 
         if Inval == True:

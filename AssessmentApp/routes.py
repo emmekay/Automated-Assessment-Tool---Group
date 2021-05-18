@@ -130,7 +130,7 @@ def edit_assessment(assess_id):
       db.session.commit()
       return redirect(url_for('view_assessments', module_id = mod.id))
 
-  return render_template('edit_assessment.html', assess=assess, module=module)
+  return render_template('edit_assessment.html', assess=assess, module=module, mod= mod, ass = ass)
 
 @app.route("/delete-assessments/<int:assess_id>")
 @login_required

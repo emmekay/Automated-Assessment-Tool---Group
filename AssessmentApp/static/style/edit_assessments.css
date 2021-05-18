@@ -4,12 +4,13 @@
     background: none;
     border: 1px solid black;
   }
-  
+
 #edit_button:hover {
-    color: blue;
-    border: 1px solid blue;
-    cursor: pointer;
+  color: #990000;
+  border: 1px solid #990000;
+  cursor: pointer;
   }
+
 
 #edit-title {
     text-align: center;
@@ -41,4 +42,8 @@ body {
 
 table {
     width: 100%;
+}
+
+.centered {
+  text-align: center;
 }

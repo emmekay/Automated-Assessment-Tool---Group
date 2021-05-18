@@ -21,8 +21,8 @@
 }
 
 #saveButton:hover {
-  color: #990000;;
-  border: 1px solid red;
+  color: #990000;
+  border: 1px solid #990000;;
   cursor: pointer;
 }
 
@@ -39,5 +39,5 @@
 
 #errorMes{
   text-align: center;
-  color: red;
+  color: #990000;
 }
