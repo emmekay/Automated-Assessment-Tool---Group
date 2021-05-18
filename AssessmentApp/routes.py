@@ -139,6 +139,7 @@ def delete_assessment(assess_id):
   mod = modules.query.filter(modules.id==assessment_details.module_id).first()
   db.session.delete(assess)
   db.session.commit()
+  flash("Assessment Successfully Deleted")
   return redirect(url_for('view_assessments', module_id = mod.id))
 
 

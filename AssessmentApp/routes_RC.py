@@ -70,7 +70,7 @@ def addAssessment(id):
         db.session.commit()
 
 
-        flash("Assessment Successfuly Created")
+        flash("Assessment Successfully Created")
         return redirect(url_for('view_assessments', module_id = id))
 
 
@@ -218,7 +218,7 @@ def editAssessment(a_id):
         db.session.commit()
 
 
-        flash("Assessment Successfuly Modified")
+        flash("Assessment Successfully Modified")
         return redirect(url_for('view_assessments', module_id = id))
 
 
