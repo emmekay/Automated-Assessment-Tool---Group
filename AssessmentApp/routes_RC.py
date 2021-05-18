@@ -33,7 +33,11 @@ def addAssessment(id):
 
 
         module_id = id # request.form['module']
-        assessment_type = bool(form.aType.data)
+
+        if form.aType.data == '0':
+            assessment_type = False
+        else:
+            assessment_type = True
 
 
         assessment_name = form.aTitle.data
@@ -186,7 +190,12 @@ def editAssessment(a_id):
 
 
         # module_id = id # request.form['module']
-        assessment_type = bool(form.aType.data)
+
+        if form.aType.data == '0':
+            assessment_type = False
+        else:
+            assessment_type = True
+
         assessment_name = form.aTitle.data
         time_limit =datetime.combine( form.aStart.data, form.aTimeAva.data)
         time_limit.date()
