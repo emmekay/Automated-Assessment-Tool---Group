@@ -28,7 +28,7 @@ def addAssessment(id):
             Inval = True
 
         if Inval == True:
-            return redirect(url_for('addAss', id = id))
+            return redirect(url_for('addAssessment', id = id))
 
 
 
@@ -61,7 +61,7 @@ def addAssessment(id):
 
 
         if Inval == True:
-            return redirect(url_for('addAss', id = id))
+            return redirect(url_for('addAssessment', id = id))
 
         ass = assessment_details(module_id = module_id, assessment_type = assessment_type, assessment_name = assessment_name, time_limit = time_limit, start_date = start_date, end_date = end_date, release = release, weighting = weighting, allowed_attemps = allowed_attemps,  assessment_instructions = assessment_instructions)
 
@@ -154,14 +154,80 @@ def assessment(id):
     return render_template('UndertakeAssessment.html',  assQuestions =assQuestions, ass = ass, id = id, outDateRange = outDateRange, inAttemptRange = inAttemptRange, totalQ = len(assQuestions))
 
 
+@app.route('/editAssessment/<int:a_id>' , methods = ["GET", "POST"])
+@login_required
+def editAssessment(a_id):
+    form = AsseDetails()
+    assess = assessment_details.query.filter_by(id=a_id).first()
+    id = assess.module_id
+    oldTimeLimit = assess.time_limit.strftime("%H:%M")
+    oldStart = [assess.start_date.strftime("%Y-%m-%d"), assess.start_date.strftime("%H:%M")]
+    oldEnd = [assess.end_date.strftime("%Y-%m-%d"), assess.end_date.strftime("%H:%M")]
+    oldRel = [assess.release.strftime("%Y-%m-%d"), assess.release.strftime("%H:%M")]
+    a_type = int(assess.assessment_type)
+    mod = modules.query.filter_by(id = id).first()
 
-# @app.route('/confirmation/<int:id>', methods = ["GET", "POST"])
-# def confirmation(id):
-#     ass = assessment_details.query.filter_by(id=id).first()
-#
-#     questionIds = assessment_questions.query.filter_by(assessment_id=id).all()
-#
-#     assQuestions = [ question.query.filter_by(id=q.question_id).first() for q in questionIds]
-#
-#
-#     return render_template('Confi.html', ass = ass, assQuestions =assQuestions)
+
+
+    if request.method == "POST":
+        Inval = False
+        if form.aWeight.data == None:
+            flash("Weighting must be between 0-100")
+            Inval = True
+        if form.aAttemps.data == None:
+            flash("Attempts must be between 1-100")
+            Inval = True
+        if form.aEnd.data <= form.aStart.data:
+            flash("Start Date must be before End Date")
+            Inval = True
+        if Inval == True:
+            return redirect(url_for('editAssessment', a_id = a_id))
+
+
+
+        # module_id = id # request.form['module']
+        assessment_type = bool(form.aType.data)
+        assessment_name = form.aTitle.data
+        time_limit =datetime.combine( form.aStart.data, form.aTimeAva.data)
+        time_limit.date()
+        start_date = datetime.combine( form.aStart.data , form.aStartTime.data)
+        end_date = datetime.combine( form.aEnd.data , form.aEndTime.data)
+        assessment_instructions = form.aDes.data
+        release = datetime.combine( form.aRel.data , form.aRelTime.data)
+        weighting = int(form.aWeight.data)
+        allowed_attemps = int(form.aAttemps.data)
+        if weighting >100 or weighting <0:
+            flash("Invalid Input- Weighting must be between 1-100")
+            Inval = True
+        if allowed_attemps >100 or allowed_attemps <0:
+            flash("Invalid Input- Attempts must be between 1-100")
+            Inval = True
+        if Inval == True:
+            return redirect(url_for('editAssessment', a_id = a_id))
+
+        assess.assessment_type = assessment_type
+        assess.assessment_name = assessment_name
+        assess.time_limit = time_limit
+        assess.end_date = end_date
+        assess.start_date = start_date
+        assess.release = release
+        assess.allowed_attemps = allowed_attemps
+        assess.weighting = weighting
+        assess.assessment_instructions = assessment_instructions
+
+        db.session.commit()
+
+
+        flash("Assessment Successfuly Modified")
+        return redirect(url_for('view_assessments', module_id = id))
+
+
+    return render_template('EditAssessmentDetails.html',
+    a_id= a_id,
+    form = form,
+    assess = assess,
+    mod = mod,
+    oldTimeLimit = oldTimeLimit,
+    oldStart = oldStart, oldEnd =oldEnd,
+    oldRel = oldRel,
+    a_type = a_type)

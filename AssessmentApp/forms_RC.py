@@ -10,7 +10,7 @@ from AssessmentApp.models import *
 
 class AsseDetails(FlaskForm):
 
-    aType = SelectField('Assessment Type', choices = [(0, 'Summative'), (1, 'Formative')], validators=[DataRequired()])
+    aType = SelectField('Assessment Type', choices = [(1, 'Summative'), (0, 'Formative')], validators=[DataRequired()])
     aTitle = StringField('Assessment Title', validators=[DataRequired()])
     aTimeAva =  TimeField('Assessment Time Available', validators=[DataRequired()],format='%H:%M')#DateTimeField('Assessment Time Available', validators=[DataRequired()])
     aStart = DateField('Assessment Start Date', validators=[DataRequired()] ,format='%Y-%m-%d')

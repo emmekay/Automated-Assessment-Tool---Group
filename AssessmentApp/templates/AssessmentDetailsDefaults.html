@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  <title>Add Assessment</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style/AssessmentDetails.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<div class="">
+
+  {{ form.csrf_token }}
+
+
+
+    <h1 id = "title">Create New Assessment</h1> <br>
+
+
+
+
+    <!-- aType = SelectField('Assessment Type', choices = [(0, 'Summative'), (1, 'Formative')], validators=[DataRequired()])
+    aTitle = StringField('Assessment Title', validators=[DataRequired()])
+    aTimeAva = DateTimeField('Assessment Time Available', validators=[DataRequired()])
+    aStart = DateTimeField('Assessment Start Date', validators=[DataRequired()])
+    aEnd = DateTimeField('Assessment End Date', validators=[DataRequired()])
+    aRel = DateTimeField('Assessment Result Date', validators=[])
+    aWeight = IntegerField('Assessment Weighting', validators=[DataRequired()])
+    aAttemps = IntegerField('Allowed Attempts', validators=[DataRequired()])
+    aDes = TextAreaField('Assessment Description and Instructions', validators=[DataRequired()])
+    submit = SubmitField('Submit') -->
+
+
+
+    <form class="aDetails" action="{{url_for('editAssessment', a_id = a_id)}}" method="POST">
+
+      {% if get_flashed_messages() %}
+        <p id = "errorMes">Invalid Input</p>
+        {%for m in get_flashed_messages()%}
+          <p id = "errorMes">{{m}}</p>
+        {%endfor%}
+
+      {% endif %}
+
+      <table>
+
+        <tr>
+          <td><label for="assTitle">{{ form.aType.label }}</label></td>
+
+           {% set z = form.aType.process_data(a_type) %}
+
+           <td>{{ form.aType(class_='textInput', default = 0) }}<td>
+          <!-- <td><input  class="textInput" type="text" name="assTitle" value=""></td> -->
+        </tr>
+
+       <tr>
+         <td><label for="assTitle">{{ form.aTitle.label }}</label></td>
+          <td>{{ form.aTitle(class_='textInput', value = assess.assessment_name) }}<td>
+       </tr>
+
+       <tr>
+         <td><label for="assTitle">{{ form.aTimeAva.label }}</label></td>
+          <td>{{ form.aTimeAva(class_='textInput', value = oldTimeLimit) }}<td>
+       </tr>
+
+       <tr>
+         <td><label for="assTitle">{{ form.aStart.label }}</label></td>
+          <td class = "datetimeInput">{{ form.aStart(value = oldStart[0]) }}{{form.aStartTime(value = oldStart[1])}}<td>
+       </tr>
+
+       <tr>
+         <td><label for="assTitle">{{ form.aEnd.label }}</label></td>
+          <td class = "datetimeInput">{{ form.aEnd(value = oldEnd[0]) }}{{form.aEndTime(value = oldEnd[1])}}<td>
+       </tr>
+
+       <tr>
+         <td><label for="assTitle">{{ form.aRel.label }}</label></td>
+          <td class = "datetimeInput">{{ form.aRel(value = oldRel[0]) }}{{form.aRelTime(value = oldRel[1])}}<td>
+       </tr>
+
+
+       <tr>
+         <td><label for="assTitle">{{ form.aWeight.label }}</label></td>
+          <td>{{ form.aWeight(class_='textInput', value = assess.weighting) }}<td>
+       </tr>
+
+       <tr>
+         <td><label for="assTitle">{{ form.aAttemps.label }}</label></td>
+          <td>{{ form.aAttemps(class_='textInput', value = assess.allowed_attemps) }}<td>
+       </tr>
+
+       <tr>
+         <td><label for="assTitle">{{ form.aDes.label }}</label></td>
+         {% set f = form.aDes.process_data(assess.assessment_instructions) %}
+          <td>{{ form.aDes(class_='textInput', rows='8',cols='40') }}<td>
+       </tr>
+
+       <tr>
+         <td></td>
+         <td >  <input id = "saveButton" type="submit" name="" value="Save"></td>
+       </tr>
+
+       </table>
+
+
+
+
+      </form>
+
+
+
+
+</div>
+
+{% endblock %}
