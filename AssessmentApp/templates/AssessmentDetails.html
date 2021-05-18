@@ -2,7 +2,7 @@
 
 {% block head %}
   <title>Add Assessment</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style/assDetails.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style/AssessmentDetails.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -31,7 +31,7 @@
 
 
 
-    <form class="aDetails" action="{{url_for('addAss', id = id)}}" method="POST">
+    <form class="aDetails" action="{{url_for('addAssessment', id = id)}}" method="POST">
 
       {% if get_flashed_messages() %}
         <p id = "errorMes">Invalid Input</p>

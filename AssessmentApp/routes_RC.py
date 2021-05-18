@@ -9,9 +9,9 @@ from AssessmentApp.models import *
 from AssessmentApp.forms_RC import *
 
 
-@app.route('/addAss/<int:id>' , methods = ["GET", "POST"])
+@app.route('/addAssessment/<int:id>' , methods = ["GET", "POST"])
 @login_required
-def addAss(id):
+def addAssessment(id):
     form = AsseDetails()
 
     if request.method == "POST":
@@ -79,7 +79,7 @@ def addAss(id):
 
 @app.route('/assessment/<int:id>', methods = ["GET", "POST"])
 @login_required
-def Ass(id):
+def assessment(id):
     ass = assessment_details.query.filter_by(id=id).first()
     questionIds = assessment_questions.query.filter_by(assessment_id=id).all()
     assQuestions = [ question.query.filter_by(id=q.question_id).first() for q in questionIds]
