@@ -9,7 +9,7 @@
 
 <div class="">
 
-    <h2 id ="assTitle">CMT{{ass.id}} - {{ass.assessment_name}}</h2>
+    <h2 id ="assTitle">{{ass.assessment_name}}</h2>
     <div class="assInfoTable">
     <table >
       <tr>
@@ -41,7 +41,7 @@
 
 
       <div class="singleQuestion singleQuestionFeedback">
-          <h3 >{{i}} Q{{question.id}}</h3>
+          <h3 >{{i}} Q{{loop.index}}</h3>
           <p>Answer - {{ans[question.id][1]}} </p>
           {%if res1[question.id]%}
 

@@ -136,7 +136,7 @@ def edit_assessment(assess_id):
 @login_required
 def delete_assessment(assess_id):
   assess = assessment_details.query.filter(assessment_details.id==assess_id).first()
-  mod = modules.query.filter(modules.id==assessment_details.module_id).first()
+  mod = modules.query.filter(modules.id==assess.module_id).first()
   db.session.delete(assess)
   db.session.commit()
   flash("Assessment Successfully Deleted")
