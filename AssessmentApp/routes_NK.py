@@ -8,68 +8,70 @@ from AssessmentApp import app, db
 from AssessmentApp.models import *
 
 
-@app.route("/my_assessments/<int:user_id>")  # NK
+@app.route("/my_assessments/<int:user_id>")
 def my_assessments(user_id):
 
-    # Pulling all assessment results for the current user, notice we use filter_by() instead of .filter()
+    # Pulling all assessment results for the current user
     result_ids = assessment_results.query.filter_by(user_id=current_user.id).all()
     num_of_assessments = len(result_ids)
 
-
-    Modules = modules_enrolment.query.filter_by(user_id = current_user.id).all()
+    # Storing all modules that the curent user is enrolled in in a dictionary
+    Modules = modules_enrolment.query.filter_by(user_id=current_user.id).all()
     enrolled_mod = []
     mod_names = {}
     for m in Modules:
-        # if m not in enrolled_mod:
         enrolled_mod.append(m.module_id)
-        mod_names[m.module_id] = modules.query.filter_by(id = m.module_id).first().module_name
+        mod_names[m.module_id] = (
+            modules.query.filter_by(id=m.module_id).first().module_name
+        )
 
-
-    # print(enrolled_mod)
-
+    # Storing all assessments for the specific modules in a dictionary
     Assessments = {}
-
     Assessments_id = []
-
-
     for m_id in enrolled_mod:
-
         temp = []
+        Assess_details = assessment_details.query.filter_by(module_id=m_id).all()
 
-        Asse = assessment_details.query.filter_by(module_id = m_id).all()
-
-        for a in Asse:
+        for a in Assess_details:
             temp.append(a)
             Assessments_id.append(a.id)
 
         Assessments[m_id] = temp
 
+    # Storing the last attempt of an assessment's result in a dictionary
+    # Assess_results = {}
+    # for a_id in Assessments_id:
+    #     temp_a = assessment_results.query.filter_by(
+    #         assessment_id=a_id, user_id=current_user.id
+    #     ).all()
+    #     if temp_a:
+    #         Assess_results[a_id] = temp_a[-1].grade
+
     Assess_results = {}
     for a_id in Assessments_id:
-        # print(a_id)
-        temp_a = assessment_results.query.filter_by(assessment_id=a_id, user_id=current_user.id).all()
-        if temp_a:
-            Assess_results[a_id] = temp_a[-1].grade
+        user_results = assessment_results.query.filter_by(
+            assessment_id=a_id, user_id=current_user.id
+        ).all()
 
-    # print(Assess_results)
+        all_attempts = []
+        for result in user_results:
+            all_attempts.append(result.grade)
+            attempts_average = round((sum(all_attempts) / len(all_attempts)), 1)
 
-
-
+        Assess_results[a_id] = attempts_average
 
     return render_template(
         "my_assessments.html",
         result_ids=result_ids,
         num_of_assessments=num_of_assessments,
-        enrolled_mod = enrolled_mod,
-        Assessments = Assessments,
-        Assess_results = Assess_results,
-        mod_names=mod_names
-
-
+        enrolled_mod=enrolled_mod,
+        Assessments=Assessments,
+        Assess_results=Assess_results,
+        mod_names=mod_names,
     )
 
 
-@app.route("/completed_assessments/<int:user_id>")  # NK
+@app.route("/completed_assessments/<int:user_id>")
 def completed_assessments(user_id):
 
     # Pulling all assessment results for the current user, notice we use filter_by() instead of .filter()
@@ -87,7 +89,6 @@ def completed_assessments(user_id):
 
     # Linking assessment details to assessment results using assess_id
     for a_id in assess_id:
-        #
         temp = assessment_details.query.filter_by(id=a_id).first()
         assess_details[a_id] = temp
 
@@ -98,7 +99,9 @@ def completed_assessments(user_id):
     )
 
 
-@app.route("/assessment_statistics/<int:assess_id>/<int:id_assessment>")  # NK
+@app.route(
+    "/assessment_statistics/<int:assess_id>/<int:id_assessment>"
+)  # /ID of the assessment/ID of the assessment result
 def assessment_statistics(assess_id, id_assessment):
 
     # Pulling individual student's results for this assessment based off user ID & assessment result ID

@@ -51,52 +51,28 @@
         </tr>
         <tr>
           <th scope="col">Assessment(s)</th>
-          <th scope="col">Assessment Start Date</th>
-          <th scope="col">Assessment Due Date</th>
-          <th scope="col">Mark</th>
-          <th scope="col">Action</th>
+          <th scope="col">Assessment Start </th>
+          <th scope="col">Assessment End</th>
+          <th scope="col">Average Mark</th>
         </tr>
       </thead>
 
       <tbody>
-        <tr>
-          <th scope="col" colspan="5">Completed</th>
-        </tr>
         {%for a in Assessments[mod1] %}
         <tr>
           <td>{{a.assessment_name}}</td>
-          <!--Fetched data comes here-->
-          <td>23/03/2021</td>
-          <!--Fetched data comes here-->
+          <!--Assessments(s)-->
+          <td>{{a.start_date}}</td>
+          <!--Assessment Start-->
           <td>{{a.end_date}}</td>
-          <!--Fetched data comes here-->
+          <!--Assessment End-->
           <td>{{Assess_results[a.id]}}</td>
-          <!--Fetched data comes here-->
-          <td><a href="">View</a></td>
-          <!--Change link to correspond with fetched data-->
+          <!--Average Mark-->
         </tr>
         {%endfor%}
-        <tr>
-          <th scope="col" colspan="5">Upcoming</th>
-        </tr>
-        <tr>
-          <td>Assessment 3</td>
-          <!--Fetched data comes here-->
-          <td>23/03/2022</td>
-          <!--Fetched data comes here-->
-          <td>23/03/2022</td>
-          <!--Fetched data comes here-->
-          <td></td>
-          <!--Fetched data comes here-->
-          <td><a href="">View</a></td>
-          <!--Change link to take assessment page-->
-        </tr>
-      </tbody>
-
       <tfoot>
         <tr>
-          <td colspan="5">Have an issue with your marks? <a href="">Report here</a></td>
-          <!--Add link to Report Issue page-->
+          <td colspan="5">Note: All Marks shown are your average for all attempts</td>
         </tr>
       </tfoot>
 
