@@ -92,6 +92,7 @@ def completed_assessments(user_id):
         temp = assessment_details.query.filter_by(id=a_id).first()
         assess_details[a_id] = temp
 
+    assess_id.sort()
     return render_template(
         "completed_assessments.html",
         result_ids=result_ids,
