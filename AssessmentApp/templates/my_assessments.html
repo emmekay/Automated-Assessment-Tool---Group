@@ -42,11 +42,12 @@
 
   <!--Section for the tables with assessment information -->
   <div>
+    {%for mod1 in enrolled_mod%}
     <table class="my-assessments-table">
 
       <thead>
         <tr>
-          <th scope="col" colspan="5">[module_name]</th>
+          <th scope="col" colspan="5">{{mod_names[mod1]}}</th>
         </tr>
         <tr>
           <th scope="col">Assessment(s)</th>
@@ -61,18 +62,20 @@
         <tr>
           <th scope="col" colspan="5">Completed</th>
         </tr>
+        {%for a in Assessments[mod1] %}
         <tr>
-          <td>Assessment 1</td>
+          <td>{{a.assessment_name}}</td>
           <!--Fetched data comes here-->
           <td>23/03/2021</td>
           <!--Fetched data comes here-->
-          <td>23/03/2021</td>
+          <td>{{a.end_date}}</td>
           <!--Fetched data comes here-->
-          <td>70</td>
+          <td>{{Assess_results[a.id]}}</td>
           <!--Fetched data comes here-->
           <td><a href="">View</a></td>
           <!--Change link to correspond with fetched data-->
         </tr>
+        {%endfor%}
         <tr>
           <th scope="col" colspan="5">Upcoming</th>
         </tr>
@@ -98,6 +101,8 @@
       </tfoot>
 
     </table>
+    {%endfor%}
+
   </div>
 
 </div>

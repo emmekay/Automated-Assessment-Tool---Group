@@ -15,10 +15,57 @@ def my_assessments(user_id):
     result_ids = assessment_results.query.filter_by(user_id=current_user.id).all()
     num_of_assessments = len(result_ids)
 
+
+    Modules = modules_enrolment.query.filter_by(user_id = current_user.id).all()
+    enrolled_mod = []
+    mod_names = {}
+    for m in Modules:
+        # if m not in enrolled_mod:
+        enrolled_mod.append(m.module_id)
+        mod_names[m.module_id] = modules.query.filter_by(id = m.module_id).first().module_name
+
+
+    # print(enrolled_mod)
+
+    Assessments = {}
+
+    Assessments_id = []
+
+
+    for m_id in enrolled_mod:
+
+        temp = []
+
+        Asse = assessment_details.query.filter_by(module_id = m_id).all()
+
+        for a in Asse:
+            temp.append(a)
+            Assessments_id.append(a.id)
+
+        Assessments[m_id] = temp
+
+    Assess_results = {}
+    for a_id in Assessments_id:
+        # print(a_id)
+        temp_a = assessment_results.query.filter_by(assessment_id=a_id, user_id=current_user.id).all()
+        if temp_a:
+            Assess_results[a_id] = temp_a[-1].grade
+
+    # print(Assess_results)
+
+
+
+
     return render_template(
         "my_assessments.html",
         result_ids=result_ids,
         num_of_assessments=num_of_assessments,
+        enrolled_mod = enrolled_mod,
+        Assessments = Assessments,
+        Assess_results = Assess_results,
+        mod_names=mod_names
+
+
     )
 
 
