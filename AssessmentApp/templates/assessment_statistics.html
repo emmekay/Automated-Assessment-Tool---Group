@@ -67,7 +67,8 @@
 
     <tfoot>
       <tr>
-        <td colspan="4">Have an issue with your marks? <a href="">Report here</a></td>
+        <td colspan="4">Have an issue with your marks? <a
+            href="{{ url_for('survey', mod_id=module_details.id, asse_id=assess_details.id)}}">Report here</a></td>
         <!--Add link to Report Issue page-->
       </tr>
     </tfoot>

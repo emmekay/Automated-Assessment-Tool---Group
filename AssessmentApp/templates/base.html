@@ -45,7 +45,7 @@
         <span onclick="location.href = '/view-modules'">
           <li>Modules</li>
         </span>
-        <li> <span onclick="location.href = '/completed_assessments/{{current_user.id|tojson}}'">Results</span> </li>
+        <li> <span onclick="location.href = '/my_assessments/{{current_user.id|tojson}}'">Results</span> </li>
         {% if current_user.is_staff %}
         <li><span onclick="location.href = '/surveyresults'">Feedback</span></li></a>
         {% else %}
@@ -64,15 +64,16 @@
   </div>
   <div class="footerNav">
 
-  <footer>
+    <footer>
 
 
-    <p><span onclick="location.href = '/myaccount'">My Account</span> | <span
-        onclick="location.href = '/view-modules'">Modules</span> | <span onclick="location.href = '/completed_assessments/{{current_user.id|tojson}}'">Results</span> </p>
-    <p>CMT 313 Group H - Auto Assessment Tool</p>
+      <p><span onclick="location.href = '/myaccount'">My Account</span> | <span
+          onclick="location.href = '/view-modules'">Modules</span> | <span
+          onclick="location.href = '/my_assessments/{{current_user.id|tojson}}'">Results</span> </p>
+      <p>CMT 313 Group H - Auto Assessment Tool</p>
 
 
-  </footer>
+    </footer>
   </div>
 
 </body>
