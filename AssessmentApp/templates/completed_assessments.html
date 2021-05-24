@@ -14,7 +14,6 @@
   <table class="completed-assessments-table">
     <thead>
       <tr>
-        <th scope="col">Student Number</th>
         <th scope="col">Completed Assessment(s)</th>
         <th scope="col">Date Completed</th>
         <th scope="col">Mark</th>
@@ -27,7 +26,6 @@
 
       {% for r in result_ids %}
       <tr>
-        <td>{{ current_user.id }}</td> <!-- Student Number -->
         <td>{{ assess_details[r.assessment_id].assessment_name }}</td> <!-- Completed Assessment(s) -->
         <td>{{ r.date_completed }}</td> <!-- Date Completed -->
         <td>{{ r.grade }}</td> <!-- Mark -->

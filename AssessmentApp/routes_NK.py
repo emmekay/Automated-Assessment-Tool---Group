@@ -58,7 +58,8 @@ def my_assessments(user_id):
             all_attempts.append(result.grade)
             attempts_average = round((sum(all_attempts) / len(all_attempts)), 1)
 
-        Assess_results[a_id] = attempts_average
+        if user_results:
+            Assess_results[a_id] = attempts_average
 
     return render_template(
         "my_assessments.html",
