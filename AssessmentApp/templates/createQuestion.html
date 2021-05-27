@@ -2,29 +2,49 @@
 
 {% block head %}
   <title>createQuestion</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style/undertakeAss.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style/createQuestion.css') }}">
 {% endblock %}
 
 {% block body %}
 {#    back button#}
+    <p></p>
     <input id="cQ_Back_Button" name="cQ_Back_Button" type="button" value="Edit Assessment Details">
 
-    <table id="cQ_info">
-        <tr><td>Module Code</td><td></td></tr>
-        <tr><td>Assessment Title</td><td></td></tr>
-        <tr><td>Total Questions</td><td></td></tr>
-        <tr><td>Total Marks</td><td></td></tr>
+    <p<p></p>
+    <div>
+        <form>
+            <table>
+                <tr><td>Module Code</td>
+                    <td></td><td></td><td></td><td></td><td></td><td></td><td>Computation Thinking</td></tr>
+                <tr><td>Assessment Title</td>
+                    <td></td><td></td><td></td><td><td></td><td></td></td><td>Summative</td></tr>
+                <tr><td>Total Questions</td>
+                    <td></td><td></td><td></td><td><td></td><td></td></td><td></td></tr>
+                <tr><td>Total Marks</td>
+                    <td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            </table>
+        </form>
+    </div>
+    <p></p><p></p><p></p><p></p>
+    
+    {#    Question table#}
+    <table id="cQ_QuesTable">
+        <tr><td>Question Number</td><td></td><td></td><td></td>
+            <td>Question Content</td><td></td><td></td><td></td>
+            <td>Answer</td><td></td><td></td><td></td>
+            <td>Points</td><td></td><td></td><td></td>
+            <td>Difficulty Level</td><td></td><td></td><td></td>
+            <td>EDIT/DELETE</td>
+        </tr>
+        <tr>
+    
+        </tr>
     </table>
-
-{#    Question table#}
-    <table>
-        <tr><td>Question Number</td><td>Question Title</td><td>Points</td><td>EDIT/DELETE</td></tr>
-    </table>
+    <p></p><p></p><p></p><p></p>
 
 {#    Create questions#}
 {#    Choose question type#}
     <table>
-        <tr><td>Create New Questions</td></tr>
         <tr>
             <td>Question Type</td>
             <td><select id="cQ_Question_Type" name="cQ_Question_Type">
@@ -37,7 +57,10 @@
     <div id="cQ_QuestionType_One">
     <form>
     <table>
-        <tr><td>Question Content</td><td><input id="cQ_T1_Question_Content" name="cQ_Question_Content" type="text"></td></tr>
+        <tr>
+            <td><label for="content">Question Content</label></td>
+            <td><textarea id="QContent" name="QContent" class="" cols="40" rows="8"></textarea></td>
+        </tr>
         <tr><td>Difficulty Level</td><td><select id="cQ_T1_Difficulty_Level" name="cQ_Difficulty_Level">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -51,16 +74,30 @@
         <tr><td>Option 3</td><td><input id="cQ_T1_Option3" name="cQ_T1_Option3" type="text"></td></tr>
         <tr><td>Option 4</td><td><input id="cQ_T1_Option4" name="cQ_T1_Option4" type="text"></td></tr>
         <tr><td>Correct Answer</td><td><select id="cQ_T1_Correct_Answer" name="cQ_T1_Correct_Answer">
+        <tr><td><label for="cfeedback">Correct Feedback</label></td><td><input type="text" name="correctfeedback"></td></tr>
+        <tr><td><label for="ifeedback">Incorrect Feedback</label></td><td><input type="text" name="incorrectfeedback"></td></tr>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
         </select></td></tr>
     </table>
+        <p></p>
         <input id="cQ_Add_Question" name="cQ_Add_Question" type="submit" value="Add Question">
     </form>
     </div>
+    <p></p><p></p><p></p><p></p><p></p>
 {#    If choose type two#}
+{#    Choose question type#}
+    <table>
+        <tr>
+            <td>Question Type</td>
+            <td><select id="cQ_Question_Type" name="cQ_Question_Type">
+                <option value="1">Type Two</option>
+                <option value="2">Type One</option>
+            </select></td>
+        </tr>
+    </table>
 <div id="cQ_QuestionType_Two">
     <form>
     <table>
@@ -110,6 +147,7 @@
             <td><input type="text" name="incorrectfeedback"></td>
         </tr>
     </table>
+        <p></p>
         <input id="cQ_Add_Question" name="cQ_Add_Question" type="submit" value="Add Question">
     </form>
     </div>
