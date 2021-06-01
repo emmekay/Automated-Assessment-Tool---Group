@@ -1,7 +1,7 @@
 /* Styling the table(s) individually */
 .survey-table {
   border-collapse: collapse;
-  border-bottom: 2px solid #504646;
+  border: 2px solid #504646;
   margin: 5px 0;
   font-size: 0.9em;
   min-width: 400px;
@@ -19,7 +19,7 @@
 
 /* Styling the Table headings */
 .content-tables thead tr {
-  background-color: #9e5858; /* Make sure color corresponds with color scheme */
+  background-color: #cfabab; /* Make sure color corresponds with color scheme */
   color: #ffffff;
   text-align: center;
   font-weight: bold;
@@ -29,7 +29,7 @@
  .content-tables th,
  .content-tables td {
   padding: 4px 5px;
-  border-bottom: 2px solid #443939;
+  border: 2px solid #443939;
  }
 /* adding a bottom table border under each row */
 .content-tables tbody tr {
@@ -38,19 +38,19 @@
 
 /* making each 2nd row a light grey color */
 .content-tables tbody tr:nth-of-type(even) {
-  background-color: #776e6ece;
-  border-bottom: 2px solid #9e5858;
+  background-color: #c0bebece;
+  border-bottom: 2px solid #ac7474;
 }
 
 /* making the last table row border the same as header */
 .content-tables tbody tr:last-of-type {
-  border-bottom: 2px solid #9e5858; /* Make sure color corresponds with color scheme */
+  border-bottom: 2px solid #ac7474; /* Make sure color corresponds with color scheme */
 }
 
 /* making the current row stand out */
 .content-tables tbody tr.active-row {
   font-weight: bold;
-  color: #9e5858; /* Make sure color corresponds with color scheme */
+  color: #cfabab; /* Make sure color corresponds with color scheme */
 }
 
 

@@ -105,7 +105,7 @@ def surveyresults():
             temp_answers[4][s.question_5 - 1] += 1
             #ttt = map(sum(temp_answers[0][s.question_1]))
         survey_Results[a_id] =  temp_answers
-        userCount = surveyinput.query.filter_by(assessment_id=a_id).count()
+        #userCount = surveyinput.query.filter_by(assessment_id=a_id).count()
         #ttt = survey_Results[a_id][0]
         #userTot = userCount[a_id]
 
@@ -130,14 +130,14 @@ def surveyresults():
        # userCount[a_id] = len(temp_answers([[0, 0], [0, 0]]))
 
         #survey_Count = surveyinput.query.filter(surveyinput.assessment_id ==a_id, temp_answers).count()
-    print(survey_Results, userCount)
+    #print(survey_Results)
     #assess 2 = 12 
 
 
    
 
     return render_template(
-        "surveyresults.html", title="Feedback Summary", Assessments_id = Assessments_id, survey_Results = survey_Results, enrolled_mod = enrolled_mod, Assessments = Assessments, userCount = userCount, temp_answers = temp_answers)
+        "surveyresults.html", title="Feedback Summary", Assessments_id = Assessments_id, survey_Results = survey_Results, enrolled_mod = enrolled_mod, Assessments = Assessments)
 
 
  # Pull all survey results

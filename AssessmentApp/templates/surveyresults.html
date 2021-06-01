@@ -4,7 +4,7 @@
 {% block head %}
 <title>Student Feedback Results</title>
 <link rel="stylesheet" href="../static/style/surveystyle.css">
-<link rel="stylesheet" href="../static/style/mainStyle.css">
+<!--<link rel="stylesheet" href="../static/style/mainStyle.css">-->
 {% endblock %}
 
 
@@ -19,7 +19,7 @@
                 <thead>
                     <h2><strong>Questions about using this Automated Assessment Tool</strong></h2>
                     <tr>
-                        <th colspan="7">Question 1 : Rate the ease of using this automated
+                        <th colspan="7" style="background-color:rgb(170, 76, 76)">Question 1 : Rate the ease of using this automated
                             assessment tool to complete your assessment.</th> <!--Question 1-->
                     </tr>
                     <tr>
@@ -51,7 +51,7 @@
             <table class="survey-table w3-striped w3-bordered"> <!-- Question 2-->
                 <thead>
                     <tr>
-                        <th colspan="7">Question 2 : Did you experience any technical issues during this assessment related to the assessment itself?</th>
+                        <th colspan="7" style="background-color:rgb(170, 76, 76)">Question 2 : Did you experience any technical issues during this assessment related to the assessment itself?</th>
                     </tr>
                     <tr>
                         <th scope="col">Module Number</th>
@@ -81,7 +81,7 @@
                     <thead>
                         <h2><strong>Questions About Assessment Content</strong></h2>
                         <tr>
-                            <th colspan="7">Question 3 : How relevant was the assessment to the coursework you have completed within your course?</th>
+                            <th colspan="7" style="background-color:rgb(170, 76, 76)">Question 3 : How relevant was the assessment to the coursework you have completed within your course?</th>
                         </tr>
                         <tr>
                             <th scope="col">Module Number</th>
@@ -115,7 +115,7 @@
                 <table class="survey-table w3-striped w3-bordered"> <!-- Question 4 -->
                     <thead>
                         <tr>
-                            <th colspan="7">Question 4 : The assessment questions worded so they were easy to understand what the question was asking.</th>
+                            <th colspan="7" style="background-color:rgb(170, 76, 76)">Question 4 : The assessment questions worded so they were easy to understand what the question was asking.</th>
                         </tr>
                         <tr>
                             <th scope="col">Module Number</th>
@@ -136,11 +136,11 @@
                         <tr>
                             <th scope="col">{{m_id}}</th>
                             <th scope="col">{{a_id}}</th>
-                            <th scope="col">{{ survey_Results[a_id][3][0] }} out of {{ (survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) }} </th>
-                            <th scope="col">{{ survey_Results[a_id][3][1] }}out of {{ (survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) }}</th>
-                            <th scope="col">{{ survey_Results[a_id][3][2] }}out of {{ (survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) }}</th>
-                            <th scope="col">{{ survey_Results[a_id][3][3] }}out of {{ (survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) }}</th>
-                            <th scope="col">{{ survey_Results[a_id][3][4] }}out of {{ (survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) }}</th>
+                            <th scope="col">{{ (((survey_Results[a_id][3][0]) / ((survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) )) * 100)|round(1)}}%<br>{{ survey_Results[a_id][3][0] }} out of {{ (survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) }} </th>
+                            <th scope="col">{{ survey_Results[a_id][3][1] }} out of {{ (survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) }} = {{ (((survey_Results[a_id][3][1]) / ((survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) )) * 100)|round(1)}} %</th>
+                            <th scope="col">{{ survey_Results[a_id][3][2] }} out of {{ (survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) }} = {{ (((survey_Results[a_id][3][2]) / ((survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) )) * 100)|round(1)}} %</th>
+                            <th scope="col">{{ survey_Results[a_id][3][3] }} out of {{ (survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) }} = {{ (((survey_Results[a_id][3][3]) / ((survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) )) * 100)|round(1)}} %</th>
+                            <th scope="col">{{ survey_Results[a_id][3][4] }} out of {{ (survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) }} = {{ (((survey_Results[a_id][3][4]) / ((survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) )) * 100)|round(1)}} %</th>
                         </tr>
                         {%endfor%}
                         {%endfor%}
@@ -153,7 +153,7 @@
                     <thead>
                         <h2><strong>Questions about Module</strong></h2>
                         <tr>
-                            <th colspan="7">Question 5 : How relevant is this particular module in reaching the learning outcomes set by your degree program?</th><!--Question 5-->
+                            <th colspan="7" style="background-color:rgb(170, 76, 76)">Question 5 : How relevant is this particular module in reaching the learning outcomes set by your degree program?</th><!--Question 5-->
                         </tr>
                         <tr>
                             <th scope="col">Module Number</th>
@@ -189,7 +189,7 @@
                 <table class="survey-table w3-striped w3-bordered">
                     <thead>
                         <tr>
-                            <th colspan="7">Question 6 : Any additional Feedback Comments </th><!--Question 6-->
+                            <th colspan="7" style="background-color:rgb(170, 76, 76)">Question 6 : Any additional Feedback Comments </th><!--Question 6-->
                         </tr>
                         <tr>
                             <th scope="col">Module Number</th>
