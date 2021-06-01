@@ -12,24 +12,25 @@
     {% if current_user.is_staff %}
         {{ q1_choice1 }}
         <br><br>
-        <h2>Student Feedback & Survey Results</h2>
-        <h3>All feedback is anonymous and ordered by Module and Assessment.</h3>
-        <div class="content-tables">
+        <center><h2>Student Feedback & Survey Results</h2></center>
+        <center><h3>All feedback is anonymous and ordered by Module and Assessment.</h3></center>
+        <center><div><button style="background-color:#ca8f8f" onClick="window.print()">Print this Report</button></div></center>
+        <center><div class="content-tables">
             <table class="survey-table w3-striped w3-bordered">
                 <thead>
-                    <h2><strong>Questions about using this Automated Assessment Tool</strong></h2>
+                    <center><h2>Questions about using this Automated Assessment Tool</h2></center>
                     <tr>
-                        <th colspan="7" style="background-color:rgb(170, 76, 76)">Question 1 : Rate the ease of using this automated
+                        <th colspan="7" style="background-color:rgb(170, 76, 76)"> Question 1 : Rate the ease of using this automated
                             assessment tool to complete your assessment.</th> <!--Question 1-->
                     </tr>
                     <tr>
-                        <th scope="col">Module Number</th>
-                        <th scope="col">Assessment Number</th>
-                        <th scope="col">Very Easy </th>
-                        <th scope="col">Easy </th>
-                        <th scope="col">Moderate</th>
-                        <th scope="col">Difficult</th>
-                        <th scope="col">Very Difficult</th>
+                        <th scope="col"> Module Number </th>
+                        <th scope="col"> Assessment Number </th>
+                        <th scope="col"> Very Easy </th>
+                        <th scope="col"> Easy </th>
+                        <th scope="col"> Moderate </th>
+                        <th scope="col"> Difficult </th>
+                        <th scope="col"> Very Difficult </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,11 +39,11 @@
                     <tr>
                         <th scope="col">{{m_id}}</th> <!--Question 1 Answers -->
                         <th scope="col">{{a_id}}</th>
-                        <th scope="col">{{ survey_Results[a_id][0][0] }} out of {{ (survey_Results[a_id][0][0]) + (survey_Results[a_id][0][1]) + (survey_Results[a_id][0][2]) + (survey_Results[a_id][0][3]) + (survey_Results[a_id][0][4]) }} </th>
-                        <th scope="col">{{ survey_Results[a_id][0][1] }} out of {{ (survey_Results[a_id][0][0]) + (survey_Results[a_id][0][1]) + (survey_Results[a_id][0][2]) + (survey_Results[a_id][0][3]) + (survey_Results[a_id][0][4]) }}</th>
-                        <th scope="col">{{ survey_Results[a_id][0][2] }} out of {{ (survey_Results[a_id][0][0]) + (survey_Results[a_id][0][1]) + (survey_Results[a_id][0][2]) + (survey_Results[a_id][0][3]) + (survey_Results[a_id][0][4]) }}</th>
-                        <th scope="col">{{ survey_Results[a_id][0][3] }} out of {{ (survey_Results[a_id][0][0]) + (survey_Results[a_id][0][1]) + (survey_Results[a_id][0][2]) + (survey_Results[a_id][0][3]) + (survey_Results[a_id][0][4]) }}</th>
-                        <th scope="col">{{ survey_Results[a_id][0][4] }} out of {{ (survey_Results[a_id][0][0]) + (survey_Results[a_id][0][1]) + (survey_Results[a_id][0][2]) + (survey_Results[a_id][0][3]) + (survey_Results[a_id][0][4]) }}</th>
+                        <th scope="col">{{ survey_Results[a_id][0][0] }} out of {{ (survey_Results[a_id][0][0]) + (survey_Results[a_id][0][1]) + (survey_Results[a_id][0][2]) + (survey_Results[a_id][0][3]) + (survey_Results[a_id][0][4]) }}<br>={{ (((survey_Results[a_id][0][0]) / ((survey_Results[a_id][0][0]) + (survey_Results[a_id][0][1]) + (survey_Results[a_id][0][2]) + (survey_Results[a_id][0][3]) + (survey_Results[a_id][0][4]) )) * 100)|round(1)}}% </th>
+                        <th scope="col">{{ survey_Results[a_id][0][1] }} out of {{ (survey_Results[a_id][0][0]) + (survey_Results[a_id][0][1]) + (survey_Results[a_id][0][2]) + (survey_Results[a_id][0][3]) + (survey_Results[a_id][0][4]) }}<br>={{ (((survey_Results[a_id][0][1]) / ((survey_Results[a_id][0][0]) + (survey_Results[a_id][0][1]) + (survey_Results[a_id][0][2]) + (survey_Results[a_id][0][3]) + (survey_Results[a_id][0][4]) )) * 100)|round(1)}}%</th>
+                        <th scope="col">{{ survey_Results[a_id][0][2] }} out of {{ (survey_Results[a_id][0][0]) + (survey_Results[a_id][0][1]) + (survey_Results[a_id][0][2]) + (survey_Results[a_id][0][3]) + (survey_Results[a_id][0][4]) }}<br>={{ (((survey_Results[a_id][0][2]) / ((survey_Results[a_id][0][0]) + (survey_Results[a_id][0][1]) + (survey_Results[a_id][0][2]) + (survey_Results[a_id][0][3]) + (survey_Results[a_id][0][4]) )) * 100)|round(1)}}%</th>
+                        <th scope="col">{{ survey_Results[a_id][0][3] }} out of {{ (survey_Results[a_id][0][0]) + (survey_Results[a_id][0][1]) + (survey_Results[a_id][0][2]) + (survey_Results[a_id][0][3]) + (survey_Results[a_id][0][4]) }}<br>={{ (((survey_Results[a_id][0][3]) / ((survey_Results[a_id][0][0]) + (survey_Results[a_id][0][1]) + (survey_Results[a_id][0][2]) + (survey_Results[a_id][0][3]) + (survey_Results[a_id][0][4]) )) * 100)|round(1)}}%</th>
+                        <th scope="col">{{ survey_Results[a_id][0][4] }} out of {{ (survey_Results[a_id][0][0]) + (survey_Results[a_id][0][1]) + (survey_Results[a_id][0][2]) + (survey_Results[a_id][0][3]) + (survey_Results[a_id][0][4]) }}<br>={{ (((survey_Results[a_id][0][4]) / ((survey_Results[a_id][0][0]) + (survey_Results[a_id][0][1]) + (survey_Results[a_id][0][2]) + (survey_Results[a_id][0][3]) + (survey_Results[a_id][0][4]) )) * 100)|round(1)}}%</th>
                     </tr>
                     {%endfor%}
                     {%endfor%}
@@ -51,14 +52,14 @@
             <table class="survey-table w3-striped w3-bordered"> <!-- Question 2-->
                 <thead>
                     <tr>
-                        <th colspan="7" style="background-color:rgb(170, 76, 76)">Question 2 : Did you experience any technical issues during this assessment related to the assessment itself?</th>
+                        <th colspan="7" style="background-color:rgb(170, 76, 76)"> Question 2 : Did you experience any technical issues during this assessment related to the assessment itself?</th>
                     </tr>
                     <tr>
-                        <th scope="col">Module Number</th>
-                        <th scope="col">Assessment Number</th>
-                        <th scope="col">Several Issues that Affected Outcome </th>
-                        <th scope="col">Minor Issues </th>
-                        <th scope="col">No Issues</th>
+                        <th scope="col"> Module Number </th>
+                        <th scope="col"> Assessment Number </th>
+                        <th scope="col"> Several Issues that Affected Outcome </th>
+                        <th scope="col"> Minor Issues </th>
+                        <th scope="col"> No Issues </th>
                     </tr>
                     </tr>
                 </thead>
@@ -68,9 +69,9 @@
                     <tr>
                         <th scope="col">{{m_id}}</th>
                         <th scope="col">{{a_id}}</th>
-                        <th scope="col">{{ survey_Results[a_id][1][0] }} out of {{ (survey_Results[a_id][1][0]) + (survey_Results[a_id][1][1]) + (survey_Results[a_id][1][2]) }} </th>
-                        <th scope="col">{{ survey_Results[a_id][1][1] }} out of {{ (survey_Results[a_id][1][0]) + (survey_Results[a_id][1][1]) + (survey_Results[a_id][1][2]) }}</th>
-                        <th scope="col">{{ survey_Results[a_id][1][2] }} out of {{ (survey_Results[a_id][1][0]) + (survey_Results[a_id][1][1]) + (survey_Results[a_id][1][2]) }}</th>
+                        <th scope="col">{{ survey_Results[a_id][1][0] }} out of {{ (survey_Results[a_id][1][0]) + (survey_Results[a_id][1][1]) + (survey_Results[a_id][1][2]) }}<br>={{ (((survey_Results[a_id][1][0]) / ((survey_Results[a_id][1][0]) + (survey_Results[a_id][1][1]) + (survey_Results[a_id][1][2]))) * 100)|round(1)}}% </th>
+                        <th scope="col">{{ survey_Results[a_id][1][1] }} out of {{ (survey_Results[a_id][1][0]) + (survey_Results[a_id][1][1]) + (survey_Results[a_id][1][2]) }}<br>={{ (((survey_Results[a_id][1][1]) / ((survey_Results[a_id][1][0]) + (survey_Results[a_id][1][1]) + (survey_Results[a_id][1][2]))) * 100)|round(1)}}%</th>
+                        <th scope="col">{{ survey_Results[a_id][1][2] }} out of {{ (survey_Results[a_id][1][0]) + (survey_Results[a_id][1][1]) + (survey_Results[a_id][1][2]) }}<br>={{ (((survey_Results[a_id][1][2]) / ((survey_Results[a_id][1][0]) + (survey_Results[a_id][1][1]) + (survey_Results[a_id][1][2]))) * 100)|round(1)}}%</th>
                     </tr>
                     {%endfor%}
                     {%endfor%}
@@ -79,18 +80,18 @@
                 <br>
                 <table class="survey-table w3-striped w3-bordered"> <!-- Question 3 -->
                     <thead>
-                        <h2><strong>Questions About Assessment Content</strong></h2>
+                        <h2>Questions About Assessment Content</h2>
                         <tr>
-                            <th colspan="7" style="background-color:rgb(170, 76, 76)">Question 3 : How relevant was the assessment to the coursework you have completed within your course?</th>
+                            <th colspan="7" style="background-color:rgb(170, 76, 76)"> Question 3 : How relevant was the assessment to the coursework you have completed within your course?</th>
                         </tr>
                         <tr>
-                            <th scope="col">Module Number</th>
-                            <th scope="col">Assessment Number</th>
-                            <th scope="col">Extremely Irrelevant</th>
-                            <th scope="col">Moderately Irrelevant </th>
-                            <th scope="col">Neither Relevant nor Irrelevant</th>
-                            <th scope="col">Moderately Relevant</th>
-                            <th scope="col">Extremely Relevant</th>
+                            <th scope="col"> Module Number </th>
+                            <th scope="col"> Assessment Number </th>
+                            <th scope="col"> Extremely Irrelevant </th>
+                            <th scope="col"> Moderately Irrelevant </th>
+                            <th scope="col"> Neither Relevant nor Irrelevant </th>
+                            <th scope="col"> Moderately Relevant </th>
+                            <th scope="col"> Extremely Relevant </th>
                         </tr>
                     </thead>
                     <tbody> <!-- Question 3 Answers -->
@@ -102,11 +103,11 @@
                         <tr>
                             <th scope="col">{{m_id}}</th>
                             <th scope="col">{{a_id}}</th>
-                            <th scope="col">{{ survey_Results[a_id][2][0] }} out of {{ (survey_Results[a_id][2][0]) + (survey_Results[a_id][2][1]) + (survey_Results[a_id][2][2]) + (survey_Results[a_id][2][3]) + (survey_Results[a_id][2][4]) }}</th>
-                            <th scope="col">{{ survey_Results[a_id][2][1] }} out of {{ (survey_Results[a_id][2][0]) + (survey_Results[a_id][2][1]) + (survey_Results[a_id][2][2]) + (survey_Results[a_id][2][3]) + (survey_Results[a_id][2][4]) }}</th>
-                            <th scope="col">{{ survey_Results[a_id][2][2] }} out of {{ (survey_Results[a_id][2][0]) + (survey_Results[a_id][2][1]) + (survey_Results[a_id][2][2]) + (survey_Results[a_id][2][3]) + (survey_Results[a_id][2][4]) }}</th>
-                            <th scope="col">{{ survey_Results[a_id][2][3] }} out of {{ (survey_Results[a_id][2][0]) + (survey_Results[a_id][2][1]) + (survey_Results[a_id][2][2]) + (survey_Results[a_id][2][3]) + (survey_Results[a_id][2][4]) }}</th>
-                            <th scope="col">{{ survey_Results[a_id][2][4] }} out of {{ (survey_Results[a_id][2][0]) + (survey_Results[a_id][2][1]) + (survey_Results[a_id][2][2]) + (survey_Results[a_id][2][3]) + (survey_Results[a_id][2][4]) }}</th>
+                            <th scope="col">{{ survey_Results[a_id][2][0] }} out of {{ (survey_Results[a_id][2][0]) + (survey_Results[a_id][2][1]) + (survey_Results[a_id][2][2]) + (survey_Results[a_id][2][3]) + (survey_Results[a_id][2][4]) }}<br>={{ (((survey_Results[a_id][2][0]) / ((survey_Results[a_id][2][0]) + (survey_Results[a_id][2][1]) + (survey_Results[a_id][2][2]) + (survey_Results[a_id][2][3]) + (survey_Results[a_id][2][4]) )) * 100)|round(1)}}%</th>
+                            <th scope="col">{{ survey_Results[a_id][2][1] }} out of {{ (survey_Results[a_id][2][0]) + (survey_Results[a_id][2][1]) + (survey_Results[a_id][2][2]) + (survey_Results[a_id][2][3]) + (survey_Results[a_id][2][4]) }}<br>={{ (((survey_Results[a_id][2][1]) / ((survey_Results[a_id][2][0]) + (survey_Results[a_id][2][1]) + (survey_Results[a_id][2][2]) + (survey_Results[a_id][2][3]) + (survey_Results[a_id][2][4]) )) * 100)|round(1)}}%</th>
+                            <th scope="col">{{ survey_Results[a_id][2][2] }} out of {{ (survey_Results[a_id][2][0]) + (survey_Results[a_id][2][1]) + (survey_Results[a_id][2][2]) + (survey_Results[a_id][2][3]) + (survey_Results[a_id][2][4]) }}<br>={{ (((survey_Results[a_id][2][2]) / ((survey_Results[a_id][2][0]) + (survey_Results[a_id][2][1]) + (survey_Results[a_id][2][2]) + (survey_Results[a_id][2][3]) + (survey_Results[a_id][2][4]) )) * 100)|round(1)}}%</th>
+                            <th scope="col">{{ survey_Results[a_id][2][3] }} out of {{ (survey_Results[a_id][2][0]) + (survey_Results[a_id][2][1]) + (survey_Results[a_id][2][2]) + (survey_Results[a_id][2][3]) + (survey_Results[a_id][2][4]) }}<br>={{ (((survey_Results[a_id][2][3]) / ((survey_Results[a_id][2][0]) + (survey_Results[a_id][2][1]) + (survey_Results[a_id][2][2]) + (survey_Results[a_id][2][3]) + (survey_Results[a_id][2][4]) )) * 100)|round(1)}}%</th>
+                            <th scope="col">{{ survey_Results[a_id][2][4] }} out of {{ (survey_Results[a_id][2][0]) + (survey_Results[a_id][2][1]) + (survey_Results[a_id][2][2]) + (survey_Results[a_id][2][3]) + (survey_Results[a_id][2][4]) }}<br>={{ (((survey_Results[a_id][2][4]) / ((survey_Results[a_id][2][0]) + (survey_Results[a_id][2][1]) + (survey_Results[a_id][2][2]) + (survey_Results[a_id][2][3]) + (survey_Results[a_id][2][4]) )) * 100)|round(1)}}%</th>
                         </tr>
                         {%endfor%}
                         {%endfor%}
@@ -115,16 +116,16 @@
                 <table class="survey-table w3-striped w3-bordered"> <!-- Question 4 -->
                     <thead>
                         <tr>
-                            <th colspan="7" style="background-color:rgb(170, 76, 76)">Question 4 : The assessment questions worded so they were easy to understand what the question was asking.</th>
+                            <th colspan="7" style="background-color:rgb(170, 76, 76)"> Question 4 : The assessment questions worded so they were easy to understand what the question was asking.</th>
                         </tr>
                         <tr>
-                            <th scope="col">Module Number</th>
-                            <th scope="col">Assessment Number</th>
-                            <th scope="col">Strongly Disagree</th>
-                            <th scope="col">Slightly Disagree</th>
-                            <th scope="col">Neither Agree or Disagree</th>
-                            <th scope="col">Slightly Agree</th>
-                            <th scope="col">Strongly Agree</th>
+                            <th scope="col"> Module Number </th>
+                            <th scope="col"> Assessment Number </th>
+                            <th scope="col"> Strongly Disagree </th>
+                            <th scope="col"> Slightly Disagree </th>
+                            <th scope="col"> Neither Agree or Disagree </th>
+                            <th scope="col"> Slightly Agree </th>
+                            <th scope="col"> Strongly Agree </th>
                         </tr>
                     </thead>
                     <tbody> <!-- Question 4 Answers -->
@@ -136,11 +137,11 @@
                         <tr>
                             <th scope="col">{{m_id}}</th>
                             <th scope="col">{{a_id}}</th>
-                            <th scope="col">{{ (((survey_Results[a_id][3][0]) / ((survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) )) * 100)|round(1)}}%<br>{{ survey_Results[a_id][3][0] }} out of {{ (survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) }} </th>
-                            <th scope="col">{{ survey_Results[a_id][3][1] }} out of {{ (survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) }} = {{ (((survey_Results[a_id][3][1]) / ((survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) )) * 100)|round(1)}} %</th>
-                            <th scope="col">{{ survey_Results[a_id][3][2] }} out of {{ (survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) }} = {{ (((survey_Results[a_id][3][2]) / ((survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) )) * 100)|round(1)}} %</th>
-                            <th scope="col">{{ survey_Results[a_id][3][3] }} out of {{ (survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) }} = {{ (((survey_Results[a_id][3][3]) / ((survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) )) * 100)|round(1)}} %</th>
-                            <th scope="col">{{ survey_Results[a_id][3][4] }} out of {{ (survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) }} = {{ (((survey_Results[a_id][3][4]) / ((survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) )) * 100)|round(1)}} %</th>
+                            <th scope="col">{{ survey_Results[a_id][3][0] }} out of {{ (survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) }} <br>= {{ (((survey_Results[a_id][3][0]) / ((survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) )) * 100)|round(1)}}%</th>
+                            <th scope="col">{{ survey_Results[a_id][3][1] }} out of {{ (survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) }} <br>= {{ (((survey_Results[a_id][3][1]) / ((survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) )) * 100)|round(1)}}%</th>
+                            <th scope="col">{{ survey_Results[a_id][3][2] }} out of {{ (survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) }} <br>= {{ (((survey_Results[a_id][3][2]) / ((survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) )) * 100)|round(1)}}%</th>
+                            <th scope="col">{{ survey_Results[a_id][3][3] }} out of {{ (survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) }} <br>= {{ (((survey_Results[a_id][3][3]) / ((survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) )) * 100)|round(1)}}%</th>
+                            <th scope="col">{{ survey_Results[a_id][3][4] }} out of {{ (survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) }} <br>= {{ (((survey_Results[a_id][3][4]) / ((survey_Results[a_id][3][0]) + (survey_Results[a_id][3][1]) + (survey_Results[a_id][3][2]) + (survey_Results[a_id][3][3]) + (survey_Results[a_id][3][4]) )) * 100)|round(1)}}%</th>
                         </tr>
                         {%endfor%}
                         {%endfor%}
@@ -151,18 +152,18 @@
                     <br>
                 <table class="survey-table w3-striped w3-bordered">
                     <thead>
-                        <h2><strong>Questions about Module</strong></h2>
+                        <h2>Questions about Module</h2>
                         <tr>
                             <th colspan="7" style="background-color:rgb(170, 76, 76)">Question 5 : How relevant is this particular module in reaching the learning outcomes set by your degree program?</th><!--Question 5-->
                         </tr>
                         <tr>
-                            <th scope="col">Module Number</th>
-                            <th scope="col">Assessment Number</th>
-                            <th scope="col">Extremely Irrelevant</th>
-                            <th scope="col">Slightly Irrelevant</th>
-                            <th scope="col">Neither Relevant nor Irrelevant</th>
-                            <th scope="col">Slightly Relevant</th>
-                            <th scope="col">Extremely Relevant</th>
+                            <th scope="col"> Module Number </th>
+                            <th scope="col"> Assessment Number </th>
+                            <th scope="col"> Extremely Irrelevant </th>
+                            <th scope="col"> Slightly Irrelevant </th>
+                            <th scope="col"> Neither Relevant nor Irrelevant </th>
+                            <th scope="col"> Slightly Relevant </th>
+                            <th scope="col"> Extremely Relevant </th>
                         </tr>
                     </thead>
                     <tbody> <!-- Question 5 Answers -->
@@ -174,11 +175,11 @@
                         <tr>
                             <th scope="col">{{m_id}}</th>
                             <th scope="col">{{a_id}}</th>
-                            <th scope="col">{{ survey_Results[a_id][4][0] }} out of {{ (survey_Results[a_id][4][0]) + (survey_Results[a_id][4][1]) + (survey_Results[a_id][4][2]) + (survey_Results[a_id][4][3]) + (survey_Results[a_id][4][4]) }} </th>
-                            <th scope="col">{{ survey_Results[a_id][4][1] }} out of {{ (survey_Results[a_id][4][0]) + (survey_Results[a_id][4][1]) + (survey_Results[a_id][4][2]) + (survey_Results[a_id][4][3]) + (survey_Results[a_id][4][4]) }}</th>
-                            <th scope="col">{{ survey_Results[a_id][4][2] }} out of {{ (survey_Results[a_id][4][0]) + (survey_Results[a_id][4][1]) + (survey_Results[a_id][4][2]) + (survey_Results[a_id][4][3]) + (survey_Results[a_id][4][4]) }}</th>
-                            <th scope="col">{{ survey_Results[a_id][4][3] }} out of {{ (survey_Results[a_id][4][0]) + (survey_Results[a_id][4][1]) + (survey_Results[a_id][4][2]) + (survey_Results[a_id][4][3]) + (survey_Results[a_id][4][4]) }}</th>
-                            <th scope="col">{{ survey_Results[a_id][4][4] }} out of {{ (survey_Results[a_id][4][0]) + (survey_Results[a_id][4][1]) + (survey_Results[a_id][4][2]) + (survey_Results[a_id][4][3]) + (survey_Results[a_id][4][4]) }}</th>
+                            <th scope="col">{{ survey_Results[a_id][4][0] }} out of {{ (survey_Results[a_id][4][0]) + (survey_Results[a_id][4][1]) + (survey_Results[a_id][4][2]) + (survey_Results[a_id][4][3]) + (survey_Results[a_id][4][4]) }}<br>={{ (((survey_Results[a_id][4][0]) / ((survey_Results[a_id][4][0]) + (survey_Results[a_id][4][1]) + (survey_Results[a_id][4][2]) + (survey_Results[a_id][4][3]) + (survey_Results[a_id][4][4]) )) * 100)|round(1)}}%</th>
+                            <th scope="col">{{ survey_Results[a_id][4][1] }} out of {{ (survey_Results[a_id][4][0]) + (survey_Results[a_id][4][1]) + (survey_Results[a_id][4][2]) + (survey_Results[a_id][4][3]) + (survey_Results[a_id][4][4]) }}<br>={{ (((survey_Results[a_id][4][1]) / ((survey_Results[a_id][4][0]) + (survey_Results[a_id][4][1]) + (survey_Results[a_id][4][2]) + (survey_Results[a_id][4][3]) + (survey_Results[a_id][4][4]) )) * 100)|round(1)}}%</th>
+                            <th scope="col">{{ survey_Results[a_id][4][2] }} out of {{ (survey_Results[a_id][4][0]) + (survey_Results[a_id][4][1]) + (survey_Results[a_id][4][2]) + (survey_Results[a_id][4][3]) + (survey_Results[a_id][4][4]) }}<br>={{ (((survey_Results[a_id][4][2]) / ((survey_Results[a_id][4][0]) + (survey_Results[a_id][4][1]) + (survey_Results[a_id][4][2]) + (survey_Results[a_id][4][3]) + (survey_Results[a_id][4][4]) )) * 100)|round(1)}}%</th>
+                            <th scope="col">{{ survey_Results[a_id][4][3] }} out of {{ (survey_Results[a_id][4][0]) + (survey_Results[a_id][4][1]) + (survey_Results[a_id][4][2]) + (survey_Results[a_id][4][3]) + (survey_Results[a_id][4][4]) }}<br>={{ (((survey_Results[a_id][4][3]) / ((survey_Results[a_id][4][0]) + (survey_Results[a_id][4][1]) + (survey_Results[a_id][4][2]) + (survey_Results[a_id][4][3]) + (survey_Results[a_id][4][4]) )) * 100)|round(1)}}%</th>
+                            <th scope="col">{{ survey_Results[a_id][4][4] }} out of {{ (survey_Results[a_id][4][0]) + (survey_Results[a_id][4][1]) + (survey_Results[a_id][4][2]) + (survey_Results[a_id][4][3]) + (survey_Results[a_id][4][4]) }}<br>={{ (((survey_Results[a_id][4][4]) / ((survey_Results[a_id][4][0]) + (survey_Results[a_id][4][1]) + (survey_Results[a_id][4][2]) + (survey_Results[a_id][4][3]) + (survey_Results[a_id][4][4]) )) * 100)|round(1)}}%</th>
                         </tr>
                         {%endfor%}
                         {%endfor%}
@@ -192,9 +193,9 @@
                             <th colspan="7" style="background-color:rgb(170, 76, 76)">Question 6 : Any additional Feedback Comments </th><!--Question 6-->
                         </tr>
                         <tr>
-                            <th scope="col">Module Number</th>
-                            <th scope="col">Assessment Number</th>
-                            <th colspan="5" >Comments</th>
+                            <th scope="col"> Module Number </th>
+                            <th scope="col"> Assessment Number </th>
+                            <th colspan="5" > Comments </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -205,7 +206,7 @@
                         </tr>
                     </tbody>
                     <br>
-
+                </div>
 
 
     {% else %}
