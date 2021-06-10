@@ -1,33 +1,38 @@
 {% extends 'base.html' %}
 
 {% block  head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style/surveystyle.css') }}">
 
-<title>Satisfaction Feedback Request</title>
 
-<link rel="stylesheet" href="{{ url_for('static', filename='style/mainStyle.css') }}">
+
 {% endblock %}
 
 {% block body %}
+<div class="title-container">
+    <div class="title-background">
+        <h2 class="accountTitle" style="color: white;">Satisfaction Feedback Request</h2>
 
-<div class="">
-    <div style="border:1px dotted red;padding: 8px;">
-        <h2>Please complete this satisfaction survey to describe your experience completing this assessment.</h2><br>
+    </div>
+</div>
+<div class="section-container">
+    <div class="section-background">
+        <h2 class="accountTitle">Please complete this satisfaction survey to describe your experience completing this assessment.</h2>
         <h3>Name : {{current_user.first_name}} {{current_user.last_name}}</h3>
         <h3>Email : {{current_user.email}}</h3>
         <h3>Module : {{mod_id}}</h3>
         <h3>Assessment : {{asse_id}}</h3>
     </div>
 
-
-    <button><a href='/myaccount'>Opt out of survey and return to My Account</a></button>
+<br>
+    <center><button style="background-color:#ca8f8f" style="text-align: center;"><a href='/myaccount'>Opt out of survey and return to My Account</a></button></center>
 
 
 </div>
 
 
-<div class="">
+<div class="section-container">
 
-    <div class="">
+    <div class="section-background">
         
         <h2 id="title">Assessment Feedback</h2> 
 
