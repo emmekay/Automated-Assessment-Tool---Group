@@ -94,15 +94,16 @@ def surveyresults():
     survey_Results = {}
 
     for a_id in Assessments_id:
-        temp_answers = [[0,0,0,0,0],[0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]
+        temp_answers = [[0,0,0,0,0],[0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]
         temp_survey = surveyinput.query.filter_by(assessment_id=a_id).all()
-        
+        #comments = surveyinput.query.filter_by(assessment_id=a_id).surveyinput.question_1()
         for s in temp_survey:
             temp_answers[0][s.question_1 - 1] += 1
             temp_answers[1][s.question_2 - 1] += 1
             temp_answers[2][s.question_3 - 1] += 1
             temp_answers[3][s.question_4 - 1] += 1
             temp_answers[4][s.question_5 - 1] += 1
+            temp_answers[5][s.question_5 - 1] += 1
             #ttt = map(sum(temp_answers[0][s.question_1]))
         survey_Results[a_id] =  temp_answers
         #userCount = surveyinput.query.filter_by(assessment_id=a_id).count()

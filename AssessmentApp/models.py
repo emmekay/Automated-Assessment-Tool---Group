@@ -141,7 +141,7 @@ class surveyinput(db.Model):
     question_3 = db.Column(db.Integer, nullable=False)
     question_4 = db.Column(db.Integer, nullable=False)
     question_5 = db.Column(db.Integer, nullable=False)
-    question_6 = db.Column(db.Text, nullable=True)
+    question_6 = db.Column(db.Integer, nullable=True)
 
     # passive_deletes=True
 

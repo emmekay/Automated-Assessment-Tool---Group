@@ -10,7 +10,7 @@
   width: 70%;
   margin-left: auto;
   margin-right: auto;
-  font-size: .75em;
+  font-size: .78em;
   border-radius: 5px 5px 0 0;
   overflow: hidden;
   inline-size: auto;
@@ -39,6 +39,7 @@
  .content-tables td {
   padding: 4px 5px;
   border: 2px solid #443939;
+  font-size: medium;
  }
 /* adding a bottom table border under each row */
 .content-tables tbody tr {
@@ -79,7 +80,7 @@
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 18px;
   margin: 10px 6px;
   cursor: pointer;
 }
@@ -124,7 +125,8 @@
 }
 .accountTitle {
   text-align: center;
-  font-weight: bold ;
+  font-weight: bold;
+  font-size: 20px;
 }
 .bodyText {
   text-align: center;

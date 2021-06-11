@@ -19,7 +19,7 @@
         </div>
        
         <center><h3>All feedback is anonymous and ordered by Module and Assessment.</h3></center>
-        <center><div><button style="background-color:#ca8f8f" onClick="window.print()">Print this Report</button></div></center>
+        <center><div><button style="background-color:#ca8f8f" onClick="window.print()">Print this Report</button></div></center><br>
         <center><div class="content-tables">
             <table class="survey-table w3-striped w3-bordered">
                 <thead>
@@ -29,7 +29,7 @@
                         </div>
                     </div>
                     <tr>
-                        <th colspan="7" style="background-color:rgb(170, 76, 76)"> Question 1 : Rate the ease of using this automated
+                        <th colspan="7" style="background-color:rgb(216, 181, 181); font-size: large"> Question 1 : Rate the ease of using this automated
                             assessment tool to complete your assessment.</th> <!--Question 1-->
                     </tr>
                     <tr>
@@ -88,8 +88,12 @@
                 </tbody>
                 <br>
                 <table class="survey-table w3-striped w3-bordered"> <!-- Question 3 -->
-                    <thead>
-                        <h2>Questions About Assessment Content</h2>
+                    <thead><br>
+                        <div class="section-container">
+                            <div class="section-background">
+                                <h2 class="accountTitle" style="color: #990000;">Questions about Assessment Content</h2>
+                            </div>
+                        </div><br>
                         <tr>
                             <th colspan="7" style="background-color:rgb(170, 76, 76)"> Question 3 : How relevant was the assessment to the coursework you have completed within your course?</th>
                         </tr>
@@ -125,7 +129,7 @@
                 <table class="survey-table w3-striped w3-bordered"> <!-- Question 4 -->
                     <thead>
                         <tr>
-                            <th colspan="7" style="background-color:rgb(170, 76, 76)"> Question 4 : The assessment questions worded so they were easy to understand what the question was asking.</th>
+                            <th colspan="7" style="background-color:rgb(170, 76, 76)"> Question 4 : The assessment questions were worded so they were easy to understand what the question was asking.</th>
                         </tr>
                         <tr>
                             <th scope="col"> Module Number </th>
@@ -160,8 +164,12 @@
 
                     <br>
                 <table class="survey-table w3-striped w3-bordered">
-                    <thead>
-                        <h2>Questions about Module</h2>
+                    <thead><br>
+                        <div class="section-container">
+                            <div class="section-background">
+                                <h2 class="accountTitle" style="color: #990000;">Questions about Module</h2>
+                            </div>
+                        </div>
                         <tr>
                             <th colspan="7" style="background-color:rgb(170, 76, 76)">Question 5 : How relevant is this particular module in reaching the learning outcomes set by your degree program?</th><!--Question 5-->
                         </tr>
@@ -194,33 +202,50 @@
                         {%endfor%}
                     
                     </tbody>
-
-                    <br>
                 <table class="survey-table w3-striped w3-bordered">
+                    <!-- Question 6 -->
                     <thead>
                         <tr>
-                            <th colspan="7" style="background-color:rgb(170, 76, 76)">Question 6 : Any additional Feedback Comments </th><!--Question 6-->
+                            <th colspan="7" style="background-color:rgb(170, 76, 76)"> Question 6 : My instructor has taught this module at a level appropriate to the course level and objectives.</th>
                         </tr>
                         <tr>
                             <th scope="col"> Module Number </th>
                             <th scope="col"> Assessment Number </th>
-                            <th colspan="5" > Comments </th>
+                            <th scope="col"> Strongly Disagree </th>
+                            <th scope="col"> Slightly Disagree </th>
+                            <th scope="col"> Neither Agree or Disagree </th>
+                            <th scope="col"> Slightly Agree </th>
+                            <th scope="col"> Strongly Agree </th>
                         </tr>
                     </thead>
                     <tbody>
+                        <!-- Question 4 Answers -->
+                        {% for m_id in enrolled_mod%}
+
+                        {%for a_id in Assessments[m_id]%}
+
+
                         <tr>
-                            <th scope="col">1</th><!--Question 6 Answers -->
-                            <th scope="col">1</th>
-                            <th scope="col"></th>
+                            <th scope="col">{{m_id}}</th>
+                            <th scope="col">{{a_id}}</th>
+                            <th scope="col">{{ survey_Results[a_id][5][0] }} out of {{ (survey_Results[a_id][5][0]) + (survey_Results[a_id][5][1]) + (survey_Results[a_id][5][2]) + (survey_Results[a_id][5][3]) + (survey_Results[a_id][5][4]) }}<br>= {{ (((survey_Results[a_id][5][0]) / ((survey_Results[a_id][5][0]) + (survey_Results[a_id][5][1]) + (survey_Results[a_id][5][2]) + (survey_Results[a_id][5][3]) + (survey_Results[a_id][5][4]) )) * 100)|round(1)}}%</th>
+                            <th scope="col">{{ survey_Results[a_id][5][1] }} out of {{ (survey_Results[a_id][5][0]) + (survey_Results[a_id][5][1]) + (survey_Results[a_id][5][2]) + (survey_Results[a_id][5][3]) + (survey_Results[a_id][5][4]) }}<br>= {{ (((survey_Results[a_id][5][1]) / ((survey_Results[a_id][5][0]) + (survey_Results[a_id][5][1]) + (survey_Results[a_id][5][2]) + (survey_Results[a_id][5][3]) + (survey_Results[a_id][5][4]) )) * 100)|round(1)}}%</th>
+                            <th scope="col">{{ survey_Results[a_id][5][2] }} out of {{ (survey_Results[a_id][5][0]) + (survey_Results[a_id][5][1]) + (survey_Results[a_id][5][2]) + (survey_Results[a_id][5][3]) + (survey_Results[a_id][5][4]) }}<br>= {{ (((survey_Results[a_id][5][2]) / ((survey_Results[a_id][5][0]) + (survey_Results[a_id][5][1]) + (survey_Results[a_id][5][2]) + (survey_Results[a_id][5][3]) + (survey_Results[a_id][5][4]) )) * 100)|round(1)}}%</th>
+                            <th scope="col">{{ survey_Results[a_id][5][3] }} out of {{ (survey_Results[a_id][5][0]) + (survey_Results[a_id][5][1]) + (survey_Results[a_id][5][2]) + (survey_Results[a_id][5][3]) + (survey_Results[a_id][5][4]) }}<br>= {{ (((survey_Results[a_id][5][3]) / ((survey_Results[a_id][5][0]) + (survey_Results[a_id][5][1]) + (survey_Results[a_id][5][2]) + (survey_Results[a_id][5][3]) + (survey_Results[a_id][5][4]) )) * 100)|round(1)}}%</th>
+                            <th scope="col">{{ survey_Results[a_id][5][4] }} out of {{ (survey_Results[a_id][5][0]) + (survey_Results[a_id][5][1]) + (survey_Results[a_id][5][2]) + (survey_Results[a_id][5][3]) + (survey_Results[a_id][5][4]) }}<br>= {{ (((survey_Results[a_id][5][4]) / ((survey_Results[a_id][5][0]) + (survey_Results[a_id][5][1]) + (survey_Results[a_id][5][2]) + (survey_Results[a_id][5][3]) + (survey_Results[a_id][5][4]) )) * 100)|round(1)}}%</th>
                         </tr>
+                        {%endfor%}
+                        {%endfor%}
+
                     </tbody>
+
                     <br>
                 </div>
 
 
     {% else %}
         <br><br><br><br>
-        <h2>ERROR! You must be logged in as a staff member to view feedback results. <br> If you are a staff member please login to
+        <h2 class="accountTitle" style="color: #990000;">ERROR! ERROR! ERROR!<br> You must be logged in as a staff member to view feedback results. <br> If you are a staff member please login to
             view this page.<br> If you are not a staff member please return to your account page</h2><br><br>
         <h3><button><a href='/myaccount'>Return to My Account</a></button></h3>
 
